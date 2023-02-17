@@ -1,0 +1,40 @@
+[enu default]
+
+// Options Menu Titles
+HHXOptions       = "Hideous Helmet Extended Options";
+HHXAmmoCounters  = "Ammo Counters Options";
+HHXCompass       = "Compass Options";
+HHXEKG           = "EKG Options";
+HHXEncumbrance   = "Encumbrance Options";
+HHXFullInventory = "Full Inventory Options";
+HHXHeartbeat     = "Heartbeat Options";
+HHXInventory     = "Inventory Options";
+HHXKeys          = "Keys Options";
+HHXMugshot       = "Mugshot Options";
+HHXWeaponSprite  = "Weapon Sprite Options";
+HHXWeaponStatus  = "Weapon Status Options";
+HHXWoundCounter  = "Wound Counter Options";
+
+// HUD Element Positioning Config Labels
+HHXPosX  = "Horizontal Position";
+HHXPosY  = "Vertical Position";
+HHXScale = "Scale";
+
+// Reset Options Labels
+HHXResetAll           = "Reset All Options";
+HHXResetAmmoCounters  = "Reset Ammo Counters Options";
+HHXResetCompass       = "Reset Compass Options";
+HHXResetEKG           = "Reset EKG Options";
+HHXResetEncumbrance   = "Reset Encumbrance Options";
+HHXResetFullInventory = "Reset Full Inventory Options";
+HHXResetHeartbeat     = "Reset Heartbeat Options";
+HHXResetInventory     = "Reset Inventory Options";
+HHXResetKeys          = "Reset Keys Options";
+HHXResetMugshot       = "Reset Mugshot Options";
+HHXResetWeaponSprite  = "Reset Weapon Sprite Options";
+HHXResetWeaponStatus  = "Reset Weapon Status Options";
+HHXResetWoundCounter  = "Reset Wound Counter Options";
+
+// Hideous Helmet Option Set Labels
+HHXHLM = "With Helmet";
+HHXNHM = "Without Helmet";

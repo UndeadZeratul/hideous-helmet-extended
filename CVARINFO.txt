@@ -1,0 +1,99 @@
+
+// AMMO COUNTERS CONFIGS
+user int   uz_hhx_ammoCounters_nhm_posX  = -8;
+user int   uz_hhx_ammoCounters_nhm_posY  = -6;
+user float uz_hhx_ammoCounters_nhm_scale = 1.;
+user int   uz_hhx_ammoCounters_hlm_posX  = -8;
+user int   uz_hhx_ammoCounters_hlm_posY  = -6;
+user float uz_hhx_ammoCounters_hlm_scale = 1.;
+
+// COMPASS CONFIGS
+user int   uz_hhx_compass_nhm_posX  = 600;
+user int   uz_hhx_compass_nhm_posY  = 0;
+user float uz_hhx_compass_nhm_scale = 1.;
+user int   uz_hhx_compass_hlm_posX  = 600;
+user int   uz_hhx_compass_hlm_posY  = 0;
+user float uz_hhx_compass_hlm_scale = 1.;
+
+// EKG CONFIGS
+user int   uz_hhx_ekg_nhm_posX  = -3;
+user int   uz_hhx_ekg_nhm_posY  = -7;
+user float uz_hhx_ekg_nhm_scale = 1.;
+user int   uz_hhx_ekg_hlm_posX  = -3;
+user int   uz_hhx_ekg_hlm_posY  = -7;
+user float uz_hhx_ekg_hlm_scale = 1.;
+
+// Encumbrance CONFIGS
+user int   uz_hhx_encumbrance_hlm_posX  = 4;
+user int   uz_hhx_encumbrance_hlm_posY  = 1;
+user float uz_hhx_encumbrance_hlm_scale = 1.;
+user int   uz_hhx_encumbrance_nhm_posX  = 4;
+user int   uz_hhx_encumbrance_nhm_posY  = 1;
+user float uz_hhx_encumbrance_nhm_scale = 1.;
+
+// Heartbeat CONFIGS
+user int   uz_hhx_heartbeat_nhm_posX  = 25;
+user int   uz_hhx_heartbeat_nhm_posY  = -4;
+user float uz_hhx_heartbeat_nhm_scale = 1.;
+user int   uz_hhx_heartbeat_hlm_posX  = 25;
+user int   uz_hhx_heartbeat_hlm_posY  = -4;
+user float uz_hhx_heartbeat_hlm_scale = 1.;
+
+// FULL INVENTORY CONFIGS
+user int   uz_hhx_fullInventory_nhm_posX  = -18;
+user int   uz_hhx_fullInventory_nhm_posY  = -20;
+user float uz_hhx_fullInventory_nhm_scale = 1.;
+user int   uz_hhx_fullInventory_hlm_posX  = -18;
+user int   uz_hhx_fullInventory_hlm_posY  = -20;
+user float uz_hhx_fullInventory_hlm_scale = 1.;
+
+// INVENTORY CONFIGS
+user int   uz_hhx_inventory_nhm_posX  = 25;
+user int   uz_hhx_inventory_nhm_posY  = -14;
+user float uz_hhx_inventory_nhm_scale = 1.;
+user int   uz_hhx_inventory_hlm_posX  = 25;
+user int   uz_hhx_inventory_hlm_posY  = -14;
+user float uz_hhx_inventory_hlm_scale = 1.;
+
+// KEYS CONFIGS
+user int   uz_hhx_keys_nhm_posX  = 50;
+user int   uz_hhx_keys_nhm_posY  = -4;
+user float uz_hhx_keys_nhm_scale = 1.;
+user int   uz_hhx_keys_hlm_posX  = 50;
+user int   uz_hhx_keys_hlm_posY  = -4;
+user float uz_hhx_keys_hlm_scale = 1.;
+
+// MUGSHOT CONFIGS
+user int   uz_hhx_mugshot_nhm_posX  = 0;
+user int   uz_hhx_mugshot_nhm_posY  = -14;
+user float uz_hhx_mugshot_nhm_scale = 1.;
+user int   uz_hhx_mugshot_hlm_posX  = -171;
+user int   uz_hhx_mugshot_hlm_posY  = 0;
+user float uz_hhx_mugshot_hlm_scale = 1.;
+
+// WEAPON SPRITE CONFIGS
+user int   uz_hhx_weaponSprite_nhm_posX  = 58;
+user int   uz_hhx_weaponSprite_nhm_posY  = -6;
+user float uz_hhx_weaponSprite_nhm_scale = 1.;
+user int   uz_hhx_weaponSprite_hlm_posX  = 58;
+user int   uz_hhx_weaponSprite_hlm_posY  = -6;
+user float uz_hhx_weaponSprite_hlm_scale = 1.;
+
+// WEAPON STATUS CONFIGS
+user int   uz_hhx_weaponStatus_nhm_posX  = -16;
+user int   uz_hhx_weaponStatus_nhm_posY  = -6;
+user float uz_hhx_weaponStatus_nhm_scale = 1.;
+user int   uz_hhx_weaponStatus_hlm_posX  = -16;
+user int   uz_hhx_weaponStatus_hlm_posY  = -6;
+user float uz_hhx_weaponStatus_hlm_scale = 1.;
+
+// WOUND COUNTER CONFIGS
+user int   uz_hhx_woundCounter_nhm_posX  = 46;
+user int   uz_hhx_woundCounter_nhm_posY  = -30;
+user float uz_hhx_woundCounter_nhm_scale = 1.;
+user int   uz_hhx_woundCounter_hlm_posX  = -46;
+user int   uz_hhx_woundCounter_hlm_posY  = 30;
+user float uz_hhx_woundCounter_hlm_scale = 1.;
+
+// DISABLED
+server bool uz_hhx_disabled = false;

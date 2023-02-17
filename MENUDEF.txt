@@ -1,0 +1,230 @@
+OptionMenu "HHXOptions" {
+	Title "$HHXOptions"
+	
+	SubMenu "$HHXAmmoCounters", "HHXAmmoCounters"
+	SubMenu "$HHXCompass", "HHXCompass"
+	SubMenu "$HHXEKG", "HHXEKG"
+	SubMenu "$HHXEncumbrance", "HHXEncumbrance"
+	SubMenu "$HHXFullInventory", "HHXFullInventory"
+	SubMenu "$HHXHeartbeat", "HHXHeartbeat"
+	SubMenu "$HHXInventory", "HHXInventory"
+// 	SubMenu "$HHXItemAdditions", "HHXItemAdditions"
+	SubMenu "$HHXKeys", "HHXKeys"
+	SubMenu "$HHXMugshot", "HHXMugshot"
+	SubMenu "$HHXWeaponSprite", "HHXWeaponSprite"
+// 	SubMenu "$HHXWeaponStatus", "HHXWeaponStatus"
+	SubMenu "$HHXWoundCounter", "HHXWoundCounter"
+	
+	SafeCommand "$HHXResetAll", "uz_hhx_options_reset_all"
+}
+
+OptionMenu "HHXAmmoCounters" {
+	Title "$HHXAmmoCounters"
+	
+	StaticText "Only Vertical Position is supported for Ammo Counters"
+	
+	StaticText "$HHXHLM"
+	Slider "$HHXPosX", "uz_hhx_ammoCounters_hlm_posX", -200, 200, 1, 0
+	Slider "$HHXPosY", "uz_hhx_ammoCounters_hlm_posY", -150, 150, 1, 0
+	Slider "$HHXScale", "uz_hhx_ammoCounters_hlm_scale", .1, 4., .1, 1
+	
+	StaticText "$HHXNHM"
+	Slider "$HHXPosX", "uz_hhx_ammoCounters_nhm_posX", -200, 200, 1, 0
+	Slider "$HHXPosY", "uz_hhx_ammoCounters_nhm_posY", -150, 150, 1, 0
+	Slider "$HHXScale", "uz_hhx_ammoCounters_nhm_scale", .1, 4., .1, 1
+	
+	SafeCommand "$HHXResetAmmoCounters", "uz_hhx_options_reset_AmmoCounters"
+}
+
+OptionMenu "HHXCompass" {
+	Title "$HHXCompass"
+		
+	StaticText "$HHXHLM"
+	Slider "$HHXPosX", "uz_hhx_compass_hlm_posX", -1000, 1000, 1, 0
+	Slider "$HHXPosY", "uz_hhx_compass_hlm_posY", -400, 400, 1, 0
+	Slider "$HHXScale", "uz_hhx_compass_hlm_scale", .1, 4., .1, 1
+	
+	StaticText "$HHXNHM"
+	Slider "$HHXPosX", "uz_hhx_compass_nhm_posX", -1000, 1000, 1, 0
+	Slider "$HHXPosY", "uz_hhx_compass_nhm_posY", -400, 400, 1, 0
+	Slider "$HHXScale", "uz_hhx_compass_nhm_scale", .1, 4., .1, 1
+	
+	SafeCommand "$HHXResetCompass", "uz_hhx_options_reset_compass"
+}
+
+OptionMenu "HHXEKG" {
+	Title "$HHXEKG"
+	
+	StaticText "Scaling not supported for EKG"
+	
+	StaticText "$HHXHLM"
+	Slider "$HHXPosX", "uz_hhx_ekg_hlm_posX", -200, 200, 1, 0
+	Slider "$HHXPosY", "uz_hhx_ekg_hlm_posY", -200, 0, 1, 0
+	Slider "$HHXScale", "uz_hhx_ekg_hlm_scale", .1, 4., .1, 1, "uz_hhx_disabled"
+	
+	StaticText "$HHXNHM"
+	Slider "$HHXPosX", "uz_hhx_ekg_nhm_posX", -200, 200, 1, 0
+	Slider "$HHXPosY", "uz_hhx_ekg_nhm_posY", -200, 0, 1, 0
+	Slider "$HHXScale", "uz_hhx_ekg_nhm_scale", .1, 4., .1, 1, "uz_hhx_disabled"
+	
+	SafeCommand "$HHXResetEKG", "uz_hhx_options_reset_ekg"
+}
+
+OptionMenu "HHXEncumbrance" {
+	Title "$HHXEncumbrance"
+		
+	StaticText "$HHXHLM"
+	Slider "$HHXPosX", "uz_hhx_encumbrance_hlm_posX", 0, 400, 1, 0
+	Slider "$HHXPosY", "uz_hhx_encumbrance_hlm_posY", -200, 1, 1, 0
+	Slider "$HHXScale", "uz_hhx_encumbrance_hlm_scale", .1, 4., .1, 1
+	
+	StaticText "$HHXNHM"
+	Slider "$HHXPosX", "uz_hhx_encumbrance_nhm_posX", 0, 400, 1, 0
+	Slider "$HHXPosY", "uz_hhx_encumbrance_nhm_posY", -200, 1, 1, 0
+	Slider "$HHXScale", "uz_hhx_encumbrance_nhm_scale", .1, 4., .1, 1
+	
+	SafeCommand "$HHXResetEncumbrance", "uz_hhx_options_reset_encumbrance"
+}
+
+OptionMenu "HHXFullInventory" {
+	Title "$HHXFullInventory"
+		
+	StaticText "$HHXHLM"
+	Slider "$HHXPosX", "uz_hhx_fullInventory_hlm_posX", -400, 0, 1, 0
+	Slider "$HHXPosY", "uz_hhx_fullInventory_hlm_posY", -200, 0, 1, 0
+	Slider "$HHXScale", "uz_hhx_fullInventory_hlm_scale", .1, 4., .1, 1
+	
+	StaticText "$HHXNHM"
+	Slider "$HHXPosX", "uz_hhx_fullInventory_nhm_posX", -400, 0, 1, 0
+	Slider "$HHXPosY", "uz_hhx_fullInventory_nhm_posY", -200, 0, 1, 0
+	Slider "$HHXScale", "uz_hhx_fullInventory_nhm_scale", .1, 4., .1, 1
+	
+	SafeCommand "$HHXResetFullInventory", "uz_hhx_options_reset_fullInventory"
+}
+
+OptionMenu "HHXHeartbeat" {
+	Title "$HHXHeartbeat"
+	
+	StaticText "$HHXHLM"
+	Slider "$HHXPosX", "uz_hhx_heartbeat_hlm_posX", -200, 200, 1, 0
+	Slider "$HHXPosY", "uz_hhx_heartbeat_hlm_posY", -200, 0, 1, 0
+	Slider "$HHXScale", "uz_hhx_heartbeat_hlm_scale", .1, 4., .1, 1
+	
+	StaticText "$HHXNHM"
+	Slider "$HHXPosX", "uz_hhx_heartbeat_nhm_posX", -200, 200, 1, 0
+	Slider "$HHXPosY", "uz_hhx_heartbeat_nhm_posY", -200, 0, 1, 0
+	Slider "$HHXScale", "uz_hhx_heartbeat_nhm_scale", .1, 4., .1, 1
+	
+	SafeCommand "$HHXResetHeartbeat", "uz_hhx_options_reset_heartbeat"
+}
+
+OptionMenu "HHXInventory" {
+	Title "$HHXInventory"
+	
+	StaticText "Scaling not supported for Inventory Display"
+	
+	StaticText "$HHXHLM"
+	Slider "$HHXPosX", "uz_hhx_inventory_hlm_posX", -400, 400, 1, 0
+	Slider "$HHXPosY", "uz_hhx_inventory_hlm_posY", -200, 0, 1, 0
+	Slider "$HHXScale", "uz_hhx_inventory_hlm_scale", .1, 4., .1, 1, "uz_hhx_disabled"
+	
+	StaticText "$HHXNHM"
+	Slider "$HHXPosX", "uz_hhx_inventory_nhm_posX", -400, 400, 1, 0
+	Slider "$HHXPosY", "uz_hhx_inventory_nhm_posY", -200, 0, 1, 0
+	Slider "$HHXScale", "uz_hhx_inventory_nhm_scale", .1, 4., .1, 1, "uz_hhx_disabled"
+	
+	SafeCommand "$HHXResetInventory", "uz_hhx_options_reset_inventory"
+}
+
+OptionMenu "HHXKeys" {
+	Title "$HHXKeys"
+	
+	StaticText "$HHXHLM"
+	Slider "$HHXPosX", "uz_hhx_keys_hlm_posX", -300, 300, 1, 0
+	Slider "$HHXPosY", "uz_hhx_keys_hlm_posY", -300, 0, 1, 0
+	Slider "$HHXScale", "uz_hhx_keys_hlm_scale", .1, 4., .1, 1
+	
+	StaticText "$HHXNHM"
+	Slider "$HHXPosX", "uz_hhx_keys_nhm_posX", -300, 300, 1, 0
+	Slider "$HHXPosY", "uz_hhx_keys_nhm_posY", -300, 0, 1, 0
+	Slider "$HHXScale", "uz_hhx_keys_nhm_scale", .1, 4., .1, 1
+	
+	SafeCommand "$HHXResetKeys", "uz_hhx_options_reset_keys"
+}
+
+OptionMenu "HHXMugshot" {
+	Title "$HHXMugshot"
+	
+	StaticText "$HHXHLM"
+	Slider "$HHXPosX", "uz_hhx_mugshot_hlm_posX", -200, 200, 1, 0
+	Slider "$HHXPosY", "uz_hhx_mugshot_hlm_posY", -200, 0, 1, 0
+	Slider "$HHXScale", "uz_hhx_mugshot_hlm_scale", .1, 4., .1, 1
+	
+	StaticText "$HHXNHM"
+	Slider "$HHXPosX", "uz_hhx_mugshot_nhm_posX", -200, 200, 1, 0
+	Slider "$HHXPosY", "uz_hhx_mugshot_nhm_posY", -200, 0, 1, 0
+	Slider "$HHXScale", "uz_hhx_mugshot_nhm_scale", .1, 4., .1, 1
+	
+	SafeCommand "$HHXResetMugshot", "uz_hhx_options_reset_mugshot"
+}
+
+OptionMenu "HHXWeaponSprite" {
+	Title "$HHXWeaponSprite"
+	
+	StaticText "Scaling not supported for Weapon Sprite"
+	
+	StaticText "$HHXHLM"
+	Slider "$HHXPosX", "uz_hhx_weaponSprite_hlm_posX", -400, 200, 1, 0
+	Slider "$HHXPosY", "uz_hhx_weaponSprite_hlm_posY", -200, 0, 1, 0
+	Slider "$HHXScale", "uz_hhx_weaponSprite_hlm_scale", .1, 4., .1, 1, "uz_hhx_disabled"
+	
+	StaticText "$HHXNHM"
+	Slider "$HHXPosX", "uz_hhx_weaponSprite_nhm_posX", -400, 200, 1, 0
+	Slider "$HHXPosY", "uz_hhx_weaponSprite_nhm_posY", -200, 0, 1, 0
+	Slider "$HHXScale", "uz_hhx_weaponSprite_nhm_scale", .1, 4., .1, 1, "uz_hhx_disabled"
+	
+	SafeCommand "$HHXResetWeaponSprite", "uz_hhx_options_reset_weaponSprite"
+}
+
+OptionMenu "HHXWeaponStatus" {
+	Title "$HHXWeaponStatus"
+	
+	StaticText "Scaling not supported for Weapon Status"
+	
+	StaticText "$HHXHLM"
+	Slider "$HHXPosX", "uz_hhx_weaponStatus_hlm_posX", -200, 200, 1, 0
+	Slider "$HHXPosY", "uz_hhx_weaponStatus_hlm_posY", -200, 0, 1, 0
+	Slider "$HHXScale", "uz_hhx_weaponStatus_hlm_scale", .1, 4., .1, 1, "uz_hhx_disabled"
+	
+	StaticText "$HHXNHM"
+	Slider "$HHXPosX", "uz_hhx_weaponStatus_nhm_posX", -200, 200, 1, 0
+	Slider "$HHXPosY", "uz_hhx_weaponStatus_nhm_posY", -200, 0, 1, 0
+	Slider "$HHXScale", "uz_hhx_weaponStatus_nhm_scale", .1, 4., .1, 1, "uz_hhx_disabled"
+	
+	SafeCommand "$HHXResetWeaponStatus", "uz_hhx_options_reset_WeaponStatus"
+}
+
+OptionMenu "HHXWoundCounter" {
+	Title "$HHXWoundCounter"
+	
+	StaticText "$HHXHLM"
+	Slider "$HHXPosX", "uz_hhx_woundCounter_hlm_posX", -200, 200, 1, 0
+	Slider "$HHXPosY", "uz_hhx_woundCounter_hlm_posY", -200, 0, 1, 0
+	Slider "$HHXScale", "uz_hhx_woundCounter_hlm_scale", .1, 4., .1, 1
+	
+	StaticText "$HHXNHM"
+	Slider "$HHXPosX", "uz_hhx_woundCounter_nhm_posX", -200, 200, 1, 0
+	Slider "$HHXPosY", "uz_hhx_woundCounter_nhm_posY", -200, 0, 1, 0
+	Slider "$HHXScale", "uz_hhx_woundCounter_nhm_scale", .1, 4., .1, 1
+	
+	SafeCommand "$HHXResetWoundCounter", "uz_hhx_options_reset_woundCounter"
+}
+
+AddOptionMenu "OptionsMenu"{
+	Submenu "$HHXOptions", "HHXOptions"
+}
+
+AddOptionMenu "HDAddonMenu"
+{
+    Submenu "$HHXOptions", "HHXOptions"
+}
