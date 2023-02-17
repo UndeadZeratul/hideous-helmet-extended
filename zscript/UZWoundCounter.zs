@@ -43,7 +43,7 @@ class UZWoundCounter : HHWoundCounter {
 		HDBleedingWound wound;
 		while (wound = HDBleedingWound(ti.Next())) {
 			if (wound.Bleeder != sb.hpl)
-				return;
+				continue;
 
 			if (wound.Depth == 0 && wound.Patched == 0) {
 				++sealedWounds;
