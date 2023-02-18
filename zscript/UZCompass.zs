@@ -1,4 +1,4 @@
-class UZCompass : HHCompass {
+class UZCompass : HUDCompass {
 
 	private Service _HHFunc;
 

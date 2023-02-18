@@ -1,4 +1,4 @@
-class UZHeartbeat : HHHeartbeat {
+class UZHeartbeat : HUDHeartbeat {
 
 	private Service _HHFunc;
 

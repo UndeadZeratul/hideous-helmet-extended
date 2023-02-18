@@ -1,4 +1,4 @@
-class UZEKG : HHEKG {
+class UZEKG : HUDEKG {
 
 	private Service _HHFunc;
 

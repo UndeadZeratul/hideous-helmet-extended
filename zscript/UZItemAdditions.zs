@@ -1,6 +1,6 @@
 // TODO: Manually Re-implement rendering inventory?
 // UNUSED UNTIL RE-IMPLEMENTED PROPERLY
-class UZItemAdditions : HHItemAdditions {
+class UZItemAdditions : HUDItemAdditions {
 
 	private Service _HHFunc;
 

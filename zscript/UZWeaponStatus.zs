@@ -1,5 +1,5 @@
 // UNUSED UNTIL PROPERLY EXTENDABLE
-class UZWeaponStatus : HHWeaponStatus {
+class UZWeaponStatus : HUDWeaponStatus {
 
 	private Service _HHFunc;
 

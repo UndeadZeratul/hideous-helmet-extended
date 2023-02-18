@@ -1,4 +1,4 @@
-class UZWoundCounter : HHWoundCounter {
+class UZWoundCounter : HUDElement {
 
 	private Service _HHFunc;
 
@@ -19,6 +19,12 @@ class UZWoundCounter : HHWoundCounter {
 	private transient CVar _nhm_posX;
 	private transient CVar _nhm_posY;
 	private transient CVar _nhm_scale;
+
+	override void Init(HCStatusbar sb) {
+		ZLayer = 0;
+
+		Namespace = "woundcounter";
+	}
 
 	override void Tick(HCStatusbar sb) {
 		if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();

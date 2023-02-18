@@ -1,4 +1,4 @@
-class UZMugshot : HHMugshot {
+class UZMugshot : HUDMugshot {
 
 	private Service _HHFunc;
 

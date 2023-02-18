@@ -1,4 +1,4 @@
-class UZPosition : HHPosition {
+class UZPosition : HUDPosition {
 
 	private Service _HHFunc;
 
