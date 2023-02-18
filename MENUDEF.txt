@@ -44,7 +44,7 @@ OptionMenu "HHXAmmoCounters" {
 	Slider "$HHXHUDLevel", "uz_hhx_ammoCounters_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_ammoCounters_enabled"
 	Slider "$HHXPosX", "uz_hhx_ammoCounters_nhm_posX", -200, 200, 1, 0, "uz_hhx_ammoCounters_enabled"
 	Slider "$HHXPosY", "uz_hhx_ammoCounters_nhm_posY", -150, 150, 1, 0, "uz_hhx_ammoCounters_enabled"
-	Slider "$HHXScale", "uz_hhx_ammoCounters_nhm_scale", .1, 4., .1, 1, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXScale", "uz_hhx_ammoCounters_nhm_scale", .01, 4., .05, 2, "uz_hhx_ammoCounters_enabled"
 	
 	StaticText ""
 	StaticText ""
@@ -55,7 +55,7 @@ OptionMenu "HHXAmmoCounters" {
 	Slider "$HHXHUDLevel", "uz_hhx_ammoCounters_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_ammoCounters_enabled"
 	Slider "$HHXPosX", "uz_hhx_ammoCounters_hlm_posX", -200, 200, 1, 0, "uz_hhx_ammoCounters_enabled"
 	Slider "$HHXPosY", "uz_hhx_ammoCounters_hlm_posY", -150, 150, 1, 0, "uz_hhx_ammoCounters_enabled"
-	Slider "$HHXScale", "uz_hhx_ammoCounters_hlm_scale", .1, 4., .1, 1, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXScale", "uz_hhx_ammoCounters_hlm_scale", .01, 4., .05, 2, "uz_hhx_ammoCounters_enabled"
 	
 	StaticText ""
 	StaticText ""
@@ -76,7 +76,7 @@ OptionMenu "HHXCompass" {
 	Slider "$HHXHUDLevel", "uz_hhx_compass_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_compass_enabled"
 	Slider "$HHXPosX", "uz_hhx_compass_nhm_posX", -1000, 1000, 1, 0, "uz_hhx_compass_enabled"
 	Slider "$HHXPosY", "uz_hhx_compass_nhm_posY", -400, 400, 1, 0, "uz_hhx_compass_enabled"
-	Slider "$HHXScale", "uz_hhx_compass_nhm_scale", .1, 4., .1, 1, "uz_hhx_compass_enabled"
+	Slider "$HHXScale", "uz_hhx_compass_nhm_scale", .01, 4., .05, 2, "uz_hhx_compass_enabled"
 		
 	StaticText ""
 	StaticText ""
@@ -87,7 +87,7 @@ OptionMenu "HHXCompass" {
 	Slider "$HHXHUDLevel", "uz_hhx_compass_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_compass_enabled"
 	Slider "$HHXPosX", "uz_hhx_compass_hlm_posX", -1000, 1000, 1, 0, "uz_hhx_compass_enabled"
 	Slider "$HHXPosY", "uz_hhx_compass_hlm_posY", -400, 400, 1, 0, "uz_hhx_compass_enabled"
-	Slider "$HHXScale", "uz_hhx_compass_hlm_scale", .1, 4., .1, 1, "uz_hhx_compass_enabled"
+	Slider "$HHXScale", "uz_hhx_compass_hlm_scale", .01, 4., .05, 2, "uz_hhx_compass_enabled"
 	
 	StaticText ""
 	StaticText ""
@@ -110,7 +110,7 @@ OptionMenu "HHXEKG" {
 	Slider "$HHXHUDLevel", "uz_hhx_ekg_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_ekg_enabled"
 	Slider "$HHXPosX", "uz_hhx_ekg_nhm_posX", -200, 200, 1, 0, "uz_hhx_ekg_enabled"
 	Slider "$HHXPosY", "uz_hhx_ekg_nhm_posY", -200, 0, 1, 0, "uz_hhx_ekg_enabled"
-	Slider "$HHXScale", "uz_hhx_ekg_nhm_scale", .1, 4., .1, 1, "uz_hhx_disabled"
+	Slider "$HHXScale", "uz_hhx_ekg_nhm_scale", .01, 4., .05, 2, "uz_hhx_disabled"
 	
 	StaticText ""
 	StaticText ""
@@ -121,7 +121,7 @@ OptionMenu "HHXEKG" {
 	Slider "$HHXHUDLevel", "uz_hhx_ekg_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_ekg_enabled"
 	Slider "$HHXPosX", "uz_hhx_ekg_hlm_posX", -200, 200, 1, 0, "uz_hhx_ekg_enabled"
 	Slider "$HHXPosY", "uz_hhx_ekg_hlm_posY", -200, 0, 1, 0, "uz_hhx_ekg_enabled"
-	Slider "$HHXScale", "uz_hhx_ekg_hlm_scale", .1, 4., .1, 1, "uz_hhx_disabled"
+	Slider "$HHXScale", "uz_hhx_ekg_hlm_scale", .01, 4., .05, 2, "uz_hhx_disabled"
 	
 	StaticText ""
 	StaticText ""
@@ -142,7 +142,7 @@ OptionMenu "HHXEncumbrance" {
 	Slider "$HHXHUDLevel", "uz_hhx_encumbrance_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_encumbrance_enabled"
 	Slider "$HHXPosX", "uz_hhx_encumbrance_nhm_posX", 0, 400, 1, 0, "uz_hhx_encumbrance_enabled"
 	Slider "$HHXPosY", "uz_hhx_encumbrance_nhm_posY", -200, 1, 1, 0, "uz_hhx_encumbrance_enabled"
-	Slider "$HHXScale", "uz_hhx_encumbrance_nhm_scale", .1, 4., .1, 1, "uz_hhx_encumbrance_enabled"
+	Slider "$HHXScale", "uz_hhx_encumbrance_nhm_scale", .01, 4., .05, 2, "uz_hhx_encumbrance_enabled"
 
 	StaticText ""
 	StaticText ""
@@ -153,7 +153,7 @@ OptionMenu "HHXEncumbrance" {
 	Slider "$HHXHUDLevel", "uz_hhx_encumbrance_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_encumbrance_enabled"
 	Slider "$HHXPosX", "uz_hhx_encumbrance_hlm_posX", 0, 400, 1, 0, "uz_hhx_encumbrance_enabled"
 	Slider "$HHXPosY", "uz_hhx_encumbrance_hlm_posY", -200, 1, 1, 0, "uz_hhx_encumbrance_enabled"
-	Slider "$HHXScale", "uz_hhx_encumbrance_hlm_scale", .1, 4., .1, 1, "uz_hhx_encumbrance_enabled"
+	Slider "$HHXScale", "uz_hhx_encumbrance_hlm_scale", .01, 4., .05, 2, "uz_hhx_encumbrance_enabled"
 
 	StaticText ""
 	StaticText ""
@@ -174,7 +174,7 @@ OptionMenu "HHXFullInventory" {
 	Slider "$HHXHUDLevel", "uz_hhx_fullInventory_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_fullInventory_enabled"
 	Slider "$HHXPosX", "uz_hhx_fullInventory_nhm_posX", -400, 0, 1, 0, "uz_hhx_fullInventory_enabled"
 	Slider "$HHXPosY", "uz_hhx_fullInventory_nhm_posY", -200, 0, 1, 0, "uz_hhx_fullInventory_enabled"
-	Slider "$HHXScale", "uz_hhx_fullInventory_nhm_scale", .1, 4., .1, 1, "uz_hhx_fullInventory_enabled"
+	Slider "$HHXScale", "uz_hhx_fullInventory_nhm_scale", .01, 4., .05, 2, "uz_hhx_fullInventory_enabled"
 
 	StaticText ""
 	StaticText ""
@@ -185,7 +185,7 @@ OptionMenu "HHXFullInventory" {
 	Slider "$HHXHUDLevel", "uz_hhx_fullInventory_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_fullInventory_enabled"
 	Slider "$HHXPosX", "uz_hhx_fullInventory_hlm_posX", -400, 0, 1, 0, "uz_hhx_fullInventory_enabled"
 	Slider "$HHXPosY", "uz_hhx_fullInventory_hlm_posY", -200, 0, 1, 0, "uz_hhx_fullInventory_enabled"
-	Slider "$HHXScale", "uz_hhx_fullInventory_hlm_scale", .1, 4., .1, 1, "uz_hhx_fullInventory_enabled"
+	Slider "$HHXScale", "uz_hhx_fullInventory_hlm_scale", .01, 4., .05, 2, "uz_hhx_fullInventory_enabled"
 	
 	StaticText ""
 	StaticText ""
@@ -206,7 +206,7 @@ OptionMenu "HHXHeartbeat" {
 	Slider "$HHXHUDLevel", "uz_hhx_heartbeat_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_heartbeat_enabled"
 	Slider "$HHXPosX", "uz_hhx_heartbeat_nhm_posX", -200, 200, 1, 0, "uz_hhx_heartbeat_enabled"
 	Slider "$HHXPosY", "uz_hhx_heartbeat_nhm_posY", -200, 0, 1, 0, "uz_hhx_heartbeat_enabled"
-	Slider "$HHXScale", "uz_hhx_heartbeat_nhm_scale", .1, 4., .1, 1, "uz_hhx_heartbeat_enabled"
+	Slider "$HHXScale", "uz_hhx_heartbeat_nhm_scale", .01, 4., .05, 2, "uz_hhx_heartbeat_enabled"
 
 	StaticText ""
 	StaticText ""
@@ -217,7 +217,7 @@ OptionMenu "HHXHeartbeat" {
 	Slider "$HHXHUDLevel", "uz_hhx_heartbeat_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_heartbeat_enabled"
 	Slider "$HHXPosX", "uz_hhx_heartbeat_hlm_posX", -200, 200, 1, 0, "uz_hhx_heartbeat_enabled"
 	Slider "$HHXPosY", "uz_hhx_heartbeat_hlm_posY", -200, 0, 1, 0, "uz_hhx_heartbeat_enabled"
-	Slider "$HHXScale", "uz_hhx_heartbeat_hlm_scale", .1, 4., .1, 1, "uz_hhx_heartbeat_enabled"
+	Slider "$HHXScale", "uz_hhx_heartbeat_hlm_scale", .01, 4., .05, 2, "uz_hhx_heartbeat_enabled"
 
 	StaticText ""
 	StaticText ""
@@ -240,7 +240,7 @@ OptionMenu "HHXInventory" {
 	Slider "$HHXHUDLevel", "uz_hhx_inventory_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_inventory_enabled"
 	Slider "$HHXPosX", "uz_hhx_inventory_nhm_posX", -400, 400, 1, 0, "uz_hhx_inventory_enabled"
 	Slider "$HHXPosY", "uz_hhx_inventory_nhm_posY", -200, 0, 1, 0, "uz_hhx_inventory_enabled"
-	Slider "$HHXScale", "uz_hhx_inventory_nhm_scale", .1, 4., .1, 1, "uz_hhx_disabled"
+	Slider "$HHXScale", "uz_hhx_inventory_nhm_scale", .01, 4., .05, 2, "uz_hhx_disabled"
 	
 	StaticText ""
 	StaticText ""
@@ -251,7 +251,7 @@ OptionMenu "HHXInventory" {
 	Slider "$HHXHUDLevel", "uz_hhx_inventory_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_inventory_enabled"
 	Slider "$HHXPosX", "uz_hhx_inventory_hlm_posX", -400, 400, 1, 0, "uz_hhx_inventory_enabled"
 	Slider "$HHXPosY", "uz_hhx_inventory_hlm_posY", -200, 0, 1, 0, "uz_hhx_inventory_enabled"
-	Slider "$HHXScale", "uz_hhx_inventory_hlm_scale", .1, 4., .1, 1, "uz_hhx_disabled"
+	Slider "$HHXScale", "uz_hhx_inventory_hlm_scale", .01, 4., .05, 2, "uz_hhx_disabled"
 	
 	StaticText ""
 	StaticText ""
@@ -272,7 +272,7 @@ OptionMenu "HHXKeys" {
 	Slider "$HHXHUDLevel", "uz_hhx_keys_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_keys_enabled"
 	Slider "$HHXPosX", "uz_hhx_keys_nhm_posX", -300, 300, 1, 0, "uz_hhx_keys_enabled"
 	Slider "$HHXPosY", "uz_hhx_keys_nhm_posY", -300, 0, 1, 0, "uz_hhx_keys_enabled"
-	Slider "$HHXScale", "uz_hhx_keys_nhm_scale", .1, 4., .1, 1, "uz_hhx_keys_enabled"
+	Slider "$HHXScale", "uz_hhx_keys_nhm_scale", .01, 4., .05, 2, "uz_hhx_keys_enabled"
 	
 	StaticText ""
 	StaticText ""
@@ -283,7 +283,7 @@ OptionMenu "HHXKeys" {
 	Slider "$HHXHUDLevel", "uz_hhx_keys_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_keys_enabled"
 	Slider "$HHXPosX", "uz_hhx_keys_hlm_posX", -300, 300, 1, 0, "uz_hhx_keys_enabled"
 	Slider "$HHXPosY", "uz_hhx_keys_hlm_posY", -300, 0, 1, 0, "uz_hhx_keys_enabled"
-	Slider "$HHXScale", "uz_hhx_keys_hlm_scale", .1, 4., .1, 1, "uz_hhx_keys_enabled"
+	Slider "$HHXScale", "uz_hhx_keys_hlm_scale", .01, 4., .05, 2, "uz_hhx_keys_enabled"
 	
 	StaticText ""
 	StaticText ""
@@ -304,7 +304,7 @@ OptionMenu "HHXMugshot" {
 	Slider "$HHXHUDLevel", "uz_hhx_mugshot_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_mugshot_enabled"
 	Slider "$HHXPosX", "uz_hhx_mugshot_nhm_posX", -200, 200, 1, 0, "uz_hhx_mugshot_enabled"
 	Slider "$HHXPosY", "uz_hhx_mugshot_nhm_posY", -200, 0, 1, 0, "uz_hhx_mugshot_enabled"
-	Slider "$HHXScale", "uz_hhx_mugshot_nhm_scale", .1, 4., .1, 1, "uz_hhx_mugshot_enabled"
+	Slider "$HHXScale", "uz_hhx_mugshot_nhm_scale", .01, 4., .05, 2, "uz_hhx_mugshot_enabled"
 	
 	StaticText ""
 	StaticText ""
@@ -315,7 +315,7 @@ OptionMenu "HHXMugshot" {
 	Slider "$HHXHUDLevel", "uz_hhx_mugshot_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_mugshot_enabled"
 	Slider "$HHXPosX", "uz_hhx_mugshot_hlm_posX", -200, 200, 1, 0, "uz_hhx_mugshot_enabled"
 	Slider "$HHXPosY", "uz_hhx_mugshot_hlm_posY", -200, 0, 1, 0, "uz_hhx_mugshot_enabled"
-	Slider "$HHXScale", "uz_hhx_mugshot_hlm_scale", .1, 4., .1, 1, "uz_hhx_mugshot_enabled"
+	Slider "$HHXScale", "uz_hhx_mugshot_hlm_scale", .01, 4., .05, 2, "uz_hhx_mugshot_enabled"
 	
 	StaticText ""
 	StaticText ""
@@ -339,7 +339,7 @@ OptionMenu "HHXOverlay" {
 	Slider "$HHXHUDLevel", "uz_hhx_overlay_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_overlay_enabled"
 	Slider "$HHXPosX", "uz_hhx_overlay_nhm_posX", -200, 200, 1, 0, "uz_hhx_overlay_enabled"
 	Slider "$HHXPosY", "uz_hhx_overlay_nhm_posY", -200, 0, 1, 0, "uz_hhx_overlay_enabled"
-	Slider "$HHXScale", "uz_hhx_overlay_nhm_scale", .1, 4., .1, 1, "uz_hhx_overlay_enabled"
+	Slider "$HHXScale", "uz_hhx_overlay_nhm_scale", .01, 4., .05, 2, "uz_hhx_overlay_enabled"
 	
 	StaticText ""
 	StaticText ""
@@ -350,7 +350,7 @@ OptionMenu "HHXOverlay" {
 	Slider "$HHXHUDLevel", "uz_hhx_overlay_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_overlay_enabled"
 	Slider "$HHXPosX", "uz_hhx_overlay_hlm_posX", -200, 200, 1, 0, "uz_hhx_overlay_enabled"
 	Slider "$HHXPosY", "uz_hhx_overlay_hlm_posY", -200, 0, 1, 0, "uz_hhx_overlay_enabled"
-	Slider "$HHXScale", "uz_hhx_overlay_hlm_scale", .1, 4., .1, 1, "uz_hhx_overlay_enabled"
+	Slider "$HHXScale", "uz_hhx_overlay_hlm_scale", .01, 4., .05, 2, "uz_hhx_overlay_enabled"
 	
 	StaticText ""
 	StaticText ""
@@ -373,7 +373,7 @@ OptionMenu "HHXWeaponSprite" {
 	Slider "$HHXHUDLevel", "uz_hhx_weaponSprite_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_weaponSprite_enabled"
 	Slider "$HHXPosX", "uz_hhx_weaponSprite_nhm_posX", -400, 200, 1, 0, "uz_hhx_weaponSprite_enabled"
 	Slider "$HHXPosY", "uz_hhx_weaponSprite_nhm_posY", -200, 0, 1, 0, "uz_hhx_weaponSprite_enabled"
-	Slider "$HHXScale", "uz_hhx_weaponSprite_nhm_scale", .1, 4., .1, 1, "uz_hhx_disabled"
+	Slider "$HHXScale", "uz_hhx_weaponSprite_nhm_scale", .01, 4., .05, 2, "uz_hhx_disabled"
 	
 	StaticText ""
 	StaticText ""
@@ -384,7 +384,7 @@ OptionMenu "HHXWeaponSprite" {
 	Slider "$HHXHUDLevel", "uz_hhx_weaponSprite_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_weaponSprite_enabled"
 	Slider "$HHXPosX", "uz_hhx_weaponSprite_hlm_posX", -400, 200, 1, 0, "uz_hhx_weaponSprite_enabled"
 	Slider "$HHXPosY", "uz_hhx_weaponSprite_hlm_posY", -200, 0, 1, 0, "uz_hhx_weaponSprite_enabled"
-	Slider "$HHXScale", "uz_hhx_weaponSprite_hlm_scale", .1, 4., .1, 1, "uz_hhx_disabled"
+	Slider "$HHXScale", "uz_hhx_weaponSprite_hlm_scale", .01, 4., .05, 2, "uz_hhx_disabled"
 	
 	StaticText ""
 	StaticText ""
@@ -407,7 +407,7 @@ OptionMenu "HHXWeaponStatus" {
 	Slider "$HHXHUDLevel", "uz_hhx_weaponStatus_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_weaponStatus_enabled"
 	Slider "$HHXPosX", "uz_hhx_weaponStatus_nhm_posX", -200, 200, 1, 0, "uz_hhx_weaponStatus_enabled"
 	Slider "$HHXPosY", "uz_hhx_weaponStatus_nhm_posY", -200, 0, 1, 0, "uz_hhx_weaponStatus_enabled"
-	Slider "$HHXScale", "uz_hhx_weaponStatus_nhm_scale", .1, 4., .1, 1, "uz_hhx_disabled"
+	Slider "$HHXScale", "uz_hhx_weaponStatus_nhm_scale", .01, 4., .05, 2, "uz_hhx_disabled"
 	
 	StaticText ""
 	StaticText ""
@@ -418,7 +418,7 @@ OptionMenu "HHXWeaponStatus" {
 	Slider "$HHXHUDLevel", "uz_hhx_weaponStatus_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_weaponStatus_enabled"
 	Slider "$HHXPosX", "uz_hhx_weaponStatus_hlm_posX", -200, 200, 1, 0, "uz_hhx_weaponStatus_enabled"
 	Slider "$HHXPosY", "uz_hhx_weaponStatus_hlm_posY", -200, 0, 1, 0, "uz_hhx_weaponStatus_enabled"
-	Slider "$HHXScale", "uz_hhx_weaponStatus_hlm_scale", .1, 4., .1, 1, "uz_hhx_disabled"
+	Slider "$HHXScale", "uz_hhx_weaponStatus_hlm_scale", .01, 4., .05, 2, "uz_hhx_disabled"
 	
 	StaticText ""
 	StaticText ""
@@ -439,7 +439,7 @@ OptionMenu "HHXWoundCounter" {
 	Slider "$HHXHUDLevel", "uz_hhx_woundCounter_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_woundCounter_enabled"
 	Slider "$HHXPosX", "uz_hhx_woundCounter_nhm_posX", -200, 200, 1, 0, "uz_hhx_woundCounter_enabled"
 	Slider "$HHXPosY", "uz_hhx_woundCounter_nhm_posY", -200, 0, 1, 0, "uz_hhx_woundCounter_enabled"
-	Slider "$HHXScale", "uz_hhx_woundCounter_nhm_scale", .1, 4., .1, 1, "uz_hhx_woundCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_woundCounter_nhm_scale", .01, 4., .05, 2, "uz_hhx_woundCounter_enabled"
 	
 	StaticText ""
 	StaticText ""
@@ -450,7 +450,7 @@ OptionMenu "HHXWoundCounter" {
 	Slider "$HHXHUDLevel", "uz_hhx_woundCounter_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_woundCounter_enabled"
 	Slider "$HHXPosX", "uz_hhx_woundCounter_hlm_posX", -200, 200, 1, 0, "uz_hhx_woundCounter_enabled"
 	Slider "$HHXPosY", "uz_hhx_woundCounter_hlm_posY", -200, 0, 1, 0, "uz_hhx_woundCounter_enabled"
-	Slider "$HHXScale", "uz_hhx_woundCounter_hlm_scale", .1, 4., .1, 1, "uz_hhx_woundCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_woundCounter_hlm_scale", .01, 4., .05, 2, "uz_hhx_woundCounter_enabled"
 	
 	StaticText ""
 	StaticText ""
