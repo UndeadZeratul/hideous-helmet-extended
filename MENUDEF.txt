@@ -1,223 +1,424 @@
 OptionMenu "HHXOptions" {
 	Title "$HHXOptions"
 	
-	SubMenu "$HHXAmmoCounters", "HHXAmmoCounters"
-	SubMenu "$HHXCompass", "HHXCompass"
-	SubMenu "$HHXEKG", "HHXEKG"
-	SubMenu "$HHXEncumbrance", "HHXEncumbrance"
+	StaticText ""
+	SubMenu "$HHXAmmoCounters",  "HHXAmmoCounters"
+	SubMenu "$HHXCompass",       "HHXCompass"
+	SubMenu "$HHXEKG",           "HHXEKG"
+	SubMenu "$HHXEncumbrance",   "HHXEncumbrance"
 	SubMenu "$HHXFullInventory", "HHXFullInventory"
-	SubMenu "$HHXHeartbeat", "HHXHeartbeat"
-	SubMenu "$HHXInventory", "HHXInventory"
+	SubMenu "$HHXHeartbeat",     "HHXHeartbeat"
+	SubMenu "$HHXInventory",     "HHXInventory"
 // 	SubMenu "$HHXItemAdditions", "HHXItemAdditions"
-	SubMenu "$HHXKeys", "HHXKeys"
-	SubMenu "$HHXMugshot", "HHXMugshot"
-	SubMenu "$HHXWeaponSprite", "HHXWeaponSprite"
-// 	SubMenu "$HHXWeaponStatus", "HHXWeaponStatus"
-	SubMenu "$HHXWoundCounter", "HHXWoundCounter"
+	SubMenu "$HHXKeys",          "HHXKeys"
+	SubMenu "$HHXMugshot",       "HHXMugshot"
+	SubMenu "$HHXOverlay",       "HHXOverlay"
+	SubMenu "$HHXWeaponSprite",  "HHXWeaponSprite"
+// 	SubMenu "$HHXWeaponStatus",  "HHXWeaponStatus"
+	SubMenu "$HHXWoundCounter",  "HHXWoundCounter"
 	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetAll", "uz_hhx_options_reset_all"
 }
 
 OptionMenu "HHXAmmoCounters" {
 	Title "$HHXAmmoCounters"
 	
-	StaticText "Only Vertical Position is supported for Ammo Counters"
+	Option "$HHXEnabled", "uz_hhx_ammoCounters_enabled", "OnOff"
 	
-	StaticText "$HHXHLM"
-	Slider "$HHXPosX", "uz_hhx_ammoCounters_hlm_posX", -200, 200, 1, 0
-	Slider "$HHXPosY", "uz_hhx_ammoCounters_hlm_posY", -150, 150, 1, 0
-	Slider "$HHXScale", "uz_hhx_ammoCounters_hlm_scale", .1, 4., .1, 1
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_ammoCounters_nhm_posX", -200, 200, 1, 0, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXPosY", "uz_hhx_ammoCounters_nhm_posY", -150, 150, 1, 0, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXScale", "uz_hhx_ammoCounters_nhm_scale", .1, 4., .1, 1, "uz_hhx_ammoCounters_enabled"
 	
-	StaticText "$HHXNHM"
-	Slider "$HHXPosX", "uz_hhx_ammoCounters_nhm_posX", -200, 200, 1, 0
-	Slider "$HHXPosY", "uz_hhx_ammoCounters_nhm_posY", -150, 150, 1, 0
-	Slider "$HHXScale", "uz_hhx_ammoCounters_nhm_scale", .1, 4., .1, 1
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_ammoCounters_hlm_required", "OnOff", "uz_hhx_ammoCounters_enabled"
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_ammoCounters_hlm_posX", -200, 200, 1, 0, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXPosY", "uz_hhx_ammoCounters_hlm_posY", -150, 150, 1, 0, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXScale", "uz_hhx_ammoCounters_hlm_scale", .1, 4., .1, 1, "uz_hhx_ammoCounters_enabled"
 	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetAmmoCounters", "uz_hhx_options_reset_AmmoCounters"
+	SafeCommand "$HHXHHResetAmmoCounters", "uz_hhx_options_reset_hlm_AmmoCounters"
 }
 
 OptionMenu "HHXCompass" {
 	Title "$HHXCompass"
+
+	Option "$HHXEnabled", "uz_hhx_compass_enabled", "OnOff"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_compass_nhm_posX", -1000, 1000, 1, 0, "uz_hhx_compass_enabled"
+	Slider "$HHXPosY", "uz_hhx_compass_nhm_posY", -400, 400, 1, 0, "uz_hhx_compass_enabled"
+	Slider "$HHXScale", "uz_hhx_compass_nhm_scale", .1, 4., .1, 1, "uz_hhx_compass_enabled"
 		
-	StaticText "$HHXHLM"
-	Slider "$HHXPosX", "uz_hhx_compass_hlm_posX", -1000, 1000, 1, 0
-	Slider "$HHXPosY", "uz_hhx_compass_hlm_posY", -400, 400, 1, 0
-	Slider "$HHXScale", "uz_hhx_compass_hlm_scale", .1, 4., .1, 1
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_compass_hlm_required", "OnOff", "uz_hhx_compass_enabled"
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_compass_hlm_posX", -1000, 1000, 1, 0, "uz_hhx_compass_enabled"
+	Slider "$HHXPosY", "uz_hhx_compass_hlm_posY", -400, 400, 1, 0, "uz_hhx_compass_enabled"
+	Slider "$HHXScale", "uz_hhx_compass_hlm_scale", .1, 4., .1, 1, "uz_hhx_compass_enabled"
 	
-	StaticText "$HHXNHM"
-	Slider "$HHXPosX", "uz_hhx_compass_nhm_posX", -1000, 1000, 1, 0
-	Slider "$HHXPosY", "uz_hhx_compass_nhm_posY", -400, 400, 1, 0
-	Slider "$HHXScale", "uz_hhx_compass_nhm_scale", .1, 4., .1, 1
-	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetCompass", "uz_hhx_options_reset_compass"
+	SafeCommand "$HHXHHResetCompass", "uz_hhx_options_reset_hlm_compass"
 }
 
 OptionMenu "HHXEKG" {
 	Title "$HHXEKG"
-	
+
+	Option "$HHXEnabled", "uz_hhx_ekg_enabled", "OnOff"
+	StaticText ""
 	StaticText "Scaling not supported for EKG"
 	
-	StaticText "$HHXHLM"
-	Slider "$HHXPosX", "uz_hhx_ekg_hlm_posX", -200, 200, 1, 0
-	Slider "$HHXPosY", "uz_hhx_ekg_hlm_posY", -200, 0, 1, 0
-	Slider "$HHXScale", "uz_hhx_ekg_hlm_scale", .1, 4., .1, 1, "uz_hhx_disabled"
-	
-	StaticText "$HHXNHM"
-	Slider "$HHXPosX", "uz_hhx_ekg_nhm_posX", -200, 200, 1, 0
-	Slider "$HHXPosY", "uz_hhx_ekg_nhm_posY", -200, 0, 1, 0
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_ekg_nhm_posX", -200, 200, 1, 0, "uz_hhx_ekg_enabled"
+	Slider "$HHXPosY", "uz_hhx_ekg_nhm_posY", -200, 0, 1, 0, "uz_hhx_ekg_enabled"
 	Slider "$HHXScale", "uz_hhx_ekg_nhm_scale", .1, 4., .1, 1, "uz_hhx_disabled"
 	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_ekg_hlm_required", "OnOff", "uz_hhx_ekg_enabled"
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_ekg_hlm_posX", -200, 200, 1, 0, "uz_hhx_ekg_enabled"
+	Slider "$HHXPosY", "uz_hhx_ekg_hlm_posY", -200, 0, 1, 0, "uz_hhx_ekg_enabled"
+	Slider "$HHXScale", "uz_hhx_ekg_hlm_scale", .1, 4., .1, 1, "uz_hhx_disabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetEKG", "uz_hhx_options_reset_ekg"
+	SafeCommand "$HHXHHResetEKG", "uz_hhx_options_reset_hlm_ekg"
 }
 
 OptionMenu "HHXEncumbrance" {
 	Title "$HHXEncumbrance"
-		
-	StaticText "$HHXHLM"
-	Slider "$HHXPosX", "uz_hhx_encumbrance_hlm_posX", 0, 400, 1, 0
-	Slider "$HHXPosY", "uz_hhx_encumbrance_hlm_posY", -200, 1, 1, 0
-	Slider "$HHXScale", "uz_hhx_encumbrance_hlm_scale", .1, 4., .1, 1
-	
-	StaticText "$HHXNHM"
-	Slider "$HHXPosX", "uz_hhx_encumbrance_nhm_posX", 0, 400, 1, 0
-	Slider "$HHXPosY", "uz_hhx_encumbrance_nhm_posY", -200, 1, 1, 0
-	Slider "$HHXScale", "uz_hhx_encumbrance_nhm_scale", .1, 4., .1, 1
-	
+
+	Option "$HHXEnabled", "uz_hhx_encumbrance_enabled", "OnOff"
+
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_encumbrance_nhm_posX", 0, 400, 1, 0, "uz_hhx_encumbrance_enabled"
+	Slider "$HHXPosY", "uz_hhx_encumbrance_nhm_posY", -200, 1, 1, 0, "uz_hhx_encumbrance_enabled"
+	Slider "$HHXScale", "uz_hhx_encumbrance_nhm_scale", .1, 4., .1, 1, "uz_hhx_encumbrance_enabled"
+
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_encumbrance_hlm_required", "OnOff", "uz_hhx_encumbrance_enabled"
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_encumbrance_hlm_posX", 0, 400, 1, 0, "uz_hhx_encumbrance_enabled"
+	Slider "$HHXPosY", "uz_hhx_encumbrance_hlm_posY", -200, 1, 1, 0, "uz_hhx_encumbrance_enabled"
+	Slider "$HHXScale", "uz_hhx_encumbrance_hlm_scale", .1, 4., .1, 1, "uz_hhx_encumbrance_enabled"
+
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetEncumbrance", "uz_hhx_options_reset_encumbrance"
+	SafeCommand "$HHXHHResetEncumbrance", "uz_hhx_options_reset_hlm_encumbrance"
 }
 
 OptionMenu "HHXFullInventory" {
 	Title "$HHXFullInventory"
-		
-	StaticText "$HHXHLM"
-	Slider "$HHXPosX", "uz_hhx_fullInventory_hlm_posX", -400, 0, 1, 0
-	Slider "$HHXPosY", "uz_hhx_fullInventory_hlm_posY", -200, 0, 1, 0
-	Slider "$HHXScale", "uz_hhx_fullInventory_hlm_scale", .1, 4., .1, 1
+
+	Option "$HHXEnabled", "uz_hhx_fullInventory_enabled", "OnOff"
+
+	StaticText ""
+	StaticText ""	
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_fullInventory_nhm_posX", -400, 0, 1, 0, "uz_hhx_fullInventory_enabled"
+	Slider "$HHXPosY", "uz_hhx_fullInventory_nhm_posY", -200, 0, 1, 0, "uz_hhx_fullInventory_enabled"
+	Slider "$HHXScale", "uz_hhx_fullInventory_nhm_scale", .1, 4., .1, 1, "uz_hhx_fullInventory_enabled"
+
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_fullInventory_hlm_required", "OnOff", "uz_hhx_fullInventory_enabled"
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_fullInventory_hlm_posX", -400, 0, 1, 0, "uz_hhx_fullInventory_enabled"
+	Slider "$HHXPosY", "uz_hhx_fullInventory_hlm_posY", -200, 0, 1, 0, "uz_hhx_fullInventory_enabled"
+	Slider "$HHXScale", "uz_hhx_fullInventory_hlm_scale", .1, 4., .1, 1, "uz_hhx_fullInventory_enabled"
 	
-	StaticText "$HHXNHM"
-	Slider "$HHXPosX", "uz_hhx_fullInventory_nhm_posX", -400, 0, 1, 0
-	Slider "$HHXPosY", "uz_hhx_fullInventory_nhm_posY", -200, 0, 1, 0
-	Slider "$HHXScale", "uz_hhx_fullInventory_nhm_scale", .1, 4., .1, 1
-	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetFullInventory", "uz_hhx_options_reset_fullInventory"
+	SafeCommand "$HHXHHResetFullInventory", "uz_hhx_options_reset_hlm_fullInventory"
 }
 
 OptionMenu "HHXHeartbeat" {
 	Title "$HHXHeartbeat"
-	
-	StaticText "$HHXHLM"
-	Slider "$HHXPosX", "uz_hhx_heartbeat_hlm_posX", -200, 200, 1, 0
-	Slider "$HHXPosY", "uz_hhx_heartbeat_hlm_posY", -200, 0, 1, 0
-	Slider "$HHXScale", "uz_hhx_heartbeat_hlm_scale", .1, 4., .1, 1
-	
-	StaticText "$HHXNHM"
-	Slider "$HHXPosX", "uz_hhx_heartbeat_nhm_posX", -200, 200, 1, 0
-	Slider "$HHXPosY", "uz_hhx_heartbeat_nhm_posY", -200, 0, 1, 0
-	Slider "$HHXScale", "uz_hhx_heartbeat_nhm_scale", .1, 4., .1, 1
-	
+
+	Option "$HHXEnabled", "uz_hhx_heartbeat_enabled", "OnOff"
+
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_heartbeat_nhm_posX", -200, 200, 1, 0, "uz_hhx_heartbeat_enabled"
+	Slider "$HHXPosY", "uz_hhx_heartbeat_nhm_posY", -200, 0, 1, 0, "uz_hhx_heartbeat_enabled"
+	Slider "$HHXScale", "uz_hhx_heartbeat_nhm_scale", .1, 4., .1, 1, "uz_hhx_heartbeat_enabled"
+
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_heartbeat_hlm_required", "OnOff", "uz_hhx_heartbeat_enabled"
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_heartbeat_hlm_posX", -200, 200, 1, 0, "uz_hhx_heartbeat_enabled"
+	Slider "$HHXPosY", "uz_hhx_heartbeat_hlm_posY", -200, 0, 1, 0, "uz_hhx_heartbeat_enabled"
+	Slider "$HHXScale", "uz_hhx_heartbeat_hlm_scale", .1, 4., .1, 1, "uz_hhx_heartbeat_enabled"
+
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetHeartbeat", "uz_hhx_options_reset_heartbeat"
+	SafeCommand "$HHXHHResetHeartbeat", "uz_hhx_options_reset_hlm_heartbeat"
 }
 
 OptionMenu "HHXInventory" {
 	Title "$HHXInventory"
-	
+
+	Option "$HHXEnabled", "uz_hhx_inventory_enabled", "OnOff"
+	StaticText ""
 	StaticText "Scaling not supported for Inventory Display"
 	
-	StaticText "$HHXHLM"
-	Slider "$HHXPosX", "uz_hhx_inventory_hlm_posX", -400, 400, 1, 0
-	Slider "$HHXPosY", "uz_hhx_inventory_hlm_posY", -200, 0, 1, 0
-	Slider "$HHXScale", "uz_hhx_inventory_hlm_scale", .1, 4., .1, 1, "uz_hhx_disabled"
-	
-	StaticText "$HHXNHM"
-	Slider "$HHXPosX", "uz_hhx_inventory_nhm_posX", -400, 400, 1, 0
-	Slider "$HHXPosY", "uz_hhx_inventory_nhm_posY", -200, 0, 1, 0
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_inventory_nhm_posX", -400, 400, 1, 0, "uz_hhx_inventory_enabled"
+	Slider "$HHXPosY", "uz_hhx_inventory_nhm_posY", -200, 0, 1, 0, "uz_hhx_inventory_enabled"
 	Slider "$HHXScale", "uz_hhx_inventory_nhm_scale", .1, 4., .1, 1, "uz_hhx_disabled"
 	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_inventory_hlm_required", "OnOff", "uz_hhx_inventory_enabled"
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_inventory_hlm_posX", -400, 400, 1, 0, "uz_hhx_inventory_enabled"
+	Slider "$HHXPosY", "uz_hhx_inventory_hlm_posY", -200, 0, 1, 0, "uz_hhx_inventory_enabled"
+	Slider "$HHXScale", "uz_hhx_inventory_hlm_scale", .1, 4., .1, 1, "uz_hhx_disabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetInventory", "uz_hhx_options_reset_inventory"
+	SafeCommand "$HHXHHResetInventory", "uz_hhx_options_reset_hlm_inventory"
 }
 
 OptionMenu "HHXKeys" {
 	Title "$HHXKeys"
+
+	Option "$HHXEnabled", "uz_hhx_keys_enabled", "OnOff"
 	
-	StaticText "$HHXHLM"
-	Slider "$HHXPosX", "uz_hhx_keys_hlm_posX", -300, 300, 1, 0
-	Slider "$HHXPosY", "uz_hhx_keys_hlm_posY", -300, 0, 1, 0
-	Slider "$HHXScale", "uz_hhx_keys_hlm_scale", .1, 4., .1, 1
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_keys_nhm_posX", -300, 300, 1, 0, "uz_hhx_keys_enabled"
+	Slider "$HHXPosY", "uz_hhx_keys_nhm_posY", -300, 0, 1, 0, "uz_hhx_keys_enabled"
+	Slider "$HHXScale", "uz_hhx_keys_nhm_scale", .1, 4., .1, 1, "uz_hhx_keys_enabled"
 	
-	StaticText "$HHXNHM"
-	Slider "$HHXPosX", "uz_hhx_keys_nhm_posX", -300, 300, 1, 0
-	Slider "$HHXPosY", "uz_hhx_keys_nhm_posY", -300, 0, 1, 0
-	Slider "$HHXScale", "uz_hhx_keys_nhm_scale", .1, 4., .1, 1
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_keys_hlm_required", "OnOff", "uz_hhx_keys_enabled"
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_keys_hlm_posX", -300, 300, 1, 0, "uz_hhx_keys_enabled"
+	Slider "$HHXPosY", "uz_hhx_keys_hlm_posY", -300, 0, 1, 0, "uz_hhx_keys_enabled"
+	Slider "$HHXScale", "uz_hhx_keys_hlm_scale", .1, 4., .1, 1, "uz_hhx_keys_enabled"
 	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetKeys", "uz_hhx_options_reset_keys"
+	SafeCommand "$HHXHHResetKeys", "uz_hhx_options_reset_hlm_keys"
 }
 
 OptionMenu "HHXMugshot" {
 	Title "$HHXMugshot"
+
+	Option "$HHXEnabled", "uz_hhx_mugshot_enabled", "OnOff"
+
+	StaticText ""
+	StaticText ""	
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_mugshot_nhm_posX", -200, 200, 1, 0, "uz_hhx_mugshot_enabled"
+	Slider "$HHXPosY", "uz_hhx_mugshot_nhm_posY", -200, 0, 1, 0, "uz_hhx_mugshot_enabled"
+	Slider "$HHXScale", "uz_hhx_mugshot_nhm_scale", .1, 4., .1, 1, "uz_hhx_mugshot_enabled"
 	
-	StaticText "$HHXHLM"
-	Slider "$HHXPosX", "uz_hhx_mugshot_hlm_posX", -200, 200, 1, 0
-	Slider "$HHXPosY", "uz_hhx_mugshot_hlm_posY", -200, 0, 1, 0
-	Slider "$HHXScale", "uz_hhx_mugshot_hlm_scale", .1, 4., .1, 1
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_mugshot_hlm_required", "OnOff", "uz_hhx_mugshot_enabled"
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_mugshot_hlm_posX", -200, 200, 1, 0, "uz_hhx_mugshot_enabled"
+	Slider "$HHXPosY", "uz_hhx_mugshot_hlm_posY", -200, 0, 1, 0, "uz_hhx_mugshot_enabled"
+	Slider "$HHXScale", "uz_hhx_mugshot_hlm_scale", .1, 4., .1, 1, "uz_hhx_mugshot_enabled"
 	
-	StaticText "$HHXNHM"
-	Slider "$HHXPosX", "uz_hhx_mugshot_nhm_posX", -200, 200, 1, 0
-	Slider "$HHXPosY", "uz_hhx_mugshot_nhm_posY", -200, 0, 1, 0
-	Slider "$HHXScale", "uz_hhx_mugshot_nhm_scale", .1, 4., .1, 1
-	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetMugshot", "uz_hhx_options_reset_mugshot"
+	SafeCommand "$HHXHHResetMugshot", "uz_hhx_options_reset_hlm_mugshot"
+}
+
+OptionMenu "HHXOverlay" {
+	Title "$HHXOverlay"
+
+	Option "$HHXEnabled", "uz_hhx_overlay_enabled", "OnOff"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_mugshot_nhm_posX", -200, 200, 1, 0, "uz_hhx_disabled"
+	Slider "$HHXPosY", "uz_hhx_mugshot_nhm_posY", -200, 0, 1, 0, "uz_hhx_disabled"
+	Slider "$HHXScale", "uz_hhx_mugshot_nhm_scale", .1, 4., .1, 1, "uz_hhx_disabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_overlay_hlm_required", "OnOff", "uz_hhx_overlay_enabled"
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_mugshot_hlm_posX", -200, 200, 1, 0, "uz_hhx_disabled"
+	Slider "$HHXPosY", "uz_hhx_mugshot_hlm_posY", -200, 0, 1, 0, "uz_hhx_disabled"
+	Slider "$HHXScale", "uz_hhx_mugshot_hlm_scale", .1, 4., .1, 1, "uz_hhx_disabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetOverlay", "uz_hhx_options_reset_overlay"
+	SafeCommand "$HHXHHResetOverlay", "uz_hhx_options_reset_hlm_overlay"
 }
 
 OptionMenu "HHXWeaponSprite" {
 	Title "$HHXWeaponSprite"
-	
+
+	Option "$HHXEnabled", "uz_hhx_weaponSprite_enabled", "OnOff"
+	StaticText ""	
 	StaticText "Scaling not supported for Weapon Sprite"
-	
-	StaticText "$HHXHLM"
-	Slider "$HHXPosX", "uz_hhx_weaponSprite_hlm_posX", -400, 200, 1, 0
-	Slider "$HHXPosY", "uz_hhx_weaponSprite_hlm_posY", -200, 0, 1, 0
-	Slider "$HHXScale", "uz_hhx_weaponSprite_hlm_scale", .1, 4., .1, 1, "uz_hhx_disabled"
-	
-	StaticText "$HHXNHM"
-	Slider "$HHXPosX", "uz_hhx_weaponSprite_nhm_posX", -400, 200, 1, 0
-	Slider "$HHXPosY", "uz_hhx_weaponSprite_nhm_posY", -200, 0, 1, 0
+
+	StaticText ""
+	StaticText ""	
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_weaponSprite_nhm_posX", -400, 200, 1, 0, "uz_hhx_weaponSprite_enabled"
+	Slider "$HHXPosY", "uz_hhx_weaponSprite_nhm_posY", -200, 0, 1, 0, "uz_hhx_weaponSprite_enabled"
 	Slider "$HHXScale", "uz_hhx_weaponSprite_nhm_scale", .1, 4., .1, 1, "uz_hhx_disabled"
 	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_weaponSprite_hlm_required", "OnOff", "uz_hhx_weaponSprite_enabled"
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_weaponSprite_hlm_posX", -400, 200, 1, 0, "uz_hhx_weaponSprite_enabled"
+	Slider "$HHXPosY", "uz_hhx_weaponSprite_hlm_posY", -200, 0, 1, 0, "uz_hhx_weaponSprite_enabled"
+	Slider "$HHXScale", "uz_hhx_weaponSprite_hlm_scale", .1, 4., .1, 1, "uz_hhx_disabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetWeaponSprite", "uz_hhx_options_reset_weaponSprite"
+	SafeCommand "$HHXHHResetWeaponSprite", "uz_hhx_options_reset_hlm_weaponSprite"
 }
 
 OptionMenu "HHXWeaponStatus" {
 	Title "$HHXWeaponStatus"
-	
+
+	Option "$HHXEnabled", "uz_hhx_weaponStatus_enabled", "OnOff"
+	StaticText ""
 	StaticText "Scaling not supported for Weapon Status"
 	
-	StaticText "$HHXHLM"
-	Slider "$HHXPosX", "uz_hhx_weaponStatus_hlm_posX", -200, 200, 1, 0
-	Slider "$HHXPosY", "uz_hhx_weaponStatus_hlm_posY", -200, 0, 1, 0
-	Slider "$HHXScale", "uz_hhx_weaponStatus_hlm_scale", .1, 4., .1, 1, "uz_hhx_disabled"
-	
-	StaticText "$HHXNHM"
-	Slider "$HHXPosX", "uz_hhx_weaponStatus_nhm_posX", -200, 200, 1, 0
-	Slider "$HHXPosY", "uz_hhx_weaponStatus_nhm_posY", -200, 0, 1, 0
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_weaponStatus_nhm_posX", -200, 200, 1, 0, "uz_hhx_weaponStatus_enabled"
+	Slider "$HHXPosY", "uz_hhx_weaponStatus_nhm_posY", -200, 0, 1, 0, "uz_hhx_weaponStatus_enabled"
 	Slider "$HHXScale", "uz_hhx_weaponStatus_nhm_scale", .1, 4., .1, 1, "uz_hhx_disabled"
 	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_weaponStatus_hlm_required", "OnOff", "uz_hhx_weaponStatus_enabled"
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_weaponStatus_hlm_posX", -200, 200, 1, 0, "uz_hhx_weaponStatus_enabled"
+	Slider "$HHXPosY", "uz_hhx_weaponStatus_hlm_posY", -200, 0, 1, 0, "uz_hhx_weaponStatus_enabled"
+	Slider "$HHXScale", "uz_hhx_weaponStatus_hlm_scale", .1, 4., .1, 1, "uz_hhx_disabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetWeaponStatus", "uz_hhx_options_reset_WeaponStatus"
+	SafeCommand "$HHXHHResetWeaponStatus", "uz_hhx_options_reset_hlm_WeaponStatus"
 }
 
 OptionMenu "HHXWoundCounter" {
 	Title "$HHXWoundCounter"
+
+	Option "$HHXEnabled", "uz_hhx_woundCounter_enabled", "OnOff"
 	
-	StaticText "$HHXHLM"
-	Slider "$HHXPosX", "uz_hhx_woundCounter_hlm_posX", -200, 200, 1, 0
-	Slider "$HHXPosY", "uz_hhx_woundCounter_hlm_posY", -200, 0, 1, 0
-	Slider "$HHXScale", "uz_hhx_woundCounter_hlm_scale", .1, 4., .1, 1
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_woundCounter_nhm_posX", -200, 200, 1, 0, "uz_hhx_woundCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_woundCounter_nhm_posY", -200, 0, 1, 0, "uz_hhx_woundCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_woundCounter_nhm_scale", .1, 4., .1, 1, "uz_hhx_woundCounter_enabled"
 	
-	StaticText "$HHXNHM"
-	Slider "$HHXPosX", "uz_hhx_woundCounter_nhm_posX", -200, 200, 1, 0
-	Slider "$HHXPosY", "uz_hhx_woundCounter_nhm_posY", -200, 0, 1, 0
-	Slider "$HHXScale", "uz_hhx_woundCounter_nhm_scale", .1, 4., .1, 1
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_woundCounter_hlm_required", "OnOff", "uz_hhx_woundCounter_enabled"
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_woundCounter_hlm_posX", -200, 200, 1, 0, "uz_hhx_woundCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_woundCounter_hlm_posY", -200, 0, 1, 0, "uz_hhx_woundCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_woundCounter_hlm_scale", .1, 4., .1, 1, "uz_hhx_woundCounter_enabled"
 	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetWoundCounter", "uz_hhx_options_reset_woundCounter"
+	SafeCommand "$HHXHHResetWoundCounter", "uz_hhx_options_reset_hlm_woundCounter"
 }
 
 AddOptionMenu "OptionsMenu"{

@@ -2,7 +2,8 @@ class UZEKG : HHEKG {
 
 	private Service _HHFunc;
 
-	private transient CVar _hh_hidestatus;
+	private transient CVar _enabled;
+	private transient CVar _hlm_required;
 
 	private transient CVar _hlm_posX;
 	private transient CVar _hlm_posY;
@@ -14,23 +15,24 @@ class UZEKG : HHEKG {
 	override void Tick(HCStatusbar sb) {
 		if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
 
-		if (!_hh_hidestatus) _hh_hidestatus = CVar.GetCVar("hh_hidestatus", sb.CPlayer);
-
-		if (!_hlm_posX) _hlm_posX   = CVar.GetCVar("uz_hhx_ekg_hlm_posX", sb.CPlayer);
-		if (!_hlm_posY) _hlm_posY   = CVar.GetCVar("uz_hhx_ekg_hlm_posY", sb.CPlayer);
-		if (!_hlm_scale) _hlm_scale = CVar.GetCVar("uz_hhx_ekg_hlm_scale", sb.CPlayer);
-		if (!_nhm_posX) _nhm_posX   = CVar.GetCVar("uz_hhx_ekg_nhm_posX", sb.CPlayer);
-		if (!_nhm_posY) _nhm_posY   = CVar.GetCVar("uz_hhx_ekg_nhm_posY", sb.CPlayer);
-		if (!_nhm_scale) _nhm_scale = CVar.GetCVar("uz_hhx_ekg_nhm_scale", sb.CPlayer);
+		if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_ekg_enabled", sb.CPlayer);
+		if (!_hlm_required) _hlm_required = CVar.GetCVar("uz_hhx_ekg_hlm_required", sb.CPlayer);
+		if (!_hlm_posX) _hlm_posX         = CVar.GetCVar("uz_hhx_ekg_hlm_posX", sb.CPlayer);
+		if (!_hlm_posY) _hlm_posY         = CVar.GetCVar("uz_hhx_ekg_hlm_posY", sb.CPlayer);
+		if (!_hlm_scale) _hlm_scale       = CVar.GetCVar("uz_hhx_ekg_hlm_scale", sb.CPlayer);
+		if (!_nhm_posX) _nhm_posX         = CVar.GetCVar("uz_hhx_ekg_nhm_posX", sb.CPlayer);
+		if (!_nhm_posY) _nhm_posY         = CVar.GetCVar("uz_hhx_ekg_nhm_posY", sb.CPlayer);
+		if (!_nhm_scale) _nhm_scale       = CVar.GetCVar("uz_hhx_ekg_nhm_scale", sb.CPlayer);
 	}
 
 	override void DrawHUDStuff(HCStatusbar sb, int state, double ticFrac) {
 		bool hasHelmet = _HHFunc && _HHFunc.GetIntUI("GetShowHUD", objectArg: sb.hpl);
 
-		if (!hasHelmet && _hh_hidestatus.GetBool())
-			return;
-		if (HDSpectator(sb.hpl))
-			return;
+		if (
+			!_enabled.GetBool()
+			|| (!hasHelmet && _hlm_required.GetBool())
+			|| HDSpectator(sb.hpl)
+		) return;
 			
 		int debugTran = sb.hpl.health > 70
 			? Font.CR_OLIVE

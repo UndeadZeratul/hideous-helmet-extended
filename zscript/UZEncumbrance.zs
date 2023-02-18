@@ -1,6 +1,9 @@
 class UZEncumbrance : HUDEncumbrance {
 
 	private Service _HHFunc;
+
+	private transient CVar _enabled;
+	private transient CVar _hlm_required;
 	
 	private transient CVar _hlm_posX;
 	private transient CVar _hlm_posY;
@@ -12,29 +15,35 @@ class UZEncumbrance : HUDEncumbrance {
 	override void Tick(HCStatusbar sb) {
 		if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
 
-		if (!_hlm_posX) _hlm_posX   = CVar.GetCVar("uz_hhx_encumbrance_hlm_posX", sb.CPlayer);
-		if (!_hlm_posY) _hlm_posY   = CVar.GetCVar("uz_hhx_encumbrance_hlm_posY", sb.CPlayer);
-		if (!_hlm_scale) _hlm_scale = CVar.GetCVar("uz_hhx_encumbrance_hlm_scale", sb.CPlayer);	
-		if (!_nhm_posX) _nhm_posX   = CVar.GetCVar("uz_hhx_encumbrance_nhm_posX", sb.CPlayer);
-		if (!_nhm_posY) _nhm_posY   = CVar.GetCVar("uz_hhx_encumbrance_nhm_posY", sb.CPlayer);
-		if (!_nhm_scale) _nhm_scale = CVar.GetCVar("uz_hhx_encumbrance_nhm_scale", sb.CPlayer);
+		if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_encumbrance_enabled", sb.CPlayer);
+		if (!_hlm_required) _hlm_required = CVar.GetCVar("uz_hhx_encumbrance_hlm_required", sb.CPlayer);
+		if (!_hlm_posX) _hlm_posX         = CVar.GetCVar("uz_hhx_encumbrance_hlm_posX", sb.CPlayer);
+		if (!_hlm_posY) _hlm_posY         = CVar.GetCVar("uz_hhx_encumbrance_hlm_posY", sb.CPlayer);
+		if (!_hlm_scale) _hlm_scale       = CVar.GetCVar("uz_hhx_encumbrance_hlm_scale", sb.CPlayer);	
+		if (!_nhm_posX) _nhm_posX         = CVar.GetCVar("uz_hhx_encumbrance_nhm_posX", sb.CPlayer);
+		if (!_nhm_posY) _nhm_posY         = CVar.GetCVar("uz_hhx_encumbrance_nhm_posY", sb.CPlayer);
+		if (!_nhm_scale) _nhm_scale       = CVar.GetCVar("uz_hhx_encumbrance_nhm_scale", sb.CPlayer);
 	}
 
 	override void DrawHUDStuff(HCStatusbar sb, int state, double ticFrac) {
-		if (HDSpectator(sb.hpl))
-			return;
+		bool hasHelmet = _HHFunc && _HHFunc.GetIntUI("GetShowHUD", objectArg: sb.hpl);
+
+		if (
+			!_enabled.GetBool()
+			|| (!hasHelmet && _hlm_required.GetBool())
+			|| HDSpectator(sb.hpl)
+		) return;
 
 		if (CheckCommonStuff(sb, state, ticFrac) && sb.HUDLevel == 2) {
-			bool hasHelmet = _HHFunc && _HHFunc.GetIntUI("GetShowHUD", objectArg: sb.hpl);
 
 			int   posX  = hasHelmet ? _hlm_posX.GetInt()    : _nhm_posX.GetInt();
 			int   posY  = hasHelmet ? _hlm_posY.GetInt()    : _nhm_posY.GetInt();
 			float scale = hasHelmet ? _hlm_scale.GetFloat() : _nhm_scale.GetFloat();
 
-			//encumbrance
-			if(sb.hpl.enc){
+			if(sb.hpl.enc) {
 				double pocketenc = sb.hpl.pocketenc;
 
+				// Encumbrance Bulk Value
 				sb.drawstring(
 					sb.pnewsmallfont,
 					sb.FormatNumber(int(sb.hpl.enc)),

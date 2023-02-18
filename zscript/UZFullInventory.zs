@@ -1,6 +1,9 @@
 class UZFullInventory : HUDElement {
 
 	private Service _HHFunc;
+
+	private transient CVar _enabled;
+	private transient CVar _hlm_required;
 	
 	private transient CVar _hlm_posX;
 	private transient CVar _hlm_posY;
@@ -17,23 +20,28 @@ class UZFullInventory : HUDElement {
 	override void Tick(HCStatusbar sb) {
 		if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
 
-		if (!_hlm_posX) _hlm_posX   = CVar.GetCVar("uz_hhx_fullInventory_hlm_posX", sb.CPlayer);
-		if (!_hlm_posY) _hlm_posY   = CVar.GetCVar("uz_hhx_fullInventory_hlm_posY", sb.CPlayer);
-		if (!_hlm_scale) _hlm_scale = CVar.GetCVar("uz_hhx_fullInventory_hlm_scale", sb.CPlayer);
-		if (!_nhm_posX) _nhm_posX   = CVar.GetCVar("uz_hhx_fullInventory_nhm_posX", sb.CPlayer);
-		if (!_nhm_posY) _nhm_posY   = CVar.GetCVar("uz_hhx_fullInventory_nhm_posY", sb.CPlayer);
-		if (!_nhm_scale) _nhm_scale = CVar.GetCVar("uz_hhx_fullInventory_nhm_scale", sb.CPlayer);
+		if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_fullInventory_enabled", sb.CPlayer);
+		if (!_hlm_required) _hlm_required = CVar.GetCVar("uz_hhx_fullInventory_hlm_required", sb.CPlayer);
+		if (!_hlm_posX) _hlm_posX         = CVar.GetCVar("uz_hhx_fullInventory_hlm_posX", sb.CPlayer);
+		if (!_hlm_posY) _hlm_posY         = CVar.GetCVar("uz_hhx_fullInventory_hlm_posY", sb.CPlayer);
+		if (!_hlm_scale) _hlm_scale       = CVar.GetCVar("uz_hhx_fullInventory_hlm_scale", sb.CPlayer);
+		if (!_nhm_posX) _nhm_posX         = CVar.GetCVar("uz_hhx_fullInventory_nhm_posX", sb.CPlayer);
+		if (!_nhm_posY) _nhm_posY         = CVar.GetCVar("uz_hhx_fullInventory_nhm_posY", sb.CPlayer);
+		if (!_nhm_scale) _nhm_scale       = CVar.GetCVar("uz_hhx_fullInventory_nhm_scale", sb.CPlayer);
 	}
 
 	override void DrawHUDStuff(HCStatusbar sb, int state, double ticFrac) {
-		if (HDSpectator(sb.hpl))
-			return;
+		bool hasHelmet = _HHFunc && _HHFunc.GetIntUI("GetShowHUD", objectArg: sb.hpl);
+
+		if (
+			!_enabled.GetBool()
+			|| (!hasHelmet && _hlm_required.GetBool())
+			|| HDSpectator(sb.hpl)
+		) return;
 
 		if (CheckCommonStuff(sb, state, ticFrac) && sb.HUDLevel == 2) {
 			int i = 0;
 			int thisindex = -1;
-			
-			bool hasHelmet = _HHFunc && _HHFunc.GetIntUI("GetShowHUD", objectArg: sb.hpl);
 		
 			int   posX  = hasHelmet ? _hlm_posX.GetInt()    : _nhm_posX.GetInt();
 			int   posY  = hasHelmet ? _hlm_posY.GetInt()    : _nhm_posY.GetInt();

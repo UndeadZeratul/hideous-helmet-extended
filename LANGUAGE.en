@@ -11,17 +11,27 @@ HHXHeartbeat     = "Heartbeat Options";
 HHXInventory     = "Inventory Options";
 HHXKeys          = "Keys Options";
 HHXMugshot       = "Mugshot Options";
+HHXOverlay       = "Helmet Overlay Options";
 HHXWeaponSprite  = "Weapon Sprite Options";
 HHXWeaponStatus  = "Weapon Status Options";
 HHXWoundCounter  = "Wound Counter Options";
+
+// HUD Element Display Requirements
+HHXEnabled        = "Enabled";
+HHXHelmetRequired = "Requires Helmet";
 
 // HUD Element Positioning Config Labels
 HHXPosX  = "Horizontal Position";
 HHXPosY  = "Vertical Position";
 HHXScale = "Scale";
 
+// Danger Zone Label
+HHXDangerZone = "DANGER ZONE";
+
 // Reset Options Labels
 HHXResetAll           = "Reset All Options";
+HHXResetNHM           = "Reset All Standard Options";
+HHXResetHLM           = "Reset All HHelmet Options";
 HHXResetAmmoCounters  = "Reset Ammo Counters Options";
 HHXResetCompass       = "Reset Compass Options";
 HHXResetEKG           = "Reset EKG Options";
@@ -31,9 +41,25 @@ HHXResetHeartbeat     = "Reset Heartbeat Options";
 HHXResetInventory     = "Reset Inventory Options";
 HHXResetKeys          = "Reset Keys Options";
 HHXResetMugshot       = "Reset Mugshot Options";
+HHXResetOverlay       = "Reset Helmet Overlay Options";
 HHXResetWeaponSprite  = "Reset Weapon Sprite Options";
 HHXResetWeaponStatus  = "Reset Weapon Status Options";
 HHXResetWoundCounter  = "Reset Wound Counter Options";
+
+// Reset Helmet Options
+HHXHHResetAmmoCounters  = "Reset Ammo Counters HHelmet Options";
+HHXHHResetCompass       = "Reset Compass HHelmet Options";
+HHXHHResetEKG           = "Reset EKG HHelmet Options";
+HHXHHResetEncumbrance   = "Reset Encumbrance HHelmet Options";
+HHXHHResetFullInventory = "Reset Full Inventory HHelmet Options";
+HHXHHResetHeartbeat     = "Reset Heartbeat HHelmet Options";
+HHXHHResetInventory     = "Reset Inventory HHelmet Options";
+HHXHHResetKeys          = "Reset Keys HHelmet Options";
+HHXHHResetMugshot       = "Reset Mugshot HHelmet Options";
+HHXHHResetOverlay       = "Reset Helmet Overlay HHelmet Options";
+HHXHHResetWeaponSprite  = "Reset Weapon Sprite HHelmet Options";
+HHXHHResetWeaponStatus  = "Reset Weapon Status HHelmet Options";
+HHXHHResetWoundCounter  = "Reset Wound Counter HHelmet Options";
 
 // Hideous Helmet Option Set Labels
 HHXHLM = "With Helmet";

@@ -1,6 +1,9 @@
 class UZWoundCounter : HHWoundCounter {
 
 	private Service _HHFunc;
+
+	private transient CVar _enabled;
+	private transient CVar _hlm_required;
 	
 	private transient CVar _hh_showbleed;
 	private transient CVar _hh_showbleedwhenbleeding;
@@ -26,12 +29,14 @@ class UZWoundCounter : HHWoundCounter {
 		if (!_hh_onlyshowopenwounds) _hh_onlyshowopenwounds       = CVar.GetCVar("hh_onlyshowopenwounds", sb.CPlayer);
 		if (!_hh_wc_usedynamiccol) _hh_wc_usedynamiccol           = CVar.GetCVar("hh_wc_usedynamiccol", sb.CPlayer);
 			
-		if (!_hlm_posX) _hlm_posX   = CVar.GetCVar("uz_hhx_woundCounter_hlm_posX", sb.CPlayer);
-		if (!_hlm_posY) _hlm_posY   = CVar.GetCVar("uz_hhx_woundCounter_hlm_posY", sb.CPlayer);
-		if (!_hlm_scale) _hlm_scale = CVar.GetCVar("uz_hhx_woundCounter_hlm_scale", sb.CPlayer);
-		if (!_nhm_posX) _nhm_posX   = CVar.GetCVar("uz_hhx_woundCounter_nhm_posX", sb.CPlayer);
-		if (!_nhm_posY) _nhm_posY   = CVar.GetCVar("uz_hhx_woundCounter_nhm_posY", sb.CPlayer);
-		if (!_nhm_scale) _nhm_scale = CVar.GetCVar("uz_hhx_woundCounter_nhm_scale", sb.CPlayer);
+		if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_woundCounter_enabled", sb.CPlayer);
+		if (!_hlm_required) _hlm_required = CVar.GetCVar("uz_hhx_woundCounter_hlm_required", sb.CPlayer);
+		if (!_hlm_posX) _hlm_posX         = CVar.GetCVar("uz_hhx_woundCounter_hlm_posX", sb.CPlayer);
+		if (!_hlm_posY) _hlm_posY         = CVar.GetCVar("uz_hhx_woundCounter_hlm_posY", sb.CPlayer);
+		if (!_hlm_scale) _hlm_scale       = CVar.GetCVar("uz_hhx_woundCounter_hlm_scale", sb.CPlayer);
+		if (!_nhm_posX) _nhm_posX         = CVar.GetCVar("uz_hhx_woundCounter_nhm_posX", sb.CPlayer);
+		if (!_nhm_posY) _nhm_posY         = CVar.GetCVar("uz_hhx_woundCounter_nhm_posY", sb.CPlayer);
+		if (!_nhm_scale) _nhm_scale       = CVar.GetCVar("uz_hhx_woundCounter_nhm_scale", sb.CPlayer);
 
 		if (!sb.hpl)
 			return;
@@ -75,8 +80,12 @@ class UZWoundCounter : HHWoundCounter {
 	override void DrawHUDStuff(HCStatusbar sb, int state, double ticFrac) {
 		bool hasHelmet = _HHFunc && _HHFunc.GetIntUI("GetShowHUD", objectArg: sb.hpl);
 		
-		if (!hasHelmet || !_hh_showbleed.GetBool())
-			return;
+		if (
+			!_enabled.GetBool()
+			|| ((!hasHelmet && _hlm_required.GetBool()) || !_hh_showbleed.GetBool()) 
+			|| (_hh_showbleedwhenbleeding.GetBool() && _WoundCounter == "\c[Gray]  0\c-")
+			|| HDSpectator(sb.hpl)
+		) return;
 			
 		int   posX  = hasHelmet ? _hlm_posX.GetInt()    : _nhm_posX.GetInt();
 		int   posY  = hasHelmet ? _hlm_posY.GetInt()    : _nhm_posY.GetInt();
@@ -85,9 +94,6 @@ class UZWoundCounter : HHWoundCounter {
 		Vector2 coords = (posX, posY);
 		int of = 0;
 		HDBleedingWound biggestWound = HDBleedingWound.FindBiggest(sb.hpl);
-
-		if (_hh_showbleedwhenbleeding.GetBool() && _WoundCounter == "\c[Gray]  0\c-")
-			return;
 
 		if (biggestWound) {
 			sb.DrawImage(
@@ -109,14 +115,13 @@ class UZWoundCounter : HHWoundCounter {
 				? Color(255, 240, 210, 10)
 				: Color(255, 220, 0, 0);
 
-		int fillFlags = sb.DI_SCREEN_CENTER_BOTTOM;
 		sb.Fill(
 			fillColour,
 			coords.x + (2 * scale),
 			coords.y + (of * scale),
 			2 * scale,
 			6 * scale,
-			fillFlags
+			sb.DI_SCREEN_CENTER_BOTTOM
 		);
 		sb.Fill(
 			fillColour,
@@ -124,15 +129,16 @@ class UZWoundCounter : HHWoundCounter {
 			coords.y + ((of + 2) * scale),
 			6 * scale,
 			2 * scale,
-			fillFlags
+			sb.DI_SCREEN_CENTER_BOTTOM
 		);
 
 		if (_hh_woundcounter.GetBool()) {
 			sb.DrawString(
 				sb.mIndexFont,
 				_woundCounter,
-				(coords.x + (8 * scale), coords.y + scale),
-				sb.DI_SCREEN_CENTER_BOTTOM | sb.DI_TEXT_ALIGN_LEFT
+				(coords.x + (4 * scale), coords.y + scale),
+				sb.DI_SCREEN_CENTER_BOTTOM | sb.DI_TEXT_ALIGN_LEFT,
+				scale: (scale, scale)
 			);
 		}
 	}
