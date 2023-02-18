@@ -27,6 +27,7 @@ HHXHLMOptionalAll = "Don't require Helmet for all HUD Elements";
 // HUD Element Display Requirements
 HHXEnabled        = "Enabled";
 HHXHelmetRequired = "Requires Helmet";
+HHXHUDLevel       = "Requires HUD Level";
 
 // HUD Element Positioning Config Labels
 HHXPosX  = "Horizontal Position";
