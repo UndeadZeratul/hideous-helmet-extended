@@ -310,6 +310,9 @@ OptionMenu "HHXOverlay" {
 	Title "$HHXOverlay"
 
 	Option "$HHXEnabled", "uz_hhx_overlay_enabled", "OnOff"
+
+	StaticText ""
+	TextField "$HHXOverlayRef", "uz_hhx_overlay_ref", "uz_hhx_overlay_enabled"
 	
 	StaticText ""
 	StaticText ""

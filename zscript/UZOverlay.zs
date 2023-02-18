@@ -1,6 +1,8 @@
 class HHOverlay : HUDElement {
 
 	private Service _HHFunc;
+	
+	private transient CVar _ref;
 
 	private transient CVar _enabled;
 	private transient CVar _hlm_required;
@@ -20,6 +22,7 @@ class HHOverlay : HUDElement {
 	override void Tick(HCStatusbar sb) {
 		if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
 
+		if (!_ref) _ref                   = CVar.GetCVar("uz_hhx_overlay_ref", sb.CPlayer);
 		if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_overlay_enabled", sb.CPlayer);
 		if (!_hlm_required) _hlm_required = CVar.GetCVar("uz_hhx_overlay_hlm_required", sb.CPlayer);
 		if (!_hlm_posX) _hlm_posX         = CVar.GetCVar("uz_hhx_overlay_hlm_posX", sb.CPlayer);
@@ -39,7 +42,7 @@ class HHOverlay : HUDElement {
 		) return;
 
 		if(CheckCommonStuff(sb, state, ticFrac)) {
-			sb.DrawImage("HLMOVRLY", (0,0), sb.DI_SCREEN_CENTER_BOTTOM);
+			sb.DrawImage(_ref.GetString(), (0,0), sb.DI_SCREEN_CENTER_BOTTOM);
 		}
 	}
 }
