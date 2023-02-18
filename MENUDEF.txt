@@ -337,9 +337,9 @@ OptionMenu "HHXOverlay" {
 	StaticText "$HHXNHM", 1
 	StaticText ""
 	Slider "$HHXHUDLevel", "uz_hhx_overlay_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_overlay_enabled"
-	Slider "$HHXPosX", "uz_hhx_mugshot_nhm_posX", -200, 200, 1, 0, "uz_hhx_overlay_enabled"
-	Slider "$HHXPosY", "uz_hhx_mugshot_nhm_posY", -200, 0, 1, 0, "uz_hhx_overlay_enabled"
-	Slider "$HHXScale", "uz_hhx_mugshot_nhm_scale", .1, 4., .1, 1, "uz_hhx_overlay_enabled"
+	Slider "$HHXPosX", "uz_hhx_overlay_nhm_posX", -200, 200, 1, 0, "uz_hhx_overlay_enabled"
+	Slider "$HHXPosY", "uz_hhx_overlay_nhm_posY", -200, 0, 1, 0, "uz_hhx_overlay_enabled"
+	Slider "$HHXScale", "uz_hhx_overlay_nhm_scale", .1, 4., .1, 1, "uz_hhx_overlay_enabled"
 	
 	StaticText ""
 	StaticText ""
@@ -348,9 +348,9 @@ OptionMenu "HHXOverlay" {
 	Option "$HHXHelmetRequired", "uz_hhx_overlay_hlm_required", "OnOff", "uz_hhx_overlay_enabled"
 	StaticText ""
 	Slider "$HHXHUDLevel", "uz_hhx_overlay_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_overlay_enabled"
-	Slider "$HHXPosX", "uz_hhx_mugshot_hlm_posX", -200, 200, 1, 0, "uz_hhx_overlay_enabled"
-	Slider "$HHXPosY", "uz_hhx_mugshot_hlm_posY", -200, 0, 1, 0, "uz_hhx_overlay_enabled"
-	Slider "$HHXScale", "uz_hhx_mugshot_hlm_scale", .1, 4., .1, 1, "uz_hhx_overlay_enabled"
+	Slider "$HHXPosX", "uz_hhx_overlay_hlm_posX", -200, 200, 1, 0, "uz_hhx_overlay_enabled"
+	Slider "$HHXPosY", "uz_hhx_overlay_hlm_posY", -200, 0, 1, 0, "uz_hhx_overlay_enabled"
+	Slider "$HHXScale", "uz_hhx_overlay_hlm_scale", .1, 4., .1, 1, "uz_hhx_overlay_enabled"
 	
 	StaticText ""
 	StaticText ""
