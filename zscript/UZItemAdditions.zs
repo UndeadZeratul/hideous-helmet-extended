@@ -7,9 +7,11 @@ class UZItemAdditions : HUDItemAdditions {
 	private transient CVar _enabled;
 	private transient CVar _hlm_required;
 	
+	private transient CVar _hlm_hudLevel;
 	private transient CVar _hlm_posX;
 	private transient CVar _hlm_posY;
 	private transient CVar _hlm_scale;
+	private transient CVar _nhm_hudLevel;
 	private transient CVar _nhm_posX;
 	private transient CVar _nhm_posY;
 	private transient CVar _nhm_scale;
@@ -19,9 +21,11 @@ class UZItemAdditions : HUDItemAdditions {
 
 		if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_inventory_enabled", sb.CPlayer);
 		if (!_hlm_required) _hlm_required = CVar.GetCVar("uz_hhx_inventory_hlm_required", sb.CPlayer);
+		if (!_hlm_hudLevel) _hlm_hudLevel = CVar.GetCVar("uz_hhx_inventory_hlm_hudLevel", sb.CPlayer);
 		if (!_hlm_posX) _hlm_posX         = CVar.GetCVar("uz_hhx_inventory_hlm_posX", sb.CPlayer);
 		if (!_hlm_posY) _hlm_posY         = CVar.GetCVar("uz_hhx_inventory_hlm_posY", sb.CPlayer);
 		if (!_hlm_scale) _hlm_scale       = CVar.GetCVar("uz_hhx_inventory_hlm_scale", sb.CPlayer);
+		if (!_nhm_hudLevel) _nhm_hudLevel = CVar.GetCVar("uz_hhx_inventory_nhm_hudLevel", sb.CPlayer);
 		if (!_nhm_posX) _nhm_posX         = CVar.GetCVar("uz_hhx_inventory_nhm_posX", sb.CPlayer);
 		if (!_nhm_posY) _nhm_posY         = CVar.GetCVar("uz_hhx_inventory_nhm_posY", sb.CPlayer);
 		if (!_nhm_scale) _nhm_scale       = CVar.GetCVar("uz_hhx_inventory_nhm_scale", sb.CPlayer);
@@ -29,11 +33,13 @@ class UZItemAdditions : HUDItemAdditions {
 
 	override void DrawHUDStuff(HCStatusbar sb, int state, double ticFrac) {
 		bool hasHelmet = _HHFunc && _HHFunc.GetIntUI("GetShowHUD", objectArg: sb.hpl);
+		int  hudLevel  = hasHelmet ? _hlm_hudLevel.GetInt() : _nhm_hudLevel.GetInt();
 
 		if (
 			!_enabled.GetBool()
 			|| (!hasHelmet && _hlm_required.GetBool())
 			|| HDSpectator(sb.hpl)
+			|| sb.HUDLevel < hudLevel
 		) return;
 
 		if (AutomapActive) {
