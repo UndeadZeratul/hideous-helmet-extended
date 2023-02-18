@@ -48,7 +48,12 @@ class HHOverlay : HUDElement {
 		) return;
 
 		if(CheckCommonStuff(sb, state, ticFrac)) {
-			sb.DrawImage(_ref.GetString(), (0,0), sb.DI_SCREEN_CENTER_BOTTOM);
+			sb.DrawImage(
+				_ref.GetString(),
+				(posX,posY),
+				sb.DI_SCREEN_CENTER_BOTTOM,
+				scale: (scale, scale)
+			);
 		}
 	}
 }
