@@ -18,6 +18,9 @@ OptionMenu "HHXOptions" {
 	SubMenu "$HHXWoundCounter",  "HHXWoundCounter"
 	
 	StaticText ""
+	SubMenu "$HHXPresets", "HHXPresets"
+
+	StaticText ""	
 	StaticText ""
 	SafeCommand "$HHXEnableAll",  "uz_hhx_enableAll"
 	SafeCommand "$HHXDisableAll", "uz_hhx_disableAll"
@@ -457,6 +460,18 @@ OptionMenu "HHXWoundCounter" {
 	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetWoundCounter", "uz_hhx_options_reset_woundCounter"
 	SafeCommand "$HHXHHResetWoundCounter", "uz_hhx_options_reset_hlm_woundCounter"
+}
+
+OptionMenu "HHXPresets" {
+	Title "$HHXPresets"
+	
+	StaticText ""
+	StaticText "$HHXPresetDescription"
+	StaticText ""
+	StaticText ""
+
+	SafeCommand"$HHXPresetDoomAlpha", "uz_hhx_preset_alpha"
+	SafeCommand"$HHXPresetArcterezion", "uz_hhx_preset_arcterezion"
 }
 
 AddOptionMenu "OptionsMenu"{

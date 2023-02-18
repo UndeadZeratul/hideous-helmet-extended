@@ -23,6 +23,9 @@ Alpha Doom HUD:
 - Sgt. Kiwi
 - Arcterezion
 
+Arcterezion's HUD:
+- Arcterezion
+
 HUDCore HUD Elements:
 - Dastrukar
 - Matt

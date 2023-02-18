@@ -16,6 +16,8 @@ HHXWeaponSprite  = "Weapon Sprite Options";
 HHXWeaponStatus  = "Weapon Status Options";
 HHXWoundCounter  = "Wound Counter Options";
 
+HHXPresets       = "Helmet Presets";
+
 // Batch Commands
 HHXEnableAll      = "Enable All HUD Elements";
 HHXDisableAll     = "Disable All HUD Elements";
@@ -66,6 +68,11 @@ HHXHHResetOverlay       = "Reset Helmet Overlay HHelmet Options";
 HHXHHResetWeaponSprite  = "Reset Weapon Sprite HHelmet Options";
 HHXHHResetWeaponStatus  = "Reset Weapon Status HHelmet Options";
 HHXHHResetWoundCounter  = "Reset Wound Counter HHelmet Options";
+
+// Preset Menu Labels
+HHXPresetDescription = "Here are some presets to get you started.";
+HHXPresetDoomAlpha   = "Doom Alpha Helmet HUD";
+HHXPresetArcterezion = "Arcterezion's HUD";
 
 // Hideous Helmet Option Set Labels
 HHXHLM = "With Helmet";
