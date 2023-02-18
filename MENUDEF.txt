@@ -19,6 +19,15 @@ OptionMenu "HHXOptions" {
 	
 	StaticText ""
 	StaticText ""
+	SafeCommand "$HHXEnableAll",  "uz_hhx_enableAll"
+	SafeCommand "$HHXDisableAll", "uz_hhx_disableAll"
+	
+	StaticText ""
+	SafeCommand "$HHXHLMRequiredAll", "uz_hhx_all_hlm_required"
+	SafeCommand "$HHXHLMOptionalAll", "uz_hhx_all_hlm_optional"
+	
+	StaticText ""
+	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetAll", "uz_hhx_options_reset_all"
 }

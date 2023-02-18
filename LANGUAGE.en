@@ -16,6 +16,12 @@ HHXWeaponSprite  = "Weapon Sprite Options";
 HHXWeaponStatus  = "Weapon Status Options";
 HHXWoundCounter  = "Wound Counter Options";
 
+// Batch Commands
+HHXEnableAll      = "Enable All HUD Elements";
+HHXDisableAll     = "Disable All HUD Elements";
+HHXHLMRequiredAll = "Require Helmet for all HUD Elements";
+HHXHLMOptionalAll = "Don't require Helmet for all HUD Elements";
+
 // HUD Element Display Requirements
 HHXEnabled        = "Enabled";
 HHXHelmetRequired = "Requires Helmet";
@@ -46,7 +52,7 @@ HHXResetWeaponSprite  = "Reset Weapon Sprite Options";
 HHXResetWeaponStatus  = "Reset Weapon Status Options";
 HHXResetWoundCounter  = "Reset Wound Counter Options";
 
-// Reset Helmet Options
+// Reset Helmet Options Labels
 HHXHHResetAmmoCounters  = "Reset Ammo Counters HHelmet Options";
 HHXHHResetCompass       = "Reset Compass HHelmet Options";
 HHXHHResetEKG           = "Reset EKG HHelmet Options";
