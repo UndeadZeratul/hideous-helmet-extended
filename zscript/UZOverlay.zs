@@ -48,6 +48,10 @@ class HHOverlay : HUDElement {
 		) return;
 
 		if(CheckCommonStuff(sb, state, ticFrac)) {
+			int   posX  = hasHelmet ? _hlm_posX.GetInt()    : _nhm_posX.GetInt();
+			int   posY  = hasHelmet ? _hlm_posY.GetInt()    : _nhm_posY.GetInt();
+			float scale = hasHelmet ? _hlm_scale.GetFloat() : _nhm_scale.GetFloat();
+
 			sb.DrawImage(
 				_ref.GetString(),
 				(posX,posY),
