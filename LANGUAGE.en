@@ -35,6 +35,9 @@ HHXEnabled        = "Enabled";
 HHXHelmetRequired = "Requires Helmet";
 HHXHUDLevel       = "Requires HUD Level";
 
+// Sprite References
+HHXOverlayRef = "HUD Background Sprite";
+
 // HUD Element Positioning Config Labels
 HHXPosX  = "Horizontal Position";
 HHXPosY  = "Vertical Position";
