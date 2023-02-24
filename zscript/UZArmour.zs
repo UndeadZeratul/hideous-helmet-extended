@@ -316,7 +316,7 @@ class UZArmour : HUDElement {
 				stats.offY = hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt();
 			} else if (cls == "HDLeatherArmourWorn") {
 				stats.slot = 0;
-				stats.wornlayer = 1200;
+				stats.wornlayer = 1200; // STRIP_JACKET
 				stats.fg = "JAKTA0";
 				stats.bg = "JAKET0";
 				stats.durability = arm.durability;
@@ -336,7 +336,7 @@ class UZArmour : HUDElement {
 				stats.offY = hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt();
 			} else if (cls == "WornRadBoots") {
 				stats.slot = 2;
-				stats.wornlayer = 1500;
+				stats.wornlayer = 1500; // STRIP_RADBOOTS
 				stats.fg = "RDBTA0";
 				stats.bg = "RDBTA0";
 				stats.durability = 0;
@@ -346,7 +346,7 @@ class UZArmour : HUDElement {
 				stats.offY = hasHelmet ? _boots_hlm_posY.GetInt() : _boots_nhm_posY.GetInt();
 			} else if (cls == "WornAntiGravBoots") {
 				stats.slot = 2;
-				stats.wornlayer = 1400;
+				stats.wornlayer = 1400; // STRIP_ANTIGRAVBOOTS
 				stats.fg = "AGRVA0";
 				stats.bg = "AGRVA0";
 				stats.durability = 0;
