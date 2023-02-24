@@ -2,6 +2,10 @@
 
 // Options Menu Titles
 HHXOptions       = "Hideous Helmet Extended Options";
+
+HHXPresets       = "Helmet Presets";
+HHXAdvanced      = "Advanced Options";
+
 HHXAmmoCounters  = "Ammo Counters Options";
 HHXArmour        = "Armour Options";
 HHXArmourHelmet  = "Helmet Slot Options";
@@ -19,8 +23,6 @@ HHXOverlay       = "Helmet Overlay Options";
 HHXWeaponSprite  = "Weapon Sprite Options";
 HHXWeaponStatus  = "Weapon Status Options";
 HHXWoundCounter  = "Wound Counter Options";
-
-HHXPresets       = "Helmet Presets";
 
 // Batch Commands
 HHXEnableAll      = "Enable All HUD Elements";

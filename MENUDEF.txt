@@ -2,6 +2,16 @@ OptionMenu "HHXOptions" {
 	Title "$HHXOptions"
 	
 	StaticText ""
+	SubMenu "$HHXPresets", "HHXPresets"
+	
+	StaticText ""
+	SubMenu "$HHXAdvanced", "HHXAdvanced"
+}
+
+OptionMenu "HHXAdvanced" {
+	Title "$HHXAdvanced"
+	
+	StaticText ""
 	SubMenu "$HHXAmmoCounters",  "HHXAmmoCounters"
 	SubMenu "$HHXArmour",        "HHXArmour"
 	SubMenu "$HHXCompass",       "HHXCompass"
@@ -17,9 +27,6 @@ OptionMenu "HHXOptions" {
 	SubMenu "$HHXWeaponSprite",  "HHXWeaponSprite"
 // 	SubMenu "$HHXWeaponStatus",  "HHXWeaponStatus"
 	SubMenu "$HHXWoundCounter",  "HHXWoundCounter"
-	
-	StaticText ""
-	SubMenu "$HHXPresets", "HHXPresets"
 
 	StaticText ""	
 	StaticText ""
