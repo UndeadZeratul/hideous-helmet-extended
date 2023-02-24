@@ -71,8 +71,8 @@ OptionMenu "HHXAmmoCounters" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
-	SafeCommand "$HHXResetAmmoCounters", "uz_hhx_options_reset_AmmoCounters"
-	SafeCommand "$HHXHHResetAmmoCounters", "uz_hhx_options_reset_hlm_AmmoCounters"
+	SafeCommand "$HHXResetAmmoCounters", "uz_hhx_options_reset_ammoCounters"
+	SafeCommand "$HHXHHResetAmmoCounters", "uz_hhx_options_reset_hlm_ammoCounters"
 }
 
 OptionMenu "HHXArmour" {
@@ -578,6 +578,9 @@ OptionMenu "HHXPresets" {
 
 	SafeCommand"$HHXPresetDoomAlpha", "uz_hhx_preset_alpha"
 	SafeCommand"$HHXPresetArcterezion", "uz_hhx_preset_arcterezion"
+	SafeCommand"$HHXPresetUDV1", "uz_hhx_preset_udv1"
+	SafeCommand"$HHXPresetUDV2", "uz_hhx_preset_udv2"
+	SafeCommand"$HHXPresetUDV3", "uz_hhx_preset_udv3"
 }
 
 AddOptionMenu "OptionsMenu"{
