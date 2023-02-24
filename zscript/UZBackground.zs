@@ -1,4 +1,4 @@
-class UZOverlay : HUDElement {
+class UZBackground : HUDElement {
 
 	private Service _HHFunc;
 	
@@ -18,7 +18,7 @@ class UZOverlay : HUDElement {
 	
 	override void Init(HCStatusbar sb) {
 		ZLayer = -1;
-		Namespace = "helmet";
+		Namespace = "background";
 	}
 
 	override void Tick(HCStatusbar sb) {
