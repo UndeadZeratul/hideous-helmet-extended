@@ -3,6 +3,7 @@ OptionMenu "HHXOptions" {
 	
 	StaticText ""
 	SubMenu "$HHXAmmoCounters",  "HHXAmmoCounters"
+	SubMenu "$HHXArmour",        "HHXArmour"
 	SubMenu "$HHXCompass",       "HHXCompass"
 	SubMenu "$HHXEKG",           "HHXEKG"
 	SubMenu "$HHXEncumbrance",   "HHXEncumbrance"
@@ -65,6 +66,104 @@ OptionMenu "HHXAmmoCounters" {
 	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetAmmoCounters", "uz_hhx_options_reset_AmmoCounters"
 	SafeCommand "$HHXHHResetAmmoCounters", "uz_hhx_options_reset_hlm_AmmoCounters"
+}
+
+OptionMenu "HHXArmour" {
+	Title "$HHXArmour"
+	
+	Option "$HHXEnabled", "uz_hhx_armour_enabled", "OnOff"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_armour_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_armour_enabled"
+	Slider "$HHXPosX", "uz_hhx_armour_nhm_posX", -200, 200, 1, 0, "uz_hhx_armour_enabled"
+	Slider "$HHXPosY", "uz_hhx_armour_nhm_posY", -150, 150, 1, 0, "uz_hhx_armour_enabled"
+	Slider "$HHXScale", "uz_hhx_armour_nhm_scale", .01, 4., .05, 2, "uz_hhx_armour_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_armour_hlm_required", "OnOff", "uz_hhx_armour_enabled"
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_armour_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_armour_enabled"
+	Slider "$HHXPosX", "uz_hhx_armour_hlm_posX", -200, 200, 1, 0, "uz_hhx_armour_enabled"
+	Slider "$HHXPosY", "uz_hhx_armour_hlm_posY", -150, 150, 1, 0, "uz_hhx_armour_enabled"
+	Slider "$HHXScale", "uz_hhx_armour_hlm_scale", .01, 4., .05, 2, "uz_hhx_armour_enabled"
+	
+	StaticText ""
+	SubMenu "$HHXAdvanced", "HHXArmourAdvanced"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetArmour", "uz_hhx_options_reset_armour"
+	SafeCommand "$HHXHHResetArmour", "uz_hhx_options_reset_hlm_armour"
+}
+
+OptionMenu "HHXArmourAdvanced" {
+	Title "$HHXAdvanced"
+
+	StaticText ""
+	StaticText "$HHXArmourHelmet", 1
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_armour_helmet_nhm_posX", -200, 200, 1, 0, "uz_hhx_armour_enabled"
+	Slider "$HHXPosY", "uz_hhx_armour_helmet_nhm_posY", -150, 150, 1, 0, "uz_hhx_armour_enabled"
+	Slider "$HHXScale", "uz_hhx_armour_helmet_nhm_scale", .01, 4., .05, 2, "uz_hhx_disabled"
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_armour_helmet_hlm_posX", -200, 200, 1, 0, "uz_hhx_armour_enabled"
+	Slider "$HHXPosY", "uz_hhx_armour_helmet_hlm_posY", -150, 150, 1, 0, "uz_hhx_armour_enabled"
+	Slider "$HHXScale", "uz_hhx_armour_helmet_hlm_scale", .01, 4., .05, 2, "uz_hhx_disabled"
+	
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetArmour", "uz_hhx_options_reset_armourHelmet"
+	SafeCommand "$HHXHHResetArmour", "uz_hhx_options_reset_hlm_armourHelmet"
+
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXArmourBody", 1
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_armour_body_nhm_posX", -200, 200, 1, 0, "uz_hhx_armour_enabled"
+	Slider "$HHXPosY", "uz_hhx_armour_body_nhm_posY", -150, 150, 1, 0, "uz_hhx_armour_enabled"
+	Slider "$HHXScale", "uz_hhx_armour_body_nhm_scale", .01, 4., .05, 2, "uz_hhx_disabled"
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_armour_body_hlm_posX", -200, 200, 1, 0, "uz_hhx_armour_enabled"
+	Slider "$HHXPosY", "uz_hhx_armour_body_hlm_posY", -150, 150, 1, 0, "uz_hhx_armour_enabled"
+	Slider "$HHXScale", "uz_hhx_armour_body_hlm_scale", .01, 4., .05, 2, "uz_hhx_disabled"
+	
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetArmour", "uz_hhx_options_reset_armourBody"
+	SafeCommand "$HHXHHResetArmour", "uz_hhx_options_reset_hlm_armourBody"
+
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXArmourBoots", 1
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_armour_boots_nhm_posX", -200, 200, 1, 0, "uz_hhx_armour_enabled"
+	Slider "$HHXPosY", "uz_hhx_armour_boots_nhm_posY", -150, 150, 1, 0, "uz_hhx_armour_enabled"
+	Slider "$HHXScale", "uz_hhx_armour_boots_nhm_scale", .01, 4., .05, 2, "uz_hhx_disabled"
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_armour_boots_hlm_posX", -200, 200, 1, 0, "uz_hhx_armour_enabled"
+	Slider "$HHXPosY", "uz_hhx_armour_boots_hlm_posY", -150, 150, 1, 0, "uz_hhx_armour_enabled"
+	Slider "$HHXScale", "uz_hhx_armour_boots_hlm_scale", .01, 4., .05, 2, "uz_hhx_disabled"
+	
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetArmour", "uz_hhx_options_reset_armourBoots"
+	SafeCommand "$HHXHHResetArmour", "uz_hhx_options_reset_hlm_armourBoots"
 }
 
 OptionMenu "HHXCompass" {

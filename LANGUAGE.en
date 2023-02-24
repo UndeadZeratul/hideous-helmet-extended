@@ -3,6 +3,10 @@
 // Options Menu Titles
 HHXOptions       = "Hideous Helmet Extended Options";
 HHXAmmoCounters  = "Ammo Counters Options";
+HHXArmour        = "Armour Options";
+HHXArmourHelmet  = "Helmet Slot Options";
+HHXArmourBody    = "Body Slot Options";
+HHXArmourBoots   = "Boots Slot Options";
 HHXCompass       = "Compass Options";
 HHXEKG           = "EKG Options";
 HHXEncumbrance   = "Encumbrance Options";
@@ -42,6 +46,10 @@ HHXResetAll           = "Reset All Options";
 HHXResetNHM           = "Reset All Standard Options";
 HHXResetHLM           = "Reset All HHelmet Options";
 HHXResetAmmoCounters  = "Reset Ammo Counters Options";
+HHXResetArmour        = "Reset Armour Options";
+HHXResetArmourHelmet  = "Reset Helmet Slot Options";
+HHXResetArmourBody    = "Reset Body Slot Options";
+HHXResetArmourBoots   = "Reset Boots Slot Options";
 HHXResetCompass       = "Reset Compass Options";
 HHXResetEKG           = "Reset EKG Options";
 HHXResetEncumbrance   = "Reset Encumbrance Options";
@@ -57,6 +65,10 @@ HHXResetWoundCounter  = "Reset Wound Counter Options";
 
 // Reset Helmet Options Labels
 HHXHHResetAmmoCounters  = "Reset Ammo Counters HHelmet Options";
+HHXHHResetArmour        = "Reset Armour HHelmet Options";
+HHXHHResetArmourHelmet  = "Reset Helmet Slot HHelmet Options";
+HHXHHResetArmourBody    = "Reset Body Slot HHelmet Options";
+HHXHHResetArmourBoots   = "Reset Boots Slot HHelmet Options";
 HHXHHResetCompass       = "Reset Compass HHelmet Options";
 HHXHHResetEKG           = "Reset EKG HHelmet Options";
 HHXHHResetEncumbrance   = "Reset Encumbrance HHelmet Options";
