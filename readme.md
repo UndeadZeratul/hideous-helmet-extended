@@ -9,8 +9,10 @@ Ever wanted your HUD to _feel_ like it was inside your HHelmet?  Would you like 
 _NOTE: The screenshots shown below contain extra addons to achieve the desired effect, including [Hudeous kMinimap](https://dastrukar.gitlab.io/hddons-list/#misc:hudeouskminimap-fda), [Hudeous War Trophies](https://cdn.discordapp.com/attachments/462331550768431104/1043709953828982784/wartrophies-v1.10.2_helmet_fork_1.1.zip), and [my personal reskin addon](https://github.com/UndeadZeratul/uzHDAddon)._
 
 ![nohelmet](./screenshots/no-helmet.png)  
-![helmet](./screenshots/helmet.png)  
-![full-helmet](./screenshots/full-helmet.png)
+![alpha-hud](./screenshots/alpha-hud.png)  
+![arc-hud](./screenshots/arc-hud.png)  
+![udv-hud](./screenshots/udv-hud.png)  
+![udv-alt-hud](./screenshots/udv-alt-hud.png)  
 
 ## Credits
 
@@ -25,6 +27,14 @@ Alpha Doom HUD:
 
 Arcterezion's HUD:
 - Arcterezion
+
+Ultimate Doom Visor HUD:
+- Saegiru
+- WildWeasel
+- 2800fps
+
+UDV Alternate HUD:
+- Lightsource
 
 HUDCore HUD Elements:
 - Dastrukar

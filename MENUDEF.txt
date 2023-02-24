@@ -580,7 +580,6 @@ OptionMenu "HHXPresets" {
 	SafeCommand"$HHXPresetArcterezion", "uz_hhx_preset_arcterezion"
 	SafeCommand"$HHXPresetUDV1", "uz_hhx_preset_udv1"
 	SafeCommand"$HHXPresetUDV2", "uz_hhx_preset_udv2"
-	SafeCommand"$HHXPresetUDV3", "uz_hhx_preset_udv3"
 }
 
 AddOptionMenu "OptionsMenu"{
