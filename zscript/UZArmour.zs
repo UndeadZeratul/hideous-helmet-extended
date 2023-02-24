@@ -214,7 +214,7 @@ class UZArmour : HUDElement {
 							sb.DI_TOPLEFT,
 							arm.fontColor,
 							14 + arm.offX,
-							79 + arm.offY + (arm.slot == 1 ? (_hh_durabilitytop && _hh_durabilitytop.GetBool() ? -7 : 0) : 0)
+							79 + arm.offY + (arm.slot == 1 ? (_hh_durabilitytop && _hh_durabilitytop.GetBool() ? -10 : -3) : 0)
 						);
 					} else if (CheckCommonStuff(sb, state, ticFrac)) {
 						DrawDurability(
@@ -223,7 +223,7 @@ class UZArmour : HUDElement {
 							sb.DI_SCREEN_CENTER_BOTTOM,
 							arm.fontColor,
 							posX + arm.offX - (slotDurabilities[arm.slot] * 12),
-							posY + arm.offY + (arm.slot == 1 ? (_hh_durabilitytop && _hh_durabilitytop.GetBool() ? -7 : 0) : 0),
+							posY + arm.offY + (arm.slot == 1 ? (_hh_durabilitytop && _hh_durabilitytop.GetBool() ? -10 : -3) : 0),
 							scale
 						);
 					}
@@ -249,7 +249,7 @@ class UZArmour : HUDElement {
 		sb.DrawString(
 			sb.pNewSmallFont,
 			sb.FormatNumber(durability),
-			(posX + 10, posY + 10),
+			(posX, posY - 2),
 			flags | sb.DI_ITEM_CENTER | sb.DI_TEXT_ALIGN_RIGHT,
 			fontColor,
 			scale: (0.5 * scale, 0.5 * scale)
