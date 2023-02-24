@@ -143,6 +143,9 @@ class UZArmour : HUDElement {
 		for (int i = 0; i < _arms.Size(); i++) {
 			let arm = _arms[i];
 
+			// Get any Texture Offsets defined for the sprite in case it helps align it
+			Vector2 offsets = TexMan.GetScaledOffset(TexMan.CheckForTexture(arm.fg));
+
 			if (arm.maxDurability > 0) {
 
 				// If the equipment has a valid durability, render using the durability bar
@@ -154,8 +157,8 @@ class UZArmour : HUDElement {
 						arm.durability,
 						arm.maxDurability,
 						sb.DI_TOPLEFT,
-						4 + arm.offX,
-						86 + arm.offY/*  - slotIcons[arm.slot] */
+						4 + arm.offX - offsets.x,
+						86 + arm.offY - offsets.y /* - slotIcons[arm.slot] */
 					);
 				} else if (CheckCommonStuff(sb, state, ticFrac)) {
 					DrawArmour(
@@ -165,23 +168,23 @@ class UZArmour : HUDElement {
 						arm.durability,
 						arm.maxDurability,
 						sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP,
-						posX + arm.offX,
-						posY + arm.offY/*  - slotIcons[arm.slot] */
+						posX + arm.offX - offsets.x,
+						posY + arm.offY - offsets.y /* - slotIcons[arm.slot] */
 					);
 				}
 			} else {
 
-				// Otherwise, simply draw the pickup icon
+				// Otherwise, simply draw the item sprite
 				if (AutomapActive) {
 					sb.DrawImage(
 						arm.fg,
-						(11 + arm.offX, 137 + arm.offY),
+						(11 + arm.offX - offsets.x, 137 + arm.offY - offsets.y),
 						sb.DI_TOPLEFT
 					);
 				} else {
 					sb.DrawImage(
 						arm.fg,
-						(posX + arm.offX, posY + arm.offY),
+						(posX + arm.offX - offsets.x, posY + arm.offY - offsets.y),
 						sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP
 					);
 				}
@@ -279,9 +282,8 @@ class UZArmour : HUDElement {
 				stats.durability = arm.durability;
 				stats.fontColor = arm.mega ? Font.CR_SAPPHIRE : Font.CR_OLIVE;
 				stats.maxDurability = arm.mega ? HDCONST_BATTLEARMOUR : HDCONST_GARRISONARMOUR;
-				Vector2 offsets = TexMan.GetScaledOffset(TexMan.CheckForTexture(stats.fg));
-				stats.offX = -offsets.x + (hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt());
-				stats.offY = -offsets.y + (hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt());
+				stats.offX = hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt();
+				stats.offY = hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt();
 			} else if (cls == "HDCorporateArmourWorn") {
 				stats.slot = 0;
 				stats.wornlayer = STRIP_ARMOUR;
@@ -290,9 +292,8 @@ class UZArmour : HUDElement {
 				stats.durability = arm.durability;
 				stats.maxDurability = 40;
 				stats.fontColor = Font.CR_DARKGRAY;
-				Vector2 offsets = TexMan.GetScaledOffset(TexMan.CheckForTexture(stats.fg));
-				stats.offX = -offsets.x + (hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt());
-				stats.offY = -offsets.y + (hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt());
+				stats.offX = (hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt());
+				stats.offY = (hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt());
 			} else if (cls == "HHelmetWorn") {
 				stats.slot = 1;
 				stats.wornlayer = 3000; // HHelmet normally 0, overriding for rendering priority
@@ -301,9 +302,8 @@ class UZArmour : HUDElement {
 				stats.durability = arm.durability;
 				stats.maxDurability = 72;
 				stats.fontColor = Font.CR_TAN;
-				Vector2 offsets = TexMan.GetScaledOffset(TexMan.CheckForTexture(stats.fg));
-				stats.offX = -offsets.x + (hasHelmet ? _helmet_hlm_posX.GetInt() : _helmet_nhm_posX.GetInt());
-				stats.offY = -offsets.y + (hasHelmet ? _helmet_hlm_posY.GetInt() : _helmet_nhm_posY.GetInt()) + _hh_helmetoffsety.GetInt();
+				stats.offX = hasHelmet ? _helmet_hlm_posX.GetInt() : _helmet_nhm_posX.GetInt();
+				stats.offY = hasHelmet ? _helmet_hlm_posY.GetInt() : _helmet_nhm_posY.GetInt() + _hh_helmetoffsety.GetInt();
 			} else if (cls == "HDHEVArmourWorn") {
 				stats.slot = 0;
 				stats.wornlayer = STRIP_ARMOUR;
@@ -312,9 +312,8 @@ class UZArmour : HUDElement {
 				stats.durability = arm.durability;
 				stats.maxDurability = 107;
 				stats.fontColor = Font.CR_ORANGE;
-				Vector2 offsets = TexMan.GetScaledOffset(TexMan.CheckForTexture(stats.fg));
-				stats.offX = -offsets.x + (hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt());
-				stats.offY = -offsets.y + (hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt());
+				stats.offX = hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt();
+				stats.offY = hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt();
 			} else if (cls == "HDLeatherArmourWorn") {
 				stats.slot = 0;
 				stats.wornlayer = 1200;
@@ -323,9 +322,8 @@ class UZArmour : HUDElement {
 				stats.durability = arm.durability;
 				stats.maxDurability = 40;
 				stats.fontColor = Font.CR_BROWN;
-				Vector2 offsets = TexMan.GetScaledOffset(TexMan.CheckForTexture(stats.fg));
-				stats.offX = -offsets.x + (hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt());
-				stats.offY = -offsets.y + (hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt());
+				stats.offX = hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt();
+				stats.offY = hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt();
 			} else if (cls == "WAN_SneakingSuitWorn") {
 				stats.slot = 0;
 				stats.wornlayer = STRIP_ARMOUR;
@@ -334,9 +332,8 @@ class UZArmour : HUDElement {
 				stats.durability = 144; // HDDamageHandler doesn't have current durability...
 				stats.maxDurability = 144;
 				stats.fontColor = Font.CR_DARKGRAY;
-				Vector2 offsets = TexMan.GetScaledOffset(TexMan.CheckForTexture(stats.fg));
-				stats.offX = -offsets.x + (hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt());
-				stats.offY = -offsets.y + (hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt());
+				stats.offX = hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt();
+				stats.offY = hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt();
 			} else if (cls == "WornRadBoots") {
 				stats.slot = 2;
 				stats.wornlayer = 1500;
@@ -345,9 +342,8 @@ class UZArmour : HUDElement {
 				stats.durability = 0;
 				stats.maxDurability = 0;
 				stats.fontColor = Font.CR_GRAY;
-				Vector2 offsets = TexMan.GetScaledOffset(TexMan.CheckForTexture(stats.fg));
-				stats.offX = -offsets.x + (hasHelmet ? _boots_hlm_posX.GetInt() : _boots_nhm_posX.GetInt());
-				stats.offY = -offsets.y + (hasHelmet ? _boots_hlm_posY.GetInt() : _boots_nhm_posY.GetInt());
+				stats.offX = hasHelmet ? _boots_hlm_posX.GetInt() : _boots_nhm_posX.GetInt();
+				stats.offY = hasHelmet ? _boots_hlm_posY.GetInt() : _boots_nhm_posY.GetInt();
 			} else if (cls == "WornAntiGravBoots") {
 				stats.slot = 2;
 				stats.wornlayer = 1400;
@@ -356,9 +352,8 @@ class UZArmour : HUDElement {
 				stats.durability = 0;
 				stats.maxDurability = 0;
 				stats.fontColor = Font.CR_GRAY;
-				Vector2 offsets = TexMan.GetScaledOffset(TexMan.CheckForTexture(stats.fg));
-				stats.offX = -offsets.x + (hasHelmet ? _boots_hlm_posX.GetInt() : _boots_nhm_posX.GetInt());
-				stats.offY = -offsets.y + (hasHelmet ? _boots_hlm_posY.GetInt() : _boots_nhm_posY.GetInt());
+				stats.offX = hasHelmet ? _boots_hlm_posX.GetInt() : _boots_nhm_posX.GetInt();
+				stats.offY = hasHelmet ? _boots_hlm_posY.GetInt() : _boots_nhm_posY.GetInt();
 			} else {
 				stats = NULL;
 			}
