@@ -1,4 +1,4 @@
-class HHOverlay : HUDElement {
+class UZOverlay : HUDElement {
 
 	private Service _HHFunc;
 	
