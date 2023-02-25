@@ -213,7 +213,7 @@ class UZArmour : HUDElement {
 							arm.durability,
 							sb.DI_TOPLEFT,
 							arm.fontColor,
-							14 + arm.offX,
+							14 + arm.offX - (slotDurabilities[arm.slot] * 12),
 							79 + arm.offY + (arm.slot == 1 ? (_hh_durabilitytop && _hh_durabilitytop.GetBool() ? -10 : -3) : 0)
 						);
 					} else if (CheckCommonStuff(sb, state, ticFrac)) {
