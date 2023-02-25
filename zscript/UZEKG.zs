@@ -14,6 +14,11 @@ class UZEKG : HUDEKG {
 	private transient CVar _nhm_posY;
 	private transient CVar _nhm_scale;
 
+	override void Init(HCStatusbar sb) {
+		ZLayer    = 2;
+		Namespace = "ekg";
+	}
+
 	override void Tick(HCStatusbar sb) {
 		if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
 

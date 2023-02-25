@@ -23,8 +23,7 @@ class UZWoundCounter : HUDElement {
 	private transient CVar _nhm_scale;
 
 	override void Init(HCStatusbar sb) {
-		ZLayer = 0;
-
+		ZLayer    = 2;
 		Namespace = "woundcounter";
 	}
 
