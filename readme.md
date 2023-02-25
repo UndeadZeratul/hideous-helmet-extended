@@ -34,6 +34,9 @@ Ultimate Doom Visor HUD:
 - 2800fps
 
 UDV Alternate HUD:
+- Saegiru
+- WildWeasel
+- 2800fps
 - Lightsource
 
 HUDCore HUD Elements:
