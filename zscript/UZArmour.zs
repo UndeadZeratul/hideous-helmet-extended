@@ -249,7 +249,7 @@ class UZArmour : HUDElement {
 		sb.DrawString(
 			sb.pNewSmallFont,
 			sb.FormatNumber(durability),
-			(posX, posY - 2),
+			(posX, posY - 4),
 			flags | sb.DI_ITEM_CENTER | sb.DI_TEXT_ALIGN_RIGHT,
 			fontColor,
 			scale: (0.5 * scale, 0.5 * scale)
