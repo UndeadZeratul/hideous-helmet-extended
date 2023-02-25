@@ -303,7 +303,7 @@ class UZArmour : HUDElement {
 				stats.maxDurability = 72;
 				stats.fontColor = Font.CR_TAN;
 				stats.offX = hasHelmet ? _helmet_hlm_posX.GetInt() : _helmet_nhm_posX.GetInt();
-				stats.offY = hasHelmet ? _helmet_hlm_posY.GetInt() : _helmet_nhm_posY.GetInt() + _hh_helmetoffsety.GetInt();
+				stats.offY = (hasHelmet ? _helmet_hlm_posY.GetInt() : _helmet_nhm_posY.GetInt()) + _hh_helmetoffsety.GetInt();
 			} else if (cls == "HDHEVArmourWorn") {
 				stats.slot = 0;
 				stats.wornlayer = STRIP_ARMOUR;
