@@ -21,6 +21,7 @@ HHXKeys          = "Keys Options";
 HHXMugshot       = "Mugshot Options";
 HHXOverlay       = "Helmet Overlay Options";
 HHXWeaponSprite  = "Weapon Sprite Options";
+HHXWeaponStash   = "Weapon Stash Options";
 HHXWeaponStatus  = "Weapon Status Options";
 HHXWoundCounter  = "Wound Counter Options";
 
@@ -39,9 +40,11 @@ HHXHUDLevel       = "Requires HUD Level";
 HHXOverlayRef = "HUD Background Sprite";
 
 // HUD Element Positioning Config Labels
-HHXPosX  = "Horizontal Position";
-HHXPosY  = "Vertical Position";
-HHXScale = "Scale";
+HHXPosX   = "Horizontal Position";
+HHXPosY   = "Vertical Position";
+HHXScale  = "Scale";
+HHXScaleX = "Horizontal Scale";
+HHXScaleY = "Vertical Scale";
 
 // Danger Zone Label
 HHXDangerZone = "DANGER ZONE";
@@ -65,6 +68,7 @@ HHXResetKeys          = "Reset Keys Options";
 HHXResetMugshot       = "Reset Mugshot Options";
 HHXResetOverlay       = "Reset Helmet Overlay Options";
 HHXResetWeaponSprite  = "Reset Weapon Sprite Options";
+HHXResetWeaponStash   = "Reset Weapon Stash Options";
 HHXResetWeaponStatus  = "Reset Weapon Status Options";
 HHXResetWoundCounter  = "Reset Wound Counter Options";
 
@@ -84,6 +88,7 @@ HHXHHResetKeys          = "Reset Keys HHelmet Options";
 HHXHHResetMugshot       = "Reset Mugshot HHelmet Options";
 HHXHHResetOverlay       = "Reset Helmet Overlay HHelmet Options";
 HHXHHResetWeaponSprite  = "Reset Weapon Sprite HHelmet Options";
+HHXHHResetweaponStash   = "Reset Weapon Stash HHelmet Options";
 HHXHHResetWeaponStatus  = "Reset Weapon Status HHelmet Options";
 HHXHHResetWoundCounter  = "Reset Wound Counter HHelmet Options";
 
