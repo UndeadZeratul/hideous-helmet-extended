@@ -14,6 +14,9 @@ _NOTE: The screenshots shown below contain extra addons to achieve the desired e
 ![udv-hud](./screenshots/udv-hud.png)  
 ![udv-alt-hud](./screenshots/udv-alt-hud.png)  
 
+### Limitations
+While I've done what I can to allow HUD Elements to be customizable, some elements have their limitations, such as not being able to be scaled or repositioned at all.  This is due to how the HUD draws its elements and where that control is given when doing so.  Drawing armour durability bars does not support scaling and must be drawn at 100% its original size.  Weapon Statuses are entirely under the control of the weapon that draws them, so this HUD cannot move them around or scale them.
+
 ## Credits
 
 Hideous Helmet HUD Element Scripts:
