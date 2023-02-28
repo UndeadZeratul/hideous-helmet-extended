@@ -56,7 +56,7 @@ class UZAmmoCounters : HUDAmmoCounters {
 
 		if (AutomapActive) {
 			DrawAmmoCounters(sb, -8, -18, scale);
-		} else if (CheckCommonStuff(sb, state, ticFrac) && sb.HUDLevel == 2) {
+		} else if (CheckCommonStuff(sb, state, ticFrac)) {
 			DrawAmmoCounters(sb, posX, posY, scale, xScale, yScale);
 		}
 	}
