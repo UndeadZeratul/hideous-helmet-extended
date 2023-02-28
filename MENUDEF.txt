@@ -25,6 +25,7 @@ OptionMenu "HHXAdvanced" {
 	SubMenu "$HHXMugshot",       "HHXMugshot"
 	SubMenu "$HHXOverlay",       "HHXOverlay"
 	SubMenu "$HHXWeaponSprite",  "HHXWeaponSprite"
+	SubMenu "$HHXWeaponStash",   "HHXWeaponStash"
 // 	SubMenu "$HHXWeaponStatus",  "HHXWeaponStatus"
 	SubMenu "$HHXWoundCounter",  "HHXWoundCounter"
 
@@ -56,6 +57,8 @@ OptionMenu "HHXAmmoCounters" {
 	Slider "$HHXPosX", "uz_hhx_ammoCounters_nhm_posX", -200, 200, 1, 0, "uz_hhx_ammoCounters_enabled"
 	Slider "$HHXPosY", "uz_hhx_ammoCounters_nhm_posY", -150, 150, 1, 0, "uz_hhx_ammoCounters_enabled"
 	Slider "$HHXScale", "uz_hhx_ammoCounters_nhm_scale", .01, 4., .05, 2, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXScaleX", "uz_hhx_ammoCounters_nhm_xScale", -2., 2., .05, 2, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXScaleY", "uz_hhx_ammoCounters_nhm_yScale", -2., 2., .05, 2, "uz_hhx_ammoCounters_enabled"
 	
 	StaticText ""
 	StaticText ""
@@ -67,6 +70,8 @@ OptionMenu "HHXAmmoCounters" {
 	Slider "$HHXPosX", "uz_hhx_ammoCounters_hlm_posX", -200, 200, 1, 0, "uz_hhx_ammoCounters_enabled"
 	Slider "$HHXPosY", "uz_hhx_ammoCounters_hlm_posY", -150, 150, 1, 0, "uz_hhx_ammoCounters_enabled"
 	Slider "$HHXScale", "uz_hhx_ammoCounters_hlm_scale", .01, 4., .05, 2, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXScaleX", "uz_hhx_ammoCounters_hlm_xScale", -2., 2., .05, 2, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXScaleY", "uz_hhx_ammoCounters_hlm_yScale", -2., 2., .05, 2, "uz_hhx_ammoCounters_enabled"
 	
 	StaticText ""
 	StaticText ""
@@ -284,6 +289,8 @@ OptionMenu "HHXFullInventory" {
 	Slider "$HHXPosX", "uz_hhx_fullInventory_nhm_posX", -400, 0, 1, 0, "uz_hhx_fullInventory_enabled"
 	Slider "$HHXPosY", "uz_hhx_fullInventory_nhm_posY", -200, 0, 1, 0, "uz_hhx_fullInventory_enabled"
 	Slider "$HHXScale", "uz_hhx_fullInventory_nhm_scale", .01, 4., .05, 2, "uz_hhx_fullInventory_enabled"
+	Slider "$HHXScaleX", "uz_hhx_fullInventory_nhm_xScale", -2., 2., .05, 2, "uz_hhx_fullInventory_enabled"
+	Slider "$HHXScaleY", "uz_hhx_fullInventory_nhm_yScale", -2., 2., .05, 2, "uz_hhx_fullInventory_enabled"
 
 	StaticText ""
 	StaticText ""
@@ -295,6 +302,8 @@ OptionMenu "HHXFullInventory" {
 	Slider "$HHXPosX", "uz_hhx_fullInventory_hlm_posX", -400, 0, 1, 0, "uz_hhx_fullInventory_enabled"
 	Slider "$HHXPosY", "uz_hhx_fullInventory_hlm_posY", -200, 0, 1, 0, "uz_hhx_fullInventory_enabled"
 	Slider "$HHXScale", "uz_hhx_fullInventory_hlm_scale", .01, 4., .05, 2, "uz_hhx_fullInventory_enabled"
+	Slider "$HHXScaleX", "uz_hhx_fullInventory_hlm_xScale", -2., 2., .05, 2, "uz_hhx_fullInventory_enabled"
+	Slider "$HHXScaleY", "uz_hhx_fullInventory_hlm_yScale", -2., 2., .05, 2, "uz_hhx_fullInventory_enabled"
 	
 	StaticText ""
 	StaticText ""
@@ -382,6 +391,8 @@ OptionMenu "HHXKeys" {
 	Slider "$HHXPosX", "uz_hhx_keys_nhm_posX", -300, 300, 1, 0, "uz_hhx_keys_enabled"
 	Slider "$HHXPosY", "uz_hhx_keys_nhm_posY", -300, 0, 1, 0, "uz_hhx_keys_enabled"
 	Slider "$HHXScale", "uz_hhx_keys_nhm_scale", .01, 4., .05, 2, "uz_hhx_keys_enabled"
+	Slider "$HHXScaleX", "uz_hhx_keys_nhm_xScale", -2., 2., .05, 2, "uz_hhx_keys_enabled"
+	Slider "$HHXScaleY", "uz_hhx_keys_nhm_yScale", -2., 2., .05, 2, "uz_hhx_keys_enabled"
 	
 	StaticText ""
 	StaticText ""
@@ -393,6 +404,8 @@ OptionMenu "HHXKeys" {
 	Slider "$HHXPosX", "uz_hhx_keys_hlm_posX", -300, 300, 1, 0, "uz_hhx_keys_enabled"
 	Slider "$HHXPosY", "uz_hhx_keys_hlm_posY", -300, 0, 1, 0, "uz_hhx_keys_enabled"
 	Slider "$HHXScale", "uz_hhx_keys_hlm_scale", .01, 4., .05, 2, "uz_hhx_keys_enabled"
+	Slider "$HHXScaleX", "uz_hhx_keys_hlm_xScale", -2., 2., .05, 2, "uz_hhx_keys_enabled"
+	Slider "$HHXScaleY", "uz_hhx_keys_hlm_yScale", -2., 2., .05, 2, "uz_hhx_keys_enabled"
 	
 	StaticText ""
 	StaticText ""
@@ -500,6 +513,42 @@ OptionMenu "HHXWeaponSprite" {
 	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetWeaponSprite", "uz_hhx_options_reset_weaponSprite"
 	SafeCommand "$HHXHHResetWeaponSprite", "uz_hhx_options_reset_hlm_weaponSprite"
+}
+
+OptionMenu "HHXweaponStash" {
+	Title "$HHXweaponStash"
+
+	Option "$HHXEnabled", "uz_hhx_weaponStash_enabled", "OnOff"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_weaponStash_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_weaponStash_enabled"
+	Slider "$HHXPosX", "uz_hhx_weaponStash_nhm_posX", -200, 200, 1, 0, "uz_hhx_weaponStash_enabled"
+	Slider "$HHXPosY", "uz_hhx_weaponStash_nhm_posY", -200, 100, 1, 0, "uz_hhx_weaponStash_enabled"
+	Slider "$HHXScale", "uz_hhx_weaponStash_nhm_scale", .01, 4., .05, 2, "uz_hhx_weaponStash_enabled"
+	Slider "$HHXScaleX", "uz_hhx_weaponStash_nhm_xScale", -2., 2., .05, 2, "uz_hhx_weaponStash_enabled"
+	Slider "$HHXScaleY", "uz_hhx_weaponStash_nhm_yScale", -2., 2., .05, 2, "uz_hhx_weaponStash_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_weaponStash_hlm_required", "OnOff", "uz_hhx_weaponStash_enabled"
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_weaponStash_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_weaponStash_enabled"
+	Slider "$HHXPosX", "uz_hhx_weaponStash_hlm_posX", -200, 200, 1, 0, "uz_hhx_weaponStash_enabled"
+	Slider "$HHXPosY", "uz_hhx_weaponStash_hlm_posY", -200, 100, 1, 0, "uz_hhx_weaponStash_enabled"
+	Slider "$HHXScale", "uz_hhx_weaponStash_hlm_scale", .01, 4., .05, 2, "uz_hhx_weaponStash_enabled"
+	Slider "$HHXScaleX", "uz_hhx_weaponStash_hlm_xScale", -2., 2., .05, 2, "uz_hhx_weaponStash_enabled"
+	Slider "$HHXScaleY", "uz_hhx_weaponStash_hlm_yScale", -2., 2., .05, 2, "uz_hhx_weaponStash_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetweaponStash", "uz_hhx_options_reset_weaponStash"
+	SafeCommand "$HHXHHResetweaponStash", "uz_hhx_options_reset_hlm_weaponStash"
 }
 
 OptionMenu "HHXWeaponStatus" {
