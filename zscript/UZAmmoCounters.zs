@@ -70,8 +70,13 @@ class UZAmmoCounters : HUDAmmoCounters {
 		for(int i = 0; i < sb.ammosprites.size(); i++){
 			let count = cp.countinv(sb.ammotypes[i]);
 			if(count) {
+
+				int row   = (ii / sb.SBAR_MAXAMMOCOLS) * 16;
+				int col   = (ii % sb.SBAR_MAXAMMOCOLS) * 16;
+				int xoffs = col * scale;
+				int yoffs = row * scale;
 			
-				Vector2 coords = (posX - (ii % sb.SBAR_MAXAMMOCOLS) * 16 * xScale, posY - (ii / sb.SBAR_MAXAMMOCOLS) * 16 * yScale);
+				Vector2 coords = (posX - xoffs - (col * xScale), posY - yoffs - (col * yScale));
 
 				sb.DrawImage(
 					sb.ammosprites[i],

@@ -77,8 +77,10 @@ class UZFullInventory : HUDElement {
 				
 				[icon,applyscale] = sb.geticon(item, 0);
 				
-				int  xoffs  = (i % 5) * 20 * xScale;
-				int  yoffs  = (i / 5) * 20 * yScale;
+				int  row    = (i / 5) * 20;
+				int  col    = (i % 5) * 20;
+				int  xoffs  = col * scale;
+				int  yoffs  = row * scale;
 				bool isthis = i == thisindex;
 				
 				let ivsh = hdpickup(item);
@@ -86,7 +88,7 @@ class UZFullInventory : HUDElement {
 				
 				sb.drawtexture(
 					icon,
-					(posX - xoffs, posY + sb.bigitemyofs - yoffs),
+					(posX - xoffs - (col * xScale), posY + sb.bigitemyofs - yoffs - (col * yScale)),
 					sb.DI_ITEM_CENTER_BOTTOM|sb.DI_SCREEN_RIGHT_BOTTOM
 					|((
 						(ivsh && ivsh.bdroptranslation)
