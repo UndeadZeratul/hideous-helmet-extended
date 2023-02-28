@@ -23,7 +23,7 @@ OptionMenu "HHXAdvanced" {
 // 	SubMenu "$HHXItemAdditions", "HHXItemAdditions"
 	SubMenu "$HHXKeys",          "HHXKeys"
 	SubMenu "$HHXMugshot",       "HHXMugshot"
-	SubMenu "$HHXOverlay",       "HHXOverlay"
+	SubMenu "$HHXBackground",    "HHXBackground"
 	SubMenu "$HHXWeaponSprite",  "HHXWeaponSprite"
 	SubMenu "$HHXWeaponStash",   "HHXWeaponStash"
 // 	SubMenu "$HHXWeaponStatus",  "HHXWeaponStatus"
@@ -446,39 +446,39 @@ OptionMenu "HHXMugshot" {
 	SafeCommand "$HHXHHResetMugshot", "uz_hhx_options_reset_hlm_mugshot"
 }
 
-OptionMenu "HHXOverlay" {
-	Title "$HHXOverlay"
+OptionMenu "HHXBackground" {
+	Title "$HHXBackground"
 
-	Option "$HHXEnabled", "uz_hhx_overlay_enabled", "OnOff"
+	Option "$HHXEnabled", "uz_hhx_background_enabled", "OnOff"
 
 	StaticText ""
-	TextField "$HHXOverlayRef", "uz_hhx_overlay_ref", "uz_hhx_overlay_enabled"
+	TextField "$HHXBackgroundRef", "uz_hhx_background_ref", "uz_hhx_background_enabled"
 	
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXNHM", 1
 	StaticText ""
-	Slider "$HHXHUDLevel", "uz_hhx_overlay_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_overlay_enabled"
-	Slider "$HHXPosX", "uz_hhx_overlay_nhm_posX", -200, 200, 1, 0, "uz_hhx_overlay_enabled"
-	Slider "$HHXPosY", "uz_hhx_overlay_nhm_posY", -200, 0, 1, 0, "uz_hhx_overlay_enabled"
-	Slider "$HHXScale", "uz_hhx_overlay_nhm_scale", .01, 4., .05, 2, "uz_hhx_overlay_enabled"
+	Slider "$HHXHUDLevel", "uz_hhx_background_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_background_enabled"
+	Slider "$HHXPosX", "uz_hhx_background_nhm_posX", -200, 200, 1, 0, "uz_hhx_background_enabled"
+	Slider "$HHXPosY", "uz_hhx_background_nhm_posY", -200, 0, 1, 0, "uz_hhx_background_enabled"
+	Slider "$HHXScale", "uz_hhx_background_nhm_scale", .01, 4., .05, 2, "uz_hhx_background_enabled"
 	
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXHLM", 1
 	StaticText ""
-	Option "$HHXHelmetRequired", "uz_hhx_overlay_hlm_required", "OnOff", "uz_hhx_overlay_enabled"
+	Option "$HHXHelmetRequired", "uz_hhx_background_hlm_required", "OnOff", "uz_hhx_background_enabled"
 	StaticText ""
-	Slider "$HHXHUDLevel", "uz_hhx_overlay_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_overlay_enabled"
-	Slider "$HHXPosX", "uz_hhx_overlay_hlm_posX", -200, 200, 1, 0, "uz_hhx_overlay_enabled"
-	Slider "$HHXPosY", "uz_hhx_overlay_hlm_posY", -200, 0, 1, 0, "uz_hhx_overlay_enabled"
-	Slider "$HHXScale", "uz_hhx_overlay_hlm_scale", .01, 4., .05, 2, "uz_hhx_overlay_enabled"
+	Slider "$HHXHUDLevel", "uz_hhx_background_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_background_enabled"
+	Slider "$HHXPosX", "uz_hhx_background_hlm_posX", -200, 200, 1, 0, "uz_hhx_background_enabled"
+	Slider "$HHXPosY", "uz_hhx_background_hlm_posY", -200, 0, 1, 0, "uz_hhx_background_enabled"
+	Slider "$HHXScale", "uz_hhx_background_hlm_scale", .01, 4., .05, 2, "uz_hhx_background_enabled"
 	
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
-	SafeCommand "$HHXResetOverlay", "uz_hhx_options_reset_overlay"
-	SafeCommand "$HHXHHResetOverlay", "uz_hhx_options_reset_hlm_overlay"
+	SafeCommand "$HHXResetBackground", "uz_hhx_options_reset_background"
+	SafeCommand "$HHXHHResetBackground", "uz_hhx_options_reset_hlm_background"
 }
 
 OptionMenu "HHXWeaponSprite" {

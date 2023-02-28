@@ -19,7 +19,7 @@ HHXHeartbeat     = "Heartbeat Options";
 HHXInventory     = "Inventory Options";
 HHXKeys          = "Keys Options";
 HHXMugshot       = "Mugshot Options";
-HHXOverlay       = "Helmet Overlay Options";
+HHXBackground    = "HUD Background Options";
 HHXWeaponSprite  = "Weapon Sprite Options";
 HHXWeaponStash   = "Weapon Stash Options";
 HHXWeaponStatus  = "Weapon Status Options";
@@ -37,7 +37,7 @@ HHXHelmetRequired = "Requires Helmet";
 HHXHUDLevel       = "Requires HUD Level";
 
 // Sprite References
-HHXOverlayRef = "HUD Background Sprite";
+HHXBackgroundRef = "HUD Background Sprite";
 
 // HUD Element Positioning Config Labels
 HHXPosX   = "Horizontal Position";
@@ -66,7 +66,7 @@ HHXResetHeartbeat     = "Reset Heartbeat Options";
 HHXResetInventory     = "Reset Inventory Options";
 HHXResetKeys          = "Reset Keys Options";
 HHXResetMugshot       = "Reset Mugshot Options";
-HHXResetOverlay       = "Reset Helmet Overlay Options";
+HHXResetBackground    = "Reset Helmet Background Options";
 HHXResetWeaponSprite  = "Reset Weapon Sprite Options";
 HHXResetWeaponStash   = "Reset Weapon Stash Options";
 HHXResetWeaponStatus  = "Reset Weapon Status Options";
@@ -86,7 +86,7 @@ HHXHHResetHeartbeat     = "Reset Heartbeat HHelmet Options";
 HHXHHResetInventory     = "Reset Inventory HHelmet Options";
 HHXHHResetKeys          = "Reset Keys HHelmet Options";
 HHXHHResetMugshot       = "Reset Mugshot HHelmet Options";
-HHXHHResetOverlay       = "Reset Helmet Overlay HHelmet Options";
+HHXHHResetBackground    = "Reset Helmet Background HHelmet Options";
 HHXHHResetWeaponSprite  = "Reset Weapon Sprite HHelmet Options";
 HHXHHResetweaponStash   = "Reset Weapon Stash HHelmet Options";
 HHXHHResetWeaponStatus  = "Reset Weapon Status HHelmet Options";

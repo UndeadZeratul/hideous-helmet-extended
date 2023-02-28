@@ -24,17 +24,17 @@ class UZBackground : HUDElement {
 	override void Tick(HCStatusbar sb) {
 		if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
 
-		if (!_ref) _ref                   = CVar.GetCVar("uz_hhx_overlay_ref", sb.CPlayer);
-		if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_overlay_enabled", sb.CPlayer);
-		if (!_hlm_required) _hlm_required = CVar.GetCVar("uz_hhx_overlay_hlm_required", sb.CPlayer);
-		if (!_hlm_hudLevel) _hlm_hudLevel = CVar.GetCVar("uz_hhx_overlay_hlm_hudLevel", sb.CPlayer);
-		if (!_hlm_posX) _hlm_posX         = CVar.GetCVar("uz_hhx_overlay_hlm_posX", sb.CPlayer);
-		if (!_hlm_posY) _hlm_posY         = CVar.GetCVar("uz_hhx_overlay_hlm_posY", sb.CPlayer);
-		if (!_hlm_scale) _hlm_scale       = CVar.GetCVar("uz_hhx_overlay_hlm_scale", sb.CPlayer);
-		if (!_nhm_hudLevel) _nhm_hudLevel = CVar.GetCVar("uz_hhx_overlay_nhm_hudLevel", sb.CPlayer);
-		if (!_nhm_posX) _nhm_posX         = CVar.GetCVar("uz_hhx_overlay_nhm_posX", sb.CPlayer);
-		if (!_nhm_posY) _nhm_posY         = CVar.GetCVar("uz_hhx_overlay_nhm_posY", sb.CPlayer);
-		if (!_nhm_scale) _nhm_scale       = CVar.GetCVar("uz_hhx_overlay_nhm_scale", sb.CPlayer);
+		if (!_ref) _ref                   = CVar.GetCVar("uz_hhx_background_ref", sb.CPlayer);
+		if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_background_enabled", sb.CPlayer);
+		if (!_hlm_required) _hlm_required = CVar.GetCVar("uz_hhx_background_hlm_required", sb.CPlayer);
+		if (!_hlm_hudLevel) _hlm_hudLevel = CVar.GetCVar("uz_hhx_background_hlm_hudLevel", sb.CPlayer);
+		if (!_hlm_posX) _hlm_posX         = CVar.GetCVar("uz_hhx_background_hlm_posX", sb.CPlayer);
+		if (!_hlm_posY) _hlm_posY         = CVar.GetCVar("uz_hhx_background_hlm_posY", sb.CPlayer);
+		if (!_hlm_scale) _hlm_scale       = CVar.GetCVar("uz_hhx_background_hlm_scale", sb.CPlayer);
+		if (!_nhm_hudLevel) _nhm_hudLevel = CVar.GetCVar("uz_hhx_background_nhm_hudLevel", sb.CPlayer);
+		if (!_nhm_posX) _nhm_posX         = CVar.GetCVar("uz_hhx_background_nhm_posX", sb.CPlayer);
+		if (!_nhm_posY) _nhm_posY         = CVar.GetCVar("uz_hhx_background_nhm_posY", sb.CPlayer);
+		if (!_nhm_scale) _nhm_scale       = CVar.GetCVar("uz_hhx_background_nhm_scale", sb.CPlayer);
 	}
 
 	override void DrawHUDStuff(HCStatusbar sb, int state, double ticFrac) {
