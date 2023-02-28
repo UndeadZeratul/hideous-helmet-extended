@@ -121,11 +121,15 @@ user int   uz_hhx_keys_nhm_hudLevel = 1;
 user int   uz_hhx_keys_nhm_posX     = 50;
 user int   uz_hhx_keys_nhm_posY     = -4;
 user float uz_hhx_keys_nhm_scale    = 1.;
+user float uz_hhx_keys_nhm_xScale   = 0.;
+user float uz_hhx_keys_nhm_yScale   = 1.;
 user bool  uz_hhx_keys_hlm_required = false;
 user int   uz_hhx_keys_hlm_hudLevel = 1;
 user int   uz_hhx_keys_hlm_posX     = 50;
 user int   uz_hhx_keys_hlm_posY     = -4;
 user float uz_hhx_keys_hlm_scale    = 1.;
+user float uz_hhx_keys_hlm_xScale   = 0.;
+user float uz_hhx_keys_hlm_yScale   = 1.;
 
 // MUGSHOT CONFIGS
 user bool  uz_hhx_mugshot_enabled      = true;

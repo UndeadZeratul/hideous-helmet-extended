@@ -383,6 +383,8 @@ OptionMenu "HHXKeys" {
 	Slider "$HHXPosX", "uz_hhx_keys_nhm_posX", -300, 300, 1, 0, "uz_hhx_keys_enabled"
 	Slider "$HHXPosY", "uz_hhx_keys_nhm_posY", -300, 0, 1, 0, "uz_hhx_keys_enabled"
 	Slider "$HHXScale", "uz_hhx_keys_nhm_scale", .01, 4., .05, 2, "uz_hhx_keys_enabled"
+	Slider "$HHXScaleX", "uz_hhx_keys_nhm_xScale", -2., 2., .05, 2, "uz_hhx_keys_enabled"
+	Slider "$HHXScaleY", "uz_hhx_keys_nhm_yScale", -2., 2., .05, 2, "uz_hhx_keys_enabled"
 	
 	StaticText ""
 	StaticText ""
@@ -394,6 +396,8 @@ OptionMenu "HHXKeys" {
 	Slider "$HHXPosX", "uz_hhx_keys_hlm_posX", -300, 300, 1, 0, "uz_hhx_keys_enabled"
 	Slider "$HHXPosY", "uz_hhx_keys_hlm_posY", -300, 0, 1, 0, "uz_hhx_keys_enabled"
 	Slider "$HHXScale", "uz_hhx_keys_hlm_scale", .01, 4., .05, 2, "uz_hhx_keys_enabled"
+	Slider "$HHXScaleX", "uz_hhx_keys_hlm_xScale", -2., 2., .05, 2, "uz_hhx_keys_enabled"
+	Slider "$HHXScaleY", "uz_hhx_keys_hlm_yScale", -2., 2., .05, 2, "uz_hhx_keys_enabled"
 	
 	StaticText ""
 	StaticText ""

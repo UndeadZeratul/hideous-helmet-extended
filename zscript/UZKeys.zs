@@ -9,10 +9,14 @@ class UZKeys : HUDKeys {
 	private transient CVar _hlm_posX;
 	private transient CVar _hlm_posY;
 	private transient CVar _hlm_scale;
+	private transient CVar _hlm_xScale;
+	private transient CVar _hlm_yScale;
 	private transient CVar _nhm_hudLevel;
 	private transient CVar _nhm_posX;
 	private transient CVar _nhm_posY;
 	private transient CVar _nhm_scale;
+	private transient CVar _nhm_xScale;
+	private transient CVar _nhm_yScale;
 
 	override void Tick(HCStatusbar sb) {
 		if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
@@ -23,10 +27,14 @@ class UZKeys : HUDKeys {
 		if (!_hlm_posX) _hlm_posX         = CVar.GetCVar("uz_hhx_keys_hlm_posX", sb.CPlayer);
 		if (!_hlm_posY) _hlm_posY         = CVar.GetCVar("uz_hhx_keys_hlm_posY", sb.CPlayer);
 		if (!_hlm_scale) _hlm_scale       = CVar.GetCVar("uz_hhx_keys_hlm_scale", sb.CPlayer);
+		if (!_hlm_xScale) _hlm_xScale     = CVar.GetCVar("uz_hhx_keys_hlm_xScale", sb.CPlayer);
+		if (!_hlm_yScale) _hlm_yScale     = CVar.GetCVar("uz_hhx_keys_hlm_yScale", sb.CPlayer);
 		if (!_nhm_hudLevel) _nhm_hudLevel = CVar.GetCVar("uz_hhx_keys_nhm_hudLevel", sb.CPlayer);
 		if (!_nhm_posX) _nhm_posX         = CVar.GetCVar("uz_hhx_keys_nhm_posX", sb.CPlayer);
 		if (!_nhm_posY) _nhm_posY         = CVar.GetCVar("uz_hhx_keys_nhm_posY", sb.CPlayer);
 		if (!_nhm_scale) _nhm_scale       = CVar.GetCVar("uz_hhx_keys_nhm_scale", sb.CPlayer);
+		if (!_nhm_xScale) _nhm_xScale     = CVar.GetCVar("uz_hhx_keys_nhm_xScale", sb.CPlayer);
+		if (!_nhm_yScale) _nhm_yScale     = CVar.GetCVar("uz_hhx_keys_nhm_yScale", sb.CPlayer);
 	}
 
 	override void DrawHUDStuff(HCStatusbar sb, int state, double ticFrac) {
@@ -49,9 +57,11 @@ class UZKeys : HUDKeys {
 			if(sb.hpl.countinv("RedSkull"))    sb.drawimage("RSKUB0", (6,70),  sb.DI_TOPLEFT);
 		} else if (CheckCommonStuff(sb, state, ticFrac)) {
 		
-			int   posX  = hasHelmet ? _hlm_posX.GetInt()    : _nhm_posX.GetInt();
-			int   posY  = hasHelmet ? _hlm_posY.GetInt()    : _nhm_posY.GetInt();
-			float scale = hasHelmet ? _hlm_scale.GetFloat() : _nhm_scale.GetFloat();
+			int   posX   = hasHelmet ? _hlm_posX.GetInt()     : _nhm_posX.GetInt();
+			int   posY   = hasHelmet ? _hlm_posY.GetInt()     : _nhm_posY.GetInt();
+			float scale  = hasHelmet ? _hlm_scale.GetFloat()  : _nhm_scale.GetFloat();
+			float xScale = hasHelmet ? _hlm_xScale.GetFloat() : _nhm_xScale.GetFloat();
+			float yScale = hasHelmet ? _hlm_yScale.GetFloat() : _nhm_yScale.GetFloat();
 		
 			// Blue Key(s)
 			string keytype="";
@@ -59,7 +69,7 @@ class UZKeys : HUDKeys {
 			if(sb.hpl.countinv("BlueSkull")) keytype = keyType == "" ? "STKEYS3" : "STKEYS6";
 			if(keytype!="")sb.drawimage(
 				keytype,
-				(posX, posY - (12 * scale)),
+				(posX + (12 * xScale), posY - (12 * yScale)),
 				sb.DI_SCREEN_CENTER_BOTTOM,
 				scale: (scale, scale)
 			);
@@ -70,7 +80,7 @@ class UZKeys : HUDKeys {
 			if(sb.hpl.countinv("YellowSkull")) keytype = keytype == "" ? "STKEYS4" : "STKEYS7";
 			if(keytype!="")sb.drawimage(
 				keytype,
-				(posX, posY - (6 * scale)),
+				(posX + (6 * xScale), posY - (6 * yScale)),
 				sb.DI_SCREEN_CENTER_BOTTOM,
 				scale: (scale, scale)
 			);
@@ -81,7 +91,7 @@ class UZKeys : HUDKeys {
 			if(sb.hpl.countinv("RedSkull")) keytype = keytype == "" ? "STKEYS5" : "STKEYS8";
 			if(keytype!="")sb.drawimage(
 				keytype,
-				(posX , posY),
+				(posX, posY),
 				sb.DI_SCREEN_CENTER_BOTTOM,
 				scale: (scale, scale)
 			);
