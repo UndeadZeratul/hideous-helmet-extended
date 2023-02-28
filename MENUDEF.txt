@@ -57,6 +57,8 @@ OptionMenu "HHXAmmoCounters" {
 	Slider "$HHXPosX", "uz_hhx_ammoCounters_nhm_posX", -200, 200, 1, 0, "uz_hhx_ammoCounters_enabled"
 	Slider "$HHXPosY", "uz_hhx_ammoCounters_nhm_posY", -150, 150, 1, 0, "uz_hhx_ammoCounters_enabled"
 	Slider "$HHXScale", "uz_hhx_ammoCounters_nhm_scale", .01, 4., .05, 2, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXScaleX", "uz_hhx_ammoCounters_nhm_xScale", -2., 2., .05, 2, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXScaleY", "uz_hhx_ammoCounters_nhm_yScale", -2., 2., .05, 2, "uz_hhx_ammoCounters_enabled"
 	
 	StaticText ""
 	StaticText ""
@@ -68,6 +70,8 @@ OptionMenu "HHXAmmoCounters" {
 	Slider "$HHXPosX", "uz_hhx_ammoCounters_hlm_posX", -200, 200, 1, 0, "uz_hhx_ammoCounters_enabled"
 	Slider "$HHXPosY", "uz_hhx_ammoCounters_hlm_posY", -150, 150, 1, 0, "uz_hhx_ammoCounters_enabled"
 	Slider "$HHXScale", "uz_hhx_ammoCounters_hlm_scale", .01, 4., .05, 2, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXScaleX", "uz_hhx_ammoCounters_hlm_xScale", -2., 2., .05, 2, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXScaleY", "uz_hhx_ammoCounters_hlm_yScale", -2., 2., .05, 2, "uz_hhx_ammoCounters_enabled"
 	
 	StaticText ""
 	StaticText ""
@@ -285,6 +289,8 @@ OptionMenu "HHXFullInventory" {
 	Slider "$HHXPosX", "uz_hhx_fullInventory_nhm_posX", -400, 0, 1, 0, "uz_hhx_fullInventory_enabled"
 	Slider "$HHXPosY", "uz_hhx_fullInventory_nhm_posY", -200, 0, 1, 0, "uz_hhx_fullInventory_enabled"
 	Slider "$HHXScale", "uz_hhx_fullInventory_nhm_scale", .01, 4., .05, 2, "uz_hhx_fullInventory_enabled"
+	Slider "$HHXScaleX", "uz_hhx_fullInventory_nhm_xScale", -2., 2., .05, 2, "uz_hhx_fullInventory_enabled"
+	Slider "$HHXScaleY", "uz_hhx_fullInventory_nhm_yScale", -2., 2., .05, 2, "uz_hhx_fullInventory_enabled"
 
 	StaticText ""
 	StaticText ""
@@ -296,6 +302,8 @@ OptionMenu "HHXFullInventory" {
 	Slider "$HHXPosX", "uz_hhx_fullInventory_hlm_posX", -400, 0, 1, 0, "uz_hhx_fullInventory_enabled"
 	Slider "$HHXPosY", "uz_hhx_fullInventory_hlm_posY", -200, 0, 1, 0, "uz_hhx_fullInventory_enabled"
 	Slider "$HHXScale", "uz_hhx_fullInventory_hlm_scale", .01, 4., .05, 2, "uz_hhx_fullInventory_enabled"
+	Slider "$HHXScaleX", "uz_hhx_fullInventory_hlm_xScale", -2., 2., .05, 2, "uz_hhx_fullInventory_enabled"
+	Slider "$HHXScaleY", "uz_hhx_fullInventory_hlm_yScale", -2., 2., .05, 2, "uz_hhx_fullInventory_enabled"
 	
 	StaticText ""
 	StaticText ""

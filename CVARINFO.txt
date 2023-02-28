@@ -4,11 +4,15 @@ user int   uz_hhx_ammoCounters_nhm_hudLevel = 2;
 user int   uz_hhx_ammoCounters_nhm_posX     = -8;
 user int   uz_hhx_ammoCounters_nhm_posY     = -6;
 user float uz_hhx_ammoCounters_nhm_scale    = 1.;
+user float uz_hhx_ammoCounters_nhm_xScale   = 1.;
+user float uz_hhx_ammoCounters_nhm_yScale   = 1.;
 user bool  uz_hhx_ammoCounters_hlm_required = false;
 user int   uz_hhx_ammoCounters_hlm_hudLevel = 2;
 user int   uz_hhx_ammoCounters_hlm_posX     = -8;
 user int   uz_hhx_ammoCounters_hlm_posY     = -6;
 user float uz_hhx_ammoCounters_hlm_scale    = 1.;
+user float uz_hhx_ammoCounters_hlm_xScale   = 1.;
+user float uz_hhx_ammoCounters_hlm_yScale   = 1.;
 
 // ARMOUR CONFIGS
 user bool  uz_hhx_armour_enabled      = true;
@@ -97,11 +101,15 @@ user int   uz_hhx_fullInventory_nhm_hudLevel = 2;
 user int   uz_hhx_fullInventory_nhm_posX     = -18;
 user int   uz_hhx_fullInventory_nhm_posY     = -20;
 user float uz_hhx_fullInventory_nhm_scale    = 1.;
+user float uz_hhx_fullInventory_nhm_xScale   = 1.;
+user float uz_hhx_fullInventory_nhm_yScale   = 1.;
 user bool  uz_hhx_fullInventory_hlm_required = false;
 user int   uz_hhx_fullInventory_hlm_hudLevel = 2;
 user int   uz_hhx_fullInventory_hlm_posX     = -18;
 user int   uz_hhx_fullInventory_hlm_posY     = -20;
 user float uz_hhx_fullInventory_hlm_scale    = 1.;
+user float uz_hhx_fullInventory_hlm_xScale   = 1.;
+user float uz_hhx_fullInventory_hlm_yScale   = 1.;
 
 // INVENTORY CONFIGS
 user bool  uz_hhx_inventory_enabled      = true;
