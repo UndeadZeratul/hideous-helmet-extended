@@ -23,6 +23,7 @@ user int   uz_hhx_armour_nhm_hudLevel = 1;
 user int   uz_hhx_armour_nhm_posX     = -100;
 user int   uz_hhx_armour_nhm_posY     = -6;
 user float uz_hhx_armour_nhm_scale    = 1.;
+
 user bool  uz_hhx_armour_hlm_required = false;
 user int   uz_hhx_armour_hlm_hudLevel = 1;
 user int   uz_hhx_armour_hlm_posX     = -100;
@@ -56,6 +57,7 @@ user int   uz_hhx_compass_nhm_hudLevel = 2;
 user int   uz_hhx_compass_nhm_posX     = 600;
 user int   uz_hhx_compass_nhm_posY     = 0;
 user float uz_hhx_compass_nhm_scale    = 1.;
+
 user bool  uz_hhx_compass_hlm_required = false;
 user int   uz_hhx_compass_hlm_hudLevel = 2;
 user int   uz_hhx_compass_hlm_posX     = 600;
@@ -68,6 +70,7 @@ user int   uz_hhx_ekg_nhm_hudLevel = 1;
 user int   uz_hhx_ekg_nhm_posX     = -3;
 user int   uz_hhx_ekg_nhm_posY     = -7;
 user float uz_hhx_ekg_nhm_scale    = 1.;
+
 user bool  uz_hhx_ekg_hlm_required = false;
 user int   uz_hhx_ekg_hlm_hudLevel = 1;
 user int   uz_hhx_ekg_hlm_posX     = -3;
@@ -77,14 +80,15 @@ user float uz_hhx_ekg_hlm_scale    = 1.;
 // Encumbrance CONFIGS
 user bool  uz_hhx_encumbrance_enabled      = true;
 user int   uz_hhx_encumbrance_nhm_hudLevel = 2;
-user int   uz_hhx_encumbrance_hlm_posX     = 4;
-user int   uz_hhx_encumbrance_hlm_posY     = 1;
-user float uz_hhx_encumbrance_hlm_scale    = 1.;
-user bool  uz_hhx_encumbrance_hlm_required = false;
-user int   uz_hhx_encumbrance_hlm_hudLevel = 2;
 user int   uz_hhx_encumbrance_nhm_posX     = 4;
 user int   uz_hhx_encumbrance_nhm_posY     = 1;
 user float uz_hhx_encumbrance_nhm_scale    = 1.;
+
+user bool  uz_hhx_encumbrance_hlm_required = false;
+user int   uz_hhx_encumbrance_hlm_hudLevel = 2;
+user int   uz_hhx_encumbrance_hlm_posX     = 4;
+user int   uz_hhx_encumbrance_hlm_posY     = 1;
+user float uz_hhx_encumbrance_hlm_scale    = 1.;
 
 // Heartbeat CONFIGS
 user bool  uz_hhx_heartbeat_enabled      = true;
@@ -92,6 +96,7 @@ user int   uz_hhx_heartbeat_nhm_hudLevel = 1;
 user int   uz_hhx_heartbeat_nhm_posX     = -10;
 user int   uz_hhx_heartbeat_nhm_posY     = -4;
 user float uz_hhx_heartbeat_nhm_scale    = 1.;
+
 user bool  uz_hhx_heartbeat_hlm_required = false;
 user int   uz_hhx_heartbeat_hlm_hudLevel = 1;
 user int   uz_hhx_heartbeat_hlm_posX     = 25;
@@ -123,6 +128,7 @@ user int   uz_hhx_inventory_nhm_hudLevel = 1;
 user int   uz_hhx_inventory_nhm_posX     = 25;
 user int   uz_hhx_inventory_nhm_posY     = -14;
 user float uz_hhx_inventory_nhm_scale    = 1.;
+
 user bool  uz_hhx_inventory_hlm_required = false;
 user int   uz_hhx_inventory_hlm_hudLevel = 1;
 user int   uz_hhx_inventory_hlm_posX     = 25;
@@ -137,6 +143,7 @@ user int   uz_hhx_keys_nhm_posY     = -4;
 user float uz_hhx_keys_nhm_scale    = 1.;
 user float uz_hhx_keys_nhm_xScale   = 0.;
 user float uz_hhx_keys_nhm_yScale   = 1.;
+
 user bool  uz_hhx_keys_hlm_required = false;
 user int   uz_hhx_keys_hlm_hudLevel = 1;
 user int   uz_hhx_keys_hlm_posX     = 50;
@@ -151,6 +158,7 @@ user int   uz_hhx_mugshot_nhm_hudLevel = 1;
 user int   uz_hhx_mugshot_nhm_posX     = 0;
 user int   uz_hhx_mugshot_nhm_posY     = -14;
 user float uz_hhx_mugshot_nhm_scale    = 1.;
+
 user bool  uz_hhx_mugshot_hlm_required = false;
 user int   uz_hhx_mugshot_hlm_hudLevel = 1;
 user int   uz_hhx_mugshot_hlm_posX     = -171;
@@ -164,6 +172,7 @@ user int    uz_hhx_background_nhm_hudLevel = 1;
 user int    uz_hhx_background_nhm_posX     = 0;
 user int    uz_hhx_background_nhm_posY     = 0;
 user float  uz_hhx_background_nhm_scale    = 1.;
+
 user bool   uz_hhx_background_hlm_required = true;
 user int    uz_hhx_background_hlm_hudLevel = 1;
 user int    uz_hhx_background_hlm_posX     = 0;
@@ -176,6 +185,7 @@ user int   uz_hhx_weaponSprite_nhm_hudLevel = 2;
 user int   uz_hhx_weaponSprite_nhm_posX     = 58;
 user int   uz_hhx_weaponSprite_nhm_posY     = -6;
 user float uz_hhx_weaponSprite_nhm_scale    = 1.;
+
 user bool  uz_hhx_weaponSprite_hlm_required = false;
 user int   uz_hhx_weaponSprite_hlm_hudLevel = 2;
 user int   uz_hhx_weaponSprite_hlm_posX     = 58;
@@ -207,6 +217,7 @@ user int   uz_hhx_weaponStatus_nhm_hudLevel = 1;
 user int   uz_hhx_weaponStatus_nhm_posX     = -16;
 user int   uz_hhx_weaponStatus_nhm_posY     = -6;
 user float uz_hhx_weaponStatus_nhm_scale    = 1.;
+
 user bool  uz_hhx_weaponStatus_hlm_required = false;
 user int   uz_hhx_weaponStatus_hlm_hudLevel = 1;
 user int   uz_hhx_weaponStatus_hlm_posX     = -16;
@@ -219,6 +230,7 @@ user int   uz_hhx_woundCounter_nhm_hudLevel = 1;
 user int   uz_hhx_woundCounter_nhm_posX     = 10;
 user int   uz_hhx_woundCounter_nhm_posY     = -4;
 user float uz_hhx_woundCounter_nhm_scale    = 1.;
+
 user bool  uz_hhx_woundCounter_hlm_required = false;
 user int   uz_hhx_woundCounter_hlm_hudLevel = 1;
 user int   uz_hhx_woundCounter_hlm_posX     = 10;
