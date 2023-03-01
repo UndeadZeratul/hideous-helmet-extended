@@ -40,11 +40,13 @@ HHXHUDLevel       = "Requires HUD Level";
 HHXBackgroundRef = "HUD Background Sprite";
 
 // HUD Element Positioning Config Labels
-HHXPosX   = "Horizontal Position";
-HHXPosY   = "Vertical Position";
-HHXScale  = "Scale";
-HHXScaleX = "Horizontal Scale";
-HHXScaleY = "Vertical Scale";
+HHXPosX       = "Horizontal Position";
+HHXPosY       = "Vertical Position";
+HHXScale      = "Scale";
+HHXScaleX     = "Horizontal Scale";
+HHXScaleY     = "Vertical Scale";
+HHXWrapLength = "Max Items per Row";
+HHXAuto       = "Auto";
 
 // Danger Zone Label
 HHXDangerZone = "DANGER ZONE";
