@@ -52,11 +52,23 @@ class UZBackground : HUDElement {
 			int   posY  = hasHelmet ? _hlm_posY.GetInt()    : _nhm_posY.GetInt();
 			float scale = hasHelmet ? _hlm_scale.GetFloat() : _nhm_scale.GetFloat();
 
+			Vector2 bgScale = (scale, scale);
+
+			if (scale <= 0) {
+				Vector2 hudScale = sb.GetHUDScale();
+
+				int bgWidth;
+				int bgHeight;
+				[bgWidth, bgHeight] = TexMan.GetSize(TexMan.CheckForTexture(_ref.GetString()));
+
+				bgScale = (1. / bgWidth / hudScale.x * Screen.GetWidth(), 1. / bgHeight / hudScale.y * Screen.GetHeight());
+			}
+
 			sb.DrawImage(
 				_ref.GetString(),
-				(posX,posY),
+				(posX, posY),
 				sb.DI_SCREEN_CENTER_BOTTOM,
-				scale: (scale, scale)
+				scale: bgScale
 			);
 		}
 	}
