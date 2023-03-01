@@ -196,19 +196,19 @@ user float uz_hhx_weaponSprite_hlm_scale    = 1.;
 user bool  uz_hhx_weaponStash_enabled        = true;
 user int   uz_hhx_weaponStash_nhm_hudLevel   = 2;
 user int   uz_hhx_weaponStash_nhm_posX       = 8;
-user int   uz_hhx_weaponStash_nhm_posY       = 0;
+user int   uz_hhx_weaponStash_nhm_posY       = -24;
 user float uz_hhx_weaponStash_nhm_scale      = 1.;
 user float uz_hhx_weaponStash_nhm_xScale     = 0.;
-user float uz_hhx_weaponStash_nhm_yScale     = 1.;
+user float uz_hhx_weaponStash_nhm_yScale     = 0.;
 user int   uz_hhx_weaponStash_nhm_wrapLength = -1;
 
 user bool  uz_hhx_weaponStash_hlm_required   = false;
-user int   uz_hhx_weaponStash_hlm_hudLevel   = 1;
+user int   uz_hhx_weaponStash_hlm_hudLevel   = 2;
 user int   uz_hhx_weaponStash_hlm_posX       = 8;
-user int   uz_hhx_weaponStash_hlm_posY       = 0;
+user int   uz_hhx_weaponStash_hlm_posY       = -24;
 user float uz_hhx_weaponStash_hlm_scale      = 1.;
 user float uz_hhx_weaponStash_hlm_xScale     = 0.;
-user float uz_hhx_weaponStash_hlm_yScale     = 1.;
+user float uz_hhx_weaponStash_hlm_yScale     = 0.;
 user int   uz_hhx_weaponStash_hlm_wrapLength = -1;
 
 // WEAPON STATUS CONFIGS
