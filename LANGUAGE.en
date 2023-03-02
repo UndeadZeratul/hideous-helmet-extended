@@ -46,7 +46,10 @@ HHXScale      = "Scale";
 HHXScaleX     = "Horizontal Scale";
 HHXScaleY     = "Vertical Scale";
 HHXWrapLength = "Max Items per Row";
-HHXAuto       = "Auto";
+
+// HUD Element Scaling Labels
+HHXAuto        = "Auto";
+HHXFitToScreen = "Fit to Screen";
 
 // Danger Zone Label
 HHXDangerZone = "DANGER ZONE";
