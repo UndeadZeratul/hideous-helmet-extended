@@ -19,7 +19,7 @@ HHXHeartbeat     = "Heartbeat Options";
 HHXInventory     = "Inventory Options";
 HHXKeys          = "Keys Options";
 HHXMugshot       = "Mugshot Options";
-HHXOverlay       = "Helmet Overlay Options";
+HHXBackground    = "HUD Background Options";
 HHXWeaponSprite  = "Weapon Sprite Options";
 HHXWeaponStash   = "Weapon Stash Options";
 HHXWeaponStatus  = "Weapon Status Options";
@@ -37,14 +37,20 @@ HHXHelmetRequired = "Requires Helmet";
 HHXHUDLevel       = "Requires HUD Level";
 
 // Sprite References
-HHXOverlayRef = "HUD Background Sprite";
+HHXBackgroundRef = "HUD Background Graphic";
+HHXBgRef         = "HUD Element Background Graphic";
 
 // HUD Element Positioning Config Labels
-HHXPosX   = "Horizontal Position";
-HHXPosY   = "Vertical Position";
-HHXScale  = "Scale";
-HHXScaleX = "Horizontal Scale";
-HHXScaleY = "Vertical Scale";
+HHXPosX       = "Horizontal Position";
+HHXPosY       = "Vertical Position";
+HHXScale      = "Scale";
+HHXScaleX     = "Horizontal Scale";
+HHXScaleY     = "Vertical Scale";
+HHXWrapLength = "Max Items per Row";
+
+// HUD Element Scaling Labels
+HHXAuto        = "Auto";
+HHXFitToScreen = "Fit to Screen";
 
 // Danger Zone Label
 HHXDangerZone = "DANGER ZONE";
@@ -66,7 +72,7 @@ HHXResetHeartbeat     = "Reset Heartbeat Options";
 HHXResetInventory     = "Reset Inventory Options";
 HHXResetKeys          = "Reset Keys Options";
 HHXResetMugshot       = "Reset Mugshot Options";
-HHXResetOverlay       = "Reset Helmet Overlay Options";
+HHXResetBackground    = "Reset Helmet Background Options";
 HHXResetWeaponSprite  = "Reset Weapon Sprite Options";
 HHXResetWeaponStash   = "Reset Weapon Stash Options";
 HHXResetWeaponStatus  = "Reset Weapon Status Options";
@@ -86,7 +92,7 @@ HHXHHResetHeartbeat     = "Reset Heartbeat HHelmet Options";
 HHXHHResetInventory     = "Reset Inventory HHelmet Options";
 HHXHHResetKeys          = "Reset Keys HHelmet Options";
 HHXHHResetMugshot       = "Reset Mugshot HHelmet Options";
-HHXHHResetOverlay       = "Reset Helmet Overlay HHelmet Options";
+HHXHHResetBackground    = "Reset Helmet Background HHelmet Options";
 HHXHHResetWeaponSprite  = "Reset Weapon Sprite HHelmet Options";
 HHXHHResetweaponStash   = "Reset Weapon Stash HHelmet Options";
 HHXHHResetWeaponStatus  = "Reset Weapon Status HHelmet Options";
@@ -96,6 +102,7 @@ HHXHHResetWoundCounter  = "Reset Wound Counter HHelmet Options";
 HHXPresetDescription = "Here are some presets to get you started.";
 HHXPresetDoomAlpha   = "Doom Alpha Helmet HUD";
 HHXPresetArcterezion = "Arcterezion's HUD";
+HHXPresetSwampyrad   = "Swampyrad's Resident Evil 1 HUD";
 HHXPresetUDV1        = "Ultimate Doom Visor HUD";
 HHXPresetUDV2        = "Ultimate Doom Visor Alternate HUD";
 

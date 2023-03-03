@@ -31,6 +31,10 @@ Alpha Doom HUD:
 Arcterezion's HUD:
 - Arcterezion
 
+Swampyrad's Resident Evil 1 HUD:
+- Swampyrad
+- Capcom
+
 Ultimate Doom Visor HUD:
 - Saegiru
 - WildWeasel

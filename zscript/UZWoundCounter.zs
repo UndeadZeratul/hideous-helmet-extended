@@ -22,6 +22,15 @@ class UZWoundCounter : HUDElement {
 	private transient CVar _nhm_posY;
 	private transient CVar _nhm_scale;
 
+	private transient CVar _nhm_bgRef;
+	private transient CVar _nhm_bgPosX;
+	private transient CVar _nhm_bgPosY;
+	private transient CVar _nhm_bgScale;
+	private transient CVar _hlm_bgRef;
+	private transient CVar _hlm_bgPosX;
+	private transient CVar _hlm_bgPosY;
+	private transient CVar _hlm_bgScale;
+
 	override void Init(HCStatusbar sb) {
 		ZLayer    = 2;
 		Namespace = "woundcounter";
@@ -36,16 +45,25 @@ class UZWoundCounter : HUDElement {
 		if (!_hh_onlyshowopenwounds) _hh_onlyshowopenwounds       = CVar.GetCVar("hh_onlyshowopenwounds", sb.CPlayer);
 		if (!_hh_wc_usedynamiccol) _hh_wc_usedynamiccol           = CVar.GetCVar("hh_wc_usedynamiccol", sb.CPlayer);
 			
-		if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_woundCounter_enabled", sb.CPlayer);
-		if (!_hlm_required) _hlm_required = CVar.GetCVar("uz_hhx_woundCounter_hlm_required", sb.CPlayer);
-		if (!_hlm_hudLevel) _hlm_hudLevel = CVar.GetCVar("uz_hhx_woundCounter_hlm_hudLevel", sb.CPlayer);
-		if (!_hlm_posX) _hlm_posX         = CVar.GetCVar("uz_hhx_woundCounter_hlm_posX", sb.CPlayer);
-		if (!_hlm_posY) _hlm_posY         = CVar.GetCVar("uz_hhx_woundCounter_hlm_posY", sb.CPlayer);
-		if (!_hlm_scale) _hlm_scale       = CVar.GetCVar("uz_hhx_woundCounter_hlm_scale", sb.CPlayer);
-		if (!_nhm_hudLevel) _nhm_hudLevel = CVar.GetCVar("uz_hhx_woundCounter_nhm_hudLevel", sb.CPlayer);
-		if (!_nhm_posX) _nhm_posX         = CVar.GetCVar("uz_hhx_woundCounter_nhm_posX", sb.CPlayer);
-		if (!_nhm_posY) _nhm_posY         = CVar.GetCVar("uz_hhx_woundCounter_nhm_posY", sb.CPlayer);
-		if (!_nhm_scale) _nhm_scale       = CVar.GetCVar("uz_hhx_woundCounter_nhm_scale", sb.CPlayer);
+		if (!_enabled) _enabled                                   = CVar.GetCVar("uz_hhx_woundCounter_enabled", sb.CPlayer);
+		if (!_hlm_required) _hlm_required                         = CVar.GetCVar("uz_hhx_woundCounter_hlm_required", sb.CPlayer);
+		if (!_hlm_hudLevel) _hlm_hudLevel                         = CVar.GetCVar("uz_hhx_woundCounter_hlm_hudLevel", sb.CPlayer);
+		if (!_hlm_posX) _hlm_posX                                 = CVar.GetCVar("uz_hhx_woundCounter_hlm_posX", sb.CPlayer);
+		if (!_hlm_posY) _hlm_posY                                 = CVar.GetCVar("uz_hhx_woundCounter_hlm_posY", sb.CPlayer);
+		if (!_hlm_scale) _hlm_scale                               = CVar.GetCVar("uz_hhx_woundCounter_hlm_scale", sb.CPlayer);
+		if (!_nhm_hudLevel) _nhm_hudLevel                         = CVar.GetCVar("uz_hhx_woundCounter_nhm_hudLevel", sb.CPlayer);
+		if (!_nhm_posX) _nhm_posX                                 = CVar.GetCVar("uz_hhx_woundCounter_nhm_posX", sb.CPlayer);
+		if (!_nhm_posY) _nhm_posY                                 = CVar.GetCVar("uz_hhx_woundCounter_nhm_posY", sb.CPlayer);
+		if (!_nhm_scale) _nhm_scale                               = CVar.GetCVar("uz_hhx_woundCounter_nhm_scale", sb.CPlayer);
+
+		if (!_nhm_bgRef) _nhm_bgRef                               = CVar.GetCVar("uz_hhx_woundCounter_bg_nhm_ref", sb.CPlayer);
+		if (!_nhm_bgPosX) _nhm_bgPosX                             = CVar.GetCVar("uz_hhx_woundCounter_bg_nhm_posX", sb.CPlayer);
+		if (!_nhm_bgPosY) _nhm_bgPosY                             = CVar.GetCVar("uz_hhx_woundCounter_bg_nhm_posY", sb.CPlayer);
+		if (!_nhm_bgScale) _nhm_bgScale                           = CVar.GetCVar("uz_hhx_woundCounter_bg_nhm_scale", sb.CPlayer);
+		if (!_hlm_bgRef) _hlm_bgRef                               = CVar.GetCVar("uz_hhx_woundCounter_bg_hlm_ref", sb.CPlayer);
+		if (!_hlm_bgPosX) _hlm_bgPosX                             = CVar.GetCVar("uz_hhx_woundCounter_bg_hlm_posX", sb.CPlayer);
+		if (!_hlm_bgPosY) _hlm_bgPosY                             = CVar.GetCVar("uz_hhx_woundCounter_bg_hlm_posY", sb.CPlayer);
+		if (!_hlm_bgScale) _hlm_bgScale                           = CVar.GetCVar("uz_hhx_woundCounter_bg_hlm_scale", sb.CPlayer);
 
 		if (!sb.hpl)
 			return;
@@ -97,60 +115,77 @@ class UZWoundCounter : HUDElement {
 			|| HDSpectator(sb.hpl)
 			|| sb.HUDLevel < hudLevel
 		) return;
+
+		if (CheckCommonStuff(sb, state, ticFrac)) {
 			
-		int   posX  = hasHelmet ? _hlm_posX.GetInt()    : _nhm_posX.GetInt();
-		int   posY  = hasHelmet ? _hlm_posY.GetInt()    : _nhm_posY.GetInt();
-		float scale = hasHelmet ? _hlm_scale.GetFloat() : _nhm_scale.GetFloat();
+			int   posX  = hasHelmet ? _hlm_posX.GetInt()    : _nhm_posX.GetInt();
+			int   posY  = hasHelmet ? _hlm_posY.GetInt()    : _nhm_posY.GetInt();
+			float scale = hasHelmet ? _hlm_scale.GetFloat() : _nhm_scale.GetFloat();
 
-		Vector2 coords = (posX, posY);
-		int of = 0;
-		HDBleedingWound biggestWound = HDBleedingWound.FindBiggest(sb.hpl);
+			string bgRef   = hasHelmet ? _hlm_bgRef.GetString()  : _nhm_bgRef.GetString();
+			int    bgPosX  = hasHelmet ? _hlm_bgPosX.GetInt()    : _nhm_bgPosX.GetInt();
+			int    bgPosY  = hasHelmet ? _hlm_bgPosY.GetInt()    : _nhm_bgPosY.GetInt();
+			float  bgScale = hasHelmet ? _hlm_bgScale.GetFloat() : _nhm_bgScale.GetFloat();
 
-		if (biggestWound) {
+
+			// Draw HUD Element Background Image if it's defined
 			sb.DrawImage(
-				"BLUDC0",
-				(coords.x, coords.y + scale),
-				sb.DI_SCREEN_CENTER_BOTTOM | sb.DI_ITEM_LEFT_TOP,
-				0.6,
-				scale: (0.5 * scale, 0.5 * scale)
+				bgRef,
+				(posX + bgPosX, posY + bgPosY),
+				sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_CENTER,
+				scale: (scale * bgScale, scale * bgScale)
 			);
-			of = Clamp(int(biggestWound.Depth * 0.2), 1, 3) * scale;
 
-			if (sb.hpl.Flip)
-				of = -of;
-		}
+			Vector2 coords = (posX, posY);
+			int of = 0;
+			HDBleedingWound biggestWound = HDBleedingWound.FindBiggest(sb.hpl);
 
-		Color fillColour = (sb.hpl.Health > 70 || !_hh_wc_usedynamiccol.GetBool())
-			? Color(255, sb.SBColour.R, sb.SBColour.G, sb.SBColour.B)
-			: (sb.hpl.Health > 33)
-				? Color(255, 240, 210, 10)
-				: Color(255, 220, 0, 0);
+			if (biggestWound) {
+				sb.DrawImage(
+					"BLUDC0",
+					(coords.x, coords.y + scale),
+					sb.DI_SCREEN_CENTER_BOTTOM | sb.DI_ITEM_LEFT_TOP,
+					0.6,
+					scale: (0.5 * scale, 0.5 * scale)
+				);
+				of = Clamp(int(biggestWound.Depth * 0.2), 1, 3) * scale;
 
-		sb.Fill(
-			fillColour,
-			coords.x + (2 * scale),
-			coords.y + (of * scale),
-			2 * scale,
-			6 * scale,
-			sb.DI_SCREEN_CENTER_BOTTOM
-		);
-		sb.Fill(
-			fillColour,
-			coords.x,
-			coords.y + ((of + 2) * scale),
-			6 * scale,
-			2 * scale,
-			sb.DI_SCREEN_CENTER_BOTTOM
-		);
+				if (sb.hpl.Flip)
+					of = -of;
+			}
 
-		if (_hh_woundcounter.GetBool()) {
-			sb.DrawString(
-				sb.mIndexFont,
-				_woundCounter,
-				(coords.x + (4 * scale), coords.y + scale),
-				sb.DI_SCREEN_CENTER_BOTTOM | sb.DI_TEXT_ALIGN_LEFT,
-				scale: (scale, scale)
+			Color fillColour = (sb.hpl.Health > 70 || !_hh_wc_usedynamiccol.GetBool())
+				? Color(255, sb.SBColour.R, sb.SBColour.G, sb.SBColour.B)
+				: (sb.hpl.Health > 33)
+					? Color(255, 240, 210, 10)
+					: Color(255, 220, 0, 0);
+
+			sb.Fill(
+				fillColour,
+				coords.x + (2 * scale),
+				coords.y + (of * scale),
+				2 * scale,
+				6 * scale,
+				sb.DI_SCREEN_CENTER_BOTTOM
 			);
+			sb.Fill(
+				fillColour,
+				coords.x,
+				coords.y + ((of + 2) * scale),
+				6 * scale,
+				2 * scale,
+				sb.DI_SCREEN_CENTER_BOTTOM
+			);
+
+			if (_hh_woundcounter.GetBool()) {
+				sb.DrawString(
+					sb.mIndexFont,
+					_woundCounter,
+					(coords.x + (4 * scale), coords.y + scale),
+					sb.DI_SCREEN_CENTER_BOTTOM | sb.DI_TEXT_ALIGN_LEFT,
+					scale: (scale, scale)
+				);
+			}
 		}
 	}
 }

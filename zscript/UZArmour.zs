@@ -67,6 +67,15 @@ class UZArmour : HUDElement {
 	private transient CVar _boots_nhm_posY;
 	private transient CVar _boots_nhm_scale;
 
+	private transient CVar _nhm_bgRef;
+	private transient CVar _nhm_bgPosX;
+	private transient CVar _nhm_bgPosY;
+	private transient CVar _nhm_bgScale;
+	private transient CVar _hlm_bgRef;
+	private transient CVar _hlm_bgPosX;
+	private transient CVar _hlm_bgPosY;
+	private transient CVar _hlm_bgScale;
+
 	private transient Array<UZHDArmourStats> _arms;
 	private transient Array<int> _slots;
 
@@ -82,16 +91,25 @@ class UZArmour : HUDElement {
 		if (!_hh_helmetoffsety) _hh_helmetoffsety = CVar.GetCVar("hh_helmetoffsety", sb.CPlayer);
 
 		// Global CVARs
-		if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_armour_enabled", sb.CPlayer);
-		if (!_hlm_required) _hlm_required = CVar.GetCVar("uz_hhx_armour_hlm_required", sb.CPlayer);
-		if (!_hlm_hudLevel) _hlm_hudLevel = CVar.GetCVar("uz_hhx_armour_hlm_hudLevel", sb.CPlayer);
-		if (!_hlm_posX) _hlm_posX         = CVar.GetCVar("uz_hhx_armour_hlm_posX", sb.CPlayer);
-		if (!_hlm_posY) _hlm_posY         = CVar.GetCVar("uz_hhx_armour_hlm_posY", sb.CPlayer);
-		if (!_hlm_scale) _hlm_scale       = CVar.GetCVar("uz_hhx_armour_hlm_scale", sb.CPlayer);
-		if (!_nhm_hudLevel) _nhm_hudLevel = CVar.GetCVar("uz_hhx_armour_nhm_hudLevel", sb.CPlayer);
-		if (!_nhm_posX) _nhm_posX         = CVar.GetCVar("uz_hhx_armour_nhm_posX", sb.CPlayer);
-		if (!_nhm_posY) _nhm_posY         = CVar.GetCVar("uz_hhx_armour_nhm_posY", sb.CPlayer);
-		if (!_nhm_scale) _nhm_scale       = CVar.GetCVar("uz_hhx_armour_nhm_scale", sb.CPlayer);
+		if (!_enabled) _enabled                   = CVar.GetCVar("uz_hhx_armour_enabled", sb.CPlayer);
+		if (!_hlm_required) _hlm_required         = CVar.GetCVar("uz_hhx_armour_hlm_required", sb.CPlayer);
+		if (!_hlm_hudLevel) _hlm_hudLevel         = CVar.GetCVar("uz_hhx_armour_hlm_hudLevel", sb.CPlayer);
+		if (!_hlm_posX) _hlm_posX                 = CVar.GetCVar("uz_hhx_armour_hlm_posX", sb.CPlayer);
+		if (!_hlm_posY) _hlm_posY                 = CVar.GetCVar("uz_hhx_armour_hlm_posY", sb.CPlayer);
+		if (!_hlm_scale) _hlm_scale               = CVar.GetCVar("uz_hhx_armour_hlm_scale", sb.CPlayer);
+		if (!_nhm_hudLevel) _nhm_hudLevel         = CVar.GetCVar("uz_hhx_armour_nhm_hudLevel", sb.CPlayer);
+		if (!_nhm_posX) _nhm_posX                 = CVar.GetCVar("uz_hhx_armour_nhm_posX", sb.CPlayer);
+		if (!_nhm_posY) _nhm_posY                 = CVar.GetCVar("uz_hhx_armour_nhm_posY", sb.CPlayer);
+		if (!_nhm_scale) _nhm_scale               = CVar.GetCVar("uz_hhx_armour_nhm_scale", sb.CPlayer);
+
+		if (!_nhm_bgRef) _nhm_bgRef               = CVar.GetCVar("uz_hhx_armour_bg_nhm_ref", sb.CPlayer);
+		if (!_nhm_bgPosX) _nhm_bgPosX             = CVar.GetCVar("uz_hhx_armour_bg_nhm_posX", sb.CPlayer);
+		if (!_nhm_bgPosY) _nhm_bgPosY             = CVar.GetCVar("uz_hhx_armour_bg_nhm_posY", sb.CPlayer);
+		if (!_nhm_bgScale) _nhm_bgScale           = CVar.GetCVar("uz_hhx_armour_bg_nhm_scale", sb.CPlayer);
+		if (!_hlm_bgRef) _hlm_bgRef               = CVar.GetCVar("uz_hhx_armour_bg_hlm_ref", sb.CPlayer);
+		if (!_hlm_bgPosX) _hlm_bgPosX             = CVar.GetCVar("uz_hhx_armour_bg_hlm_posX", sb.CPlayer);
+		if (!_hlm_bgPosY) _hlm_bgPosY             = CVar.GetCVar("uz_hhx_armour_bg_hlm_posY", sb.CPlayer);
+		if (!_hlm_bgScale) _hlm_bgScale           = CVar.GetCVar("uz_hhx_armour_bg_hlm_scale", sb.CPlayer);
 
 		// Helmet Slot Offsets
 		if (!_helmet_hlm_posX) _helmet_hlm_posX   = CVar.GetCVar("uz_hhx_armour_helmet_hlm_posX", sb.CPlayer);
@@ -102,20 +120,20 @@ class UZArmour : HUDElement {
 		if (!_helmet_nhm_scale) _helmet_nhm_scale = CVar.GetCVar("uz_hhx_armour_helmet_nhm_scale", sb.CPlayer);
 
 		// Body Slot Offsets
-		if (!_body_hlm_posX) _body_hlm_posX   = CVar.GetCVar("uz_hhx_armour_body_hlm_posX", sb.CPlayer);
-		if (!_body_hlm_posY) _body_hlm_posY   = CVar.GetCVar("uz_hhx_armour_body_hlm_posY", sb.CPlayer);
-		if (!_body_hlm_scale) _body_hlm_scale = CVar.GetCVar("uz_hhx_armour_body_hlm_scale", sb.CPlayer);
-		if (!_body_nhm_posX) _body_nhm_posX   = CVar.GetCVar("uz_hhx_armour_body_nhm_posX", sb.CPlayer);
-		if (!_body_nhm_posY) _body_nhm_posY   = CVar.GetCVar("uz_hhx_armour_body_nhm_posY", sb.CPlayer);
-		if (!_body_nhm_scale) _body_nhm_scale = CVar.GetCVar("uz_hhx_armour_body_nhm_scale", sb.CPlayer);
+		if (!_body_hlm_posX) _body_hlm_posX       = CVar.GetCVar("uz_hhx_armour_body_hlm_posX", sb.CPlayer);
+		if (!_body_hlm_posY) _body_hlm_posY       = CVar.GetCVar("uz_hhx_armour_body_hlm_posY", sb.CPlayer);
+		if (!_body_hlm_scale) _body_hlm_scale     = CVar.GetCVar("uz_hhx_armour_body_hlm_scale", sb.CPlayer);
+		if (!_body_nhm_posX) _body_nhm_posX       = CVar.GetCVar("uz_hhx_armour_body_nhm_posX", sb.CPlayer);
+		if (!_body_nhm_posY) _body_nhm_posY       = CVar.GetCVar("uz_hhx_armour_body_nhm_posY", sb.CPlayer);
+		if (!_body_nhm_scale) _body_nhm_scale     = CVar.GetCVar("uz_hhx_armour_body_nhm_scale", sb.CPlayer);
 
 		// Boot Slot Offsets
-		if (!_boots_hlm_posX) _boots_hlm_posX   = CVar.GetCVar("uz_hhx_armour_boots_hlm_posX", sb.CPlayer);
-		if (!_boots_hlm_posY) _boots_hlm_posY   = CVar.GetCVar("uz_hhx_armour_boots_hlm_posY", sb.CPlayer);
-		if (!_boots_hlm_scale) _boots_hlm_scale = CVar.GetCVar("uz_hhx_armour_boots_hlm_scale", sb.CPlayer);
-		if (!_boots_nhm_posX) _boots_nhm_posX   = CVar.GetCVar("uz_hhx_armour_boots_nhm_posX", sb.CPlayer);
-		if (!_boots_nhm_posY) _boots_nhm_posY   = CVar.GetCVar("uz_hhx_armour_boots_nhm_posY", sb.CPlayer);
-		if (!_boots_nhm_scale) _boots_nhm_scale = CVar.GetCVar("uz_hhx_armour_boots_nhm_scale", sb.CPlayer);
+		if (!_boots_hlm_posX) _boots_hlm_posX     = CVar.GetCVar("uz_hhx_armour_boots_hlm_posX", sb.CPlayer);
+		if (!_boots_hlm_posY) _boots_hlm_posY     = CVar.GetCVar("uz_hhx_armour_boots_hlm_posY", sb.CPlayer);
+		if (!_boots_hlm_scale) _boots_hlm_scale   = CVar.GetCVar("uz_hhx_armour_boots_hlm_scale", sb.CPlayer);
+		if (!_boots_nhm_posX) _boots_nhm_posX     = CVar.GetCVar("uz_hhx_armour_boots_nhm_posX", sb.CPlayer);
+		if (!_boots_nhm_posY) _boots_nhm_posY     = CVar.GetCVar("uz_hhx_armour_boots_nhm_posY", sb.CPlayer);
+		if (!_boots_nhm_scale) _boots_nhm_scale   = CVar.GetCVar("uz_hhx_armour_boots_nhm_scale", sb.CPlayer);
 	}
 
 	override void DrawHUDStuff(HCStatusbar sb, int state, double ticFrac) {
@@ -132,6 +150,21 @@ class UZArmour : HUDElement {
 		int   posX  = hasHelmet ? _hlm_posX.GetInt()    : _nhm_posX.GetInt();
 		int   posY  = hasHelmet ? _hlm_posY.GetInt()    : _nhm_posY.GetInt();
 		float scale = hasHelmet ? _hlm_scale.GetFloat() : _nhm_scale.GetFloat();
+
+		string bgRef   = hasHelmet ? _hlm_bgRef.GetString()  : _nhm_bgRef.GetString();
+		int    bgPosX  = hasHelmet ? _hlm_bgPosX.GetInt()    : _nhm_bgPosX.GetInt();
+		int    bgPosY  = hasHelmet ? _hlm_bgPosY.GetInt()    : _nhm_bgPosY.GetInt();
+		float  bgScale = hasHelmet ? _hlm_bgScale.GetFloat() : _nhm_bgScale.GetFloat();
+		
+		// Draw HUD Element Background Image if it's defined
+		if (CheckCommonStuff(sb, state, ticFrac)) {
+			sb.DrawImage(
+				bgRef,
+				(posX + bgPosX, posY + bgPosY),
+				sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP,
+				scale: (scale * bgScale, scale * bgScale)
+			);
+		}
 
 		// Build list of metadata about currently worn armors
 		BuildArmourStats(sb.hpl);
