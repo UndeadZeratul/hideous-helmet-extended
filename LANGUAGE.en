@@ -37,7 +37,8 @@ HHXHelmetRequired = "Requires Helmet";
 HHXHUDLevel       = "Requires HUD Level";
 
 // Sprite References
-HHXBackgroundRef = "HUD Background Sprite";
+HHXBackgroundRef = "HUD Background Graphic";
+HHXBgRef         = "HUD Element Background Graphic";
 
 // HUD Element Positioning Config Labels
 HHXPosX       = "Horizontal Position";
@@ -101,6 +102,7 @@ HHXHHResetWoundCounter  = "Reset Wound Counter HHelmet Options";
 HHXPresetDescription = "Here are some presets to get you started.";
 HHXPresetDoomAlpha   = "Doom Alpha Helmet HUD";
 HHXPresetArcterezion = "Arcterezion's HUD";
+HHXPresetSwampyrad   = "Swampyrad's Resident Evil 1 HUD";
 HHXPresetUDV1        = "Ultimate Doom Visor HUD";
 HHXPresetUDV2        = "Ultimate Doom Visor Alternate HUD";
 
