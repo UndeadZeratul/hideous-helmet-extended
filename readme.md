@@ -11,6 +11,7 @@ _NOTE: The screenshots shown below contain extra addons to achieve the desired e
 ![nohelmet](./screenshots/no-helmet.png)  
 ![alpha-hud](./screenshots/alpha-hud.png)  
 ![arc-hud](./screenshots/arc-hud.png)  
+![re1-hud](./screenshots/re1-hud.png)  
 ![udv-hud](./screenshots/udv-hud.png)  
 ![udv-alt-hud](./screenshots/udv-alt-hud.png)  
 
@@ -49,6 +50,12 @@ UDV Alternate HUD:
 HUDCore HUD Elements:
 - Dastrukar
 - Matt
+
+Berserk Counter Logic:
+- Cozi
+
+Stim Counter Logic:
+- Cozi
 
 Remaining HUD Elements:
 - Matt

@@ -80,7 +80,7 @@ class UZWeaponStash : HUDWeaponStash {
 		int   wrapLength = hasHelmet ? _hlm_wrapLength.getInt() : _nhm_wrapLength.GetInt();
 
 		if (AutomapActive) {
-			drawWeaponStash(sb, sb.DI_SCREEN_RIGHT_BOTTOM|sb.DI_ITEM_RIGHT, -8, -48, wrapLength, scale, xScale, yScale);
+			drawWeaponStash(sb, sb.DI_SCREEN_RIGHT_BOTTOM|sb.DI_ITEM_RIGHT, -8, -48, xScale: 0., yScale: 0.);
 		} else if (CheckCommonStuff(sb, state, ticFrac)) {
 
 			string bgRef   = hasHelmet ? _hlm_bgRef.GetString()  : _nhm_bgRef.GetString();

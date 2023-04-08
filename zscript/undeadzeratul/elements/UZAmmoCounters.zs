@@ -80,7 +80,7 @@ class UZAmmoCounters : HUDAmmoCounters {
 		int   wrapLength = hasHelmet ? _hlm_wrapLength.getInt() : _nhm_wrapLength.GetInt();
 
 		if (AutomapActive) {
-			DrawAmmoCounters(sb, -8, -18, 0, wrapLength, scale);
+			DrawAmmoCounters(sb, -8, -18, xScale: 0., yScale: 0.);
 		} else if (CheckCommonStuff(sb, state, ticFrac)) {
 
 			string bgRef   = hasHelmet ? _hlm_bgRef.GetString()  : _nhm_bgRef.GetString();
