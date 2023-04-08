@@ -51,6 +51,9 @@ HUDCore HUD Elements:
 - Dastrukar
 - Matt
 
+Berserk Counter Logic:
+- Cozi
+
 Stim Counter Logic:
 - Cozi
 
