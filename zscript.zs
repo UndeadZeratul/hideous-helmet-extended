@@ -17,3 +17,5 @@ version "4.10"
 #include "zscript/undeadzeratul/elements/UZWeaponStash.zs"
 // #include "zscript/undeadzeratul/elements/UZWeaponStatus.zs"
 #include "zscript/undeadzeratul/elements/UZWoundCounter.zs"
+
+#include "zscript/undeadzeratul/overrides/UZArmourOverride.zs"
