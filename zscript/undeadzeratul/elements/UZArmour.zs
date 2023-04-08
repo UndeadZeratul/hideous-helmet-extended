@@ -299,7 +299,7 @@ class UZArmour : HUDElement {
 			let hp = HDPickup(item);
 			if (!hp) continue;
 
-			let stats = GetArmourStats(item, hasHelmet);
+			let stats = GetArmourStats(hpl, item, hasHelmet);
 
 			// If we have a built stats object, add it
 			if (stats) {
@@ -311,7 +311,7 @@ class UZArmour : HUDElement {
 		SortArmours(0, _arms.Size() - 1);
 	}
 
-	private UZHDArmourStats GetArmourStats(Inventory item, bool hasHelmet) {
+	private UZHDArmourStats GetArmourStats(PlayerPawn hpl, Inventory item, bool hasHelmet) {
 		UZHDArmourStats stats = New("UZHDArmourStats");
 		
 		// For grabbing the current durability
@@ -325,7 +325,7 @@ class UZArmour : HUDElement {
 			stats.fg = arm.mega ? "ARMCA0" : "ARMSA0";
 			stats.bg = arm.mega ? "ARMER1" : "ARMER0";
 			stats.durability = arm.durability;
-			stats.fontColor = arm.mega ? Font.CR_SAPPHIRE : Font.CR_OLIVE;
+			stats.fontColor = arm.mega ? Font.CR_ICE : Font.CR_OLIVE;
 			stats.maxDurability = arm.mega ? HDCONST_BATTLEARMOUR : HDCONST_GARRISONARMOUR;
 			stats.offX = hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt();
 			stats.offY = hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt();
@@ -399,6 +399,19 @@ class UZArmour : HUDElement {
 			stats.fontColor = Font.CR_GRAY;
 			stats.offX = hasHelmet ? _boots_hlm_posX.GetInt() : _boots_nhm_posX.GetInt();
 			stats.offY = hasHelmet ? _boots_hlm_posY.GetInt() : _boots_nhm_posY.GetInt();
+		} else if (cls == "HDMagicShield") {
+			let shields = hpl.countinv("HDMagicShield");
+			let graphic = shields < 341 ? "BON2B0" : shields < 682 ? "BON2C0" : "BON2D0";
+
+			stats.slot = 0;
+			stats.wornlayer = 5000; // Abitrary, just needs to be above everything else
+			stats.fg = graphic;
+			stats.bg = graphic;
+			stats.durability = shields;
+			stats.maxDurability = 1024;
+			stats.fontColor = Font.CR_SAPPHIRE;
+			stats.offX = hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt();
+			stats.offY = hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt();
 		} else {
 			stats = NULL;
 		}

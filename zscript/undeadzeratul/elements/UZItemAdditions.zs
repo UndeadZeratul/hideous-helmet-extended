@@ -1,10 +1,5 @@
 class UZItemAdditions : HUDItemAdditions {
-
-	override void Tick(HCStatusbar sb) {
-		// NO-OP: Implemented in other classes
-	}
-
-	override void DrawHUDStuff(HCStatusbar sb, int state, double ticFrac) {
-		// NO-OP: Implemented in other classes
-	}
+	// Simply extend the base HUDItemAdditions in case HHelmet is installed,
+	// which overrides the desired rendering logic.
+	// TODO: Remove this once HHelmet utilizes the Overrides system.
 }

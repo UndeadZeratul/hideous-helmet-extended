@@ -110,8 +110,8 @@ class UZWoundCounter : HUDElement {
 		
 		if (
 			!_enabled.GetBool()
-			|| ((!hasHelmet && _hlm_required.GetBool()) || !_hh_showbleed.GetBool()) 
-			|| (_hh_showbleedwhenbleeding.GetBool() && _WoundCounter == "\c[Gray]  0\c-")
+			|| ((!hasHelmet && _hlm_required.GetBool()) || (_hh_showbleed && !_hh_showbleed.GetBool())) 
+			|| ((_hh_showbleedwhenbleeding && _hh_showbleedwhenbleeding.GetBool()) && _WoundCounter == "\c[Gray]  0\c-")
 			|| HDSpectator(sb.hpl)
 			|| sb.HUDLevel < hudLevel
 		) return;
@@ -177,7 +177,7 @@ class UZWoundCounter : HUDElement {
 				sb.DI_SCREEN_CENTER_BOTTOM
 			);
 
-			if (_hh_woundcounter.GetBool()) {
+			if (!_hh_woundcounter || _hh_woundcounter.GetBool()) {
 				sb.DrawString(
 					sb.mIndexFont,
 					_woundCounter,

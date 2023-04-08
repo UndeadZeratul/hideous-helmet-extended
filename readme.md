@@ -54,5 +54,8 @@ HUDCore HUD Elements:
 Berserk Counter Logic:
 - Cozi
 
+Stim Counter Logic:
+- Cozi
+
 Remaining HUD Elements:
 - Matt
