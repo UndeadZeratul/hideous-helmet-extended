@@ -299,97 +299,7 @@ class UZArmour : HUDElement {
 			let hp = HDPickup(item);
 			if (!hp) continue;
 
-			// Back out early if it's not
-			let arm = HDArmourWorn(item);
-			// if (!arm) continue;
-
-			UZHDArmourStats stats = New("UZHDArmourStats");
-
-			// Process only known worn armors
-			let cls = item.GetClassName();
-			if (cls == "HDArmourWorn") {
-				stats.slot = 0;
-				stats.wornlayer = STRIP_ARMOUR;
-				stats.fg = arm.mega ? "ARMCA0" : "ARMSA0";
-				stats.bg = arm.mega ? "ARMER1" : "ARMER0";
-				stats.durability = arm.durability;
-				stats.fontColor = arm.mega ? Font.CR_SAPPHIRE : Font.CR_OLIVE;
-				stats.maxDurability = arm.mega ? HDCONST_BATTLEARMOUR : HDCONST_GARRISONARMOUR;
-				stats.offX = hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt();
-				stats.offY = hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt();
-			} else if (cls == "HDCorporateArmourWorn") {
-				stats.slot = 0;
-				stats.wornlayer = STRIP_ARMOUR;
-				stats.fg = "CARMA0";
-				stats.bg = "CARMB0";
-				stats.durability = arm.durability;
-				stats.maxDurability = 40;
-				stats.fontColor = Font.CR_DARKGRAY;
-				stats.offX = (hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt());
-				stats.offY = (hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt());
-			} else if (cls == "HHelmetWorn") {
-				stats.slot = 1;
-				stats.wornlayer = 3000; // HHelmet normally 0, overriding for rendering priority
-				stats.fg = "HELMA0";
-				stats.bg = "HELMB0";
-				stats.durability = arm.durability;
-				stats.maxDurability = 72;
-				stats.fontColor = Font.CR_TAN;
-				stats.offX = hasHelmet ? _helmet_hlm_posX.GetInt() : _helmet_nhm_posX.GetInt();
-				stats.offY = (hasHelmet ? _helmet_hlm_posY.GetInt() : _helmet_nhm_posY.GetInt()) + _hh_helmetoffsety.GetInt();
-			} else if (cls == "HDHEVArmourWorn") {
-				stats.slot = 0;
-				stats.wornlayer = STRIP_ARMOUR;
-				stats.fg = "HEVAA0";
-				stats.bg = "HEVAB0";
-				stats.durability = arm.durability;
-				stats.maxDurability = 107;
-				stats.fontColor = Font.CR_ORANGE;
-				stats.offX = hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt();
-				stats.offY = hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt();
-			} else if (cls == "HDLeatherArmourWorn") {
-				stats.slot = 0;
-				stats.wornlayer = 1200; // STRIP_JACKET
-				stats.fg = "JAKTA0";
-				stats.bg = "JAKET0";
-				stats.durability = arm.durability;
-				stats.maxDurability = 40;
-				stats.fontColor = Font.CR_BROWN;
-				stats.offX = hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt();
-				stats.offY = hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt();
-			} else if (cls == "WAN_SneakingSuitWorn") {
-				stats.slot = 0;
-				stats.wornlayer = STRIP_ARMOUR;
-				stats.fg = "SNKSA0";
-				stats.bg = "SNKSB0";
-				stats.durability = 144; // HDDamageHandler doesn't have current durability...
-				stats.maxDurability = 144;
-				stats.fontColor = Font.CR_DARKGRAY;
-				stats.offX = hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt();
-				stats.offY = hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt();
-			} else if (cls == "WornRadBoots") {
-				stats.slot = 2;
-				stats.wornlayer = 1500; // STRIP_RADBOOTS
-				stats.fg = "RDBTA0";
-				stats.bg = "RDBTA0";
-				stats.durability = 0;
-				stats.maxDurability = 0;
-				stats.fontColor = Font.CR_GRAY;
-				stats.offX = hasHelmet ? _boots_hlm_posX.GetInt() : _boots_nhm_posX.GetInt();
-				stats.offY = hasHelmet ? _boots_hlm_posY.GetInt() : _boots_nhm_posY.GetInt();
-			} else if (cls == "WornAntiGravBoots") {
-				stats.slot = 2;
-				stats.wornlayer = 1400; // STRIP_ANTIGRAVBOOTS
-				stats.fg = "AGRVA0";
-				stats.bg = "AGRVA0";
-				stats.durability = 0;
-				stats.maxDurability = 0;
-				stats.fontColor = Font.CR_GRAY;
-				stats.offX = hasHelmet ? _boots_hlm_posX.GetInt() : _boots_nhm_posX.GetInt();
-				stats.offY = hasHelmet ? _boots_hlm_posY.GetInt() : _boots_nhm_posY.GetInt();
-			} else {
-				stats = NULL;
-			}
+			let stats = GetArmourStats(item, hasHelmet);
 
 			// If we have a built stats object, add it
 			if (stats) {
@@ -399,6 +309,101 @@ class UZArmour : HUDElement {
 
 		// Finally, sort the armours list by their slot, then worn layer
 		SortArmours(0, _arms.Size() - 1);
+	}
+
+	private UZHDArmourStats GetArmourStats(Inventory item, bool hasHelmet) {
+		UZHDArmourStats stats = New("UZHDArmourStats");
+		
+		// For grabbing the current durability
+		let arm = HDArmourWorn(item);
+
+		// Process only known worn armors
+		let cls = item.GetClassName();
+		if (cls == "HDArmourWorn") {
+			stats.slot = 0;
+			stats.wornlayer = STRIP_ARMOUR;
+			stats.fg = arm.mega ? "ARMCA0" : "ARMSA0";
+			stats.bg = arm.mega ? "ARMER1" : "ARMER0";
+			stats.durability = arm.durability;
+			stats.fontColor = arm.mega ? Font.CR_SAPPHIRE : Font.CR_OLIVE;
+			stats.maxDurability = arm.mega ? HDCONST_BATTLEARMOUR : HDCONST_GARRISONARMOUR;
+			stats.offX = hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt();
+			stats.offY = hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt();
+		} else if (cls == "HDCorporateArmourWorn") {
+			stats.slot = 0;
+			stats.wornlayer = STRIP_ARMOUR;
+			stats.fg = "CARMA0";
+			stats.bg = "CARMB0";
+			stats.durability = arm.durability;
+			stats.maxDurability = 40;
+			stats.fontColor = Font.CR_DARKGRAY;
+			stats.offX = (hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt());
+			stats.offY = (hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt());
+		} else if (cls == "HHelmetWorn") {
+			stats.slot = 1;
+			stats.wornlayer = 3000; // HHelmet normally 0, overriding for rendering priority
+			stats.fg = "HELMA0";
+			stats.bg = "HELMB0";
+			stats.durability = arm.durability;
+			stats.maxDurability = 72;
+			stats.fontColor = Font.CR_TAN;
+			stats.offX = hasHelmet ? _helmet_hlm_posX.GetInt() : _helmet_nhm_posX.GetInt();
+			stats.offY = (hasHelmet ? _helmet_hlm_posY.GetInt() : _helmet_nhm_posY.GetInt()) + _hh_helmetoffsety.GetInt();
+		} else if (cls == "HDHEVArmourWorn") {
+			stats.slot = 0;
+			stats.wornlayer = STRIP_ARMOUR;
+			stats.fg = "HEVAA0";
+			stats.bg = "HEVAB0";
+			stats.durability = arm.durability;
+			stats.maxDurability = 107; // HDCONST_HEVARMOUR
+			stats.fontColor = Font.CR_ORANGE;
+			stats.offX = hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt();
+			stats.offY = hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt();
+		} else if (cls == "HDLeatherArmourWorn") {
+			stats.slot = 0;
+			stats.wornlayer = 1200; // STRIP_JACKET
+			stats.fg = "JAKTA0";
+			stats.bg = "JAKET0";
+			stats.durability = arm.durability;
+			stats.maxDurability = 40;
+			stats.fontColor = Font.CR_BROWN;
+			stats.offX = hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt();
+			stats.offY = hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt();
+		} else if (cls == "WAN_SneakingSuitWorn") {
+			stats.slot = 0;
+			stats.wornlayer = STRIP_ARMOUR;
+			stats.fg = "SNKSA0";
+			stats.bg = "SNKSB0";
+			stats.durability = 144; // HDDamageHandler doesn't have current durability...
+			stats.maxDurability = 144; // HDCONST_SNEAKINGSUIT
+			stats.fontColor = Font.CR_DARKGRAY;
+			stats.offX = hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt();
+			stats.offY = hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt();
+		} else if (cls == "WornRadBoots") {
+			stats.slot = 2;
+			stats.wornlayer = 1500; // STRIP_RADBOOTS
+			stats.fg = "RDBTA0";
+			stats.bg = "RDBTA0";
+			stats.durability = 0;
+			stats.maxDurability = 0;
+			stats.fontColor = Font.CR_GRAY;
+			stats.offX = hasHelmet ? _boots_hlm_posX.GetInt() : _boots_nhm_posX.GetInt();
+			stats.offY = hasHelmet ? _boots_hlm_posY.GetInt() : _boots_nhm_posY.GetInt();
+		} else if (cls == "WornAntiGravBoots") {
+			stats.slot = 2;
+			stats.wornlayer = 1400; // STRIP_ANTIGRAVBOOTS
+			stats.fg = "AGRVA0";
+			stats.bg = "AGRVA0";
+			stats.durability = 0;
+			stats.maxDurability = 0;
+			stats.fontColor = Font.CR_GRAY;
+			stats.offX = hasHelmet ? _boots_hlm_posX.GetInt() : _boots_nhm_posX.GetInt();
+			stats.offY = hasHelmet ? _boots_hlm_posY.GetInt() : _boots_nhm_posY.GetInt();
+		} else {
+			stats = NULL;
+		}
+
+		return stats;
 	}
 	
 	// Quick Sort taken from HCStatusBar
