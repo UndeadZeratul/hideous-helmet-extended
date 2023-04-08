@@ -51,5 +51,8 @@ HUDCore HUD Elements:
 - Dastrukar
 - Matt
 
+Stim Counter Logic:
+- Cozi
+
 Remaining HUD Elements:
 - Matt
