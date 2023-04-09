@@ -105,7 +105,7 @@ class UZStimCounter : HUDElement {
                 sb.FormatNumber(stims / 4),
                 (posX + (8 * scale), posY + (1 * scale)),
                 sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_LEFT,
-                stims < 1 ? Font.CR_WHITE : Font.CR_GREEN,
+                Font.CR_GREEN,
                 scale: (scale, scale)
             );
         }
