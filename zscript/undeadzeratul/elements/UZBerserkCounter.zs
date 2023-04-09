@@ -106,7 +106,7 @@ class UZBerserkCounter : HUDElement {
                 sb.FormatNumber((zerk - 10500) / 84),
                 (posX + (8 * scale), posY + (1 * scale)),
                 sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_LEFT,
-                zerk < 1 ? Font.CR_WHITE : Font.CR_GREEN,
+                Font.CR_RED,
                 scale: (scale, scale)
             );
         }
