@@ -86,14 +86,14 @@ user float  uz_hhx_background_hlm_scale    = 1.;
 // BERSERK COUNTER CONFIGS
 user bool  uz_hhx_berserkCounter_enabled      = true;
 user int   uz_hhx_berserkCounter_nhm_hudLevel = 1;
-user int   uz_hhx_berserkCounter_nhm_posX     = 56;
-user int   uz_hhx_berserkCounter_nhm_posY     = -22;
+user int   uz_hhx_berserkCounter_nhm_posX     = 59;
+user int   uz_hhx_berserkCounter_nhm_posY     = -10;
 user float uz_hhx_berserkCounter_nhm_scale    = 1.;
 
 user bool  uz_hhx_berserkCounter_hlm_required = false;
 user int   uz_hhx_berserkCounter_hlm_hudLevel = 1;
-user int   uz_hhx_berserkCounter_hlm_posX     = 56;
-user int   uz_hhx_berserkCounter_hlm_posY     = -22;
+user int   uz_hhx_berserkCounter_hlm_posX     = 59;
+user int   uz_hhx_berserkCounter_hlm_posY     = -10;
 user float uz_hhx_berserkCounter_hlm_scale    = 1.;
 
 user string uz_hhx_berserkCounter_bg_nhm_ref   = "";
@@ -104,6 +104,28 @@ user string uz_hhx_berserkCounter_bg_hlm_ref   = "";
 user int    uz_hhx_berserkCounter_bg_hlm_posX  = 0;
 user int    uz_hhx_berserkCounter_bg_hlm_posY  = 0;
 user float  uz_hhx_berserkCounter_bg_hlm_scale = 1.;
+
+// BLUES COUNTER CONFIGS
+user bool  uz_hhx_bluesCounter_enabled      = true;
+user int   uz_hhx_bluesCounter_nhm_hudLevel = 1;
+user int   uz_hhx_bluesCounter_nhm_posX     = 59;
+user int   uz_hhx_bluesCounter_nhm_posY     = -40;
+user float uz_hhx_bluesCounter_nhm_scale    = 1.;
+
+user bool  uz_hhx_bluesCounter_hlm_required = false;
+user int   uz_hhx_bluesCounter_hlm_hudLevel = 1;
+user int   uz_hhx_bluesCounter_hlm_posX     = 59;
+user int   uz_hhx_bluesCounter_hlm_posY     = -40;
+user float uz_hhx_bluesCounter_hlm_scale    = 1.;
+
+user string uz_hhx_bluesCounter_bg_nhm_ref   = "";
+user int    uz_hhx_bluesCounter_bg_nhm_posX  = 0;
+user int    uz_hhx_bluesCounter_bg_nhm_posY  = 0;
+user float  uz_hhx_bluesCounter_bg_nhm_scale = 1.;
+user string uz_hhx_bluesCounter_bg_hlm_ref   = "";
+user int    uz_hhx_bluesCounter_bg_hlm_posX  = 0;
+user int    uz_hhx_bluesCounter_bg_hlm_posY  = 0;
+user float  uz_hhx_bluesCounter_bg_hlm_scale = 1.;
 
 // COMPASS CONFIGS
 user bool  uz_hhx_compass_enabled      = true;
@@ -294,14 +316,14 @@ user float  uz_hhx_mugshot_bg_hlm_scale = 1.;
 // STIM COUNTER CONFIGS
 user bool  uz_hhx_stimCounter_enabled      = true;
 user int   uz_hhx_stimCounter_nhm_hudLevel = 1;
-user int   uz_hhx_stimCounter_nhm_posX     = 56;
-user int   uz_hhx_stimCounter_nhm_posY     = -14;
+user int   uz_hhx_stimCounter_nhm_posX     = 59;
+user int   uz_hhx_stimCounter_nhm_posY     = -20;
 user float uz_hhx_stimCounter_nhm_scale    = 1.;
 
 user bool  uz_hhx_stimCounter_hlm_required = false;
 user int   uz_hhx_stimCounter_hlm_hudLevel = 1;
-user int   uz_hhx_stimCounter_hlm_posX     = 56;
-user int   uz_hhx_stimCounter_hlm_posY     = -14;
+user int   uz_hhx_stimCounter_hlm_posX     = 59;
+user int   uz_hhx_stimCounter_hlm_posY     = -20;
 user float uz_hhx_stimCounter_hlm_scale    = 1.;
 
 user string uz_hhx_stimCounter_bg_nhm_ref   = "";
@@ -388,13 +410,13 @@ user float  uz_hhx_weaponStatus_bg_hlm_scale = 1.;
 // WOUND COUNTER CONFIGS
 user bool  uz_hhx_woundCounter_enabled      = true;
 user int   uz_hhx_woundCounter_nhm_hudLevel = 1;
-user int   uz_hhx_woundCounter_nhm_posX     = 10;
-user int   uz_hhx_woundCounter_nhm_posY     = -4;
+user int   uz_hhx_woundCounter_nhm_posX     = 56;
+user int   uz_hhx_woundCounter_nhm_posY     = -30;
 user float uz_hhx_woundCounter_nhm_scale    = 1.;
 
 user bool  uz_hhx_woundCounter_hlm_required = false;
 user int   uz_hhx_woundCounter_hlm_hudLevel = 1;
-user int   uz_hhx_woundCounter_hlm_posX     = 10;
+user int   uz_hhx_woundCounter_hlm_posX     = 56;
 user int   uz_hhx_woundCounter_hlm_posY     = -30;
 user float uz_hhx_woundCounter_hlm_scale    = 1.;
 
