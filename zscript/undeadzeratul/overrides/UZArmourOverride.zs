@@ -22,7 +22,7 @@ class UZArmourOverride : HCItemOverride {
 		// No-op: Armour is handled in UZArmour
 	}
 
-	override void DrawHUDStuff(HCStatusbar sb, Inventory item, int state, double ticFrac) {
+	override void DrawHUDStuff(HCStatusbar sb, Inventory item, int hdFlags, int gzFlags) {
 		// No-op: Armour is handled in UZArmour
 	}
 }
