@@ -8,14 +8,15 @@ class UZArmourOverride : HCItemOverride {
 
 	// Ignore all items handled in UZArmour
 	override bool CheckItem(Inventory item) {
-		return item is "HDArmourWorn"
-			|| item is "HDCorporateArmourWorn"
-			|| item is "HHelmetWorn"
-			|| item is "HDHEVArmourWorn"
-			|| item is "HDLeatherArmourWorn"
-			|| item is "WAN_SneakingSuitWorn"
-			|| item is "WornRadBoots"
-			|| item is "WornAntiGravBoots";
+		let cls = item.GetClassName();
+		return cls == "HDArmourWorn"
+			|| cls == "HDCorporateArmourWorn"
+			|| cls == "HHelmetWorn"
+			|| cls == "HDHEVArmourWorn"
+			|| cls == "HDLeatherArmourWorn"
+			|| cls == "WAN_SneakingSuitWorn"
+			|| cls == "WornRadBoots"
+			|| cls == "WornAntiGravBoots";
 	}
 
 	override void Tick(HCStatusbar sb) {
