@@ -12,25 +12,25 @@ OptionMenu "HHXAdvanced" {
 	Title "$HHXAdvanced"
 	
 	StaticText ""
-	SubMenu "$HHXAmmoCounters",  "HHXAmmoCounters"
-	SubMenu "$HHXArmour",        "HHXArmour"
+	SubMenu "$HHXAmmoCounters",   "HHXAmmoCounters"
+	SubMenu "$HHXArmour",         "HHXArmour"
 	SubMenu "$HHXBerserkCounter", "HHXBerserkCounter"
-	SubMenu "$HHXBluesCounter",  "HHXBluesCounter"
-	SubMenu "$HHXCompass",       "HHXCompass"
-	SubMenu "$HHXEKG",           "HHXEKG"
-	SubMenu "$HHXEncumbrance",   "HHXEncumbrance"
-	SubMenu "$HHXFullInventory", "HHXFullInventory"
-	SubMenu "$HHXHeartbeat",     "HHXHeartbeat"
-	SubMenu "$HHXInventory",     "HHXInventory"
-// 	SubMenu "$HHXItemAdditions", "HHXItemAdditions"
-	SubMenu "$HHXKeys",          "HHXKeys"
-	SubMenu "$HHXMugshot",       "HHXMugshot"
-	SubMenu "$HHXBackground",    "HHXBackground"
-	SubMenu "$HHXStimCounter",   "HHXStimCounter"
-	SubMenu "$HHXWeaponSprite",  "HHXWeaponSprite"
-	SubMenu "$HHXWeaponStash",   "HHXWeaponStash"
-// 	SubMenu "$HHXWeaponStatus",  "HHXWeaponStatus"
-	SubMenu "$HHXWoundCounter",  "HHXWoundCounter"
+	SubMenu "$HHXBluesCounter",   "HHXBluesCounter"
+	SubMenu "$HHXCompass",        "HHXCompass"
+	SubMenu "$HHXEKG",            "HHXEKG"
+	SubMenu "$HHXEncumbrance",    "HHXEncumbrance"
+	SubMenu "$HHXFullInventory",  "HHXFullInventory"
+	SubMenu "$HHXHeartbeat",      "HHXHeartbeat"
+	SubMenu "$HHXInventory",      "HHXInventory"
+// 	SubMenu "$HHXItemAdditions",  "HHXItemAdditions"
+	SubMenu "$HHXKeys",           "HHXKeys"
+	SubMenu "$HHXMugshot",        "HHXMugshot"
+	SubMenu "$HHXBackground",     "HHXBackground"
+	SubMenu "$HHXStimCounter",    "HHXStimCounter"
+	SubMenu "$HHXWeaponSprite",   "HHXWeaponSprite"
+	SubMenu "$HHXWeaponStash",    "HHXWeaponStash"
+// 	SubMenu "$HHXWeaponStatus",   "HHXWeaponStatus"
+	SubMenu "$HHXWoundCounter",   "HHXWoundCounter"
 
 	StaticText ""	
 	StaticText ""
@@ -44,6 +44,8 @@ OptionMenu "HHXAdvanced" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetNHM", "uz_hhx_options_reset_nhm"
+	SafeCommand "$HHXResetHLM", "uz_hhx_options_reset_hlm"
 	SafeCommand "$HHXResetAll", "uz_hhx_options_reset_all"
 }
 
@@ -56,44 +58,45 @@ OptionMenu "HHXAmmoCounters" {
 	StaticText ""
 	StaticText "$HHXNHM", 1
 	StaticText ""
-	Slider "$HHXHUDLevel", "uz_hhx_ammoCounters_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_ammoCounters_enabled"
-	Slider "$HHXPosX", "uz_hhx_ammoCounters_nhm_posX", -400, 400, 1, 0, "uz_hhx_ammoCounters_enabled"
-	Slider "$HHXPosY", "uz_hhx_ammoCounters_nhm_posY", -400, 400, 1, 0, "uz_hhx_ammoCounters_enabled"
-	Slider "$HHXScale", "uz_hhx_ammoCounters_nhm_scale", .01, 4., .05, 2, "uz_hhx_ammoCounters_enabled"
-	Slider "$HHXScaleX", "uz_hhx_ammoCounters_nhm_xScale", -2., 2., .05, 2, "uz_hhx_ammoCounters_enabled"
-	Slider "$HHXScaleY", "uz_hhx_ammoCounters_nhm_yScale", -2., 2., .05, 2, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXHUDLevel", "uz_hhx_ammoCounters_nhm_hudLevel",    0,   2,   1, 0, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXPosX",     "uz_hhx_ammoCounters_nhm_posX",     -400, 400,   1, 0, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXPosY",     "uz_hhx_ammoCounters_nhm_posY",     -400, 400,   1, 0, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXScale",    "uz_hhx_ammoCounters_nhm_scale",     .01,  4., .05, 2, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXScaleX",   "uz_hhx_ammoCounters_nhm_xScale",    -2.,  2., .05, 2, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXScaleY",   "uz_hhx_ammoCounters_nhm_yScale",    -2.,  2., .05, 2, "uz_hhx_ammoCounters_enabled"
 
 	ScaleSlider "$HHXWrapLength", "uz_hhx_ammoCounters_nhm_wrapLength", 0, 32, 1, "$HHXAuto"
 	StaticText ""
 	TextField "$HHXBgRef", "uz_hhx_ammoCounters_bg_nhm_ref", "uz_hhx_ammoCounters_enabled"
-	Slider "$HHXPosX", "uz_hhx_ammoCounters_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_ammoCounters_enabled"
-	Slider "$HHXPosY", "uz_hhx_ammoCounters_bg_nhm_posY", -400, 400, 1, 0, "uz_hhx_ammoCounters_enabled"
-	Slider "$HHXScale", "uz_hhx_ammoCounters_bg_nhm_scale", .01, 4., .05, 2, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXPosX",  "uz_hhx_ammoCounters_bg_nhm_posX",  -400, 400,   1, 0, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXPosY",  "uz_hhx_ammoCounters_bg_nhm_posY",  -400, 400,   1, 0, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXScale", "uz_hhx_ammoCounters_bg_nhm_scale",  .01,  4., .05, 2, "uz_hhx_ammoCounters_enabled"
 	
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
 	StaticText ""
 	Option "$HHXHelmetRequired", "uz_hhx_ammoCounters_hlm_required", "OnOff", "uz_hhx_ammoCounters_enabled"
 	StaticText ""
-	Slider "$HHXHUDLevel", "uz_hhx_ammoCounters_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_ammoCounters_enabled"
-	Slider "$HHXPosX", "uz_hhx_ammoCounters_hlm_posX", -400, 400, 1, 0, "uz_hhx_ammoCounters_enabled"
-	Slider "$HHXPosY", "uz_hhx_ammoCounters_hlm_posY", -400, 400, 1, 0, "uz_hhx_ammoCounters_enabled"
-	Slider "$HHXScale", "uz_hhx_ammoCounters_hlm_scale", .01, 4., .05, 2, "uz_hhx_ammoCounters_enabled"
-	Slider "$HHXScaleX", "uz_hhx_ammoCounters_hlm_xScale", -2., 2., .05, 2, "uz_hhx_ammoCounters_enabled"
-	Slider "$HHXScaleY", "uz_hhx_ammoCounters_hlm_yScale", -2., 2., .05, 2, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXHUDLevel", "uz_hhx_ammoCounters_hlm_hudLevel",    0,   2,   1, 0, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXPosX",     "uz_hhx_ammoCounters_hlm_posX",     -400, 400,   1, 0, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXPosY",     "uz_hhx_ammoCounters_hlm_posY",     -400, 400,   1, 0, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXScale",    "uz_hhx_ammoCounters_hlm_scale",     .01,  4., .05, 2, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXScaleX",   "uz_hhx_ammoCounters_hlm_xScale",    -2.,  2., .05, 2, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXScaleY",   "uz_hhx_ammoCounters_hlm_yScale",    -2.,  2., .05, 2, "uz_hhx_ammoCounters_enabled"
 
 	ScaleSlider "$HHXWrapLength", "uz_hhx_ammoCounters_hlm_wrapLength", 0, 32, 1, "$HHXAuto"
 	StaticText ""
 	TextField "$HHXBgRef", "uz_hhx_ammoCounters_bg_hlm_ref", "uz_hhx_ammoCounters_enabled"
-	Slider "$HHXPosX", "uz_hhx_ammoCounters_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_ammoCounters_enabled"
-	Slider "$HHXPosY", "uz_hhx_ammoCounters_bg_hlm_posY", -400, 400, 1, 0, "uz_hhx_ammoCounters_enabled"
-	Slider "$HHXScale", "uz_hhx_ammoCounters_bg_hlm_scale", .01, 4., .05, 2, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXPosX",  "uz_hhx_ammoCounters_bg_hlm_posX",  -400, 400,   1, 0, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXPosY",  "uz_hhx_ammoCounters_bg_hlm_posY",  -400, 400,   1, 0, "uz_hhx_ammoCounters_enabled"
+	Slider "$HHXScale", "uz_hhx_ammoCounters_bg_hlm_scale",  .01,  4., .05, 2, "uz_hhx_ammoCounters_enabled"
 	
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
-	SafeCommand "$HHXResetAmmoCounters", "uz_hhx_options_reset_ammoCounters"
+	SafeCommand "$HHXResetAmmoCounters", "uz_hhx_options_reset_nhm_ammoCounters"
 	SafeCommand "$HHXHHResetAmmoCounters", "uz_hhx_options_reset_hlm_ammoCounters"
 }
 
@@ -119,6 +122,7 @@ OptionMenu "HHXArmour" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
 	StaticText ""
 	Option "$HHXHelmetRequired", "uz_hhx_armour_hlm_required", "OnOff", "uz_hhx_armour_enabled"
 	StaticText ""
@@ -138,7 +142,7 @@ OptionMenu "HHXArmour" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
-	SafeCommand "$HHXResetArmour", "uz_hhx_options_reset_armour"
+	SafeCommand "$HHXResetArmour", "uz_hhx_options_reset_nhm_armour"
 	SafeCommand "$HHXHHResetArmour", "uz_hhx_options_reset_hlm_armour"
 }
 
@@ -154,6 +158,7 @@ OptionMenu "HHXArmourAdvanced" {
 	Slider "$HHXScale", "uz_hhx_armour_helmet_nhm_scale", .01, 4., .05, 2, "uz_hhx_disabled"
 	StaticText ""
 	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
 	StaticText ""
 	Slider "$HHXPosX", "uz_hhx_armour_helmet_hlm_posX", -400, 400, 1, 0, "uz_hhx_armour_enabled"
 	Slider "$HHXPosY", "uz_hhx_armour_helmet_hlm_posY", -400, 400, 1, 0, "uz_hhx_armour_enabled"
@@ -161,7 +166,7 @@ OptionMenu "HHXArmourAdvanced" {
 	
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
-	SafeCommand "$HHXResetArmour", "uz_hhx_options_reset_armourHelmet"
+	SafeCommand "$HHXResetArmour", "uz_hhx_options_reset_nhm_armourHelmet"
 	SafeCommand "$HHXHHResetArmour", "uz_hhx_options_reset_hlm_armourHelmet"
 
 	StaticText ""
@@ -174,6 +179,7 @@ OptionMenu "HHXArmourAdvanced" {
 	Slider "$HHXScale", "uz_hhx_armour_body_nhm_scale", .01, 4., .05, 2, "uz_hhx_disabled"
 	StaticText ""
 	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
 	StaticText ""
 	Slider "$HHXPosX", "uz_hhx_armour_body_hlm_posX", -400, 400, 1, 0, "uz_hhx_armour_enabled"
 	Slider "$HHXPosY", "uz_hhx_armour_body_hlm_posY", -400, 400, 1, 0, "uz_hhx_armour_enabled"
@@ -181,7 +187,7 @@ OptionMenu "HHXArmourAdvanced" {
 	
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
-	SafeCommand "$HHXResetArmour", "uz_hhx_options_reset_armourBody"
+	SafeCommand "$HHXResetArmour", "uz_hhx_options_reset_nhm_armourBody"
 	SafeCommand "$HHXHHResetArmour", "uz_hhx_options_reset_hlm_armourBody"
 
 	StaticText ""
@@ -194,6 +200,7 @@ OptionMenu "HHXArmourAdvanced" {
 	Slider "$HHXScale", "uz_hhx_armour_boots_nhm_scale", .01, 4., .05, 2, "uz_hhx_disabled"
 	StaticText ""
 	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
 	StaticText ""
 	Slider "$HHXPosX", "uz_hhx_armour_boots_hlm_posX", -400, 400, 1, 0, "uz_hhx_armour_enabled"
 	Slider "$HHXPosY", "uz_hhx_armour_boots_hlm_posY", -400, 400, 1, 0, "uz_hhx_armour_enabled"
@@ -201,7 +208,7 @@ OptionMenu "HHXArmourAdvanced" {
 	
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
-	SafeCommand "$HHXResetArmour", "uz_hhx_options_reset_armourBoots"
+	SafeCommand "$HHXResetArmour", "uz_hhx_options_reset_nhm_armourBoots"
 	SafeCommand "$HHXHHResetArmour", "uz_hhx_options_reset_hlm_armourBoots"
 }
 
@@ -227,6 +234,7 @@ OptionMenu "HHXBerserkCounter" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
 	StaticText ""
 	Option "$HHXHelmetRequired", "uz_hhx_berserkCounter_hlm_required", "OnOff", "uz_hhx_berserkCounter_enabled"
 	StaticText ""
@@ -243,7 +251,7 @@ OptionMenu "HHXBerserkCounter" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
-	SafeCommand "$HHXResetBerserkCounter", "uz_hhx_options_reset_berserkCounter"
+	SafeCommand "$HHXResetBerserkCounter", "uz_hhx_options_reset_nhm_berserkCounter"
 	SafeCommand "$HHXHHResetBerserkCounter", "uz_hhx_options_reset_hlm_berserkCounter"
 }
 
@@ -269,6 +277,7 @@ OptionMenu "HHXBluesCounter" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
 	StaticText ""
 	Option "$HHXHelmetRequired", "uz_hhx_bluesCounter_hlm_required", "OnOff", "uz_hhx_bluesCounter_enabled"
 	StaticText ""
@@ -285,7 +294,7 @@ OptionMenu "HHXBluesCounter" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
-	SafeCommand "$HHXResetBluesCounter", "uz_hhx_options_reset_bluesCounter"
+	SafeCommand "$HHXResetBluesCounter", "uz_hhx_options_reset_nhm_bluesCounter"
 	SafeCommand "$HHXHHResetBluesCounter", "uz_hhx_options_reset_hlm_bluesCounter"
 }
 
@@ -311,6 +320,7 @@ OptionMenu "HHXCompass" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
 	StaticText ""
 	Option "$HHXHelmetRequired", "uz_hhx_compass_hlm_required", "OnOff", "uz_hhx_compass_enabled"
 	StaticText ""
@@ -327,7 +337,7 @@ OptionMenu "HHXCompass" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
-	SafeCommand "$HHXResetCompass", "uz_hhx_options_reset_compass"
+	SafeCommand "$HHXResetCompass", "uz_hhx_options_reset_nhm_compass"
 	SafeCommand "$HHXHHResetCompass", "uz_hhx_options_reset_hlm_compass"
 }
 
@@ -355,6 +365,7 @@ OptionMenu "HHXEKG" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
 	StaticText ""
 	Option "$HHXHelmetRequired", "uz_hhx_ekg_hlm_required", "OnOff", "uz_hhx_ekg_enabled"
 	StaticText ""
@@ -371,7 +382,7 @@ OptionMenu "HHXEKG" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
-	SafeCommand "$HHXResetEKG", "uz_hhx_options_reset_ekg"
+	SafeCommand "$HHXResetEKG", "uz_hhx_options_reset_nhm_ekg"
 	SafeCommand "$HHXHHResetEKG", "uz_hhx_options_reset_hlm_ekg"
 }
 
@@ -397,6 +408,7 @@ OptionMenu "HHXEncumbrance" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
 	StaticText ""
 	Option "$HHXHelmetRequired", "uz_hhx_encumbrance_hlm_required", "OnOff", "uz_hhx_encumbrance_enabled"
 	StaticText ""
@@ -413,7 +425,7 @@ OptionMenu "HHXEncumbrance" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
-	SafeCommand "$HHXResetEncumbrance", "uz_hhx_options_reset_encumbrance"
+	SafeCommand "$HHXResetEncumbrance", "uz_hhx_options_reset_nhm_encumbrance"
 	SafeCommand "$HHXHHResetEncumbrance", "uz_hhx_options_reset_hlm_encumbrance"
 }
 
@@ -443,6 +455,7 @@ OptionMenu "HHXFullInventory" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
 	StaticText ""
 	Option "$HHXHelmetRequired", "uz_hhx_fullInventory_hlm_required", "OnOff", "uz_hhx_fullInventory_enabled"
 	StaticText ""
@@ -463,7 +476,7 @@ OptionMenu "HHXFullInventory" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
-	SafeCommand "$HHXResetFullInventory", "uz_hhx_options_reset_fullInventory"
+	SafeCommand "$HHXResetFullInventory", "uz_hhx_options_reset_nhm_fullInventory"
 	SafeCommand "$HHXHHResetFullInventory", "uz_hhx_options_reset_hlm_fullInventory"
 }
 
@@ -489,6 +502,7 @@ OptionMenu "HHXHeartbeat" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
 	StaticText ""
 	Option "$HHXHelmetRequired", "uz_hhx_heartbeat_hlm_required", "OnOff", "uz_hhx_heartbeat_enabled"
 	StaticText ""
@@ -505,7 +519,7 @@ OptionMenu "HHXHeartbeat" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
-	SafeCommand "$HHXResetHeartbeat", "uz_hhx_options_reset_heartbeat"
+	SafeCommand "$HHXResetHeartbeat", "uz_hhx_options_reset_nhm_heartbeat"
 	SafeCommand "$HHXHHResetHeartbeat", "uz_hhx_options_reset_hlm_heartbeat"
 }
 
@@ -533,6 +547,7 @@ OptionMenu "HHXInventory" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
 	StaticText ""
 	Option "$HHXHelmetRequired", "uz_hhx_inventory_hlm_required", "OnOff", "uz_hhx_inventory_enabled"
 	StaticText ""
@@ -549,7 +564,7 @@ OptionMenu "HHXInventory" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
-	SafeCommand "$HHXResetInventory", "uz_hhx_options_reset_inventory"
+	SafeCommand "$HHXResetInventory", "uz_hhx_options_reset_nhm_inventory"
 	SafeCommand "$HHXHHResetInventory", "uz_hhx_options_reset_hlm_inventory"
 }
 
@@ -577,6 +592,7 @@ OptionMenu "HHXKeys" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
 	StaticText ""
 	Option "$HHXHelmetRequired", "uz_hhx_keys_hlm_required", "OnOff", "uz_hhx_keys_enabled"
 	StaticText ""
@@ -595,7 +611,7 @@ OptionMenu "HHXKeys" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
-	SafeCommand "$HHXResetKeys", "uz_hhx_options_reset_keys"
+	SafeCommand "$HHXResetKeys", "uz_hhx_options_reset_nhm_keys"
 	SafeCommand "$HHXHHResetKeys", "uz_hhx_options_reset_hlm_keys"
 }
 
@@ -621,6 +637,7 @@ OptionMenu "HHXMugshot" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
 	StaticText ""
 	Option "$HHXHelmetRequired", "uz_hhx_mugshot_hlm_required", "OnOff", "uz_hhx_mugshot_enabled"
 	StaticText ""
@@ -637,7 +654,7 @@ OptionMenu "HHXMugshot" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
-	SafeCommand "$HHXResetMugshot", "uz_hhx_options_reset_mugshot"
+	SafeCommand "$HHXResetMugshot", "uz_hhx_options_reset_nhm_mugshot"
 	SafeCommand "$HHXHHResetMugshot", "uz_hhx_options_reset_hlm_mugshot"
 }
 
@@ -661,6 +678,7 @@ OptionMenu "HHXBackground" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
 	StaticText ""
 	Option "$HHXHelmetRequired", "uz_hhx_background_hlm_required", "OnOff", "uz_hhx_background_enabled"
 	StaticText ""
@@ -672,7 +690,7 @@ OptionMenu "HHXBackground" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
-	SafeCommand "$HHXResetBackground", "uz_hhx_options_reset_background"
+	SafeCommand "$HHXResetBackground", "uz_hhx_options_reset_nhm_background"
 	SafeCommand "$HHXHHResetBackground", "uz_hhx_options_reset_hlm_background"
 }
 
@@ -698,6 +716,7 @@ OptionMenu "HHXStimCounter" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
 	StaticText ""
 	Option "$HHXHelmetRequired", "uz_hhx_stimCounter_hlm_required", "OnOff", "uz_hhx_stimCounter_enabled"
 	StaticText ""
@@ -714,7 +733,7 @@ OptionMenu "HHXStimCounter" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
-	SafeCommand "$HHXResetStimCounter", "uz_hhx_options_reset_stimCounter"
+	SafeCommand "$HHXResetStimCounter", "uz_hhx_options_reset_nhm_stimCounter"
 	SafeCommand "$HHXHHResetStimCounter", "uz_hhx_options_reset_hlm_stimCounter"
 }
 
@@ -742,6 +761,7 @@ OptionMenu "HHXWeaponSprite" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
 	StaticText ""
 	Option "$HHXHelmetRequired", "uz_hhx_weaponSprite_hlm_required", "OnOff", "uz_hhx_weaponSprite_enabled"
 	StaticText ""
@@ -758,7 +778,7 @@ OptionMenu "HHXWeaponSprite" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
-	SafeCommand "$HHXResetWeaponSprite", "uz_hhx_options_reset_weaponSprite"
+	SafeCommand "$HHXResetWeaponSprite", "uz_hhx_options_reset_nhm_weaponSprite"
 	SafeCommand "$HHXHHResetWeaponSprite", "uz_hhx_options_reset_hlm_weaponSprite"
 }
 
@@ -788,6 +808,7 @@ OptionMenu "HHXweaponStash" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
 	StaticText ""
 	Option "$HHXHelmetRequired", "uz_hhx_weaponStash_hlm_required", "OnOff", "uz_hhx_weaponStash_enabled"
 	StaticText ""
@@ -808,7 +829,7 @@ OptionMenu "HHXweaponStash" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
-	SafeCommand "$HHXResetweaponStash", "uz_hhx_options_reset_weaponStash"
+	SafeCommand "$HHXResetweaponStash", "uz_hhx_options_reset_nhm_weaponStash"
 	SafeCommand "$HHXHHResetweaponStash", "uz_hhx_options_reset_hlm_weaponStash"
 }
 
@@ -836,6 +857,7 @@ OptionMenu "HHXWeaponStatus" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
 	StaticText ""
 	Option "$HHXHelmetRequired", "uz_hhx_weaponStatus_hlm_required", "OnOff", "uz_hhx_weaponStatus_enabled"
 	StaticText ""
@@ -852,7 +874,7 @@ OptionMenu "HHXWeaponStatus" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
-	SafeCommand "$HHXResetWeaponStatus", "uz_hhx_options_reset_WeaponStatus"
+	SafeCommand "$HHXResetWeaponStatus", "uz_hhx_options_reset_nhm_WeaponStatus"
 	SafeCommand "$HHXHHResetWeaponStatus", "uz_hhx_options_reset_hlm_WeaponStatus"
 }
 
@@ -878,6 +900,7 @@ OptionMenu "HHXWoundCounter" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
 	StaticText ""
 	Option "$HHXHelmetRequired", "uz_hhx_woundCounter_hlm_required", "OnOff", "uz_hhx_woundCounter_enabled"
 	StaticText ""
@@ -894,7 +917,7 @@ OptionMenu "HHXWoundCounter" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
-	SafeCommand "$HHXResetWoundCounter", "uz_hhx_options_reset_woundCounter"
+	SafeCommand "$HHXResetWoundCounter", "uz_hhx_options_reset_nhm_woundCounter"
 	SafeCommand "$HHXHHResetWoundCounter", "uz_hhx_options_reset_hlm_woundCounter"
 }
 
@@ -906,11 +929,56 @@ OptionMenu "HHXPresets" {
 	StaticText ""
 	StaticText ""
 
-	SafeCommand "$HHXPresetDoomAlpha", "uz_hhx_preset_alpha"
+	SafeCommand "$HHXPresetDoomAlpha",   "uz_hhx_preset_alpha"
 	SafeCommand "$HHXPresetArcterezion", "uz_hhx_preset_arcterezion"
-	SafeCommand "$HHXPresetSwampyrad", "uz_hhx_preset_swampyrad"
-	SafeCommand "$HHXPresetUDV1", "uz_hhx_preset_udv1"
-	SafeCommand "$HHXPresetUDV2", "uz_hhx_preset_udv2"
+	SafeCommand "$HHXPresetSwampyrad",   "uz_hhx_preset_swampyrad"
+	SafeCommand "$HHXPresetUDV1",        "uz_hhx_preset_udv1"
+	SafeCommand "$HHXPresetUDV2",        "uz_hhx_preset_udv2"
+	SafeCommand "$HHXPresetUZ",          "uz_hhx_preset_uz"
+	
+	StaticText ""
+	StaticText "$HHXSubPresetDescription"
+	StaticText ""
+
+
+	StaticText "$HHXNHM", 1
+	SubMenu "$HHXNHMPresets", "HHXNHMPresets"
+	
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	SubMenu "$HHXHLMPresets", "HHXHLMPresets"
+}
+
+OptionMenu "HHXNHMPresets" {
+	Title "$HHXNHMPresets"
+	
+	StaticText ""
+	StaticText "$HHXNHMSubPresetDescription"
+	StaticText ""
+	StaticText ""
+
+	SafeCommand "$HHXPresetDoomAlpha",   "uz_hhx_preset_nhm_alpha"
+	SafeCommand "$HHXPresetArcterezion", "uz_hhx_preset_nhm_arcterezion"
+	SafeCommand "$HHXPresetSwampyrad",   "uz_hhx_preset_nhm_swampyrad"
+	SafeCommand "$HHXPresetUDV1",        "uz_hhx_preset_nhm_udv1"
+	SafeCommand "$HHXPresetUDV2",        "uz_hhx_preset_nhm_udv2"
+	SafeCommand "$HHXPresetUZ",          "uz_hhx_preset_nhm_uz"
+}
+
+OptionMenu "HHXHLMPresets" {
+	Title "$HHXHLMPresets"
+	
+	StaticText ""
+	StaticText "$HHXHLMSubPresetDescription"
+	StaticText ""
+	StaticText ""
+
+	SafeCommand "$HHXPresetDoomAlpha",   "uz_hhx_preset_hlm_alpha"
+	SafeCommand "$HHXPresetArcterezion", "uz_hhx_preset_hlm_arcterezion"
+	SafeCommand "$HHXPresetSwampyrad",   "uz_hhx_preset_hlm_swampyrad"
+	SafeCommand "$HHXPresetUDV1",        "uz_hhx_preset_hlm_udv1"
+	SafeCommand "$HHXPresetUDV2",        "uz_hhx_preset_hlm_udv2"
+	SafeCommand "$HHXPresetUZ",          "uz_hhx_preset_hlm_uz"
 }
 
 AddOptionMenu "OptionsMenu"{
