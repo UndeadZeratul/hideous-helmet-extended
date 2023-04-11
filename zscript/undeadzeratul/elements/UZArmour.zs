@@ -374,7 +374,7 @@ class UZArmour : HUDElement {
 			stats.wornlayer = STRIP_ARMOUR;
 			stats.fg = "SNKSA0";
 			stats.bg = "SNKSB0";
-			stats.durability = 144; // HDDamageHandler doesn't have current durability...
+			stats.durability = arm.durability;
 			stats.maxDurability = 144; // HDCONST_SNEAKINGSUIT
 			stats.fontColor = Font.CR_DARKGRAY;
 			stats.offX = hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt();
