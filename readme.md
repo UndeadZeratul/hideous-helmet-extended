@@ -24,7 +24,7 @@ Hideous Helmet HUD Element Scripts:
 - Dastrukar
 
 Alpha Doom HUD:
-- Toast
+- TommyGalano5
 - ID Software
 - Sgt. Kiwi
 - Arcterezion
