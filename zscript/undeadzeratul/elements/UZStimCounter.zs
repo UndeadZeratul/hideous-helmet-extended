@@ -95,17 +95,17 @@ class UZStimCounter : HUDElement {
             sb.DrawImage(
                 "HLMSA0",
                 (posX, posY),
-                sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_LEFT_TOP,
+                sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP,
                 0.6,
-                scale: (.5 * scale, .5 * scale)
+                scale: (scale, scale)
             );
 
             sb.DrawString(
                 sb.mIndexFont,
                 sb.FormatNumber(stims / 4),
-                (posX + (8 * scale), posY + (1 * scale)),
+                (posX + (8 * scale), posY + scale),
                 sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_LEFT,
-                stims < 1 ? Font.CR_WHITE : Font.CR_GREEN,
+                Font.CR_GREEN,
                 scale: (scale, scale)
             );
         }

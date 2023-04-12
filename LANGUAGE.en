@@ -1,31 +1,34 @@
 [enu default]
 
 // Options Menu Titles
-HHXOptions       = "Hideous Helmet Extended Options";
+HHXOptions        = "Hideous Helmet Extended Options";
 
-HHXPresets       = "Helmet Presets";
-HHXAdvanced      = "Advanced Options";
+HHXPresets        = "HUD Presets";
+HHXNHMPresets     = "Non-Helmet Presets";
+HHXHLMPresets     = "Helmet Presets";
+HHXAdvanced       = "Advanced Options";
 
-HHXAmmoCounters  = "Ammo Counters Options";
-HHXArmour        = "Armour Options";
-HHXArmourHelmet  = "Helmet Slot Options";
-HHXArmourBody    = "Body Slot Options";
-HHXArmourBoots   = "Boots Slot Options";
+HHXAmmoCounters   = "Ammo Counters Options";
+HHXArmour         = "Armour Options";
+HHXArmourHelmet   = "Helmet Slot Options";
+HHXArmourBody     = "Body Slot Options";
+HHXArmourBoots    = "Boots Slot Options";
 HHXBerserkCounter = "Berserk Counter Options";
-HHXCompass       = "Compass Options";
-HHXEKG           = "EKG Options";
-HHXEncumbrance   = "Encumbrance Options";
-HHXFullInventory = "Full Inventory Options";
-HHXHeartbeat     = "Heartbeat Options";
-HHXInventory     = "Inventory Options";
-HHXKeys          = "Keys Options";
-HHXMugshot       = "Mugshot Options";
-HHXBackground    = "HUD Background Options";
-HHXStimCounter   = "Stim Counter Options";
-HHXWeaponSprite  = "Weapon Sprite Options";
-HHXWeaponStash   = "Weapon Stash Options";
-HHXWeaponStatus  = "Weapon Status Options";
-HHXWoundCounter  = "Wound Counter Options";
+HHXBluesCounter   = "Blues Counter Options";
+HHXCompass        = "Compass Options";
+HHXEKG            = "EKG Options";
+HHXEncumbrance    = "Encumbrance Options";
+HHXFullInventory  = "Full Inventory Options";
+HHXHeartbeat      = "Heartbeat Options";
+HHXInventory      = "Inventory Options";
+HHXKeys           = "Keys Options";
+HHXMugshot        = "Mugshot Options";
+HHXBackground     = "HUD Background Options";
+HHXStimCounter    = "Stim Counter Options";
+HHXWeaponSprite   = "Weapon Sprite Options";
+HHXWeaponStash    = "Weapon Stash Options";
+HHXWeaponStatus   = "Weapon Status Options";
+HHXWoundCounter   = "Wound Counter Options";
 
 // Batch Commands
 HHXEnableAll      = "Enable All HUD Elements";
@@ -39,8 +42,8 @@ HHXHelmetRequired = "Requires Helmet";
 HHXHUDLevel       = "Requires HUD Level";
 
 // Sprite References
-HHXBackgroundRef = "HUD Background Graphic";
-HHXBgRef         = "HUD Element Background Graphic";
+HHXBackgroundRef  = "HUD Background Graphic";
+HHXBgRef          = "HUD Element Background Graphic";
 
 // HUD Element Positioning Config Labels
 HHXPosX       = "Horizontal Position";
@@ -58,60 +61,68 @@ HHXFitToScreen = "Fit to Screen";
 HHXDangerZone = "DANGER ZONE";
 
 // Reset Options Labels
-HHXResetAll           = "Reset All Options";
-HHXResetNHM           = "Reset All Standard Options";
-HHXResetHLM           = "Reset All HHelmet Options";
-HHXResetAmmoCounters  = "Reset Ammo Counters Options";
-HHXResetArmour        = "Reset Armour Options";
-HHXResetArmourHelmet  = "Reset Helmet Slot Options";
-HHXResetArmourBody    = "Reset Body Slot Options";
-HHXResetArmourBoots   = "Reset Boots Slot Options";
+HHXResetAll            = "Reset All Options";
+HHXResetNHM            = "Reset All Standard Options";
+HHXResetHLM            = "Reset All HHelmet Options";
+HHXResetAmmoCounters   = "Reset Ammo Counters Options";
+HHXResetArmour         = "Reset Armour Options";
+HHXResetArmourHelmet   = "Reset Helmet Slot Options";
+HHXResetArmourBody     = "Reset Body Slot Options";
+HHXResetArmourBoots    = "Reset Boots Slot Options";
 HHXResetBerserkCounter = "Reset Berserk Counter Options";
-HHXResetCompass       = "Reset Compass Options";
-HHXResetEKG           = "Reset EKG Options";
-HHXResetEncumbrance   = "Reset Encumbrance Options";
-HHXResetFullInventory = "Reset Full Inventory Options";
-HHXResetHeartbeat     = "Reset Heartbeat Options";
-HHXResetInventory     = "Reset Inventory Options";
-HHXResetKeys          = "Reset Keys Options";
-HHXResetMugshot       = "Reset Mugshot Options";
-HHXResetBackground    = "Reset Helmet Background Options";
-HHXResetStimCounter   = "Reset Stim Counter Options";
-HHXResetWeaponSprite  = "Reset Weapon Sprite Options";
-HHXResetWeaponStash   = "Reset Weapon Stash Options";
-HHXResetWeaponStatus  = "Reset Weapon Status Options";
-HHXResetWoundCounter  = "Reset Wound Counter Options";
+HHXResetBluesCounter   = "Reset Blues Counter Options";
+HHXResetCompass        = "Reset Compass Options";
+HHXResetEKG            = "Reset EKG Options";
+HHXResetEncumbrance    = "Reset Encumbrance Options";
+HHXResetFullInventory  = "Reset Full Inventory Options";
+HHXResetHeartbeat      = "Reset Heartbeat Options";
+HHXResetInventory      = "Reset Inventory Options";
+HHXResetKeys           = "Reset Keys Options";
+HHXResetMugshot        = "Reset Mugshot Options";
+HHXResetBackground     = "Reset Helmet Background Options";
+HHXResetStimCounter    = "Reset Stim Counter Options";
+HHXResetWeaponSprite   = "Reset Weapon Sprite Options";
+HHXResetWeaponStash    = "Reset Weapon Stash Options";
+HHXResetWeaponStatus   = "Reset Weapon Status Options";
+HHXResetWoundCounter   = "Reset Wound Counter Options";
 
 // Reset Helmet Options Labels
-HHXHHResetAmmoCounters  = "Reset Ammo Counters HHelmet Options";
-HHXHHResetArmour        = "Reset Armour HHelmet Options";
-HHXHHResetArmourHelmet  = "Reset Helmet Slot HHelmet Options";
-HHXHHResetArmourBody    = "Reset Body Slot HHelmet Options";
-HHXHHResetArmourBoots   = "Reset Boots Slot HHelmet Options";
+HHXHHResetAmmoCounters   = "Reset Ammo Counters HHelmet Options";
+HHXHHResetArmour         = "Reset Armour HHelmet Options";
+HHXHHResetArmourHelmet   = "Reset Helmet Slot HHelmet Options";
+HHXHHResetArmourBody     = "Reset Body Slot HHelmet Options";
+HHXHHResetArmourBoots    = "Reset Boots Slot HHelmet Options";
 HHXHHResetBerserkCounter = "Reset Berserk Counter HHelmet Options";
-HHXHHResetCompass       = "Reset Compass HHelmet Options";
-HHXHHResetEKG           = "Reset EKG HHelmet Options";
-HHXHHResetEncumbrance   = "Reset Encumbrance HHelmet Options";
-HHXHHResetFullInventory = "Reset Full Inventory HHelmet Options";
-HHXHHResetHeartbeat     = "Reset Heartbeat HHelmet Options";
-HHXHHResetInventory     = "Reset Inventory HHelmet Options";
-HHXHHResetKeys          = "Reset Keys HHelmet Options";
-HHXHHResetMugshot       = "Reset Mugshot HHelmet Options";
-HHXHHResetBackground    = "Reset Helmet Background HHelmet Options";
-HHXHHResetStimCounter   = "Reset Stim Counter HHelmet Options";
-HHXHHResetWeaponSprite  = "Reset Weapon Sprite HHelmet Options";
-HHXHHResetweaponStash   = "Reset Weapon Stash HHelmet Options";
-HHXHHResetWeaponStatus  = "Reset Weapon Status HHelmet Options";
-HHXHHResetWoundCounter  = "Reset Wound Counter HHelmet Options";
+HHXHHResetBluesCounter   = "Reset Blues Counter HHelmet Options";
+HHXHHResetCompass        = "Reset Compass HHelmet Options";
+HHXHHResetEKG            = "Reset EKG HHelmet Options";
+HHXHHResetEncumbrance    = "Reset Encumbrance HHelmet Options";
+HHXHHResetFullInventory  = "Reset Full Inventory HHelmet Options";
+HHXHHResetHeartbeat      = "Reset Heartbeat HHelmet Options";
+HHXHHResetInventory      = "Reset Inventory HHelmet Options";
+HHXHHResetKeys           = "Reset Keys HHelmet Options";
+HHXHHResetMugshot        = "Reset Mugshot HHelmet Options";
+HHXHHResetBackground     = "Reset Helmet Background HHelmet Options";
+HHXHHResetStimCounter    = "Reset Stim Counter HHelmet Options";
+HHXHHResetWeaponSprite   = "Reset Weapon Sprite HHelmet Options";
+HHXHHResetweaponStash    = "Reset Weapon Stash HHelmet Options";
+HHXHHResetWeaponStatus   = "Reset Weapon Status HHelmet Options";
+HHXHHResetWoundCounter   = "Reset Wound Counter HHelmet Options";
 
 // Preset Menu Labels
-HHXPresetDescription = "Here are some presets to get you started.";
-HHXPresetDoomAlpha   = "Doom Alpha Helmet HUD";
-HHXPresetArcterezion = "Arcterezion's HUD";
-HHXPresetSwampyrad   = "Swampyrad's Resident Evil 1 HUD";
-HHXPresetUDV1        = "Ultimate Doom Visor HUD";
-HHXPresetUDV2        = "Ultimate Doom Visor Alternate HUD";
+HHXPresetDescription       = "Here are some presets to get you started.";
+HHXSubPresetDescription    = "Use these to set a preset specifically to either with or without a helmet.";
+HHXNHMSubPresetDescription = "Use any of these to configure your HUD when you don't have a helmet equipped.";
+HHXHLMSubPresetDescription = "Use any of these to configure your HUD when you do have a helmet equipped.";
+HHXPresetDoomAlpha         = "Doom Alpha Helmet HUD";
+HHXPresetArcterezion       = "Arcterezion's HUD";
+HHXPresetSwampyrad         = "Swampyrad's Resident Evil 1 HUD";
+HHXPresetUDV1              = "Ultimate Doom Visor HUD";
+HHXPresetUDV2              = "Ultimate Doom Visor Alternate HUD";
+HHXPresetUZ                = "Undead Zeratul's Personal Preset";
 
 // Hideous Helmet Option Set Labels
 HHXHLM = "With Helmet";
 HHXNHM = "Without Helmet";
+
+HHXHHelmetRequired = "Requires Hideous Helmet";

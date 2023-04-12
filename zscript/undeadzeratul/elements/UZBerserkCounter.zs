@@ -96,17 +96,17 @@ class UZBerserkCounter : HUDElement {
             sb.DrawImage(
                 "HLMZA0",
                 (posX, posY),
-                sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_LEFT_TOP,
+                sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP,
                 0.6,
-                scale: (.5 * scale, .5 * scale)
+                scale: (scale, scale)
             );
 
             sb.DrawString(
                 sb.mIndexFont,
                 sb.FormatNumber((zerk - 10500) / 84),
-                (posX + (8 * scale), posY + (1 * scale)),
+                (posX + (8 * scale), posY + scale),
                 sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_LEFT,
-                zerk < 1 ? Font.CR_WHITE : Font.CR_GREEN,
+                Font.CR_RED,
                 scale: (scale, scale)
             );
         }
