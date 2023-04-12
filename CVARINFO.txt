@@ -2,7 +2,7 @@
 user bool   uz_hhx_ammoCounters_enabled        = true;
 user int    uz_hhx_ammoCounters_nhm_hudLevel   = 2;
 user int    uz_hhx_ammoCounters_nhm_posX       = -8;
-user int    uz_hhx_ammoCounters_nhm_posY       = -6;
+user int    uz_hhx_ammoCounters_nhm_posY       = -8;
 user float  uz_hhx_ammoCounters_nhm_scale      = 1.;
 user float  uz_hhx_ammoCounters_nhm_xScale     = 0.;
 user float  uz_hhx_ammoCounters_nhm_yScale     = 0.;
@@ -11,7 +11,7 @@ user int    uz_hhx_ammoCounters_nhm_wrapLength = -1;
 user bool   uz_hhx_ammoCounters_hlm_required   = false;
 user int    uz_hhx_ammoCounters_hlm_hudLevel   = 2;
 user int    uz_hhx_ammoCounters_hlm_posX       = -8;
-user int    uz_hhx_ammoCounters_hlm_posY       = -6;
+user int    uz_hhx_ammoCounters_hlm_posY       = -8;
 user float  uz_hhx_ammoCounters_hlm_scale      = 1.;
 user float  uz_hhx_ammoCounters_hlm_xScale     = 0.;
 user float  uz_hhx_ammoCounters_hlm_yScale     = 0.;
@@ -51,18 +51,18 @@ user float  uz_hhx_armour_bg_hlm_scale = 1.;
 user int   uz_hhx_armour_helmet_nhm_posX  = -8;
 user int   uz_hhx_armour_helmet_nhm_posY  = -14;
 user float uz_hhx_armour_helmet_nhm_scale = 1.;
-user int   uz_hhx_armour_helmet_hlm_posX  = 8;
+user int   uz_hhx_armour_helmet_hlm_posX  = -8;
 user int   uz_hhx_armour_helmet_hlm_posY  = -14;
 user float uz_hhx_armour_helmet_hlm_scale = 1.;
 
-user int   uz_hhx_armour_body_nhm_posX    = 30;
+user int   uz_hhx_armour_body_nhm_posX    = 0;
 user int   uz_hhx_armour_body_nhm_posY    = 0;
 user float uz_hhx_armour_body_nhm_scale   = 1.;
 user int   uz_hhx_armour_body_hlm_posX    = 0;
 user int   uz_hhx_armour_body_hlm_posY    = 0;
 user float uz_hhx_armour_body_hlm_scale   = 1.;
 
-user int   uz_hhx_armour_boots_nhm_posX   = 12;
+user int   uz_hhx_armour_boots_nhm_posX   = -18;
 user int   uz_hhx_armour_boots_nhm_posY   = 6;
 user float uz_hhx_armour_boots_nhm_scale  = 1.;
 user int   uz_hhx_armour_boots_hlm_posX   = -18;
@@ -70,18 +70,18 @@ user int   uz_hhx_armour_boots_hlm_posY   = 6;
 user float uz_hhx_armour_boots_hlm_scale  = 1.;
 
 // HUD BACKGROUND CONFIGS
-user string uz_hhx_background_ref          = "ALPHABG";
+user string uz_hhx_background_ref          = "";
 user bool   uz_hhx_background_enabled      = true;
 user int    uz_hhx_background_nhm_hudLevel = 1;
 user int    uz_hhx_background_nhm_posX     = 0;
 user int    uz_hhx_background_nhm_posY     = 0;
-user float  uz_hhx_background_nhm_scale    = 1.;
+user float  uz_hhx_background_nhm_scale    = 0;
 
-user bool   uz_hhx_background_hlm_required = true;
+user bool   uz_hhx_background_hlm_required = false;
 user int    uz_hhx_background_hlm_hudLevel = 1;
 user int    uz_hhx_background_hlm_posX     = 0;
 user int    uz_hhx_background_hlm_posY     = 0;
-user float  uz_hhx_background_hlm_scale    = 1.;
+user float  uz_hhx_background_hlm_scale    = 0;
 
 // BERSERK COUNTER CONFIGS
 user bool  uz_hhx_berserkCounter_enabled      = true;
@@ -197,7 +197,7 @@ user float  uz_hhx_encumbrance_bg_hlm_scale = 1.;
 user bool  uz_hhx_fullInventory_enabled        = true;
 user int   uz_hhx_fullInventory_nhm_hudLevel   = 2;
 user int   uz_hhx_fullInventory_nhm_posX       = -18;
-user int   uz_hhx_fullInventory_nhm_posY       = -20;
+user int   uz_hhx_fullInventory_nhm_posY       = 0;
 user float uz_hhx_fullInventory_nhm_scale      = 1.;
 user float uz_hhx_fullInventory_nhm_xScale     = 0.;
 user float uz_hhx_fullInventory_nhm_yScale     = 0.;
@@ -206,7 +206,7 @@ user int   uz_hhx_fullInventory_nhm_wrapLength = -1;
 user bool  uz_hhx_fullInventory_hlm_required   = false;
 user int   uz_hhx_fullInventory_hlm_hudLevel   = 2;
 user int   uz_hhx_fullInventory_hlm_posX       = -18;
-user int   uz_hhx_fullInventory_hlm_posY       = -20;
+user int   uz_hhx_fullInventory_hlm_posY       = 0;
 user float uz_hhx_fullInventory_hlm_scale      = 1.;
 user float uz_hhx_fullInventory_hlm_xScale     = 0.;
 user float uz_hhx_fullInventory_hlm_yScale     = 0.;
@@ -224,14 +224,14 @@ user float  uz_hhx_fullInventory_bg_hlm_scale = 1.;
 // Heartbeat CONFIGS
 user bool  uz_hhx_heartbeat_enabled      = true;
 user int   uz_hhx_heartbeat_nhm_hudLevel = 1;
-user int   uz_hhx_heartbeat_nhm_posX     = -10;
-user int   uz_hhx_heartbeat_nhm_posY     = -4;
+user int   uz_hhx_heartbeat_nhm_posX     = -12;
+user int   uz_hhx_heartbeat_nhm_posY     = -5;
 user float uz_hhx_heartbeat_nhm_scale    = 1.;
 
 user bool  uz_hhx_heartbeat_hlm_required = false;
 user int   uz_hhx_heartbeat_hlm_hudLevel = 1;
-user int   uz_hhx_heartbeat_hlm_posX     = 25;
-user int   uz_hhx_heartbeat_hlm_posY     = -4;
+user int   uz_hhx_heartbeat_hlm_posX     = -12;
+user int   uz_hhx_heartbeat_hlm_posY     = -5;
 user float uz_hhx_heartbeat_hlm_scale    = 1.;
 
 user string uz_hhx_heartbeat_bg_nhm_ref   = "";
@@ -300,8 +300,8 @@ user float uz_hhx_mugshot_nhm_scale    = 1.;
 
 user bool  uz_hhx_mugshot_hlm_required = false;
 user int   uz_hhx_mugshot_hlm_hudLevel = 1;
-user int   uz_hhx_mugshot_hlm_posX     = -171;
-user int   uz_hhx_mugshot_hlm_posY     = 0;
+user int   uz_hhx_mugshot_hlm_posX     = 0;
+user int   uz_hhx_mugshot_hlm_posY     = -14;
 user float uz_hhx_mugshot_hlm_scale    = 1.;
 
 user string uz_hhx_mugshot_bg_nhm_ref   = "";
