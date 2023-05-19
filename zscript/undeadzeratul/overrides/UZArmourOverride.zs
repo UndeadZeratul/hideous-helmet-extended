@@ -1,7 +1,6 @@
 class UZArmourOverride : HCItemOverride {
 	
-	override void Init(HCStatusbar sb)
-	{
+	override void Init(HCStatusbar sb) {
 		Priority     = 1;
 		OverrideType = HCOVERRIDETYPE_ITEM;
 	}
