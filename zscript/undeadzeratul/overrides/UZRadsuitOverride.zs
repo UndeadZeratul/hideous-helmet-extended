@@ -1,4 +1,6 @@
 class UZRadsuitOverride : HCItemOverride {
+
+	private transient CVar _enabled;
 	
 	override void Init(HCStatusbar sb) {
 		Priority     = 2;
@@ -7,14 +9,11 @@ class UZRadsuitOverride : HCItemOverride {
 
 	// Ignore Radsuit to handle in UZRadsuit
 	override bool CheckItem(Inventory item) {
-		return item.GetClassName() == "WornRadsuit";
-	}
-
-	override void Tick(HCStatusbar sb) {
-        // No-op: Radsuit is handled in UZRadsuit
+		return (!_enabled || _enabled.GetBool())
+			&& item.GetClassName() == "WornRadsuit";
 	}
 
 	override void DrawHUDStuff(HCStatusbar sb, Inventory item, int hdFlags, int gzFlags) {
-        // No-op: Radsuit is handled in UZRadsuit
+		if (!_enabled) _enabled = CVar.GetCVar("uz_hhx_radsuit_enabled", sb.CPlayer);
 	}
 }

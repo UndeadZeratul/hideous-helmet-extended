@@ -335,6 +335,10 @@ user int    uz_hhx_mugshot_bg_hlm_posX  = 0;
 user int    uz_hhx_mugshot_bg_hlm_posY  = 0;
 user float  uz_hhx_mugshot_bg_hlm_scale = 1.;
 
+// RADSUIT OVERRIDE CONFIGS
+user string uz_hhx_radsuit_ref     = "DESPMASK";
+user bool   uz_hhx_radsuit_enabled = true;
+
 // STIM COUNTER CONFIGS
 user bool  uz_hhx_stimCounter_enabled      = true;
 user int   uz_hhx_stimCounter_nhm_hudLevel = 1;

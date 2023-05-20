@@ -33,7 +33,10 @@ OptionMenu "HHXAdvanced" {
 // 	SubMenu "$HHXWeaponStatus",    "HHXWeaponStatus"
 	SubMenu "$HHXWoundCounter",    "HHXWoundCounter"
 
-	StaticText ""	
+	StaticText ""
+	SubMenu "$HHXRadsuitOverride", "HHXRadsuitOverride"
+
+	StaticText ""
 	StaticText ""
 	SafeCommand "$HHXEnableAll",  "uz_hhx_enableAll"
 	SafeCommand "$HHXDisableAll", "uz_hhx_disableAll"
@@ -964,6 +967,23 @@ OptionMenu "HHXWoundCounter" {
 	SafeCommand "$HHXResetWoundCounter", "uz_hhx_options_reset_nhm_woundCounter"
 	SafeCommand "$HHXHHResetWoundCounter", "uz_hhx_options_reset_hlm_woundCounter"
 }
+
+
+OptionMenu "HHXRadsuitOverride" {
+	Title "$HHXRadsuitOverride"
+
+	Option "$HHXEnabled", "uz_hhx_radsuit_enabled", "OnOff"
+
+	StaticText ""
+	TextField "$HHXRadsuitRef", "uz_hhx_radsuit_ref", "uz_hhx_radsuit_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetRadsuitOverride", "uz_hhx_options_reset_nhm_radsuit"
+}
+
+
 
 OptionMenu "HHXPresets" {
 	Title "$HHXPresets"
