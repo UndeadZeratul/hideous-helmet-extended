@@ -341,7 +341,7 @@ class UZArmour : HUDElement {
 			stats.offY = (hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt());
 		} else if (cls == "HHelmetWorn") {
 			stats.slot = 1;
-			stats.wornlayer = 3000; // HHelmet normally 0, overriding for rendering priority
+			stats.wornlayer = 1500; // HHelmet normally 0, overriding for rendering priority
 			stats.fg = "HELMA0";
 			stats.bg = "HELMB0";
 			stats.durability = arm.durability;
@@ -389,6 +389,16 @@ class UZArmour : HUDElement {
 			stats.fontColor = Font.CR_GRAY;
 			stats.offX = hasHelmet ? _boots_hlm_posX.GetInt() : _boots_nhm_posX.GetInt();
 			stats.offY = hasHelmet ? _boots_hlm_posY.GetInt() : _boots_nhm_posY.GetInt();
+		} else if (cls == "WornRadsuit") {
+			stats.slot = 0;
+			stats.wornlayer = STRIP_RADSUIT;
+			stats.fg = "SUITB0";
+			stats.bg = "SUITB0";
+			stats.durability = 0;
+			stats.maxDurability = 0;
+			stats.fontColor = Font.CR_WHITE;
+			stats.offX = hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt();
+			stats.offY = hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt();
 		} else if (cls == "WornAntiGravBoots") {
 			stats.slot = 2;
 			stats.wornlayer = 1400; // STRIP_ANTIGRAVBOOTS
@@ -404,7 +414,7 @@ class UZArmour : HUDElement {
 			let graphic = shields < 341 ? "BON2B0" : shields < 682 ? "BON2C0" : "BON2D0";
 
 			stats.slot = 0;
-			stats.wornlayer = 5000; // Abitrary, just needs to be above everything else
+			stats.wornlayer = 3000; // Abitrary, just needs to be above everything else
 			stats.fg = graphic;
 			stats.bg = graphic;
 			stats.durability = shields;

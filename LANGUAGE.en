@@ -13,6 +13,7 @@ HHXArmour          = "Armour Options";
 HHXArmourHelmet    = "Helmet Slot Options";
 HHXArmourBody      = "Body Slot Options";
 HHXArmourBoots     = "Boots Slot Options";
+HHXBackground      = "HUD Background Options";
 HHXBerserkCounter  = "Berserk Counter Options";
 HHXBloodBagCounter = "Blood Bag Counter Options";
 HHXBluesCounter    = "Blues Counter Options";
@@ -24,7 +25,7 @@ HHXHeartbeat       = "Heartbeat Options";
 HHXInventory       = "Inventory Options";
 HHXKeys            = "Keys Options";
 HHXMugshot         = "Mugshot Options";
-HHXBackground      = "HUD Background Options";
+HHXRadsuitOverride = "Radsuit Overlay Options";
 HHXStimCounter     = "Stim Counter Options";
 HHXWeaponSprite    = "Weapon Sprite Options";
 HHXWeaponStash     = "Weapon Stash Options";
@@ -44,6 +45,7 @@ HHXHUDLevel       = "Requires HUD Level";
 
 // Sprite References
 HHXBackgroundRef  = "HUD Background Graphic";
+HHXRadsuitRef     = "Radsuit Graphic";
 HHXBgRef          = "HUD Element Background Graphic";
 
 // HUD Element Positioning Config Labels
@@ -70,6 +72,7 @@ HHXResetArmour          = "Reset Armour Options";
 HHXResetArmourHelmet    = "Reset Helmet Slot Options";
 HHXResetArmourBody      = "Reset Body Slot Options";
 HHXResetArmourBoots     = "Reset Boots Slot Options";
+HHXResetBackground      = "Reset HUD Background Options";
 HHXResetBerserkCounter  = "Reset Berserk Counter Options";
 HHXResetBloodBagCounter = "Reset Blood Bag Counter Options";
 HHXResetBluesCounter    = "Reset Blues Counter Options";
@@ -81,7 +84,7 @@ HHXResetHeartbeat       = "Reset Heartbeat Options";
 HHXResetInventory       = "Reset Inventory Options";
 HHXResetKeys            = "Reset Keys Options";
 HHXResetMugshot         = "Reset Mugshot Options";
-HHXResetBackground      = "Reset Helmet Background Options";
+HHXResetRadsuitOverride = "Reset Radsuit Override Options";
 HHXResetStimCounter     = "Reset Stim Counter Options";
 HHXResetWeaponSprite    = "Reset Weapon Sprite Options";
 HHXResetWeaponStash     = "Reset Weapon Stash Options";
