@@ -93,7 +93,7 @@ class UZBluesCounter : HUDElement {
 
         if(blues) {
             sb.DrawImage(
-                "HLMBA0",
+                "HLMUBA0",
                 (posX, posY),
                 sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP,
                 0.6,
