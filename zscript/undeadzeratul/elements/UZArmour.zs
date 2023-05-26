@@ -23,8 +23,17 @@ class UZHDArmourStats {
 	// The horizontal offset of the rendered graphic
 	transient int offX;
 
-	//  The vertical offset of the rendered graphic
+	// The vertical offset of the rendered graphic
 	transient int offY;
+
+	// The alignment flags for the rendered graphic
+	transient int flags;
+
+	// The horizontal offset of the armour durability
+	transient int durOffX;
+
+	// The vertical offset of the armour durability
+	transient int durOffY;
 }
 
 class UZArmour : HUDElement {
@@ -167,7 +176,7 @@ class UZArmour : HUDElement {
 		}
 
 		// Build list of metadata about currently worn armors
-		BuildArmourStats(sb.hpl);
+		BuildArmourStats(sb);
 
 		// Initialize Armor Slot counts
 		int slotIcons[3];
@@ -191,7 +200,7 @@ class UZArmour : HUDElement {
 						arm.maxDurability,
 						sb.DI_TOPLEFT,
 						4 + arm.offX - offsets.x,
-						86 + arm.offY - offsets.y /* - slotIcons[arm.slot] */
+						86 + arm.offY - offsets.y
 					);
 				} else if (CheckCommonStuff(sb, state, ticFrac)) {
 					DrawArmour(
@@ -200,9 +209,9 @@ class UZArmour : HUDElement {
 						arm.bg,
 						arm.durability,
 						arm.maxDurability,
-						sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP,
+						arm.flags,
 						posX + arm.offX - offsets.x,
-						posY + arm.offY - offsets.y /* - slotIcons[arm.slot] */
+						posY + arm.offY - offsets.y
 					);
 				}
 			} else {
@@ -218,7 +227,7 @@ class UZArmour : HUDElement {
 					sb.DrawImage(
 						arm.fg,
 						(posX + arm.offX - offsets.x, posY + arm.offY - offsets.y),
-						sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP
+						arm.flags
 					);
 				}
 			}
@@ -246,18 +255,17 @@ class UZArmour : HUDElement {
 							arm.durability,
 							sb.DI_TOPLEFT,
 							arm.fontColor,
-							14 + arm.offX - (slotDurabilities[arm.slot] * 12),
-							79 + arm.offY + (arm.slot == 1 ? (_hh_durabilitytop && _hh_durabilitytop.GetBool() ? -10 : -3) : 0)
+							14 + arm.offX + arm.durOffX - (slotDurabilities[arm.slot] * 12),
+							79 + arm.offY + arm.durOffY + (arm.slot == 1 ? (_hh_durabilitytop && _hh_durabilitytop.GetBool() ? -10 : -3) : 0)
 						);
 					} else if (CheckCommonStuff(sb, state, ticFrac)) {
 						DrawDurability(
 							sb,
 							arm.durability,
-							sb.DI_SCREEN_CENTER_BOTTOM,
+							sb.DI_SCREEN_CENTER_BOTTOM | sb.DI_TEXT_ALIGN_RIGHT,
 							arm.fontColor,
-							posX + arm.offX - (slotDurabilities[arm.slot] * 12),
-							posY + arm.offY + (arm.slot == 1 ? (_hh_durabilitytop && _hh_durabilitytop.GetBool() ? -10 : -3) : 0),
-							scale
+							posX + arm.offX + arm.durOffX - (slotDurabilities[arm.slot] * 12),
+							posY + arm.offY + arm.durOffY + (arm.slot == 1 ? (_hh_durabilitytop && _hh_durabilitytop.GetBool() ? -10 : -3) : 0)
 						);
 					}
 				}
@@ -283,23 +291,23 @@ class UZArmour : HUDElement {
 			sb.pNewSmallFont,
 			sb.FormatNumber(durability),
 			(posX, posY - 4),
-			flags | sb.DI_ITEM_CENTER | sb.DI_TEXT_ALIGN_RIGHT,
+			flags,
 			fontColor,
 			scale: (0.5 * scale, 0.5 * scale)
 		);
 	}
 
-	private void BuildArmourStats(PlayerPawn hpl) {
-		bool hasHelmet = _HHFunc && _HHFunc.GetIntUI("GetShowHUD", objectArg: hpl);
+	private void BuildArmourStats(HCStatusbar sb) {
+		bool hasHelmet = _HHFunc && _HHFunc.GetIntUI("GetShowHUD", objectArg: sb.hpl);
 		_arms.clear();
 
 		// Process current inventory items, filtering out all non-worn armors
-		for (let item = hpl.inv; item != NULL; item = item.inv) {
+		for (let item = sb.hpl.inv; item != NULL; item = item.inv) {
 			// Back Out early if it's not a pickup
 			let hp = HDPickup(item);
 			if (!hp) continue;
 
-			let stats = GetArmourStats(hpl, item, hasHelmet);
+			let stats = GetArmourStats(sb, item, hasHelmet);
 
 			// If we have a built stats object, add it
 			if (stats) {
@@ -311,7 +319,7 @@ class UZArmour : HUDElement {
 		SortArmours(0, _arms.Size() - 1);
 	}
 
-	private UZHDArmourStats GetArmourStats(PlayerPawn hpl, Inventory item, bool hasHelmet) {
+	private UZHDArmourStats GetArmourStats(HCStatusbar sb, Inventory item, bool hasHelmet) {
 		UZHDArmourStats stats = New("UZHDArmourStats");
 		
 		// For grabbing the current durability
@@ -322,106 +330,136 @@ class UZArmour : HUDElement {
 		if (cls == "HDArmourWorn") {
 			stats.slot = 0;
 			stats.wornlayer = STRIP_ARMOUR;
-			stats.fg = arm.mega ? "ARMCA0" : "ARMSA0";
-			stats.bg = arm.mega ? "ARMER1" : "ARMER0";
+			stats.fg = arm.mega ? "ARMOURU0" : "ARMOURG0";
+			stats.bg = arm.mega ? "ARMOURU1" : "ARMOURG1";
 			stats.durability = arm.durability;
 			stats.fontColor = arm.mega ? Font.CR_ICE : Font.CR_OLIVE;
 			stats.maxDurability = arm.mega ? HDCONST_BATTLEARMOUR : HDCONST_GARRISONARMOUR;
 			stats.offX = hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt();
 			stats.offY = hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt();
+			stats.durOffX = 15;
+			stats.durOffY = 15;
+			stats.flags = sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP;
 		} else if (cls == "HDCorporateArmourWorn") {
 			stats.slot = 0;
 			stats.wornlayer = STRIP_ARMOUR;
-			stats.fg = "CARMA0";
-			stats.bg = "CARMB0";
+			stats.fg = "ARMOURC0";
+			stats.bg = "ARMOURC1";
 			stats.durability = arm.durability;
 			stats.maxDurability = 40;
 			stats.fontColor = Font.CR_DARKGRAY;
 			stats.offX = (hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt());
 			stats.offY = (hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt());
+			stats.durOffX = 15;
+			stats.durOffY = 15;
+			stats.flags = sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP;
 		} else if (cls == "HHelmetWorn") {
 			stats.slot = 1;
 			stats.wornlayer = 1500; // HHelmet normally 0, overriding for rendering priority
-			stats.fg = "HELMA0";
-			stats.bg = "HELMB0";
+			stats.fg = "HELMETA0";
+			stats.bg = "HELMETA1";
 			stats.durability = arm.durability;
 			stats.maxDurability = 72;
 			stats.fontColor = Font.CR_TAN;
 			stats.offX = hasHelmet ? _helmet_hlm_posX.GetInt() : _helmet_nhm_posX.GetInt();
-			stats.offY = (hasHelmet ? _helmet_hlm_posY.GetInt() : _helmet_nhm_posY.GetInt()) + _hh_helmetoffsety.GetInt();
+			stats.offY = (hasHelmet ? _helmet_hlm_posY.GetInt() : _helmet_nhm_posY.GetInt()) + (_hh_helmetoffsety ? _hh_helmetoffsety.GetInt() : 0);
+			stats.durOffX = 7;
+			stats.durOffY = 15;
+			stats.flags = sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP;
 		} else if (cls == "HDHEVArmourWorn") {
 			stats.slot = 0;
 			stats.wornlayer = STRIP_ARMOUR;
-			stats.fg = "HEVAA0";
-			stats.bg = "HEVAB0";
+			stats.fg = "ARMOURH0";
+			stats.bg = "ARMOURH1";
 			stats.durability = arm.durability;
 			stats.maxDurability = 107; // HDCONST_HEVARMOUR
 			stats.fontColor = Font.CR_ORANGE;
 			stats.offX = hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt();
 			stats.offY = hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt();
+			stats.durOffX = 15;
+			stats.durOffY = 15;
+			stats.flags = sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP;
 		} else if (cls == "HDLeatherArmourWorn") {
 			stats.slot = 0;
 			stats.wornlayer = 1200; // STRIP_JACKET
-			stats.fg = "JAKTA0";
-			stats.bg = "JAKET0";
+			stats.fg = "ARMOURL0";
+			stats.bg = "ARMOURL1";
 			stats.durability = arm.durability;
 			stats.maxDurability = 40;
 			stats.fontColor = Font.CR_BROWN;
 			stats.offX = hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt();
 			stats.offY = hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt();
+			stats.durOffX = 15;
+			stats.durOffY = 15;
+			stats.flags = sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP;
 		} else if (cls == "WAN_SneakingSuitWorn") {
 			stats.slot = 0;
 			stats.wornlayer = STRIP_ARMOUR;
-			stats.fg = "SNKSA0";
-			stats.bg = "SNKSB0";
+			stats.fg = "ARMOURS0";
+			stats.bg = "ARMOURS1";
 			stats.durability = arm.durability;
 			stats.maxDurability = 144; // HDCONST_SNEAKINGSUIT
 			stats.fontColor = Font.CR_DARKGRAY;
 			stats.offX = hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt();
 			stats.offY = hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt();
+			stats.durOffX = 0;
+			stats.durOffY = 0;
+			stats.flags = sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP;
 		} else if (cls == "WornRadBoots") {
 			stats.slot = 2;
 			stats.wornlayer = 1500; // STRIP_RADBOOTS
-			stats.fg = "RDBTA0";
-			stats.bg = "RDBTA0";
+			stats.fg = "RADBUTA0";
+			stats.bg = "RADBUTA0";
 			stats.durability = 0;
 			stats.maxDurability = 0;
 			stats.fontColor = Font.CR_GRAY;
 			stats.offX = hasHelmet ? _boots_hlm_posX.GetInt() : _boots_nhm_posX.GetInt();
 			stats.offY = hasHelmet ? _boots_hlm_posY.GetInt() : _boots_nhm_posY.GetInt();
+			stats.durOffX = -7;
+			stats.durOffY = 15;
+			stats.flags = sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_RIGHT_TOP;
 		} else if (cls == "WornRadsuit") {
 			stats.slot = 0;
 			stats.wornlayer = STRIP_RADSUIT;
-			stats.fg = "SUITB0";
-			stats.bg = "SUITB0";
+			stats.fg = "RADSUTA0";
+			stats.bg = "RADSUTA0";
 			stats.durability = 0;
 			stats.maxDurability = 0;
 			stats.fontColor = Font.CR_WHITE;
 			stats.offX = hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt();
 			stats.offY = hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt();
+			stats.durOffX = 15;
+			stats.durOffY = 15;
+			stats.flags = sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP;
 		} else if (cls == "WornAntiGravBoots") {
 			stats.slot = 2;
 			stats.wornlayer = 1400; // STRIP_ANTIGRAVBOOTS
-			stats.fg = "AGRVA0";
-			stats.bg = "AGRVA0";
+			stats.fg = "AGRVBTA0";
+			stats.bg = "AGRVBTA0";
 			stats.durability = 0;
 			stats.maxDurability = 0;
 			stats.fontColor = Font.CR_GRAY;
 			stats.offX = hasHelmet ? _boots_hlm_posX.GetInt() : _boots_nhm_posX.GetInt();
 			stats.offY = hasHelmet ? _boots_hlm_posY.GetInt() : _boots_nhm_posY.GetInt();
+			stats.durOffX = -7;
+			stats.durOffY = 15;
+			stats.flags = sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_RIGHT_TOP;
 		} else if (cls == "HDMagicShield") {
-			let shields = hpl.countinv("HDMagicShield");
-			let graphic = shields < 341 ? "BON2B0" : shields < 682 ? "BON2C0" : "BON2D0";
+			let shields = sb.hpl.countinv("HDMagicShield");
+			let graphic = shields < 341 ? "SHIELDB0" : shields < 682 ? "SHIELDC0" : "SHIELDD0";
 
-			stats.slot = 0;
+			stats.slot = 1;
 			stats.wornlayer = 3000; // Abitrary, just needs to be above everything else
 			stats.fg = graphic;
 			stats.bg = graphic;
 			stats.durability = shields;
 			stats.maxDurability = 1024;
 			stats.fontColor = Font.CR_SAPPHIRE;
-			stats.offX = hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt();
-			stats.offY = hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt();
+			stats.offX = hasHelmet ? _helmet_hlm_posX.GetInt() : _helmet_nhm_posX.GetInt();
+			stats.offY = (hasHelmet ? _helmet_hlm_posY.GetInt() : _helmet_nhm_posY.GetInt()) + (_hh_helmetoffsety ? _hh_helmetoffsety.GetInt() : 0);
+			stats.durOffX = 7;
+			stats.durOffY = 15;
+			stats.flags = sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP;
 		} else {
 			stats = NULL;
 		}
