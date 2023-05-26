@@ -1,5 +1,7 @@
 version "4.10"
 
+#include "zscript/undeadzeratul/base/BaseCounter.zs"
+
 #include "zscript/undeadzeratul/elements/UZAmmoCounters.zs"
 #include "zscript/undeadzeratul/elements/UZArmour.zs"
 #include "zscript/undeadzeratul/elements/UZBackground.zs"
