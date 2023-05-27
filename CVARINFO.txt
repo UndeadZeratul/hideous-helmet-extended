@@ -236,6 +236,33 @@ user int    uz_hhx_encumbrance_bg_hlm_posX  = 0;
 user int    uz_hhx_encumbrance_bg_hlm_posY  = 0;
 user float  uz_hhx_encumbrance_bg_hlm_scale = 1.;
 
+// FATIGUE COUNTER CONFIGS
+user bool  uz_hhx_fatigueCounter_enabled      = true;
+user int   uz_hhx_fatigueCounter_style        = 1;
+user int   uz_hhx_fatigueCounter_fontColor    = 11;
+user int   uz_hhx_fatigueCounter_barDirection = 2;
+user int   uz_hhx_fatigueCounter_maxValue     = 100;
+
+user int   uz_hhx_fatigueCounter_nhm_hudLevel = 1;
+user int   uz_hhx_fatigueCounter_nhm_posX     = 60;
+user int   uz_hhx_fatigueCounter_nhm_posY     = -100;
+user float uz_hhx_fatigueCounter_nhm_scale    = 1.;
+
+user bool  uz_hhx_fatigueCounter_hlm_required = false;
+user int   uz_hhx_fatigueCounter_hlm_hudLevel = 1;
+user int   uz_hhx_fatigueCounter_hlm_posX     = 60;
+user int   uz_hhx_fatigueCounter_hlm_posY     = -100;
+user float uz_hhx_fatigueCounter_hlm_scale    = 1.;
+
+user string uz_hhx_fatigueCounter_bg_nhm_ref   = "";
+user int    uz_hhx_fatigueCounter_bg_nhm_posX  = 0;
+user int    uz_hhx_fatigueCounter_bg_nhm_posY  = 0;
+user float  uz_hhx_fatigueCounter_bg_nhm_scale = 1.;
+user string uz_hhx_fatigueCounter_bg_hlm_ref   = "";
+user int    uz_hhx_fatigueCounter_bg_hlm_posX  = 0;
+user int    uz_hhx_fatigueCounter_bg_hlm_posY  = 0;
+user float  uz_hhx_fatigueCounter_bg_hlm_scale = 1.;
+
 // FULL INVENTORY CONFIGS
 user bool  uz_hhx_fullInventory_enabled        = true;
 
