@@ -72,6 +72,7 @@ OptionMenu "HHXAdvanced" {
 	SubMenu "$HHXMugshot",         "HHXMugshot"
 	SubMenu "$HHXBackground",      "HHXBackground"
 	SubMenu "$HHXStimCounter",     "HHXStimCounter"
+	SubMenu "$HHXStunnedCounter",  "HHXStunnedCounter"
 	SubMenu "$HHXWeaponSprite",    "HHXWeaponSprite"
 	SubMenu "$HHXWeaponStash",     "HHXWeaponStash"
 // 	SubMenu "$HHXWeaponStatus",    "HHXWeaponStatus"
@@ -854,6 +855,56 @@ OptionMenu "HHXStimCounter" {
 	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetStimCounter", "uz_hhx_options_reset_nhm_stimCounter"
 	SafeCommand "$HHXHHResetStimCounter", "uz_hhx_options_reset_hlm_stimCounter"
+}
+
+OptionMenu "HHXStunnedCounter" {
+	Title "$HHXStunnedCounter"
+
+	Option "$HHXEnabled", "uz_hhx_stunnedCounter_enabled", "OnOff"
+	StaticText ""
+	Option "$HHXCounterStyle", "uz_hhx_stunnedCounter_style", "CounterStyle", "uz_hhx_stunnedCounter_enabled"
+	Option "$HHXFontColor", "uz_hhx_stunnedCounter_fontColor", "FontColor", "uz_hhx_stunnedCounter_enabled"
+	StaticText ""
+	Option "$HHXBarDirection", "uz_hhx_stunnedCounter_barDirection", "BarDirection", "uz_hhx_stunnedCounter_enabled"
+	StaticText ""
+	Slider "$HHXMaxValue", "uz_hhx_stunnedCounter_maxValue", 0, 1000, 1, 0, "uz_hhx_stunnedCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_stunnedCounter_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_stunnedCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_stunnedCounter_nhm_posX", -400, 400, 1, 0, "uz_hhx_stunnedCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_stunnedCounter_nhm_posY", -400, 400, 1, 0, "uz_hhx_stunnedCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_stunnedCounter_nhm_scale", .01, 4., .05, 2, "uz_hhx_stunnedCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_stunnedCounter_bg_nhm_ref", "uz_hhx_stunnedCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_stunnedCounter_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_stunnedCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_stunnedCounter_bg_nhm_posY", -400, 400, 1, 0, "uz_hhx_stunnedCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_stunnedCounter_bg_nhm_scale", .01, 4., .05, 2, "uz_hhx_stunnedCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_stunnedCounter_hlm_required", "OnOff", "uz_hhx_stunnedCounter_enabled"
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_stunnedCounter_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_stunnedCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_stunnedCounter_hlm_posX", -400, 400, 1, 0, "uz_hhx_stunnedCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_stunnedCounter_hlm_posY", -400, 400, 1, 0, "uz_hhx_stunnedCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_stunnedCounter_hlm_scale", .01, 4., .05, 2, "uz_hhx_stunnedCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_stunnedCounter_bg_hlm_ref", "uz_hhx_stunnedCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_stunnedCounter_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_stunnedCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_stunnedCounter_bg_hlm_posY", -400, 400, 1, 0, "uz_hhx_stunnedCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_stunnedCounter_bg_hlm_scale", .01, 4., .05, 2, "uz_hhx_stunnedCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetStunnedCounter", "uz_hhx_options_reset_nhm_stunnedCounter"
+	SafeCommand "$HHXHHResetStunnedCounter", "uz_hhx_options_reset_hlm_stunnedCounter"
 }
 
 OptionMenu "HHXWeaponSprite" {
