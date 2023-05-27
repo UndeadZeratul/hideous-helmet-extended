@@ -4,11 +4,12 @@ class UZBluesCounter : BaseCounterHUDElement {
 		ZLayer    = 2;
 		Namespace = "bluesCounter";
 
-		counterIcon = "HLMUA0";
-		fontColor = Font.CR_LIGHTBLUE;
+		counterIcon   = "HLMUA0";
+        counterIconBG = "HLMUA1";
+        counterLabel  = Stringtable.Localize("$HHXBluesCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
 	}
 
-	override int GetCounterValue(HCStatusBar sb) {
+	override float GetCounterValue(HCStatusBar sb) {
 		return sb.hpl.CountInv('HealingMagic');
 	}
 }

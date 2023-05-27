@@ -1,12 +1,26 @@
+enum HHX_COUNTER_STYLE {
+    VALUE_ONLY,
+    LABEL_WITH_VALUE,
+    ICON_WITH_VALUE,
+    DURABILITY_BAR,
+    FADING_ICON
+}
+
 class BaseCounterHUDElement : HUDElement abstract {
 
     protected string counterIcon;
-    protected int fontColor;
+    protected string counterIconBG;
+    protected string counterLabel;
 
 	private Service _HHFunc;
 
 	private transient CVar _enabled;
 	private transient CVar _hlm_required;
+
+    private transient CVar _counterStyle;
+    private transient CVar _fontColor;
+    private transient CVar _barDirection;
+    private transient CVar _maxValue;
 	
 	private transient CVar _hlm_hudLevel;
 	private transient CVar _hlm_posX;
@@ -27,12 +41,18 @@ class BaseCounterHUDElement : HUDElement abstract {
 	private transient CVar _hlm_bgScale;
 
     override void Init(HCStatusBar sb) {
-		counterIcon = "";
-		fontColor = Font.CR_UNTRANSLATED;
+		counterIcon   = "";
+        counterLabel  = "";
+        counterIconBG = "";
     }
 
 	override void Tick(HCStatusbar sb) {
 		if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
+
+		if (!_counterStyle) _counterStyle = CVar.GetCVar("uz_hhx_"..Namespace.."_style", sb.CPlayer);
+		if (!_fontColor) _fontColor       = CVar.GetCVar("uz_hhx_"..Namespace.."_fontColor", sb.CPlayer);
+		if (!_barDirection) _barDirection = CVar.GetCVar("uz_hhx_"..Namespace.."_barDirection", sb.CPlayer);
+		if (!_maxValue) _maxValue         = CVar.GetCVar("uz_hhx_"..Namespace.."_maxValue", sb.CPlayer);
 
 		if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_"..Namespace.."_enabled", sb.CPlayer);
 		if (!_hlm_required) _hlm_required = CVar.GetCVar("uz_hhx_"..Namespace.."_hlm_required", sb.CPlayer);
@@ -91,30 +111,84 @@ class BaseCounterHUDElement : HUDElement abstract {
         }
     }
 
-    protected void DrawCounter(HCStatusbar sb, int posX, int posY, float scale = 1.) {
-        let value = GetCounterValue(sb);
-
-        if (value > 0) {
-            sb.DrawImage(
-                counterIcon,
-                (posX, posY),
-                sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP,
-                0.6,
-                scale: (scale, scale)
-            );
-
-            sb.DrawString(
-                sb.mIndexFont,
-                sb.FormatNumber(value),
-                (posX + (8 * scale), posY + scale),
-                sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_LEFT,
-                fontColor,
-                scale: (scale, scale)
-            );
-        }
+    virtual bool ShouldDrawCounter(HCStatusBar sb, float counterValue) {
+        return counterValue > 0;
     }
 
-    virtual int GetCounterValue(HCStatusBar sb){
+    virtual float GetCounterValue(HCStatusBar sb){
         return 0;
+    }
+
+    virtual float GetCounterMaxValue(HCStatusBar sb){
+        return _maxValue ? _maxValue.getInt() : 0;
+    }
+
+    protected void DrawCounter(HCStatusbar sb, int posX, int posY, float scale = 1.) {
+        let value    = GetCounterValue(sb);
+        let maxValue = GetCounterMaxValue(sb);
+
+        if (ShouldDrawCounter(sb, value)) {
+            switch (_counterStyle ? _counterStyle.GetInt() : LABEL_WITH_VALUE) {
+                case VALUE_ONLY:
+                    sb.DrawString(
+                        sb.mIndexFont,
+                        sb.FormatNumber(value),
+                        (posX + (8 * scale), posY + scale),
+                        sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_LEFT,
+                        _fontColor.GetInt(),
+                        scale: (scale, scale)
+                    );
+                    break;
+                case LABEL_WITH_VALUE:
+                    sb.DrawString(
+                        sb.pNewSmallFont,
+                        counterLabel..sb.FormatNumber(value),
+                        (posX + (8 * scale), posY + scale),
+                        sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_LEFT,
+                        _fontColor.GetInt(),
+                        scale: (scale, scale)
+                    );
+                    break;
+                case ICON_WITH_VALUE:
+                    sb.DrawImage(
+                        counterIcon,
+                        (posX, posY),
+                        sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP,
+                        0.6,
+                        scale: (scale, scale)
+                    );
+
+                    sb.DrawString(
+                        sb.mIndexFont,
+                        sb.FormatNumber(value),
+                        (posX + (8 * scale), posY + scale),
+                        sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_LEFT,
+                        _fontColor.GetInt(),
+                        scale: (scale, scale)
+                    );
+                    break;
+                case DURABILITY_BAR:
+                    sb.DrawBar(
+                        counterIcon, counterIconBG,
+                        value, maxValue,
+                        (posX, posY),
+                        -1,
+                        _barDirection.GetInt(),
+                        sb.DI_SCREEN_CENTER_BOTTOM|SB.DI_ITEM_TOP
+                    );
+                    break;
+                case FADING_ICON:
+                    sb.DrawImage(
+                        counterIcon,
+                        (posX, posY),
+                        sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP,
+                        value / maxValue,
+                        scale: (scale, scale)
+                    );
+                    break;
+                default:
+                    console.printf('UNKNOWN COUNTER STYLE: '.._counterStyle.GetInt());
+            }
+        }
     }
 }

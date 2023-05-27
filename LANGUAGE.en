@@ -132,3 +132,24 @@ HHXHLM = "With Helmet";
 HHXNHM = "Without Helmet";
 
 HHXHHelmetRequired = "Requires Hideous Helmet";
+
+// Miscellaneous Option Labels
+HHXBarDirection = "Durability Bar Direction";
+HHXCounterStyle = "Counter Style";
+HHXFontColor    = "Font Color";
+HHXMaxValue     = "Max Value";
+
+// HUD Counter Styles
+HHXOPTIONVALUE_COUNTER_VALUE_ONLY       = "Value Only";
+HHXOPTIONVALUE_COUNTER_LABEL_WITH_VALUE = "Label & Value";
+HHXOPTIONVALUE_COUNTER_ICON_WITH_VALUE  = "Icon & Value";
+HHXOPTIONVALUE_COUNTER_DURABILITY_BAR   = "Icon Durability Bar";
+HHXOPTIONVALUE_COUNTER_FADING_ICON      = "Fading Icon";
+
+// HUD Counter Labels
+HHXBerserkCounterLabel  = "Berserk";
+HHXBloodBagCounterLabel = "Blood Bag";
+HHXBluesCounterLabel    = "Blues";
+HHXStimCounterLabel     = "Stims";
+
+HHXCounterSeparator     = ": ";

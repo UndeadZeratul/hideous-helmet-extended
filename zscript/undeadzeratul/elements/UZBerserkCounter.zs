@@ -4,11 +4,12 @@ class UZBerserkCounter : BaseCounterHUDElement {
 		ZLayer    = 2;
 		Namespace = "berserkCounter";
 
-		counterIcon = "HLMZA0";
-		fontColor = Font.CR_RED;
+		counterIcon   = "HLMZA0";
+        counterIconBG = "HLMZA1";
+        counterLabel  = Stringtable.Localize("$HHXBerserkCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
 	}
 
-	override int GetCounterValue(HCStatusBar sb) {
+	override float GetCounterValue(HCStatusBar sb) {
 		return (sb.hpl.CountInv('HDZerk') - 10500) / 84;
 	}
 }

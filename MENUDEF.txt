@@ -1,3 +1,47 @@
+OptionValue "FontColor" {
+	11,"Default"
+	0, "\c[Brick]Brick"
+	1, "\c[Tan]Tan"
+	2, "\c[Gray]Gray"
+	3, "\c[Green]Green"
+	4, "\c[Brown]Brown"
+	5, "\c[Gold]Gold"
+	6, "\c[Red]Red"
+	7, "\c[Blue]Blue"
+	8, "\c[Orange]Orange"
+	9, "\c[White]White"
+	10,"\c[Yellow]Yellow"
+	12,"\c[Black]Black"
+	13,"\c[LightBlue]Light Blue"
+	14,"\c[Cream]Cream"
+	15,"\c[Olive]Olive"
+	16,"\c[DarkGreen]Dark Green"
+	17,"\c[DarkRed]Dark Red"
+	18,"\c[DarkBrown]Dark Brown"
+	19,"\c[Purple]Purple"
+	20,"\c[DarkGray]Dark Gray"
+	21,"\c[Cyan]Cyan"
+	22,"\c[Ice]Ice"
+	23,"\c[Fire]Fire"
+	24,"\c[Sapphire]Sapphire"
+	25,"\c[Teal]Teal"
+}
+
+OptionValue "CounterStyle" {
+	0,"$HHXOPTIONVALUE_COUNTER_VALUE_ONLY"
+	1,"$HHXOPTIONVALUE_COUNTER_LABEL_WITH_VALUE"
+	2,"$HHXOPTIONVALUE_COUNTER_ICON_WITH_VALUE"
+	3,"$HHXOPTIONVALUE_COUNTER_DURABILITY_BAR"
+	4,"$HHXOPTIONVALUE_COUNTER_FADING_ICON"
+}
+
+OptionValue "BarDirection" {
+	0,"Horizontal"
+	1,"Horizontal (Reverse)"
+	2,"Vertical"
+	3,"Vertical (Reverse)"
+}
+
 OptionMenu "HHXOptions" {
 	Title "$HHXOptions"
 	
@@ -220,6 +264,13 @@ OptionMenu "HHXBerserkCounter" {
 	Title "$HHXBerserkCounter"
 
 	Option "$HHXEnabled", "uz_hhx_berserkCounter_enabled", "OnOff"
+	StaticText ""
+	Option "$HHXCounterStyle", "uz_hhx_berserkCounter_style", "CounterStyle", "uz_hhx_berserkCounter_enabled"
+	Option "$HHXFontColor", "uz_hhx_berserkCounter_fontColor", "FontColor", "uz_hhx_berserkCounter_enabled"
+	StaticText ""
+	Option "$HHXBarDirection", "uz_hhx_berserkCounter_barDirection", "BarDirection", "uz_hhx_berserkCounter_enabled"
+	StaticText ""
+	Slider "$HHXMaxValue", "uz_hhx_berserkCounter_maxValue", 0, 1000, 1, 0, "uz_hhx_berserkCounter_enabled"
 	
 	StaticText ""
 	StaticText ""
@@ -263,6 +314,13 @@ OptionMenu "HHXBloodBagCounter" {
 	Title "$HHXBloodBagCounter"
 
 	Option "$HHXEnabled", "uz_hhx_bloodBagCounter_enabled", "OnOff"
+	StaticText ""
+	Option "$HHXCounterStyle", "uz_hhx_bloodBagCounter_style", "CounterStyle", "uz_hhx_bloodBagCounter_enabled"
+	Option "$HHXFontColor", "uz_hhx_bloodBagCounter_fontColor", "FontColor", "uz_hhx_bloodBagCounter_enabled"
+	StaticText ""
+	Option "$HHXBarDirection", "uz_hhx_bloodBagCounter_barDirection", "BarDirection", "uz_hhx_bloodBagCounter_enabled"
+	StaticText ""
+	Slider "$HHXMaxValue", "uz_hhx_bloodBagCounter_maxValue", 0, 1000, 1, 0, "uz_hhx_bloodBagCounter_enabled"
 	
 	StaticText ""
 	StaticText ""
@@ -306,6 +364,13 @@ OptionMenu "HHXBluesCounter" {
 	Title "$HHXBluesCounter"
 
 	Option "$HHXEnabled", "uz_hhx_bluesCounter_enabled", "OnOff"
+	StaticText ""
+	Option "$HHXCounterStyle", "uz_hhx_bluesCounter_style", "CounterStyle", "uz_hhx_bluesCounter_enabled"
+	Option "$HHXFontColor", "uz_hhx_bluesCounter_fontColor", "FontColor", "uz_hhx_bluesCounter_enabled"
+	StaticText ""
+	Option "$HHXBarDirection", "uz_hhx_bluesCounter_barDirection", "BarDirection", "uz_hhx_bluesCounter_enabled"
+	StaticText ""
+	Slider "$HHXMaxValue", "uz_hhx_bluesCounter_maxValue", 0, 1000, 1, 0, "uz_hhx_bluesCounter_enabled"
 	
 	StaticText ""
 	StaticText ""
@@ -745,6 +810,13 @@ OptionMenu "HHXStimCounter" {
 	Title "$HHXStimCounter"
 
 	Option "$HHXEnabled", "uz_hhx_stimCounter_enabled", "OnOff"
+	StaticText ""
+	Option "$HHXCounterStyle", "uz_hhx_stimCounter_style", "CounterStyle", "uz_hhx_stimCounter_enabled"
+	Option "$HHXFontColor", "uz_hhx_stimCounter_fontColor", "FontColor", "uz_hhx_stimCounter_enabled"
+	StaticText ""
+	Option "$HHXBarDirection", "uz_hhx_stimCounter_barDirection", "BarDirection", "uz_hhx_stimCounter_enabled"
+	StaticText ""
+	Slider "$HHXMaxValue", "uz_hhx_stimCounter_maxValue", 0, 1000, 1, 0, "uz_hhx_stimCounter_enabled"
 	
 	StaticText ""
 	StaticText ""

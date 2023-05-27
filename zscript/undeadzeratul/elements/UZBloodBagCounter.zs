@@ -4,13 +4,18 @@ class UZBloodBagCounter : BaseCounterHUDElement {
 		ZLayer    = 2;
 		Namespace = "bloodBagCounter";
 
-		counterIcon = "HLMBA0";
-		fontColor = Font.CR_RED;
+		counterIcon   = "HLMBA0";
+        counterIconBG = "HLMBA1";
+        counterLabel  = Stringtable.Localize("$HHXBloodBagCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
 	}
 
-	override int GetCounterValue(HCStatusBar sb) {
+    override bool ShouldDrawCounter(HCStatusBar sb, float counterValue) {
+        return sb.hpl.FindInventory("BloodBagWorn");
+    }
+
+	override float GetCounterValue(HCStatusBar sb) {
 		let bloodBag = BloodBagWorn(sb.hpl.FindInventory("BloodBagWorn"));
 
-		return bloodBag ? bloodBag.bloodLeft : 0;
+		return bloodBag ? (bloodBag.bloodLeft * 100 / 256) : 0;
 	}
 }
