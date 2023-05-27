@@ -20,6 +20,9 @@ While I've done what I can to allow HUD Elements to be customizable, some elemen
 
 ## Credits
 
+Radsuit Overlay:
+- 3D Realms
+
 Hideous Helmet HUD Element Scripts:
 - Dastrukar
 

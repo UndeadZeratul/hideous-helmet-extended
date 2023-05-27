@@ -11,4 +11,14 @@ Graphic "HLMZA0", 5, 16
 	}
 }
 
+Graphic "HLMZA1", 5, 16
+{
+	XScale 2.000
+	YScale 2.000
+	Patch "HLMZA0", 0, 0
+	{
+		Translation "0:255=%[0.00,0.00,0.00]:[0.30,0.14,0.00]"
+	}
+}
+
 // End of texture definitions
