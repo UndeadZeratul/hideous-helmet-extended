@@ -154,7 +154,7 @@ class UZWoundCounter : HUDElement {
 					of = -of;
 			}
 
-			Color fillColour = (sb.hpl.Health > 70 || !_hh_wc_usedynamiccol.GetBool())
+			Color fillColour = (sb.hpl.Health > 70 || !(_hh_wc_usedynamiccol && _hh_wc_usedynamiccol.GetBool()))
 				? Color(255, sb.SBColour.R, sb.SBColour.G, sb.SBColour.B)
 				: (sb.hpl.Health > 33)
 					? Color(255, 240, 210, 10)
