@@ -22,6 +22,7 @@ version "4.10"
 // #include "zscript/undeadzeratul/elements/UZWeaponStatus.zs"
 #include "zscript/undeadzeratul/elements/UZWoundCounter.zs"
 
+#include "zscript/undeadzeratul/elements/counters/UZAggroCounter.zs"
 #include "zscript/undeadzeratul/elements/counters/UZBerserkCounter.zs"
 #include "zscript/undeadzeratul/elements/counters/UZBloodBagCounter.zs"
 #include "zscript/undeadzeratul/elements/counters/UZBluesCounter.zs"
