@@ -131,7 +131,7 @@ OptionMenu "HHXAggroCounter" {
 
 	Option "$HHXEnabled", "uz_hhx_aggroCounter_enabled", "OnOff"
 	StaticText ""
-	Option "$HHXEnabled", "uz_hhx_aggroCounter_alwaysVisible", "OnOff", "uz_hhx_aggroCounter_enabled"
+	Option "$HHXAlwaysVisible", "uz_hhx_aggroCounter_alwaysVisible", "OnOff", "uz_hhx_aggroCounter_enabled"
 	Option "$HHXCounterStyle", "uz_hhx_aggroCounter_style", "CounterStyle", "uz_hhx_aggroCounter_enabled"
 	Option "$HHXFontColor", "uz_hhx_aggroCounter_fontColor", "FontColor", "uz_hhx_aggroCounter_enabled"
 	StaticText ""
@@ -345,7 +345,7 @@ OptionMenu "HHXBerserkCounter" {
 
 	Option "$HHXEnabled", "uz_hhx_berserkCounter_enabled", "OnOff"
 	StaticText ""
-	Option "$HHXEnabled", "uz_hhx_berserkCounter_alwaysVisible", "OnOff", "uz_hhx_berserkCounter_enabled"
+	Option "$HHXAlwaysVisible", "uz_hhx_berserkCounter_alwaysVisible", "OnOff", "uz_hhx_berserkCounter_enabled"
 	Option "$HHXCounterStyle", "uz_hhx_berserkCounter_style", "CounterStyle", "uz_hhx_berserkCounter_enabled"
 	Option "$HHXFontColor", "uz_hhx_berserkCounter_fontColor", "FontColor", "uz_hhx_berserkCounter_enabled"
 	StaticText ""
@@ -396,7 +396,7 @@ OptionMenu "HHXBerserkCooldownCounter" {
 
 	Option "$HHXEnabled", "uz_hhx_berserkCooldownCounter_enabled", "OnOff"
 	StaticText ""
-	Option "$HHXEnabled", "uz_hhx_berserkCooldownCounter_alwaysVisible", "OnOff", "uz_hhx_berserkCooldownCounter_enabled"
+	Option "$HHXAlwaysVisible", "uz_hhx_berserkCooldownCounter_alwaysVisible", "OnOff", "uz_hhx_berserkCooldownCounter_enabled"
 	Option "$HHXCounterStyle", "uz_hhx_berserkCooldownCounter_style", "CounterStyle", "uz_hhx_berserkCooldownCounter_enabled"
 	Option "$HHXFontColor", "uz_hhx_berserkCooldownCounter_fontColor", "FontColor", "uz_hhx_berserkCooldownCounter_enabled"
 	StaticText ""
@@ -447,7 +447,7 @@ OptionMenu "HHXBloodBagCounter" {
 
 	Option "$HHXEnabled", "uz_hhx_bloodBagCounter_enabled", "OnOff"
 	StaticText ""
-	Option "$HHXEnabled", "uz_hhx_bloodBagCounter_alwaysVisible", "OnOff", "uz_hhx_bloodBagCounter_enabled"
+	Option "$HHXAlwaysVisible", "uz_hhx_bloodBagCounter_alwaysVisible", "OnOff", "uz_hhx_bloodBagCounter_enabled"
 	Option "$HHXCounterStyle", "uz_hhx_bloodBagCounter_style", "CounterStyle", "uz_hhx_bloodBagCounter_enabled"
 	Option "$HHXFontColor", "uz_hhx_bloodBagCounter_fontColor", "FontColor", "uz_hhx_bloodBagCounter_enabled"
 	StaticText ""
@@ -498,7 +498,7 @@ OptionMenu "HHXBloodLossCounter" {
 
 	Option "$HHXEnabled", "uz_hhx_bloodLossCounter_enabled", "OnOff"
 	StaticText ""
-	Option "$HHXEnabled", "uz_hhx_bloodLossCounter_alwaysVisible", "OnOff", "uz_hhx_bloodLossCounter_enabled"
+	Option "$HHXAlwaysVisible", "uz_hhx_bloodLossCounter_alwaysVisible", "OnOff", "uz_hhx_bloodLossCounter_enabled"
 	Option "$HHXCounterStyle", "uz_hhx_bloodLossCounter_style", "CounterStyle", "uz_hhx_bloodLossCounter_enabled"
 	Option "$HHXFontColor", "uz_hhx_bloodLossCounter_fontColor", "FontColor", "uz_hhx_bloodLossCounter_enabled"
 	StaticText ""
@@ -549,7 +549,7 @@ OptionMenu "HHXBluesCounter" {
 
 	Option "$HHXEnabled", "uz_hhx_bluesCounter_enabled", "OnOff"
 	StaticText ""
-	Option "$HHXEnabled", "uz_hhx_bluesCounter_alwaysVisible", "OnOff", "uz_hhx_bluesCounter_enabled"
+	Option "$HHXAlwaysVisible", "uz_hhx_bluesCounter_alwaysVisible", "OnOff", "uz_hhx_bluesCounter_enabled"
 	Option "$HHXCounterStyle", "uz_hhx_bluesCounter_style", "CounterStyle", "uz_hhx_bluesCounter_enabled"
 	Option "$HHXFontColor", "uz_hhx_bluesCounter_fontColor", "FontColor", "uz_hhx_bluesCounter_enabled"
 	StaticText ""
@@ -600,7 +600,7 @@ OptionMenu "HHXBurnCounter" {
 
 	Option "$HHXEnabled", "uz_hhx_burnCounter_enabled", "OnOff"
 	StaticText ""
-	Option "$HHXEnabled", "uz_hhx_burnCounter_alwaysVisible", "OnOff", "uz_hhx_burnCounter_enabled"
+	Option "$HHXAlwaysVisible", "uz_hhx_burnCounter_alwaysVisible", "OnOff", "uz_hhx_burnCounter_enabled"
 	Option "$HHXCounterStyle", "uz_hhx_burnCounter_style", "CounterStyle", "uz_hhx_burnCounter_enabled"
 	Option "$HHXFontColor", "uz_hhx_burnCounter_fontColor", "FontColor", "uz_hhx_burnCounter_enabled"
 	StaticText ""
@@ -694,7 +694,7 @@ OptionMenu "HHXCurseCounter" {
 
 	Option "$HHXEnabled", "uz_hhx_curseCounter_enabled", "OnOff"
 	StaticText ""
-	Option "$HHXEnabled", "uz_hhx_curseCounter_alwaysVisible", "OnOff", "uz_hhx_curseCounter_enabled"
+	Option "$HHXAlwaysVisible", "uz_hhx_curseCounter_alwaysVisible", "OnOff", "uz_hhx_curseCounter_enabled"
 	Option "$HHXCounterStyle", "uz_hhx_curseCounter_style", "CounterStyle", "uz_hhx_curseCounter_enabled"
 	Option "$HHXFontColor", "uz_hhx_curseCounter_fontColor", "FontColor", "uz_hhx_curseCounter_enabled"
 	StaticText ""
@@ -833,7 +833,7 @@ OptionMenu "HHXFatigueCounter" {
 
 	Option "$HHXEnabled", "uz_hhx_fatigueCounter_enabled", "OnOff"
 	StaticText ""
-	Option "$HHXEnabled", "uz_hhx_fatigueCounter_alwaysVisible", "OnOff", "uz_hhx_fatigueCounter_enabled"
+	Option "$HHXAlwaysVisible", "uz_hhx_fatigueCounter_alwaysVisible", "OnOff", "uz_hhx_fatigueCounter_enabled"
 	Option "$HHXCounterStyle", "uz_hhx_fatigueCounter_style", "CounterStyle", "uz_hhx_fatigueCounter_enabled"
 	Option "$HHXFontColor", "uz_hhx_fatigueCounter_fontColor", "FontColor", "uz_hhx_fatigueCounter_enabled"
 	StaticText ""
@@ -884,7 +884,7 @@ OptionMenu "HHXFireDouseCounter" {
 
 	Option "$HHXEnabled", "uz_hhx_fireDouseCounter_enabled", "OnOff"
 	StaticText ""
-	Option "$HHXEnabled", "uz_hhx_fireDouseCounter_alwaysVisible", "OnOff", "uz_hhx_fireDouseCounter_enabled"
+	Option "$HHXAlwaysVisible", "uz_hhx_fireDouseCounter_alwaysVisible", "OnOff", "uz_hhx_fireDouseCounter_enabled"
 	Option "$HHXCounterStyle", "uz_hhx_fireDouseCounter_style", "CounterStyle", "uz_hhx_fireDouseCounter_enabled"
 	Option "$HHXFontColor", "uz_hhx_fireDouseCounter_fontColor", "FontColor", "uz_hhx_fireDouseCounter_enabled"
 	StaticText ""
@@ -935,7 +935,7 @@ OptionMenu "HHXFragCounter" {
 
 	Option "$HHXEnabled", "uz_hhx_fragCounter_enabled", "OnOff"
 	StaticText ""
-	Option "$HHXEnabled", "uz_hhx_fragCounter_alwaysVisible", "OnOff", "uz_hhx_fragCounter_enabled"
+	Option "$HHXAlwaysVisible", "uz_hhx_fragCounter_alwaysVisible", "OnOff", "uz_hhx_fragCounter_enabled"
 	Option "$HHXCounterStyle", "uz_hhx_fragCounter_style", "CounterStyle", "uz_hhx_fragCounter_enabled"
 	Option "$HHXFontColor", "uz_hhx_fragCounter_fontColor", "FontColor", "uz_hhx_fragCounter_enabled"
 	StaticText ""
@@ -1080,7 +1080,7 @@ OptionMenu "HHXHeartrateCounter" {
 
 	Option "$HHXEnabled", "uz_hhx_heartrateCounter_enabled", "OnOff"
 	StaticText ""
-	Option "$HHXEnabled", "uz_hhx_heartrateCounter_alwaysVisible", "OnOff", "uz_hhx_heartrateCounter_enabled"
+	Option "$HHXAlwaysVisible", "uz_hhx_heartrateCounter_alwaysVisible", "OnOff", "uz_hhx_heartrateCounter_enabled"
 	Option "$HHXCounterStyle", "uz_hhx_heartrateCounter_style", "CounterStyle", "uz_hhx_heartrateCounter_enabled"
 	Option "$HHXFontColor", "uz_hhx_heartrateCounter_fontColor", "FontColor", "uz_hhx_heartrateCounter_enabled"
 	StaticText ""
@@ -1131,7 +1131,7 @@ OptionMenu "HHXHeatCounter" {
 
 	Option "$HHXEnabled", "uz_hhx_heatCounter_enabled", "OnOff"
 	StaticText ""
-	Option "$HHXEnabled", "uz_hhx_heatCounter_alwaysVisible", "OnOff", "uz_hhx_heatCounter_enabled"
+	Option "$HHXAlwaysVisible", "uz_hhx_heatCounter_alwaysVisible", "OnOff", "uz_hhx_heatCounter_enabled"
 	Option "$HHXCounterStyle", "uz_hhx_heatCounter_style", "CounterStyle", "uz_hhx_heatCounter_enabled"
 	Option "$HHXFontColor", "uz_hhx_heatCounter_fontColor", "FontColor", "uz_hhx_heatCounter_enabled"
 	StaticText ""
@@ -1182,7 +1182,7 @@ OptionMenu "HHXIncapCounter" {
 
 	Option "$HHXEnabled", "uz_hhx_incapCounter_enabled", "OnOff"
 	StaticText ""
-	Option "$HHXEnabled", "uz_hhx_incapCounter_alwaysVisible", "OnOff", "uz_hhx_incapCounter_enabled"
+	Option "$HHXAlwaysVisible", "uz_hhx_incapCounter_alwaysVisible", "OnOff", "uz_hhx_incapCounter_enabled"
 	Option "$HHXCounterStyle", "uz_hhx_incapCounter_style", "CounterStyle", "uz_hhx_incapCounter_enabled"
 	Option "$HHXFontColor", "uz_hhx_incapCounter_fontColor", "FontColor", "uz_hhx_incapCounter_enabled"
 	StaticText ""
@@ -1404,7 +1404,7 @@ OptionMenu "HHXSecondFleshCounter" {
 
 	Option "$HHXEnabled", "uz_hhx_secondFleshCounter_enabled", "OnOff"
 	StaticText ""
-	Option "$HHXEnabled", "uz_hhx_secondFleshCounter_alwaysVisible", "OnOff", "uz_hhx_secondFleshCounter_enabled"
+	Option "$HHXAlwaysVisible", "uz_hhx_secondFleshCounter_alwaysVisible", "OnOff", "uz_hhx_secondFleshCounter_enabled"
 	Option "$HHXCounterStyle", "uz_hhx_secondFleshCounter_style", "CounterStyle", "uz_hhx_secondFleshCounter_enabled"
 	Option "$HHXFontColor", "uz_hhx_secondFleshCounter_fontColor", "FontColor", "uz_hhx_secondFleshCounter_enabled"
 	StaticText ""
@@ -1455,7 +1455,7 @@ OptionMenu "HHXStimCounter" {
 
 	Option "$HHXEnabled", "uz_hhx_stimCounter_enabled", "OnOff"
 	StaticText ""
-	Option "$HHXEnabled", "uz_hhx_stimCounter_alwaysVisible", "OnOff", "uz_hhx_stimCounter_enabled"
+	Option "$HHXAlwaysVisible", "uz_hhx_stimCounter_alwaysVisible", "OnOff", "uz_hhx_stimCounter_enabled"
 	Option "$HHXCounterStyle", "uz_hhx_stimCounter_style", "CounterStyle", "uz_hhx_stimCounter_enabled"
 	Option "$HHXFontColor", "uz_hhx_stimCounter_fontColor", "FontColor", "uz_hhx_stimCounter_enabled"
 	StaticText ""
@@ -1506,7 +1506,7 @@ OptionMenu "HHXStunnedCounter" {
 
 	Option "$HHXEnabled", "uz_hhx_stunnedCounter_enabled", "OnOff"
 	StaticText ""
-	Option "$HHXEnabled", "uz_hhx_stunnedCounter_alwaysVisible", "OnOff", "uz_hhx_stunnedCounter_enabled"
+	Option "$HHXAlwaysVisible", "uz_hhx_stunnedCounter_alwaysVisible", "OnOff", "uz_hhx_stunnedCounter_enabled"
 	Option "$HHXCounterStyle", "uz_hhx_stunnedCounter_style", "CounterStyle", "uz_hhx_stunnedCounter_enabled"
 	Option "$HHXFontColor", "uz_hhx_stunnedCounter_fontColor", "FontColor", "uz_hhx_stunnedCounter_enabled"
 	StaticText ""
