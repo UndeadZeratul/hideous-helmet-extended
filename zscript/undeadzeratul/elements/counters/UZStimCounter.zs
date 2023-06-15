@@ -12,4 +12,8 @@ class UZStimCounter : BaseCounterHUDElement {
 	override float GetCounterValue(HCStatusBar sb) {
 		return sb.hpl.CountInv('HDStim') / 4;
 	}
+
+    override string FormatValue(HCStatusBar sb, float counterValue) {
+        return String.Format("%i%%", counterValue);
+    }
 }

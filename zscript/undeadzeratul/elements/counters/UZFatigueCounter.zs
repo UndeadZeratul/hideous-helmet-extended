@@ -9,11 +9,11 @@ class UZFatigueCounter : BaseCounterHUDElement {
         counterLabel  = Stringtable.Localize("$HHXFatigueCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
 	}
 
-    override bool ShouldDrawCounter(HCStatusBar sb, float counterValue) {
-        return true;
-    }
-
 	override float GetCounterValue(HCStatusBar sb) {
-		return sb.hpl.fatigue * 2;
+		return sb.hpl.fatigue * 100 / 30;
 	}
+
+    override string FormatValue(HCStatusBar sb, float counterValue) {
+        return String.Format("%i%%", counterValue);
+    }
 }
