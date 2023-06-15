@@ -187,10 +187,11 @@ HHXNHM = "Without Helmet";
 HHXHHelmetRequired = "Requires Hideous Helmet";
 
 // Miscellaneous Option Labels
-HHXBarDirection = "Durability Bar Direction";
-HHXCounterStyle = "Counter Style";
-HHXFontColor    = "Font Color";
-HHXMaxValue     = "Max Value";
+HHXAlwaysVisible = "Always Visible";
+HHXBarDirection  = "Durability Bar Direction";
+HHXCounterStyle  = "Counter Style";
+HHXFontColor     = "Font Color";
+HHXMaxValue      = "Max Value";
 
 // HUD Counter Styles
 HHXOPTIONVALUE_COUNTER_VALUE_ONLY       = "Value Only";
