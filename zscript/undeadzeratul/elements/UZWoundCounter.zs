@@ -91,11 +91,11 @@ class UZWoundCounter : HUDElement {
 			_WoundCounter = string.Format("\c[Red]%s \c-", sb.FormatNumber(openWounds, 3));
 		}
 
-		if (patchedWounds > 0 && !_hh_onlyshowopenwounds.GetBool()) {
+		if (patchedWounds > 0 && !(_hh_onlyshowopenwounds && _hh_onlyshowopenwounds.GetBool())) {
 			_WoundCounter = string.Format("%s\c[Fire]%s \c-", _WoundCounter, sb.FormatNumber(patchedWounds, 3));
 		}
 
-		if (sealedWounds > 0 && !_hh_onlyshowopenwounds.GetBool()) {
+		if (sealedWounds > 0 && !(_hh_onlyshowopenwounds && _hh_onlyshowopenwounds.GetBool())) {
 			_WoundCounter = string.Format("%s\c[Gray]%s \c-", _WoundCounter, sb.FormatNumber(sealedWounds, 3));
 		}
 
