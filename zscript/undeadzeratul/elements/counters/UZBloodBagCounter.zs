@@ -10,7 +10,7 @@ class UZBloodBagCounter : BaseCounterHUDElement {
 	}
 
     override bool ShouldDrawCounter(HCStatusBar sb, float counterValue) {
-        return hd_debug || _alwaysVisible.GetBool() || sb.hpl.FindInventory("BloodBagWorn");
+        return sb.hpl.FindInventory("BloodBagWorn");
     }
 
 	override float GetCounterValue(HCStatusBar sb) {

@@ -114,7 +114,7 @@ class BaseCounterHUDElement : HUDElement abstract {
     }
 
     virtual bool ShouldDrawCounter(HCStatusBar sb, float counterValue) {
-        return hd_debug || _alwaysVisible.GetBool() || counterValue > 0;
+        return counterValue > 0;
     }
 
     virtual float GetCounterValue(HCStatusBar sb){
@@ -133,7 +133,7 @@ class BaseCounterHUDElement : HUDElement abstract {
         let value    = GetCounterValue(sb);
         let maxValue = GetCounterMaxValue(sb);
 
-        if (ShouldDrawCounter(sb, value)) {
+        if (hd_debug || _alwaysVisible.GetBool() || ShouldDrawCounter(sb, value)) {
             switch (_counterStyle ? _counterStyle.GetInt() : LABEL_WITH_VALUE) {
                 case VALUE_ONLY:
                     sb.DrawString(

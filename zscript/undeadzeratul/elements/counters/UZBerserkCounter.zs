@@ -10,7 +10,7 @@ class UZBerserkCounter : BaseCounterHUDElement {
 	}
 
     override bool ShouldDrawCounter(HCStatusBar sb, float counterValue) {
-        return (hd_debug && sb.hpl.CountInv("HDZerk") == 0) || _alwaysVisible.GetBool() || sb.hpl.CountInv("HDZerk") > 10500;
+        return sb.hpl.CountInv("HDZerk") > 10500;
     }
 
 	override float GetCounterValue(HCStatusBar sb) {
