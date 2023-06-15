@@ -58,13 +58,9 @@ OptionMenu "HHXAdvanced" {
 	StaticText ""
 	SubMenu "$HHXAmmoCounters",    "HHXAmmoCounters"
 	SubMenu "$HHXArmour",          "HHXArmour"
-	SubMenu "$HHXBerserkCounter",  "HHXBerserkCounter"
-	SubMenu "$HHXBloodBagCounter", "HHXBloodBagCounter"
-	SubMenu "$HHXBluesCounter",    "HHXBluesCounter"
 	SubMenu "$HHXCompass",         "HHXCompass"
 	SubMenu "$HHXEKG",             "HHXEKG"
 	SubMenu "$HHXEncumbrance",     "HHXEncumbrance"
-	SubMenu "$HHXFatigueCounter",  "HHXFatigueCounter"
 	SubMenu "$HHXFullInventory",   "HHXFullInventory"
 	SubMenu "$HHXHeartbeat",       "HHXHeartbeat"
 	SubMenu "$HHXInventory",       "HHXInventory"
@@ -72,12 +68,13 @@ OptionMenu "HHXAdvanced" {
 	SubMenu "$HHXKeys",            "HHXKeys"
 	SubMenu "$HHXMugshot",         "HHXMugshot"
 	SubMenu "$HHXBackground",      "HHXBackground"
-	SubMenu "$HHXStimCounter",     "HHXStimCounter"
-	SubMenu "$HHXStunnedCounter",  "HHXStunnedCounter"
 	SubMenu "$HHXWeaponSprite",    "HHXWeaponSprite"
 	SubMenu "$HHXWeaponStash",     "HHXWeaponStash"
 // 	SubMenu "$HHXWeaponStatus",    "HHXWeaponStatus"
 	SubMenu "$HHXWoundCounter",    "HHXWoundCounter"
+
+	StaticText ""
+	SubMenu "$HHXCounters", "HHXCounters"
 
 	StaticText ""
 	SubMenu "$HHXRadsuitOverride", "HHXRadsuitOverride"
@@ -97,6 +94,86 @@ OptionMenu "HHXAdvanced" {
 	SafeCommand "$HHXResetNHM", "uz_hhx_options_reset_nhm"
 	SafeCommand "$HHXResetHLM", "uz_hhx_options_reset_hlm"
 	SafeCommand "$HHXResetAll", "uz_hhx_options_reset_all"
+}
+
+OptionMenu "HHXCounters" {
+	Title "$HHXCounters"
+	
+	StaticText ""
+	SubMenu "$HHXAggroCounter",           "HHXAggroCounter"
+	SubMenu "$HHXBerserkCounter",         "HHXBerserkCounter"
+	SubMenu "$HHXBerserkCooldownCounter", "HHXBerserkCooldownCounter"
+	SubMenu "$HHXBloodBagCounter",        "HHXBloodBagCounter"
+	SubMenu "$HHXBloodLossCounter",       "HHXBloodLossCounter"
+	SubMenu "$HHXBluesCounter",           "HHXBluesCounter"
+	SubMenu "$HHXBurnCounter",            "HHXBurnCounter"
+	SubMenu "$HHXCurseCounter",           "HHXCurseCounter"
+	SubMenu "$HHXFatigueCounter",         "HHXFatigueCounter"
+	SubMenu "$HHXFireDouseCounter",       "HHXFireDouseCounter"
+	SubMenu "$HHXFragCounter",            "HHXFragCounter"
+	SubMenu "$HHXHeartrateCounter",       "HHXHeartrateCounter"
+	SubMenu "$HHXHeatCounter",            "HHXHeatCounter"
+	SubMenu "$HHXIncapCounter",           "HHXIncapCounter"
+	SubMenu "$HHXSecondFleshCounter",     "HHXSecondFleshCounter"
+	SubMenu "$HHXStimCounter",            "HHXStimCounter"
+	SubMenu "$HHXStunnedCounter",         "HHXStunnedCounter"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetStatCounters", "uz_hhx_options_reset_nhm_statCounters"
+	SafeCommand "$HHXHHResetStatCounters", "uz_hhx_options_reset_hlm_statCounters"
+	SafeCommand "$HHXResetAllStatCounters", "uz_hhx_options_reset_statCounters"
+}
+
+OptionMenu "HHXAggroCounter" {
+	Title "$HHXAggroCounter"
+
+	Option "$HHXEnabled", "uz_hhx_aggroCounter_enabled", "OnOff"
+	StaticText ""
+	Option "$HHXCounterStyle", "uz_hhx_aggroCounter_style", "CounterStyle", "uz_hhx_aggroCounter_enabled"
+	Option "$HHXFontColor", "uz_hhx_aggroCounter_fontColor", "FontColor", "uz_hhx_aggroCounter_enabled"
+	StaticText ""
+	Option "$HHXBarDirection", "uz_hhx_aggroCounter_barDirection", "BarDirection", "uz_hhx_aggroCounter_enabled"
+	StaticText ""
+	Slider "$HHXMaxValue", "uz_hhx_aggroCounter_maxValue", 0, 1000, 1, 0, "uz_hhx_aggroCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_aggroCounter_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_aggroCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_aggroCounter_nhm_posX", -400, 400, 1, 0, "uz_hhx_aggroCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_aggroCounter_nhm_posY", -400, 400, 1, 0, "uz_hhx_aggroCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_aggroCounter_nhm_scale", .01, 4., .05, 2, "uz_hhx_aggroCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_aggroCounter_bg_nhm_ref", "uz_hhx_aggroCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_aggroCounter_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_aggroCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_aggroCounter_bg_nhm_posY", -400, 400, 1, 0, "uz_hhx_aggroCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_aggroCounter_bg_nhm_scale", .01, 4., .05, 2, "uz_hhx_aggroCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_aggroCounter_hlm_required", "OnOff", "uz_hhx_aggroCounter_enabled"
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_aggroCounter_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_aggroCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_aggroCounter_hlm_posX", -400, 400, 1, 0, "uz_hhx_aggroCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_aggroCounter_hlm_posY", -400, 400, 1, 0, "uz_hhx_aggroCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_aggroCounter_hlm_scale", .01, 4., .05, 2, "uz_hhx_aggroCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_aggroCounter_bg_hlm_ref", "uz_hhx_aggroCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_aggroCounter_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_aggroCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_aggroCounter_bg_hlm_posY", -400, 400, 1, 0, "uz_hhx_aggroCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_aggroCounter_bg_hlm_scale", .01, 4., .05, 2, "uz_hhx_aggroCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetAggroCounter", "uz_hhx_options_reset_nhm_aggroCounter"
+	SafeCommand "$HHXHHResetAggroCounter", "uz_hhx_options_reset_hlm_aggroCounter"
 }
 
 OptionMenu "HHXAmmoCounters" {
@@ -312,6 +389,56 @@ OptionMenu "HHXBerserkCounter" {
 	SafeCommand "$HHXHHResetBerserkCounter", "uz_hhx_options_reset_hlm_berserkCounter"
 }
 
+OptionMenu "HHXBerserkCooldownCounter" {
+	Title "$HHXBerserkCooldownCounter"
+
+	Option "$HHXEnabled", "uz_hhx_berserkCooldownCounter_enabled", "OnOff"
+	StaticText ""
+	Option "$HHXCounterStyle", "uz_hhx_berserkCooldownCounter_style", "CounterStyle", "uz_hhx_berserkCooldownCounter_enabled"
+	Option "$HHXFontColor", "uz_hhx_berserkCooldownCounter_fontColor", "FontColor", "uz_hhx_berserkCooldownCounter_enabled"
+	StaticText ""
+	Option "$HHXBarDirection", "uz_hhx_berserkCooldownCounter_barDirection", "BarDirection", "uz_hhx_berserkCooldownCounter_enabled"
+	StaticText ""
+	Slider "$HHXMaxValue", "uz_hhx_berserkCooldownCounter_maxValue", 0, 1000, 1, 0, "uz_hhx_berserkCooldownCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_berserkCooldownCounter_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_berserkCooldownCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_berserkCooldownCounter_nhm_posX", -400, 400, 1, 0, "uz_hhx_berserkCooldownCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_berserkCooldownCounter_nhm_posY", -400, 400, 1, 0, "uz_hhx_berserkCooldownCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_berserkCooldownCounter_nhm_scale", .01, 4., .05, 2, "uz_hhx_berserkCooldownCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_berserkCooldownCounter_bg_nhm_ref", "uz_hhx_berserkCooldownCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_berserkCooldownCounter_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_berserkCooldownCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_berserkCooldownCounter_bg_nhm_posY", -400, 400, 1, 0, "uz_hhx_berserkCooldownCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_berserkCooldownCounter_bg_nhm_scale", .01, 4., .05, 2, "uz_hhx_berserkCooldownCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_berserkCooldownCounter_hlm_required", "OnOff", "uz_hhx_berserkCooldownCounter_enabled"
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_berserkCooldownCounter_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_berserkCooldownCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_berserkCooldownCounter_hlm_posX", -400, 400, 1, 0, "uz_hhx_berserkCooldownCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_berserkCooldownCounter_hlm_posY", -400, 400, 1, 0, "uz_hhx_berserkCooldownCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_berserkCooldownCounter_hlm_scale", .01, 4., .05, 2, "uz_hhx_berserkCooldownCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_berserkCooldownCounter_bg_hlm_ref", "uz_hhx_berserkCooldownCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_berserkCooldownCounter_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_berserkCooldownCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_berserkCooldownCounter_bg_hlm_posY", -400, 400, 1, 0, "uz_hhx_berserkCooldownCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_berserkCooldownCounter_bg_hlm_scale", .01, 4., .05, 2, "uz_hhx_berserkCooldownCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetBerserkCooldownCounter", "uz_hhx_options_reset_nhm_berserkCooldownCounter"
+	SafeCommand "$HHXHHResetBerserkCooldownCounter", "uz_hhx_options_reset_hlm_berserkCooldownCounter"
+}
+
 OptionMenu "HHXBloodBagCounter" {
 	Title "$HHXBloodBagCounter"
 
@@ -360,6 +487,56 @@ OptionMenu "HHXBloodBagCounter" {
 	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetbloodBagCounter", "uz_hhx_options_reset_nhm_bloodBagCounter"
 	SafeCommand "$HHXHHResetbloodBagCounter", "uz_hhx_options_reset_hlm_bloodBagCounter"
+}
+
+OptionMenu "HHXBloodLossCounter" {
+	Title "$HHXBloodLossCounter"
+
+	Option "$HHXEnabled", "uz_hhx_bloodLossCounter_enabled", "OnOff"
+	StaticText ""
+	Option "$HHXCounterStyle", "uz_hhx_bloodLossCounter_style", "CounterStyle", "uz_hhx_bloodLossCounter_enabled"
+	Option "$HHXFontColor", "uz_hhx_bloodLossCounter_fontColor", "FontColor", "uz_hhx_bloodLossCounter_enabled"
+	StaticText ""
+	Option "$HHXBarDirection", "uz_hhx_bloodLossCounter_barDirection", "BarDirection", "uz_hhx_bloodLossCounter_enabled"
+	StaticText ""
+	Slider "$HHXMaxValue", "uz_hhx_bloodLossCounter_maxValue", 0, 1000, 1, 0, "uz_hhx_bloodLossCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_bloodLossCounter_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_bloodLossCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_bloodLossCounter_nhm_posX", -400, 400, 1, 0, "uz_hhx_bloodLossCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_bloodLossCounter_nhm_posY", -400, 400, 1, 0, "uz_hhx_bloodLossCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_bloodLossCounter_nhm_scale", .01, 4., .05, 2, "uz_hhx_bloodLossCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_bloodLossCounter_bg_nhm_ref", "uz_hhx_bloodLossCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_bloodLossCounter_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_bloodLossCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_bloodLossCounter_bg_nhm_posY", -400, 400, 1, 0, "uz_hhx_bloodLossCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_bloodLossCounter_bg_nhm_scale", .01, 4., .05, 2, "uz_hhx_bloodLossCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_bloodLossCounter_hlm_required", "OnOff", "uz_hhx_bloodLossCounter_enabled"
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_bloodLossCounter_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_bloodLossCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_bloodLossCounter_hlm_posX", -400, 400, 1, 0, "uz_hhx_bloodLossCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_bloodLossCounter_hlm_posY", -400, 400, 1, 0, "uz_hhx_bloodLossCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_bloodLossCounter_hlm_scale", .01, 4., .05, 2, "uz_hhx_bloodLossCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_bloodLossCounter_bg_hlm_ref", "uz_hhx_bloodLossCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_bloodLossCounter_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_bloodLossCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_bloodLossCounter_bg_hlm_posY", -400, 400, 1, 0, "uz_hhx_bloodLossCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_bloodLossCounter_bg_hlm_scale", .01, 4., .05, 2, "uz_hhx_bloodLossCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetBloodLossCounter", "uz_hhx_options_reset_nhm_bloodLossCounter"
+	SafeCommand "$HHXHHResetBloodLossCounter", "uz_hhx_options_reset_hlm_bloodLossCounter"
 }
 
 OptionMenu "HHXBluesCounter" {
@@ -412,6 +589,56 @@ OptionMenu "HHXBluesCounter" {
 	SafeCommand "$HHXHHResetBluesCounter", "uz_hhx_options_reset_hlm_bluesCounter"
 }
 
+OptionMenu "HHXBurnCounter" {
+	Title "$HHXBurnCounter"
+
+	Option "$HHXEnabled", "uz_hhx_burnCounter_enabled", "OnOff"
+	StaticText ""
+	Option "$HHXCounterStyle", "uz_hhx_burnCounter_style", "CounterStyle", "uz_hhx_burnCounter_enabled"
+	Option "$HHXFontColor", "uz_hhx_burnCounter_fontColor", "FontColor", "uz_hhx_burnCounter_enabled"
+	StaticText ""
+	Option "$HHXBarDirection", "uz_hhx_burnCounter_barDirection", "BarDirection", "uz_hhx_burnCounter_enabled"
+	StaticText ""
+	Slider "$HHXMaxValue", "uz_hhx_burnCounter_maxValue", 0, 1000, 1, 0, "uz_hhx_burnCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_burnCounter_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_burnCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_burnCounter_nhm_posX", -400, 400, 1, 0, "uz_hhx_burnCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_burnCounter_nhm_posY", -400, 400, 1, 0, "uz_hhx_burnCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_burnCounter_nhm_scale", .01, 4., .05, 2, "uz_hhx_burnCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_burnCounter_bg_nhm_ref", "uz_hhx_burnCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_burnCounter_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_burnCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_burnCounter_bg_nhm_posY", -400, 400, 1, 0, "uz_hhx_burnCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_burnCounter_bg_nhm_scale", .01, 4., .05, 2, "uz_hhx_burnCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_burnCounter_hlm_required", "OnOff", "uz_hhx_burnCounter_enabled"
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_burnCounter_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_burnCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_burnCounter_hlm_posX", -400, 400, 1, 0, "uz_hhx_burnCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_burnCounter_hlm_posY", -400, 400, 1, 0, "uz_hhx_burnCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_burnCounter_hlm_scale", .01, 4., .05, 2, "uz_hhx_burnCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_burnCounter_bg_hlm_ref", "uz_hhx_burnCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_burnCounter_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_burnCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_burnCounter_bg_hlm_posY", -400, 400, 1, 0, "uz_hhx_burnCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_burnCounter_bg_hlm_scale", .01, 4., .05, 2, "uz_hhx_burnCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetBurnCounter", "uz_hhx_options_reset_nhm_burnCounter"
+	SafeCommand "$HHXHHResetBurnCounter", "uz_hhx_options_reset_hlm_burnCounter"
+}
+
 OptionMenu "HHXCompass" {
 	Title "$HHXCompass"
 
@@ -453,6 +680,56 @@ OptionMenu "HHXCompass" {
 	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetCompass", "uz_hhx_options_reset_nhm_compass"
 	SafeCommand "$HHXHHResetCompass", "uz_hhx_options_reset_hlm_compass"
+}
+
+OptionMenu "HHXCurseCounter" {
+	Title "$HHXCurseCounter"
+
+	Option "$HHXEnabled", "uz_hhx_curseCounter_enabled", "OnOff"
+	StaticText ""
+	Option "$HHXCounterStyle", "uz_hhx_curseCounter_style", "CounterStyle", "uz_hhx_curseCounter_enabled"
+	Option "$HHXFontColor", "uz_hhx_curseCounter_fontColor", "FontColor", "uz_hhx_curseCounter_enabled"
+	StaticText ""
+	Option "$HHXBarDirection", "uz_hhx_curseCounter_barDirection", "BarDirection", "uz_hhx_curseCounter_enabled"
+	StaticText ""
+	Slider "$HHXMaxValue", "uz_hhx_curseCounter_maxValue", 0, 1000, 1, 0, "uz_hhx_curseCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_curseCounter_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_curseCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_curseCounter_nhm_posX", -400, 400, 1, 0, "uz_hhx_curseCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_curseCounter_nhm_posY", -400, 400, 1, 0, "uz_hhx_curseCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_curseCounter_nhm_scale", .01, 4., .05, 2, "uz_hhx_curseCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_curseCounter_bg_nhm_ref", "uz_hhx_curseCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_curseCounter_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_curseCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_curseCounter_bg_nhm_posY", -400, 400, 1, 0, "uz_hhx_curseCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_curseCounter_bg_nhm_scale", .01, 4., .05, 2, "uz_hhx_curseCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_curseCounter_hlm_required", "OnOff", "uz_hhx_curseCounter_enabled"
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_curseCounter_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_curseCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_curseCounter_hlm_posX", -400, 400, 1, 0, "uz_hhx_curseCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_curseCounter_hlm_posY", -400, 400, 1, 0, "uz_hhx_curseCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_curseCounter_hlm_scale", .01, 4., .05, 2, "uz_hhx_curseCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_curseCounter_bg_hlm_ref", "uz_hhx_curseCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_curseCounter_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_curseCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_curseCounter_bg_hlm_posY", -400, 400, 1, 0, "uz_hhx_curseCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_curseCounter_bg_hlm_scale", .01, 4., .05, 2, "uz_hhx_curseCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetCurseCounter", "uz_hhx_options_reset_nhm_curseCounter"
+	SafeCommand "$HHXHHResetCurseCounter", "uz_hhx_options_reset_hlm_curseCounter"
 }
 
 OptionMenu "HHXEKG" {
@@ -593,6 +870,106 @@ OptionMenu "HHXFatigueCounter" {
 	SafeCommand "$HHXHHResetFatigueCounter", "uz_hhx_options_reset_hlm_fatigueCounter"
 }
 
+OptionMenu "HHXFireDouseCounter" {
+	Title "$HHXFireDouseCounter"
+
+	Option "$HHXEnabled", "uz_hhx_fireDouseCounter_enabled", "OnOff"
+	StaticText ""
+	Option "$HHXCounterStyle", "uz_hhx_fireDouseCounter_style", "CounterStyle", "uz_hhx_fireDouseCounter_enabled"
+	Option "$HHXFontColor", "uz_hhx_fireDouseCounter_fontColor", "FontColor", "uz_hhx_fireDouseCounter_enabled"
+	StaticText ""
+	Option "$HHXBarDirection", "uz_hhx_fireDouseCounter_barDirection", "BarDirection", "uz_hhx_fireDouseCounter_enabled"
+	StaticText ""
+	Slider "$HHXMaxValue", "uz_hhx_fireDouseCounter_maxValue", 0, 1000, 1, 0, "uz_hhx_fireDouseCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_fireDouseCounter_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_fireDouseCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_fireDouseCounter_nhm_posX", -400, 400, 1, 0, "uz_hhx_fireDouseCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_fireDouseCounter_nhm_posY", -400, 400, 1, 0, "uz_hhx_fireDouseCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_fireDouseCounter_nhm_scale", .01, 4., .05, 2, "uz_hhx_fireDouseCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_fireDouseCounter_bg_nhm_ref", "uz_hhx_fireDouseCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_fireDouseCounter_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_fireDouseCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_fireDouseCounter_bg_nhm_posY", -400, 400, 1, 0, "uz_hhx_fireDouseCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_fireDouseCounter_bg_nhm_scale", .01, 4., .05, 2, "uz_hhx_fireDouseCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_fireDouseCounter_hlm_required", "OnOff", "uz_hhx_fireDouseCounter_enabled"
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_fireDouseCounter_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_fireDouseCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_fireDouseCounter_hlm_posX", -400, 400, 1, 0, "uz_hhx_fireDouseCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_fireDouseCounter_hlm_posY", -400, 400, 1, 0, "uz_hhx_fireDouseCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_fireDouseCounter_hlm_scale", .01, 4., .05, 2, "uz_hhx_fireDouseCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_fireDouseCounter_bg_hlm_ref", "uz_hhx_fireDouseCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_fireDouseCounter_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_fireDouseCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_fireDouseCounter_bg_hlm_posY", -400, 400, 1, 0, "uz_hhx_fireDouseCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_fireDouseCounter_bg_hlm_scale", .01, 4., .05, 2, "uz_hhx_fireDouseCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetFireDouseCounter", "uz_hhx_options_reset_nhm_fireDouseCounter"
+	SafeCommand "$HHXHHResetFireDouseCounter", "uz_hhx_options_reset_hlm_fireDouseCounter"
+}
+
+OptionMenu "HHXFragCounter" {
+	Title "$HHXFragCounter"
+
+	Option "$HHXEnabled", "uz_hhx_fragCounter_enabled", "OnOff"
+	StaticText ""
+	Option "$HHXCounterStyle", "uz_hhx_fragCounter_style", "CounterStyle", "uz_hhx_fragCounter_enabled"
+	Option "$HHXFontColor", "uz_hhx_fragCounter_fontColor", "FontColor", "uz_hhx_fragCounter_enabled"
+	StaticText ""
+	Option "$HHXBarDirection", "uz_hhx_fragCounter_barDirection", "BarDirection", "uz_hhx_fragCounter_enabled"
+	StaticText ""
+	Slider "$HHXMaxValue", "uz_hhx_fragCounter_maxValue", 0, 1000, 1, 0, "uz_hhx_fragCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_fragCounter_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_fragCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_fragCounter_nhm_posX", -400, 400, 1, 0, "uz_hhx_fragCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_fragCounter_nhm_posY", -400, 400, 1, 0, "uz_hhx_fragCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_fragCounter_nhm_scale", .01, 4., .05, 2, "uz_hhx_fragCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_fragCounter_bg_nhm_ref", "uz_hhx_fragCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_fragCounter_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_fragCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_fragCounter_bg_nhm_posY", -400, 400, 1, 0, "uz_hhx_fragCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_fragCounter_bg_nhm_scale", .01, 4., .05, 2, "uz_hhx_fragCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_fragCounter_hlm_required", "OnOff", "uz_hhx_fragCounter_enabled"
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_fragCounter_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_fragCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_fragCounter_hlm_posX", -400, 400, 1, 0, "uz_hhx_fragCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_fragCounter_hlm_posY", -400, 400, 1, 0, "uz_hhx_fragCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_fragCounter_hlm_scale", .01, 4., .05, 2, "uz_hhx_fragCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_fragCounter_bg_hlm_ref", "uz_hhx_fragCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_fragCounter_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_fragCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_fragCounter_bg_hlm_posY", -400, 400, 1, 0, "uz_hhx_fragCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_fragCounter_bg_hlm_scale", .01, 4., .05, 2, "uz_hhx_fragCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetFragCounter", "uz_hhx_options_reset_nhm_fragCounter"
+	SafeCommand "$HHXHHResetFragCounter", "uz_hhx_options_reset_hlm_fragCounter"
+}
+
 OptionMenu "HHXFullInventory" {
 	Title "$HHXFullInventory"
 
@@ -685,6 +1062,156 @@ OptionMenu "HHXHeartbeat" {
 	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetHeartbeat", "uz_hhx_options_reset_nhm_heartbeat"
 	SafeCommand "$HHXHHResetHeartbeat", "uz_hhx_options_reset_hlm_heartbeat"
+}
+
+OptionMenu "HHXHeartrateCounter" {
+	Title "$HHXHeartrateCounter"
+
+	Option "$HHXEnabled", "uz_hhx_heartrateCounter_enabled", "OnOff"
+	StaticText ""
+	Option "$HHXCounterStyle", "uz_hhx_heartrateCounter_style", "CounterStyle", "uz_hhx_heartrateCounter_enabled"
+	Option "$HHXFontColor", "uz_hhx_heartrateCounter_fontColor", "FontColor", "uz_hhx_heartrateCounter_enabled"
+	StaticText ""
+	Option "$HHXBarDirection", "uz_hhx_heartrateCounter_barDirection", "BarDirection", "uz_hhx_heartrateCounter_enabled"
+	StaticText ""
+	Slider "$HHXMaxValue", "uz_hhx_heartrateCounter_maxValue", 0, 1000, 1, 0, "uz_hhx_heartrateCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_heartrateCounter_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_heartrateCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_heartrateCounter_nhm_posX", -400, 400, 1, 0, "uz_hhx_heartrateCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_heartrateCounter_nhm_posY", -400, 400, 1, 0, "uz_hhx_heartrateCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_heartrateCounter_nhm_scale", .01, 4., .05, 2, "uz_hhx_heartrateCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_heartrateCounter_bg_nhm_ref", "uz_hhx_heartrateCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_heartrateCounter_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_heartrateCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_heartrateCounter_bg_nhm_posY", -400, 400, 1, 0, "uz_hhx_heartrateCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_heartrateCounter_bg_nhm_scale", .01, 4., .05, 2, "uz_hhx_heartrateCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_heartrateCounter_hlm_required", "OnOff", "uz_hhx_heartrateCounter_enabled"
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_heartrateCounter_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_heartrateCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_heartrateCounter_hlm_posX", -400, 400, 1, 0, "uz_hhx_heartrateCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_heartrateCounter_hlm_posY", -400, 400, 1, 0, "uz_hhx_heartrateCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_heartrateCounter_hlm_scale", .01, 4., .05, 2, "uz_hhx_heartrateCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_heartrateCounter_bg_hlm_ref", "uz_hhx_heartrateCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_heartrateCounter_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_heartrateCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_heartrateCounter_bg_hlm_posY", -400, 400, 1, 0, "uz_hhx_heartrateCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_heartrateCounter_bg_hlm_scale", .01, 4., .05, 2, "uz_hhx_heartrateCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetHeartrateCounter", "uz_hhx_options_reset_nhm_heartrateCounter"
+	SafeCommand "$HHXHHResetHeartrateCounter", "uz_hhx_options_reset_hlm_heartrateCounter"
+}
+
+OptionMenu "HHXHeatCounter" {
+	Title "$HHXHeatCounter"
+
+	Option "$HHXEnabled", "uz_hhx_heatCounter_enabled", "OnOff"
+	StaticText ""
+	Option "$HHXCounterStyle", "uz_hhx_heatCounter_style", "CounterStyle", "uz_hhx_heatCounter_enabled"
+	Option "$HHXFontColor", "uz_hhx_heatCounter_fontColor", "FontColor", "uz_hhx_heatCounter_enabled"
+	StaticText ""
+	Option "$HHXBarDirection", "uz_hhx_heatCounter_barDirection", "BarDirection", "uz_hhx_heatCounter_enabled"
+	StaticText ""
+	Slider "$HHXMaxValue", "uz_hhx_heatCounter_maxValue", 0, 1000, 1, 0, "uz_hhx_heatCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_heatCounter_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_heatCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_heatCounter_nhm_posX", -400, 400, 1, 0, "uz_hhx_heatCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_heatCounter_nhm_posY", -400, 400, 1, 0, "uz_hhx_heatCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_heatCounter_nhm_scale", .01, 4., .05, 2, "uz_hhx_heatCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_heatCounter_bg_nhm_ref", "uz_hhx_heatCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_heatCounter_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_heatCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_heatCounter_bg_nhm_posY", -400, 400, 1, 0, "uz_hhx_heatCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_heatCounter_bg_nhm_scale", .01, 4., .05, 2, "uz_hhx_heatCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_heatCounter_hlm_required", "OnOff", "uz_hhx_heatCounter_enabled"
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_heatCounter_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_heatCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_heatCounter_hlm_posX", -400, 400, 1, 0, "uz_hhx_heatCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_heatCounter_hlm_posY", -400, 400, 1, 0, "uz_hhx_heatCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_heatCounter_hlm_scale", .01, 4., .05, 2, "uz_hhx_heatCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_heatCounter_bg_hlm_ref", "uz_hhx_heatCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_heatCounter_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_heatCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_heatCounter_bg_hlm_posY", -400, 400, 1, 0, "uz_hhx_heatCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_heatCounter_bg_hlm_scale", .01, 4., .05, 2, "uz_hhx_heatCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetHeatCounter", "uz_hhx_options_reset_nhm_heatCounter"
+	SafeCommand "$HHXHHResetHeatCounter", "uz_hhx_options_reset_hlm_heatCounter"
+}
+
+OptionMenu "HHXIncapCounter" {
+	Title "$HHXIncapCounter"
+
+	Option "$HHXEnabled", "uz_hhx_incapCounter_enabled", "OnOff"
+	StaticText ""
+	Option "$HHXCounterStyle", "uz_hhx_incapCounter_style", "CounterStyle", "uz_hhx_incapCounter_enabled"
+	Option "$HHXFontColor", "uz_hhx_incapCounter_fontColor", "FontColor", "uz_hhx_incapCounter_enabled"
+	StaticText ""
+	Option "$HHXBarDirection", "uz_hhx_incapCounter_barDirection", "BarDirection", "uz_hhx_incapCounter_enabled"
+	StaticText ""
+	Slider "$HHXMaxValue", "uz_hhx_incapCounter_maxValue", 0, 1000, 1, 0, "uz_hhx_incapCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_incapCounter_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_incapCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_incapCounter_nhm_posX", -400, 400, 1, 0, "uz_hhx_incapCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_incapCounter_nhm_posY", -400, 400, 1, 0, "uz_hhx_incapCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_incapCounter_nhm_scale", .01, 4., .05, 2, "uz_hhx_incapCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_incapCounter_bg_nhm_ref", "uz_hhx_incapCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_incapCounter_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_incapCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_incapCounter_bg_nhm_posY", -400, 400, 1, 0, "uz_hhx_incapCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_incapCounter_bg_nhm_scale", .01, 4., .05, 2, "uz_hhx_incapCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_incapCounter_hlm_required", "OnOff", "uz_hhx_incapCounter_enabled"
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_incapCounter_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_incapCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_incapCounter_hlm_posX", -400, 400, 1, 0, "uz_hhx_incapCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_incapCounter_hlm_posY", -400, 400, 1, 0, "uz_hhx_incapCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_incapCounter_hlm_scale", .01, 4., .05, 2, "uz_hhx_incapCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_incapCounter_bg_hlm_ref", "uz_hhx_incapCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_incapCounter_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_incapCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_incapCounter_bg_hlm_posY", -400, 400, 1, 0, "uz_hhx_incapCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_incapCounter_bg_hlm_scale", .01, 4., .05, 2, "uz_hhx_incapCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetIncapCounter", "uz_hhx_options_reset_nhm_incapCounter"
+	SafeCommand "$HHXHHResetIncapCounter", "uz_hhx_options_reset_hlm_incapCounter"
 }
 
 OptionMenu "HHXInventory" {
@@ -856,6 +1383,56 @@ OptionMenu "HHXBackground" {
 	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetBackground", "uz_hhx_options_reset_nhm_background"
 	SafeCommand "$HHXHHResetBackground", "uz_hhx_options_reset_hlm_background"
+}
+
+OptionMenu "HHXSecondFleshCounter" {
+	Title "$HHXSecondFleshCounter"
+
+	Option "$HHXEnabled", "uz_hhx_secondFleshCounter_enabled", "OnOff"
+	StaticText ""
+	Option "$HHXCounterStyle", "uz_hhx_secondFleshCounter_style", "CounterStyle", "uz_hhx_secondFleshCounter_enabled"
+	Option "$HHXFontColor", "uz_hhx_secondFleshCounter_fontColor", "FontColor", "uz_hhx_secondFleshCounter_enabled"
+	StaticText ""
+	Option "$HHXBarDirection", "uz_hhx_secondFleshCounter_barDirection", "BarDirection", "uz_hhx_secondFleshCounter_enabled"
+	StaticText ""
+	Slider "$HHXMaxValue", "uz_hhx_secondFleshCounter_maxValue", 0, 1000, 1, 0, "uz_hhx_secondFleshCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_secondFleshCounter_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_secondFleshCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_secondFleshCounter_nhm_posX", -400, 400, 1, 0, "uz_hhx_secondFleshCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_secondFleshCounter_nhm_posY", -400, 400, 1, 0, "uz_hhx_secondFleshCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_secondFleshCounter_nhm_scale", .01, 4., .05, 2, "uz_hhx_secondFleshCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_secondFleshCounter_bg_nhm_ref", "uz_hhx_secondFleshCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_secondFleshCounter_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_secondFleshCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_secondFleshCounter_bg_nhm_posY", -400, 400, 1, 0, "uz_hhx_secondFleshCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_secondFleshCounter_bg_nhm_scale", .01, 4., .05, 2, "uz_hhx_secondFleshCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_secondFleshCounter_hlm_required", "OnOff", "uz_hhx_secondFleshCounter_enabled"
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_secondFleshCounter_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_secondFleshCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_secondFleshCounter_hlm_posX", -400, 400, 1, 0, "uz_hhx_secondFleshCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_secondFleshCounter_hlm_posY", -400, 400, 1, 0, "uz_hhx_secondFleshCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_secondFleshCounter_hlm_scale", .01, 4., .05, 2, "uz_hhx_secondFleshCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_secondFleshCounter_bg_hlm_ref", "uz_hhx_secondFleshCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_secondFleshCounter_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_secondFleshCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_secondFleshCounter_bg_hlm_posY", -400, 400, 1, 0, "uz_hhx_secondFleshCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_secondFleshCounter_bg_hlm_scale", .01, 4., .05, 2, "uz_hhx_secondFleshCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetSecondFleshCounter", "uz_hhx_options_reset_nhm_secondFleshCounter"
+	SafeCommand "$HHXHHResetSecondFleshCounter", "uz_hhx_options_reset_hlm_secondFleshCounter"
 }
 
 OptionMenu "HHXStimCounter" {

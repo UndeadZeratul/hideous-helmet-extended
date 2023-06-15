@@ -112,7 +112,7 @@ class BaseCounterHUDElement : HUDElement abstract {
     }
 
     virtual bool ShouldDrawCounter(HCStatusBar sb, float counterValue) {
-        return counterValue > 0;
+        return hd_debug || counterValue > 0;
     }
 
     virtual float GetCounterValue(HCStatusBar sb){
@@ -120,7 +120,11 @@ class BaseCounterHUDElement : HUDElement abstract {
     }
 
     virtual float GetCounterMaxValue(HCStatusBar sb){
-        return _maxValue ? _maxValue.getInt() : 0;
+        return _maxValue ? _maxValue.GetInt() : 0;
+    }
+
+    virtual string FormatValue(HCStatusBar sb, float counterValue) {
+        return sb.FormatNumber(counterValue);
     }
 
     protected void DrawCounter(HCStatusbar sb, int posX, int posY, float scale = 1.) {
@@ -132,7 +136,7 @@ class BaseCounterHUDElement : HUDElement abstract {
                 case VALUE_ONLY:
                     sb.DrawString(
                         sb.mIndexFont,
-                        sb.FormatNumber(value),
+                        FormatValue(sb, value),
                         (posX + (8 * scale), posY + scale),
                         sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_LEFT,
                         _fontColor.GetInt(),
@@ -142,7 +146,7 @@ class BaseCounterHUDElement : HUDElement abstract {
                 case LABEL_WITH_VALUE:
                     sb.DrawString(
                         sb.pNewSmallFont,
-                        counterLabel..sb.FormatNumber(value),
+                        counterLabel..FormatValue(sb, value),
                         (posX + (8 * scale), posY + scale),
                         sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_LEFT,
                         _fontColor.GetInt(),
@@ -160,7 +164,7 @@ class BaseCounterHUDElement : HUDElement abstract {
 
                     sb.DrawString(
                         sb.mIndexFont,
-                        sb.FormatNumber(value),
+                        FormatValue(sb, value),
                         (posX + (8 * scale), posY + scale),
                         sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_LEFT,
                         _fontColor.GetInt(),
