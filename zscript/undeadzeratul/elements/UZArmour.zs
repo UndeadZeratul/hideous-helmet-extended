@@ -402,8 +402,8 @@ class UZArmour : HUDElement {
 			stats.fontColor = Font.CR_DARKGRAY;
 			stats.offX = hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt();
 			stats.offY = hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt();
-			stats.durOffX = 0;
-			stats.durOffY = 0;
+			stats.durOffX = 15;
+			stats.durOffY = 15;
 			stats.flags = sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP;
 		} else if (cls == "WornRadBoots") {
 			stats.slot = 2;
