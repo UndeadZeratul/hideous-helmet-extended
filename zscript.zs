@@ -31,6 +31,7 @@ version "4.10"
 #include "zscript/undeadzeratul/elements/counters/UZBurnCounter.zs"
 #include "zscript/undeadzeratul/elements/counters/UZCurseCounter.zs"
 #include "zscript/undeadzeratul/elements/counters/UZFatigueCounter.zs"
+#include "zscript/undeadzeratul/elements/counters/UZFireDouseCounter.zs"
 #include "zscript/undeadzeratul/elements/counters/UZStimCounter.zs"
 #include "zscript/undeadzeratul/elements/counters/UZStunnedCounter.zs"
 
