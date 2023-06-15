@@ -10,7 +10,7 @@ class UZBloodBagCounter : BaseCounterHUDElement {
 	}
 
     override bool ShouldDrawCounter(HCStatusBar sb, float counterValue) {
-        return sb.hpl.FindInventory("BloodBagWorn");
+        return hd_debug || sb.hpl.FindInventory("BloodBagWorn");
     }
 
 	override float GetCounterValue(HCStatusBar sb) {
@@ -18,4 +18,8 @@ class UZBloodBagCounter : BaseCounterHUDElement {
 
 		return bloodBag ? (bloodBag.bloodLeft * 100 / 256) : 0;
 	}
+
+    override string FormatValue(HCStatusBar sb, float counterValue) {
+        return String.Format("%i%%", counterValue);
+    }
 }
