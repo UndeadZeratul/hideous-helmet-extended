@@ -35,6 +35,7 @@ version "4.10"
 #include "zscript/undeadzeratul/elements/counters/UZFragCounter.zs"
 #include "zscript/undeadzeratul/elements/counters/UZHeartrateCounter.zs"
 #include "zscript/undeadzeratul/elements/counters/UZHeatCounter.zs"
+#include "zscript/undeadzeratul/elements/counters/UZIncapCounter.zs"
 #include "zscript/undeadzeratul/elements/counters/UZStimCounter.zs"
 #include "zscript/undeadzeratul/elements/counters/UZStunnedCounter.zs"
 
