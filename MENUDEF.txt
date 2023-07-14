@@ -106,6 +106,7 @@ OptionMenu "HHXCounters" {
 	SubMenu "$HHXBerserkCooldownCounter", "HHXBerserkCooldownCounter"
 	SubMenu "$HHXBloodBagCounter",        "HHXBloodBagCounter"
 	SubMenu "$HHXBloodLossCounter",       "HHXBloodLossCounter"
+	SubMenu "$HHXBloodPressureCounter",   "HHXBloodPressureCounter"
 	SubMenu "$HHXBluesCounter",           "HHXBluesCounter"
 	SubMenu "$HHXBurnCounter",            "HHXBurnCounter"
 	SubMenu "$HHXCurseCounter",           "HHXCurseCounter"
@@ -594,6 +595,57 @@ OptionMenu "HHXBloodLossCounter" {
 	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetBloodLossCounter", "uz_hhx_options_reset_nhm_bloodLossCounter"
 	SafeCommand "$HHXHHResetBloodLossCounter", "uz_hhx_options_reset_hlm_bloodLossCounter"
+}
+
+OptionMenu "HHXBloodPressureCounter" {
+	Title "$HHXBloodPressureCounter"
+
+	Option "$HHXEnabled", "uz_hhx_bloodPressureCounter_enabled", "OnOff"
+	StaticText ""
+	Option "$HHXAlwaysVisible", "uz_hhx_bloodPressureCounter_alwaysVisible", "OnOff", "uz_hhx_bloodPressureCounter_enabled"
+	Option "$HHXCounterStyle", "uz_hhx_bloodPressureCounter_style", "CounterStyle", "uz_hhx_bloodPressureCounter_enabled"
+	Option "$HHXFontColor", "uz_hhx_bloodPressureCounter_fontColor", "FontColor", "uz_hhx_bloodPressureCounter_enabled"
+	StaticText ""
+	Option "$HHXBarDirection", "uz_hhx_bloodPressureCounter_barDirection", "BarDirection", "uz_hhx_bloodPressureCounter_enabled"
+	StaticText ""
+	Slider "$HHXMaxValue", "uz_hhx_bloodPressureCounter_maxValue", 0, 1000, 1, 0, "uz_hhx_bloodPressureCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_bloodPressureCounter_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_bloodPressureCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_bloodPressureCounter_nhm_posX", -400, 400, 1, 0, "uz_hhx_bloodPressureCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_bloodPressureCounter_nhm_posY", -400, 400, 1, 0, "uz_hhx_bloodPressureCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_bloodPressureCounter_nhm_scale", .01, 4., .05, 2, "uz_hhx_bloodPressureCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_bloodPressureCounter_bg_nhm_ref", "uz_hhx_bloodPressureCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_bloodPressureCounter_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_bloodPressureCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_bloodPressureCounter_bg_nhm_posY", -400, 400, 1, 0, "uz_hhx_bloodPressureCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_bloodPressureCounter_bg_nhm_scale", .01, 4., .05, 2, "uz_hhx_bloodPressureCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_bloodPressureCounter_hlm_required", "OnOff", "uz_hhx_bloodPressureCounter_enabled"
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_bloodPressureCounter_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_bloodPressureCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_bloodPressureCounter_hlm_posX", -400, 400, 1, 0, "uz_hhx_bloodPressureCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_bloodPressureCounter_hlm_posY", -400, 400, 1, 0, "uz_hhx_bloodPressureCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_bloodPressureCounter_hlm_scale", .01, 4., .05, 2, "uz_hhx_bloodPressureCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_bloodPressureCounter_bg_hlm_ref", "uz_hhx_bloodPressureCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_bloodPressureCounter_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_bloodPressureCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_bloodPressureCounter_bg_hlm_posY", -400, 400, 1, 0, "uz_hhx_bloodPressureCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_bloodPressureCounter_bg_hlm_scale", .01, 4., .05, 2, "uz_hhx_bloodPressureCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetBloodPressureCounter", "uz_hhx_options_reset_nhm_bloodPressureCounter"
+	SafeCommand "$HHXHHResetBloodPressureCounter", "uz_hhx_options_reset_hlm_bloodPressureCounter"
 }
 
 OptionMenu "HHXBluesCounter" {
