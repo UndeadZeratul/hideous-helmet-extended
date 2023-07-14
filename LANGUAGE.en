@@ -31,6 +31,7 @@ HHXWeaponStatus    = "Weapon Status Options";
 HHXWoundCounter    = "Wound Counter Options";
 
 // Stat Counter Options Menu Titles
+HHXalcoholCounter         = "Alcohol Counter Options";
 HHXAggroCounter           = "Aggravated Damage Counter Options";
 HHXBerserkCounter         = "Berserk Counter Options";
 HHXBerserkCooldownCounter = "Berserk Cooldown Counter Options";
@@ -111,6 +112,7 @@ HHXResetWeaponStatus    = "Reset Weapon Status Options";
 HHXResetWoundCounter    = "Reset Wound Counter Options";
 
 // Reset Normal Stat Counter Options Labels
+HHXResetAlcoholCounter         = "Reset Alcohol Counter Options";
 HHXResetAggroCounter           = "Reset Aggravated Damage Counter Options";
 HHXResetBerserkCounter         = "Reset Berserk Counter Options";
 HHXResetBerserkCooldownCounter = "Reset Berserk Cooldown Counter Options";
@@ -150,6 +152,7 @@ HHXHHResetWeaponStatus    = "Reset Weapon Status HHelmet Options";
 HHXHHResetWoundCounter    = "Reset Wound Counter HHelmet Options";
 
 // Reset Helmet Stat Counter Options Labels
+HHXHHResetAlcoholCounters        = "Reset Alcohol Counters HHelmet Options";
 HHXHHResetAggroCounters          = "Reset Aggravated Damage Counters HHelmet Options";
 HHXHHResetBerserkCounter         = "Reset Berserk Counter HHelmet Options";
 HHXHHResetBerserkCooldownCounter = "Reset Berserk Cooldown Counter HHelmet Options";
@@ -201,6 +204,7 @@ HHXOPTIONVALUE_COUNTER_DURABILITY_BAR   = "Icon Durability Bar";
 HHXOPTIONVALUE_COUNTER_FADING_ICON      = "Fading Icon";
 
 // HUD Counter Labels
+HHXAlcoholCounterLabel         = "Alcohol";
 HHXAggroCounterLabel           = "Aggravated Damage";
 HHXBerserkCounterLabel         = "Berserk";
 HHXBerserkCooldownCounterLabel = "Berserk Cooldown";
