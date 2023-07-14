@@ -10,12 +10,8 @@ class UZAlcoholCounter : BaseCounterHUDElement {
         counterIconBG = "HLMUA1";
         counterLabel  = Stringtable.Localize("$HHXAlcoholCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
 
-		foreach (cls : AllClasses) {
-			if (cls.getClassName() == 'UaSAlcohol_IntoxToken') {
-				invClass = (Class<Inventory>)(cls);
-				break;
-			}
-		}
+		string invClassName = "UaSAlcohol_IntoxToken";
+		invClass = (Class<Inventory>) (invClassName);
 	}
 
     override bool ShouldDrawCounter(HCStatusBar sb, float counterValue) {
