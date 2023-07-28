@@ -43,12 +43,14 @@ Ultimate Doom Visor HUD:
 - Saegiru
 - WildWeasel
 - 2800fps
+- DoomNukem
 
 UDV Alternate HUD:
 - Saegiru
 - WildWeasel
 - 2800fps
 - Lightsource
+- DoomNukem
 
 HUDCore HUD Elements:
 - Dastrukar
