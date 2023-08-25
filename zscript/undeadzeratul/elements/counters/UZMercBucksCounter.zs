@@ -18,7 +18,7 @@ class UZMercBucksCounter : BaseCounterHUDElement {
 		return invClass ? sb.hpl.countInv(invClass) : 0;
 	}
 
-    override string FormatValue(HCStatusBar sb, float counterValue) {
+    override string FormatValue(HCStatusBar sb, float counterValue, float maxValue) {
         return String.Format("$%i", counterValue);
     }
 }
