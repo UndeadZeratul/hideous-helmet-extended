@@ -154,8 +154,8 @@ HHXHHResetWeaponStatus    = "Reset Weapon Status HHelmet Options";
 HHXHHResetWoundCounter    = "Reset Wound Counter HHelmet Options";
 
 // Reset Helmet Stat Counter Options Labels
-HHXHHResetAlcoholCounters        = "Reset Alcohol Counters HHelmet Options";
-HHXHHResetAggroCounters          = "Reset Aggravated Damage Counters HHelmet Options";
+HHXHHResetAlcoholCounter         = "Reset Alcohol Counters HHelmet Options";
+HHXHHResetAggroCounter           = "Reset Aggravated Damage Counters HHelmet Options";
 HHXHHResetBerserkCounter         = "Reset Berserk Counter HHelmet Options";
 HHXHHResetBerserkCooldownCounter = "Reset Berserk Cooldown Counter HHelmet Options";
 HHXHHResetBloodBagCounter        = "Reset Blood Bag Counter HHelmet Options";
@@ -207,8 +207,8 @@ HHXOPTIONVALUE_COUNTER_DURABILITY_BAR   = "Icon Durability Bar";
 HHXOPTIONVALUE_COUNTER_FADING_ICON      = "Fading Icon";
 
 // HUD Counter Labels
-HHXAlcoholCounterLabel         = "Alcohol";
 HHXAggroCounterLabel           = "Aggravated Damage";
+HHXAlcoholCounterLabel         = "Alcohol";
 HHXBerserkCounterLabel         = "Berserk";
 HHXBerserkCooldownCounterLabel = "Berserk Cooldown";
 HHXBloodBagCounterLabel        = "Blood Bag";

@@ -100,8 +100,8 @@ OptionMenu "HHXCounters" {
 	Title "$HHXCounters"
 	
 	StaticText ""
-	SubMenu "$HHXAlcoholCounter",         "HHXAlcoholCounter"
 	SubMenu "$HHXAggroCounter",           "HHXAggroCounter"
+	SubMenu "$HHXAlcoholCounter",         "HHXAlcoholCounter"
 	SubMenu "$HHXBerserkCounter",         "HHXBerserkCounter"
 	SubMenu "$HHXBerserkCooldownCounter", "HHXBerserkCooldownCounter"
 	SubMenu "$HHXBloodBagCounter",        "HHXBloodBagCounter"
