@@ -14,7 +14,7 @@ jobs:
       - name: build PK3
         uses: montudor/action-zip@v1
         with:
-          args: zip -r "hideous-helmet-extended-${{ github.ref_name }}.pk3" . -i graphics/* zscript/* CVARINFO.txt KEYCONF.txt LANGUAGE.* MENUDEF.txt TEXTURES.* zscript.zs readme.md LICENSE
+          args: zip -r "hideous-helmet-extended-${{ github.ref_name }}.pk3" . -i graphics/* zscript/* CVARINFO KEYCONF LANGUAGE.* LICENSE MENUDEF readme.md TEXTURES.* zscript.zs
       - name: Release PK3
         uses: softprops/action-gh-release@v0.1.7
         with:

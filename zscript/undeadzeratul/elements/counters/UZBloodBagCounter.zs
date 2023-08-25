@@ -19,7 +19,7 @@ class UZBloodBagCounter : BaseCounterHUDElement {
 		return bloodBag ? (bloodBag.bloodLeft * 100 / 256) : 0;
 	}
 
-    override string FormatValue(HCStatusBar sb, float counterValue) {
+    override string FormatValue(HCStatusBar sb, float counterValue, float maxValue) {
         return String.Format("%i%%", counterValue);
     }
 }

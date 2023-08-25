@@ -1,3 +1,31 @@
+// ALCOHOL COUNTER CONFIGS
+user bool  uz_hhx_alcoholCounter_enabled       = true;
+user bool  uz_hhx_alcoholCounter_alwaysVisible = false;
+user int   uz_hhx_alcoholCounter_style         = 1;
+user int   uz_hhx_alcoholCounter_fontColor     = 18;
+user int   uz_hhx_alcoholCounter_barDirection  = 2;
+user int   uz_hhx_alcoholCounter_maxValue      = 100;
+
+user int   uz_hhx_alcoholCounter_nhm_hudLevel  = 1;
+user int   uz_hhx_alcoholCounter_nhm_posX      = -215;
+user int   uz_hhx_alcoholCounter_nhm_posY      = -210;
+user float uz_hhx_alcoholCounter_nhm_scale     = .5;
+
+user bool  uz_hhx_alcoholCounter_hlm_required  = false;
+user int   uz_hhx_alcoholCounter_hlm_hudLevel  = 1;
+user int   uz_hhx_alcoholCounter_hlm_posX      = -215;
+user int   uz_hhx_alcoholCounter_hlm_posY      = -210;
+user float uz_hhx_alcoholCounter_hlm_scale     = .5;
+
+user string uz_hhx_alcoholCounter_bg_nhm_ref   = "";
+user int    uz_hhx_alcoholCounter_bg_nhm_posX  = 0;
+user int    uz_hhx_alcoholCounter_bg_nhm_posY  = 0;
+user float  uz_hhx_alcoholCounter_bg_nhm_scale = 1.;
+user string uz_hhx_alcoholCounter_bg_hlm_ref   = "";
+user int    uz_hhx_alcoholCounter_bg_hlm_posX  = 0;
+user int    uz_hhx_alcoholCounter_bg_hlm_posY  = 0;
+user float  uz_hhx_alcoholCounter_bg_hlm_scale = 1.;
+
 // AGGRAVATED DAMAGE COUNTER CONFIGS
 user bool  uz_hhx_aggroCounter_enabled       = true;
 user bool  uz_hhx_aggroCounter_alwaysVisible = false;
@@ -25,6 +53,34 @@ user string uz_hhx_aggroCounter_bg_hlm_ref   = "";
 user int    uz_hhx_aggroCounter_bg_hlm_posX  = 0;
 user int    uz_hhx_aggroCounter_bg_hlm_posY  = 0;
 user float  uz_hhx_aggroCounter_bg_hlm_scale = 1.;
+
+// AIR COUNTER CONFIGS
+user bool  uz_hhx_airCounter_enabled       = true;
+user bool  uz_hhx_airCounter_alwaysVisible = false;
+user int   uz_hhx_airCounter_style         = 1;
+user int   uz_hhx_airCounter_fontColor     = 22;
+user int   uz_hhx_airCounter_barDirection  = 2;
+user int   uz_hhx_airCounter_maxValue      = 100;
+
+user int   uz_hhx_airCounter_nhm_hudLevel  = 1;
+user int   uz_hhx_airCounter_nhm_posX      = -215;
+user int   uz_hhx_airCounter_nhm_posY      = -200;
+user float uz_hhx_airCounter_nhm_scale     = .5;
+
+user bool  uz_hhx_airCounter_hlm_required  = false;
+user int   uz_hhx_airCounter_hlm_hudLevel  = 1;
+user int   uz_hhx_airCounter_hlm_posX      = -215;
+user int   uz_hhx_airCounter_hlm_posY      = -200;
+user float uz_hhx_airCounter_hlm_scale     = .5;
+
+user string uz_hhx_airCounter_bg_nhm_ref   = "";
+user int    uz_hhx_airCounter_bg_nhm_posX  = 0;
+user int    uz_hhx_airCounter_bg_nhm_posY  = 0;
+user float  uz_hhx_airCounter_bg_nhm_scale = 1.;
+user string uz_hhx_airCounter_bg_hlm_ref   = "";
+user int    uz_hhx_airCounter_bg_hlm_posX  = 0;
+user int    uz_hhx_airCounter_bg_hlm_posY  = 0;
+user float  uz_hhx_airCounter_bg_hlm_scale = 1.;
 
 // AMMO COUNTERS CONFIGS
 user bool   uz_hhx_ammoCounters_enabled        = true;
@@ -225,6 +281,34 @@ user string uz_hhx_bloodLossCounter_bg_hlm_ref   = "";
 user int    uz_hhx_bloodLossCounter_bg_hlm_posX  = 0;
 user int    uz_hhx_bloodLossCounter_bg_hlm_posY  = 0;
 user float  uz_hhx_bloodLossCounter_bg_hlm_scale = 1.;
+
+// BLOOD PRESSURE COUNTER CONFIGS
+user bool  uz_hhx_bloodPressureCounter_enabled       = true;
+user bool  uz_hhx_bloodPressureCounter_alwaysVisible = false;
+user int   uz_hhx_bloodPressureCounter_style         = 1;
+user int   uz_hhx_bloodPressureCounter_fontColor     = 0;
+user int   uz_hhx_bloodPressureCounter_barDirection  = 2;
+user int   uz_hhx_bloodPressureCounter_maxValue      = 100;
+
+user int   uz_hhx_bloodPressureCounter_nhm_hudLevel  = 1;
+user int   uz_hhx_bloodPressureCounter_nhm_posX      = -215;
+user int   uz_hhx_bloodPressureCounter_nhm_posY      = -160;
+user float uz_hhx_bloodPressureCounter_nhm_scale     = .5;
+
+user bool  uz_hhx_bloodPressureCounter_hlm_required  = false;
+user int   uz_hhx_bloodPressureCounter_hlm_hudLevel  = 1;
+user int   uz_hhx_bloodPressureCounter_hlm_posX      = -215;
+user int   uz_hhx_bloodPressureCounter_hlm_posY      = -160;
+user float uz_hhx_bloodPressureCounter_hlm_scale     = .5;
+
+user string uz_hhx_bloodPressureCounter_bg_nhm_ref   = "";
+user int    uz_hhx_bloodPressureCounter_bg_nhm_posX  = 0;
+user int    uz_hhx_bloodPressureCounter_bg_nhm_posY  = 0;
+user float  uz_hhx_bloodPressureCounter_bg_nhm_scale = 1.;
+user string uz_hhx_bloodPressureCounter_bg_hlm_ref   = "";
+user int    uz_hhx_bloodPressureCounter_bg_hlm_posX  = 0;
+user int    uz_hhx_bloodPressureCounter_bg_hlm_posY  = 0;
+user float  uz_hhx_bloodPressureCounter_bg_hlm_scale = 1.;
 
 // BLUES COUNTER CONFIGS
 user bool  uz_hhx_bluesCounter_enabled       = true;
@@ -649,6 +733,34 @@ user int    uz_hhx_keys_bg_hlm_posX  = 0;
 user int    uz_hhx_keys_bg_hlm_posY  = 0;
 user float  uz_hhx_keys_bg_hlm_scale = 1.;
 
+// MERCENARY BUCKS COUNTER CONFIGS
+user bool  uz_hhx_mercBucksCounter_enabled       = true;
+user bool  uz_hhx_mercBucksCounter_alwaysVisible = false;
+user int   uz_hhx_mercBucksCounter_style         = 1;
+user int   uz_hhx_mercBucksCounter_fontColor     = 3;
+user int   uz_hhx_mercBucksCounter_barDirection  = 2;
+user int   uz_hhx_mercBucksCounter_maxValue      = 100;
+
+user int   uz_hhx_mercBucksCounter_nhm_hudLevel  = 1;
+user int   uz_hhx_mercBucksCounter_nhm_posX      = -215;
+user int   uz_hhx_mercBucksCounter_nhm_posY      = -80;
+user float uz_hhx_mercBucksCounter_nhm_scale     = .5;
+
+user bool  uz_hhx_mercBucksCounter_hlm_required  = false;
+user int   uz_hhx_mercBucksCounter_hlm_hudLevel  = 1;
+user int   uz_hhx_mercBucksCounter_hlm_posX      = -215;
+user int   uz_hhx_mercBucksCounter_hlm_posY      = -80;
+user float uz_hhx_mercBucksCounter_hlm_scale     = .5;
+
+user string uz_hhx_mercBucksCounter_bg_nhm_ref   = "";
+user int    uz_hhx_mercBucksCounter_bg_nhm_posX  = 0;
+user int    uz_hhx_mercBucksCounter_bg_nhm_posY  = 0;
+user float  uz_hhx_mercBucksCounter_bg_nhm_scale = 1.;
+user string uz_hhx_mercBucksCounter_bg_hlm_ref   = "";
+user int    uz_hhx_mercBucksCounter_bg_hlm_posX  = 0;
+user int    uz_hhx_mercBucksCounter_bg_hlm_posY  = 0;
+user float  uz_hhx_mercBucksCounter_bg_hlm_scale = 1.;
+
 // MUGSHOT CONFIGS
 user bool  uz_hhx_mugshot_enabled      = true;
 
@@ -675,6 +787,10 @@ user float  uz_hhx_mugshot_bg_hlm_scale = 1.;
 // RADSUIT OVERRIDE CONFIGS
 user bool   uz_hhx_radsuit_enabled = true;
 user string uz_hhx_radsuit_ref     = "RADMSK";
+
+// RESPIRATOR OVERLAY CONFIGS
+user bool   uz_hhx_respirator_enabled = true;
+user string uz_hhx_respirator_ref     = "RSPMSK";
 
 // SECOND FLESH COUNTER CONFIGS
 user bool  uz_hhx_secondFleshCounter_enabled       = true;

@@ -20,7 +20,13 @@ While I've done what I can to allow HUD Elements to be customizable, some elemen
 
 ## Credits
 
+Air Counter Icon:
+- h.a.n.d., Square Enix
+
 Radsuit Overlay:
+- 3D Realms
+
+Respirator Overlay:
 - 3D Realms
 
 Hideous Helmet HUD Element Scripts:
@@ -43,12 +49,14 @@ Ultimate Doom Visor HUD:
 - Saegiru
 - WildWeasel
 - 2800fps
+- DoomNukem
 
 UDV Alternate HUD:
 - Saegiru
 - WildWeasel
 - 2800fps
 - Lightsource
+- DoomNukem
 
 HUDCore HUD Elements:
 - Dastrukar
