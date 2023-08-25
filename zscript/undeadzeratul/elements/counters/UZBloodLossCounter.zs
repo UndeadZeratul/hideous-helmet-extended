@@ -13,7 +13,7 @@ class UZBloodLossCounter : BaseCounterHUDElement {
 		return sb.hpl.bloodLoss / 1024.;
 	}
 
-    override string FormatValue(HCStatusBar sb, float counterValue) {
+    override string FormatValue(HCStatusBar sb, float counterValue, float maxValue) {
         return String.Format("%.2f", counterValue)..StringTable.Localize("$MEDIKIT_TRANSFUSIONUNITS");
     }
 }

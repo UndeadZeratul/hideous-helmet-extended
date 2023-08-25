@@ -20,6 +20,9 @@ While I've done what I can to allow HUD Elements to be customizable, some elemen
 
 ## Credits
 
+Air Counter Icon:
+- h.a.n.d., Square Enix
+
 Radsuit Overlay:
 - 3D Realms
 

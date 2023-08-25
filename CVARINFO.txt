@@ -54,6 +54,34 @@ user int    uz_hhx_aggroCounter_bg_hlm_posX  = 0;
 user int    uz_hhx_aggroCounter_bg_hlm_posY  = 0;
 user float  uz_hhx_aggroCounter_bg_hlm_scale = 1.;
 
+// AIR COUNTER CONFIGS
+user bool  uz_hhx_airCounter_enabled       = true;
+user bool  uz_hhx_airCounter_alwaysVisible = false;
+user int   uz_hhx_airCounter_style         = 1;
+user int   uz_hhx_airCounter_fontColor     = 22;
+user int   uz_hhx_airCounter_barDirection  = 2;
+user int   uz_hhx_airCounter_maxValue      = 100;
+
+user int   uz_hhx_airCounter_nhm_hudLevel  = 1;
+user int   uz_hhx_airCounter_nhm_posX      = -215;
+user int   uz_hhx_airCounter_nhm_posY      = -200;
+user float uz_hhx_airCounter_nhm_scale     = .5;
+
+user bool  uz_hhx_airCounter_hlm_required  = false;
+user int   uz_hhx_airCounter_hlm_hudLevel  = 1;
+user int   uz_hhx_airCounter_hlm_posX      = -215;
+user int   uz_hhx_airCounter_hlm_posY      = -200;
+user float uz_hhx_airCounter_hlm_scale     = .5;
+
+user string uz_hhx_airCounter_bg_nhm_ref   = "";
+user int    uz_hhx_airCounter_bg_nhm_posX  = 0;
+user int    uz_hhx_airCounter_bg_nhm_posY  = 0;
+user float  uz_hhx_airCounter_bg_nhm_scale = 1.;
+user string uz_hhx_airCounter_bg_hlm_ref   = "";
+user int    uz_hhx_airCounter_bg_hlm_posX  = 0;
+user int    uz_hhx_airCounter_bg_hlm_posY  = 0;
+user float  uz_hhx_airCounter_bg_hlm_scale = 1.;
+
 // AMMO COUNTERS CONFIGS
 user bool   uz_hhx_ammoCounters_enabled        = true;
 

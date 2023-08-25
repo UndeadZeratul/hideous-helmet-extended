@@ -13,7 +13,7 @@ class UZBloodPressureCounter : BaseCounterHUDElement {
 		return sb.hpl.bloodPressure;
 	}
 
-    override string FormatValue(HCStatusBar sb, float counterValue) {
+    override string FormatValue(HCStatusBar sb, float counterValue, float maxValue) {
         return String.Format("%i/%i", (120 + (counterValue / 5.)), (80 + (counterValue / 10.)));
     }
 }
