@@ -732,6 +732,10 @@ user float  uz_hhx_mugshot_bg_hlm_scale = 1.;
 user bool   uz_hhx_radsuit_enabled = true;
 user string uz_hhx_radsuit_ref     = "RADMSK";
 
+// RESPIRATOR OVERLAY CONFIGS
+user bool   uz_hhx_respirator_enabled = true;
+user string uz_hhx_respirator_ref     = "RSPMSK";
+
 // SECOND FLESH COUNTER CONFIGS
 user bool  uz_hhx_secondFleshCounter_enabled       = true;
 user bool  uz_hhx_secondFleshCounter_alwaysVisible = false;

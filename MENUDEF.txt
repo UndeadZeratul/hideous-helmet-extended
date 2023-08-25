@@ -78,6 +78,7 @@ OptionMenu "HHXAdvanced" {
 
 	StaticText ""
 	SubMenu "$HHXRadsuitOverride", "HHXRadsuitOverride"
+	SubMenu "$HHXRespiratorOverlay", "HHXRespiratorOverlay"
 
 	StaticText ""
 	StaticText ""
@@ -1853,6 +1854,20 @@ OptionMenu "HHXRadsuitOverride" {
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetRadsuitOverride", "uz_hhx_options_reset_nhm_radsuit"
+}
+
+OptionMenu "HHXRespiratorOverlay" {
+	Title "$HHXRespiratorOverlay"
+
+	Option "$HHXEnabled", "uz_hhx_respirator_enabled", "OnOff"
+
+	StaticText ""
+	TextField "$HHXRespiratorRef", "uz_hhx_respirator_ref", "uz_hhx_respirator_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetRespiratorOverlay", "uz_hhx_options_reset_nhm_respirator"
 }
 
 
