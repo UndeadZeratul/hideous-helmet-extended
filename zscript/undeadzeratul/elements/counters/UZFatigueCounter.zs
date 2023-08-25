@@ -13,7 +13,7 @@ class UZFatigueCounter : BaseCounterHUDElement {
 		return sb.hpl.fatigue * 100 / 30;
 	}
 
-    override string FormatValue(HCStatusBar sb, float counterValue) {
+    override string FormatValue(HCStatusBar sb, float counterValue, float maxValue) {
         return String.Format("%i%%", counterValue);
     }
 }

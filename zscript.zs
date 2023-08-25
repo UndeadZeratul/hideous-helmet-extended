@@ -24,6 +24,7 @@ version "4.10"
 #include "zscript/undeadzeratul/elements/UZWoundCounter.zs"
 
 #include "zscript/undeadzeratul/elements/counters/UZAggroCounter.zs"
+#include "zscript/undeadzeratul/elements/counters/UZAirCounter.zs"
 #include "zscript/undeadzeratul/elements/counters/UZAlcoholCounter.zs"
 #include "zscript/undeadzeratul/elements/counters/UZBerserkCounter.zs"
 #include "zscript/undeadzeratul/elements/counters/UZBerserkCooldownCounter.zs"

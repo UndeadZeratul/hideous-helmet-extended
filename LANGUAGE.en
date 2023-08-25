@@ -34,6 +34,7 @@ HHXWoundCounter    = "Wound Counter Options";
 // Stat Counter Options Menu Titles
 HHXAlcoholCounter         = "Alcohol Counter Options";
 HHXAggroCounter           = "Aggravated Damage Counter Options";
+HHXAirCounter             = "Air Counter Options";
 HHXBerserkCounter         = "Berserk Counter Options";
 HHXBerserkCooldownCounter = "Berserk Cooldown Counter Options";
 HHXBloodBagCounter        = "Blood Bag Counter Options";
@@ -118,6 +119,7 @@ HHXResetWoundCounter    = "Reset Wound Counter Options";
 // Reset Normal Stat Counter Options Labels
 HHXResetAlcoholCounter         = "Reset Alcohol Counter Options";
 HHXResetAggroCounter           = "Reset Aggravated Damage Counter Options";
+HHXResetAirCounter             = "Reset Air Counter Options";
 HHXResetBerserkCounter         = "Reset Berserk Counter Options";
 HHXResetBerserkCooldownCounter = "Reset Berserk Cooldown Counter Options";
 HHXResetBloodBagCounter        = "Reset Blood Bag Counter Options";
@@ -157,8 +159,9 @@ HHXHHResetWeaponStatus    = "Reset Weapon Status HHelmet Options";
 HHXHHResetWoundCounter    = "Reset Wound Counter HHelmet Options";
 
 // Reset Helmet Stat Counter Options Labels
-HHXHHResetAlcoholCounter         = "Reset Alcohol Counters HHelmet Options";
 HHXHHResetAggroCounter           = "Reset Aggravated Damage Counters HHelmet Options";
+HHXHHResetAirCounter             = "Reset Air Counter HHelmet Options";
+HHXHHResetAlcoholCounter         = "Reset Alcohol Counters HHelmet Options";
 HHXHHResetBerserkCounter         = "Reset Berserk Counter HHelmet Options";
 HHXHHResetBerserkCooldownCounter = "Reset Berserk Cooldown Counter HHelmet Options";
 HHXHHResetBloodBagCounter        = "Reset Blood Bag Counter HHelmet Options";
@@ -211,6 +214,7 @@ HHXOPTIONVALUE_COUNTER_FADING_ICON      = "Fading Icon";
 
 // HUD Counter Labels
 HHXAggroCounterLabel           = "Aggravated Damage";
+HHXAirCounterLabel             = "Air";
 HHXAlcoholCounterLabel         = "Alcohol";
 HHXBerserkCounterLabel         = "Berserk";
 HHXBerserkCooldownCounterLabel = "Berserk Cooldown";

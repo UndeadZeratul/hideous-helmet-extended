@@ -125,7 +125,7 @@ class BaseCounterHUDElement : HUDElement abstract {
         return _maxValue ? _maxValue.GetInt() : 0;
     }
 
-    virtual string FormatValue(HCStatusBar sb, float counterValue) {
+    virtual string FormatValue(HCStatusBar sb, float counterValue, float maxValue) {
         return sb.FormatNumber(counterValue);
     }
 
@@ -138,7 +138,7 @@ class BaseCounterHUDElement : HUDElement abstract {
                 case VALUE_ONLY:
                     sb.DrawString(
                         sb.mIndexFont,
-                        FormatValue(sb, value),
+                        FormatValue(sb, value, maxValue),
                         (posX + (8 * scale), posY + scale),
                         sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_LEFT,
                         _fontColor.GetInt(),
@@ -148,7 +148,7 @@ class BaseCounterHUDElement : HUDElement abstract {
                 case LABEL_WITH_VALUE:
                     sb.DrawString(
                         sb.pNewSmallFont,
-                        counterLabel..FormatValue(sb, value),
+                        counterLabel..FormatValue(sb, value, maxValue),
                         (posX + (8 * scale), posY + scale),
                         sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_LEFT,
                         _fontColor.GetInt(),
@@ -166,7 +166,7 @@ class BaseCounterHUDElement : HUDElement abstract {
 
                     sb.DrawString(
                         sb.mIndexFont,
-                        FormatValue(sb, value),
+                        FormatValue(sb, value, maxValue),
                         (posX + (8 * scale), posY + scale),
                         sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_LEFT,
                         _fontColor.GetInt(),

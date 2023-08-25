@@ -13,7 +13,7 @@ class UZFireDouseCounter : BaseCounterHUDElement {
 		return sb.hpl.CountInv('HDFireDouse') * 5;
 	}
 
-    override string FormatValue(HCStatusBar sb, float counterValue) {
+    override string FormatValue(HCStatusBar sb, float counterValue, float maxValue) {
         return String.Format("%i%%", counterValue)..(sb.hpl.vel dot sb.hpl.vel > 4 ? " +60%" : "");
     }
 }

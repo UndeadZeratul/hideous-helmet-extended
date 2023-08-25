@@ -13,7 +13,7 @@ class UZHeartrateCounter : BaseCounterHUDElement {
 		return sb.hpl.beatMax > 0 ? (2100 / sb.hpl.beatMax) : 0;
 	}
 
-    override string FormatValue(HCStatusBar sb, float counterValue) {
+    override string FormatValue(HCStatusBar sb, float counterValue, float maxValue) {
         return String.Format("%i BPM", counterValue);
     }
 }

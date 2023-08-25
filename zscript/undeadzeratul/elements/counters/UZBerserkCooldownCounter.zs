@@ -17,7 +17,7 @@ class UZBerserkCooldownCounter : BaseCounterHUDElement {
 		return sb.hpl.CountInv('HDZerk') / 105;
 	}
 
-    override string FormatValue(HCStatusBar sb, float counterValue) {
+    override string FormatValue(HCStatusBar sb, float counterValue, float maxValue) {
         return String.Format("%i%%", counterValue);
     }
 }
