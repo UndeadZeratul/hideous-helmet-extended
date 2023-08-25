@@ -31,7 +31,7 @@ HHXWeaponStatus    = "Weapon Status Options";
 HHXWoundCounter    = "Wound Counter Options";
 
 // Stat Counter Options Menu Titles
-HHXalcoholCounter         = "Alcohol Counter Options";
+HHXAlcoholCounter         = "Alcohol Counter Options";
 HHXAggroCounter           = "Aggravated Damage Counter Options";
 HHXBerserkCounter         = "Berserk Counter Options";
 HHXBerserkCooldownCounter = "Berserk Cooldown Counter Options";
