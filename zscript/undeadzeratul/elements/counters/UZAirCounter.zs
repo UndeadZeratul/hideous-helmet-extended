@@ -11,7 +11,7 @@ class UZAirCounter : BaseCounterHUDElement {
         counterLabel  = Stringtable.Localize("$HHXAirCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
 
 		string invClassName = "UaS_Respirator";
-		invClass = (Class<Inventory>) (invClassName);
+		invClass = invClassName;
 	}
 
     override bool ShouldDrawCounter(HCStatusBar sb, float counterValue) {
