@@ -10,7 +10,7 @@ class UZRespirator : HUDElement {
 		Namespace = "respirator";
 
 		string invClassName = "UaS_Respirator";
-		invClass = (Class<Inventory>) (invClassName);
+		invClass = invClassName;
 	}
 
 	override void Tick(HCStatusbar sb) {
