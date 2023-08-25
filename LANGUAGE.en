@@ -25,6 +25,7 @@ HHXInventory       = "Inventory Options";
 HHXKeys            = "Keys Options";
 HHXMugshot         = "Mugshot Options";
 HHXRadsuitOverride = "Radsuit Overlay Options";
+HHXRespiratorOverlay = "Respirator Overlay Options";
 HHXWeaponSprite    = "Weapon Sprite Options";
 HHXWeaponStash     = "Weapon Stash Options";
 HHXWeaponStatus    = "Weapon Status Options";
@@ -66,6 +67,7 @@ HHXHUDLevel       = "Requires HUD Level";
 // Sprite References
 HHXBackgroundRef  = "HUD Background Graphic";
 HHXRadsuitRef     = "Radsuit Graphic";
+HHXRespiratorRef  = "Respirator Graphic";
 HHXBgRef          = "HUD Element Background Graphic";
 
 // HUD Element Positioning Config Labels
@@ -106,7 +108,8 @@ HHXResetHeartbeat       = "Reset Heartbeat Options";
 HHXResetInventory       = "Reset Inventory Options";
 HHXResetKeys            = "Reset Keys Options";
 HHXResetMugshot         = "Reset Mugshot Options";
-HHXResetRadsuitOverride = "Reset Radsuit Override Options";
+HHXResetRadsuitOverride = "Reset Radsuit Overlay Options";
+HHXResetRespiratorOverlay = "Reset Respirator Overlay Options";
 HHXResetWeaponSprite    = "Reset Weapon Sprite Options";
 HHXResetWeaponStash     = "Reset Weapon Stash Options";
 HHXResetWeaponStatus    = "Reset Weapon Status Options";
