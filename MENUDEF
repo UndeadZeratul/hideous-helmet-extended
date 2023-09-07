@@ -1990,6 +1990,7 @@ OptionMenu "HHXPresets" {
 	SafeCommand "$HHXPresetUDV1",        "uz_hhx_preset_udv1"
 	SafeCommand "$HHXPresetUDV2",        "uz_hhx_preset_udv2"
 	SafeCommand "$HHXPresetUZ",          "uz_hhx_preset_uz"
+	SafeCommand "$HHXPresetTED",         "uz_hhx_preset_ted"
 	
 	StaticText ""
 	StaticText "$HHXSubPresetDescription"
