@@ -56,22 +56,24 @@ OptionMenu "HHXAdvanced" {
 	Title "$HHXAdvanced"
 	
 	StaticText ""
-	SubMenu "$HHXAmmoCounters",    "HHXAmmoCounters"
-	SubMenu "$HHXArmour",          "HHXArmour"
-	SubMenu "$HHXCompass",         "HHXCompass"
-	SubMenu "$HHXEKG",             "HHXEKG"
-	SubMenu "$HHXEncumbrance",     "HHXEncumbrance"
-	SubMenu "$HHXFullInventory",   "HHXFullInventory"
-	SubMenu "$HHXHeartbeat",       "HHXHeartbeat"
-	SubMenu "$HHXInventory",       "HHXInventory"
-// 	SubMenu "$HHXItemAdditions",   "HHXItemAdditions"
-	SubMenu "$HHXKeys",            "HHXKeys"
-	SubMenu "$HHXMugshot",         "HHXMugshot"
-	SubMenu "$HHXBackground",      "HHXBackground"
-	SubMenu "$HHXWeaponSprite",    "HHXWeaponSprite"
-	SubMenu "$HHXWeaponStash",     "HHXWeaponStash"
-// 	SubMenu "$HHXWeaponStatus",    "HHXWeaponStatus"
-	SubMenu "$HHXWoundCounter",    "HHXWoundCounter"
+	SubMenu "$HHXAmmoCounters",      "HHXAmmoCounters"
+	SubMenu "$HHXArmour",            "HHXArmour"
+	SubMenu "$HHXCompass",           "HHXCompass"
+	SubMenu "$HHXEKG",               "HHXEKG"
+	SubMenu "$HHXEncumbrance",       "HHXEncumbrance"
+	SubMenu "$HHXFullInventory",     "HHXFullInventory"
+	SubMenu "$HHXHeartbeat",         "HHXHeartbeat"
+	SubMenu "$HHXInventory",         "HHXInventory"
+// 	SubMenu "$HHXItemAdditions",     "HHXItemAdditions"
+	SubMenu "$HHXKeys",              "HHXKeys"
+	SubMenu "$HHXMugshot",           "HHXMugshot"
+	SubMenu "$HHXObjectDescription", "HHXObjectDescription"
+	SubMenu "$HHXBackground",        "HHXBackground"
+	SubMenu "$HHXWeaponHelp",        "HHXWeaponHelp"
+	SubMenu "$HHXWeaponSprite",      "HHXWeaponSprite"
+	SubMenu "$HHXWeaponStash",       "HHXWeaponStash"
+// 	SubMenu "$HHXWeaponStatus",      "HHXWeaponStatus"
+	SubMenu "$HHXWoundCounter",      "HHXWoundCounter"
 
 	StaticText ""
 	SubMenu "$HHXCounters", "HHXCounters"
@@ -1572,6 +1574,49 @@ OptionMenu "HHXMugshot" {
 	SafeCommand "$HHXHHResetMugshot", "uz_hhx_options_reset_hlm_mugshot"
 }
 
+OptionMenu "HHXObjectDescription" {
+	Title "$HHXObjectDescription"
+
+	Option "$HHXEnabled", "uz_hhx_objectDescription_enabled", "OnOff"
+
+	StaticText ""
+	StaticText ""	
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_objectDescription_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_objectDescription_enabled"
+	Slider "$HHXPosX", "uz_hhx_objectDescription_nhm_posX", -400, 400, 1, 0, "uz_hhx_objectDescription_enabled"
+	Slider "$HHXPosY", "uz_hhx_objectDescription_nhm_posY", -400, 400, 1, 0, "uz_hhx_objectDescription_enabled"
+	Slider "$HHXScale", "uz_hhx_objectDescription_nhm_scale", .01, 4., .05, 2, "uz_hhx_objectDescription_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_objectDescription_bg_nhm_ref", "uz_hhx_objectDescription_enabled"
+	Slider "$HHXPosX", "uz_hhx_objectDescription_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_objectDescription_enabled"
+	Slider "$HHXPosY", "uz_hhx_objectDescription_bg_nhm_posY", -400, 400, 1, 0, "uz_hhx_objectDescription_enabled"
+	Slider "$HHXScale", "uz_hhx_objectDescription_bg_nhm_scale", .01, 4., .05, 2, "uz_hhx_objectDescription_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_objectDescription_hlm_required", "OnOff", "uz_hhx_objectDescription_enabled"
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_objectDescription_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_objectDescription_enabled"
+	Slider "$HHXPosX", "uz_hhx_objectDescription_hlm_posX", -400, 400, 1, 0, "uz_hhx_objectDescription_enabled"
+	Slider "$HHXPosY", "uz_hhx_objectDescription_hlm_posY", -400, 400, 1, 0, "uz_hhx_objectDescription_enabled"
+	Slider "$HHXScale", "uz_hhx_objectDescription_hlm_scale", .01, 4., .05, 2, "uz_hhx_objectDescription_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_objectDescription_bg_hlm_ref", "uz_hhx_objectDescription_enabled"
+	Slider "$HHXPosX", "uz_hhx_objectDescription_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_objectDescription_enabled"
+	Slider "$HHXPosY", "uz_hhx_objectDescription_bg_hlm_posY", -400, 400, 1, 0, "uz_hhx_objectDescription_enabled"
+	Slider "$HHXScale", "uz_hhx_objectDescription_bg_hlm_scale", .01, 4., .05, 2, "uz_hhx_objectDescription_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetMugshot", "uz_hhx_options_reset_nhm_objectDescription"
+	SafeCommand "$HHXHHResetMugshot", "uz_hhx_options_reset_hlm_objectDescription"
+}
+
 OptionMenu "HHXBackground" {
 	Title "$HHXBackground"
 
@@ -1759,6 +1804,49 @@ OptionMenu "HHXStunnedCounter" {
 	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetStunnedCounter", "uz_hhx_options_reset_nhm_stunnedCounter"
 	SafeCommand "$HHXHHResetStunnedCounter", "uz_hhx_options_reset_hlm_stunnedCounter"
+}
+
+OptionMenu "HHXWeaponHelp" {
+	Title "$HHXWeaponHelp"
+
+	Option "$HHXEnabled", "uz_hhx_weaponHelp_enabled", "OnOff"
+
+	StaticText ""
+	StaticText ""	
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_weaponHelp_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_weaponHelp_enabled"
+	Slider "$HHXPosX", "uz_hhx_weaponHelp_nhm_posX", -400, 400, 1, 0, "uz_hhx_weaponHelp_enabled"
+	Slider "$HHXPosY", "uz_hhx_weaponHelp_nhm_posY", -400, 400, 1, 0, "uz_hhx_weaponHelp_enabled"
+	Slider "$HHXScale", "uz_hhx_weaponHelp_nhm_scale", .01, 4., .05, 2, "uz_hhx_weaponHelp_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_weaponHelp_bg_nhm_ref", "uz_hhx_weaponHelp_enabled"
+	Slider "$HHXPosX", "uz_hhx_weaponHelp_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_weaponHelp_enabled"
+	Slider "$HHXPosY", "uz_hhx_weaponHelp_bg_nhm_posY", -400, 400, 1, 0, "uz_hhx_weaponHelp_enabled"
+	Slider "$HHXScale", "uz_hhx_weaponHelp_bg_nhm_scale", .01, 4., .05, 2, "uz_hhx_weaponHelp_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_weaponHelp_hlm_required", "OnOff", "uz_hhx_weaponHelp_enabled"
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_weaponHelp_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_weaponHelp_enabled"
+	Slider "$HHXPosX", "uz_hhx_weaponHelp_hlm_posX", -400, 400, 1, 0, "uz_hhx_weaponHelp_enabled"
+	Slider "$HHXPosY", "uz_hhx_weaponHelp_hlm_posY", -400, 400, 1, 0, "uz_hhx_weaponHelp_enabled"
+	Slider "$HHXScale", "uz_hhx_weaponHelp_hlm_scale", .01, 4., .05, 2, "uz_hhx_weaponHelp_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_weaponHelp_bg_hlm_ref", "uz_hhx_weaponHelp_enabled"
+	Slider "$HHXPosX", "uz_hhx_weaponHelp_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_weaponHelp_enabled"
+	Slider "$HHXPosY", "uz_hhx_weaponHelp_bg_hlm_posY", -400, 400, 1, 0, "uz_hhx_weaponHelp_enabled"
+	Slider "$HHXScale", "uz_hhx_weaponHelp_bg_hlm_scale", .01, 4., .05, 2, "uz_hhx_weaponHelp_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetWeaponHelp", "uz_hhx_options_reset_nhm_weaponHelp"
+	SafeCommand "$HHXHHResetWeaponHelp", "uz_hhx_options_reset_hlm_weaponHelp"
 }
 
 OptionMenu "HHXWeaponSprite" {
