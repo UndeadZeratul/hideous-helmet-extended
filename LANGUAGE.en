@@ -194,6 +194,7 @@ HHXPresetSwampyrad                      = "Swampyrad's Resident Evil 1 HUD";
 HHXPresetUDV1                           = "Ultimate Doom Visor HUD";
 HHXPresetUDV2                           = "Ultimate Doom Visor Alternate HUD";
 HHXPresetUZ                             = "Undead Zeratul's Personal Preset";
+HHXPresetTED                            = "\c[Cyan]Ted the Praimortis\c-'s Personal Preset";
 
 // Hideous Helmet Option Set Labels
 HHXHLM                                  = "With Helmet";
