@@ -784,6 +784,29 @@ user int    uz_hhx_mugshot_bg_hlm_posX  = 0;
 user int    uz_hhx_mugshot_bg_hlm_posY  = 0;
 user float  uz_hhx_mugshot_bg_hlm_scale = 1.;
 
+// OBJECT DESCRIPTION CONFIGS
+user bool  uz_hhx_objectDescription_enabled      = true;
+
+user int   uz_hhx_objectDescription_nhm_hudLevel = 1;
+user int   uz_hhx_objectDescription_nhm_posX     = 0;
+user int   uz_hhx_objectDescription_nhm_posY     = 20;
+user float uz_hhx_objectDescription_nhm_scale    = 1.;
+
+user bool  uz_hhx_objectDescription_hlm_required = false;
+user int   uz_hhx_objectDescription_hlm_hudLevel = 1;
+user int   uz_hhx_objectDescription_hlm_posX     = 0;
+user int   uz_hhx_objectDescription_hlm_posY     = 20;
+user float uz_hhx_objectDescription_hlm_scale    = 1.;
+
+user string uz_hhx_objectDescription_bg_nhm_ref   = "";
+user int    uz_hhx_objectDescription_bg_nhm_posX  = 0;
+user int    uz_hhx_objectDescription_bg_nhm_posY  = 0;
+user float  uz_hhx_objectDescription_bg_nhm_scale = 1.;
+user string uz_hhx_objectDescription_bg_hlm_ref   = "";
+user int    uz_hhx_objectDescription_bg_hlm_posX  = 0;
+user int    uz_hhx_objectDescription_bg_hlm_posY  = 0;
+user float  uz_hhx_objectDescription_bg_hlm_scale = 1.;
+
 // RADSUIT OVERRIDE CONFIGS
 user bool   uz_hhx_radsuit_enabled = true;
 user string uz_hhx_radsuit_ref     = "RADMSK";
@@ -875,6 +898,29 @@ user string uz_hhx_stunnedCounter_bg_hlm_ref   = "";
 user int    uz_hhx_stunnedCounter_bg_hlm_posX  = 0;
 user int    uz_hhx_stunnedCounter_bg_hlm_posY  = 0;
 user float  uz_hhx_stunnedCounter_bg_hlm_scale = 1.;
+
+// WEAPON HELP TEXT CONFIGS
+user bool  uz_hhx_weaponHelp_enabled      = true;
+
+user int   uz_hhx_weaponHelp_nhm_hudLevel = 2;
+user int   uz_hhx_weaponHelp_nhm_posX     = 8;
+user int   uz_hhx_weaponHelp_nhm_posY     = 100;
+user float uz_hhx_weaponHelp_nhm_scale    = 1.;
+
+user bool  uz_hhx_weaponHelp_hlm_required = false;
+user int   uz_hhx_weaponHelp_hlm_hudLevel = 2;
+user int   uz_hhx_weaponHelp_hlm_posX     = 8;
+user int   uz_hhx_weaponHelp_hlm_posY     = 100;
+user float uz_hhx_weaponHelp_hlm_scale    = 1.;
+
+user string uz_hhx_weaponHelp_bg_nhm_ref   = "";
+user int    uz_hhx_weaponHelp_bg_nhm_posX  = 0;
+user int    uz_hhx_weaponHelp_bg_nhm_posY  = 0;
+user float  uz_hhx_weaponHelp_bg_nhm_scale = 1.;
+user string uz_hhx_weaponHelp_bg_hlm_ref   = "";
+user int    uz_hhx_weaponHelp_bg_hlm_posX  = 0;
+user int    uz_hhx_weaponHelp_bg_hlm_posY  = 0;
+user float  uz_hhx_weaponHelp_bg_hlm_scale = 1.;
 
 // WEAPON SPRITE CONFIGS
 user bool  uz_hhx_weaponSprite_enabled      = true;
