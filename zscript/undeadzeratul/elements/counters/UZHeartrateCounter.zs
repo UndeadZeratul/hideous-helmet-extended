@@ -4,8 +4,8 @@ class UZHeartrateCounter : BaseCounterHUDElement {
 		ZLayer    = 2;
 		Namespace = "heartrateCounter";
 
-		counterIcon   = "";
-        counterIconBG = "";
+		counterIcon   = "HRTCNTR0";
+        counterIconBG = "HRTCNTR1";
         counterLabel  = Stringtable.Localize("$HHXHeartrateCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
 	}
 

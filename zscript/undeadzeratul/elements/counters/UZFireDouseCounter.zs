@@ -4,8 +4,8 @@ class UZFireDouseCounter : BaseCounterHUDElement {
 		ZLayer    = 2;
 		Namespace = "fireDouseCounter";
 
-		counterIcon   = "HLMUA0";
-        counterIconBG = "HLMUA1";
+		counterIcon   = "FDSCNTR0";
+        counterIconBG = "FDSCNTR1";
         counterLabel  = Stringtable.Localize("$HHXFireDouseCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
 	}
 

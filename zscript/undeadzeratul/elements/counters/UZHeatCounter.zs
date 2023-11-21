@@ -4,8 +4,8 @@ class UZHeatCounter : BaseCounterHUDElement {
 		ZLayer    = 2;
 		Namespace = "heatCounter";
 
-		counterIcon   = "HLMBA0";
-        counterIconBG = "HLMBA1";
+		counterIcon   = "HETCNTR0";
+        counterIconBG = "HETCNTR1";
         counterLabel  = Stringtable.Localize("$HHXHeatCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
 	}
 

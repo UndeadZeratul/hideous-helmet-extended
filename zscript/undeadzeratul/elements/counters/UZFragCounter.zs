@@ -4,8 +4,8 @@ class UZFragCounter : BaseCounterHUDElement {
 		ZLayer    = 2;
 		Namespace = "fragCounter";
 
-		counterIcon   = "HLMZA0";
-        counterIconBG = "HLMZA1";
+		counterIcon   = "FRGCNTR0";
+        counterIconBG = "FRGCNTR1";
         counterLabel  = Stringtable.Localize("$HHXFragCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
 	}
 

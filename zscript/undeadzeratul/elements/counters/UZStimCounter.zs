@@ -4,8 +4,8 @@ class UZStimCounter : BaseCounterHUDElement {
 		ZLayer    = 2;
 		Namespace = "stimCounter";
 
-		counterIcon   = "HLMSA0";
-        counterIconBG = "HLMSA1";
+		counterIcon   = "STMCNTR0";
+        counterIconBG = "STMCNTR1";
         counterLabel  = Stringtable.Localize("$HHXStimCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
 	}
 

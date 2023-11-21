@@ -4,8 +4,8 @@ class UZBerserkCounter : BaseCounterHUDElement {
 		ZLayer    = 2;
 		Namespace = "berserkCounter";
 
-		counterIcon   = "HLMZA0";
-        counterIconBG = "HLMZA1";
+		counterIcon   = "ZRKCNTR0";
+        counterIconBG = "ZRKCNTR1";
         counterLabel  = Stringtable.Localize("$HHXBerserkCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
 	}
 

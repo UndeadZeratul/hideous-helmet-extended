@@ -4,8 +4,8 @@ class UZBloodBagCounter : BaseCounterHUDElement {
 		ZLayer    = 2;
 		Namespace = "bloodBagCounter";
 
-		counterIcon   = "HLMBA0";
-        counterIconBG = "HLMBA1";
+		counterIcon   = "BBGCNTR0";
+        counterIconBG = "BBGCNTR1";
         counterLabel  = Stringtable.Localize("$HHXBloodBagCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
 	}
 

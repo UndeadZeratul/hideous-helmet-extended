@@ -4,8 +4,8 @@ class UZBluesCounter : BaseCounterHUDElement {
 		ZLayer    = 2;
 		Namespace = "bluesCounter";
 
-		counterIcon   = "HLMUA0";
-        counterIconBG = "HLMUA1";
+		counterIcon   = "BLUCNTR0";
+        counterIconBG = "BLUCNTR1";
         counterLabel  = Stringtable.Localize("$HHXBluesCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
 	}
 

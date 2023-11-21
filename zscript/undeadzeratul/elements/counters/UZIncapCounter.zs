@@ -4,8 +4,8 @@ class UZIncapCounter : BaseCounterHUDElement {
 		ZLayer    = 2;
 		Namespace = "incapCounter";
 
-		counterIcon   = "";
-        counterIconBG = "";
+		counterIcon   = "INCCNTR0";
+        counterIconBG = "INCCNTR1";
         counterLabel  = Stringtable.Localize("$HHXIncapCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
 	}
 

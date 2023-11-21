@@ -4,8 +4,8 @@ class UZCurseCounter : BaseCounterHUDElement {
 		ZLayer    = 2;
 		Namespace = "curseCounter";
 
-		counterIcon   = "HLMZA0";
-        counterIconBG = "HLMZA1";
+		counterIcon   = "CRSCNTR0";
+        counterIconBG = "CRSCNTR1";
         counterLabel  = Stringtable.Localize("$HHXCurseCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
 	}
 

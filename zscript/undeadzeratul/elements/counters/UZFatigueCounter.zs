@@ -4,8 +4,8 @@ class UZFatigueCounter : BaseCounterHUDElement {
 		ZLayer    = 2;
 		Namespace = "fatigueCounter";
 
-		counterIcon   = "";
-        counterIconBG = "";
+		counterIcon   = "FTGCNTR0";
+        counterIconBG = "FTGCNTR1";
         counterLabel  = Stringtable.Localize("$HHXFatigueCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
 	}
 

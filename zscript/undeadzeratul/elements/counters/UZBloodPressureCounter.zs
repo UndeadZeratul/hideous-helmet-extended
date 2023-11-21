@@ -4,8 +4,8 @@ class UZBloodPressureCounter : BaseCounterHUDElement {
 		ZLayer    = 2;
 		Namespace = "bloodPressureCounter";
 
-		counterIcon   = "";
-        counterIconBG = "";
+		counterIcon   = "BPCNTR0";
+        counterIconBG = "BPCNTR1";
         counterLabel  = Stringtable.Localize("$HHXBloodPressureCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
 	}
 

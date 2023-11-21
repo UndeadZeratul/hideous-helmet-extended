@@ -4,8 +4,8 @@ class UZAggroCounter : BaseCounterHUDElement {
 		ZLayer    = 2;
 		Namespace = "aggroCounter";
 
-		counterIcon   = "";
-        counterIconBG = "";
+		counterIcon   = "AGRCNTR0";
+        counterIconBG = "AGRCNTR1";
         counterLabel  = Stringtable.Localize("$HHXAggroCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
 	}
 

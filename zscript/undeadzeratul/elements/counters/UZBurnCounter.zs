@@ -4,8 +4,8 @@ class UZBurnCounter : BaseCounterHUDElement {
 		ZLayer    = 2;
 		Namespace = "burnCounter";
 
-		counterIcon   = "";
-        counterIconBG = "";
+		counterIcon   = "BRNCNTR0";
+        counterIconBG = "BRNCNTR1";
         counterLabel  = Stringtable.Localize("$HHXBurnCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
 	}
 

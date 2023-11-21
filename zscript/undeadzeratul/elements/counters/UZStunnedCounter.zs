@@ -4,8 +4,8 @@ class UZStunnedCounter : BaseCounterHUDElement {
 		ZLayer    = 2;
 		Namespace = "stunnedCounter";
 
-		counterIcon   = "";
-        counterIconBG = "";
+		counterIcon   = "STNCNTR0";
+        counterIconBG = "STNCNTR1";
         counterLabel  = Stringtable.Localize("$HHXStunnedCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
 	}
 

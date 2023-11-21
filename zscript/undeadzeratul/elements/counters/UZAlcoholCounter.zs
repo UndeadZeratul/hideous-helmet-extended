@@ -6,8 +6,8 @@ class UZAlcoholCounter : BaseCounterHUDElement {
 		ZLayer    = 2;
 		Namespace = "alcoholCounter";
 
-		counterIcon   = "HLMUA0";
-        counterIconBG = "HLMUA1";
+		counterIcon   = "BACCNTR0";
+        counterIconBG = "BACCNTR1";
         counterLabel  = Stringtable.Localize("$HHXAlcoholCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
 
 		string invClassName = "UaSAlcohol_IntoxToken";

@@ -6,8 +6,8 @@ class UZMercBucksCounter : BaseCounterHUDElement {
 		ZLayer    = 2;
 		Namespace = "mercBucksCounter";
 
-		counterIcon   = "MBCKA0";
-        counterIconBG = "MBCKA0";
+		counterIcon   = "BUXCNTR0";
+        counterIconBG = "BUXCNTR1";
         counterLabel  = Stringtable.Localize("$HHXMercBucksCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
 
         string invClassName = "MercenaryBucks";

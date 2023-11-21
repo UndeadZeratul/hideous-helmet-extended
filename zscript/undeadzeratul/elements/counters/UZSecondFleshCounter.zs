@@ -4,8 +4,8 @@ class UZSecondFleshCounter : BaseCounterHUDElement {
 		ZLayer    = 2;
 		Namespace = "secondFleshCounter";
 
-		counterIcon   = "HLMUA0";
-        counterIconBG = "HLMUA1";
+		counterIcon   = "2FCNTR0";
+        counterIconBG = "2FCNTR1";
         counterLabel  = Stringtable.Localize("$HHXSecondFleshCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
 	}
 
