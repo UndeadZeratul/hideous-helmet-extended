@@ -843,6 +843,75 @@ user int    uz_hhx_secondFleshCounter_bg_hlm_posX  = 0;
 user int    uz_hhx_secondFleshCounter_bg_hlm_posY  = 0;
 user float  uz_hhx_secondFleshCounter_bg_hlm_scale = 1.;
 
+// SQUAD STATUS CONFIGS
+user bool  uz_hhx_squadStatus_enabled               = true;
+
+user int   uz_hhx_squadStatus_nhm_hudLevel          = 1;
+user int   uz_hhx_squadStatus_nhm_posX              = -210;
+user int   uz_hhx_squadStatus_nhm_posY              = -85;
+user float uz_hhx_squadStatus_nhm_scale             = 1.;
+user float uz_hhx_squadStatus_nhm_xScale            = 0.;
+user float uz_hhx_squadStatus_nhm_yScale            = 32.;
+
+user bool  uz_hhx_squadStatus_hlm_required          = false;
+user int   uz_hhx_squadStatus_hlm_hudLevel          = 1;
+user int   uz_hhx_squadStatus_hlm_posX              = -210;
+user int   uz_hhx_squadStatus_hlm_posY              = -85;
+user float uz_hhx_squadStatus_hlm_scale             = 1.;
+user float uz_hhx_squadStatus_hlm_xScale            = 0.;
+user float uz_hhx_squadStatus_hlm_yScale            = 32.;
+
+user string uz_hhx_squadStatus_bg_nhm_ref           = "";
+user int    uz_hhx_squadStatus_bg_nhm_posX          = 0;
+user int    uz_hhx_squadStatus_bg_nhm_posY          = 0;
+user float  uz_hhx_squadStatus_bg_nhm_scale         = 1.;
+user string uz_hhx_squadStatus_bg_hlm_ref           = "";
+user int    uz_hhx_squadStatus_bg_hlm_posX          = 0;
+user int    uz_hhx_squadStatus_bg_hlm_posY          = 0;
+user float  uz_hhx_squadStatus_bg_hlm_scale         = 1.;
+
+user bool  uz_hhx_squadStatus_name_enabled          = true;
+user int   uz_hhx_squadStatus_name_nhm_posX         = -2;
+user int   uz_hhx_squadStatus_name_nhm_posY         = -35;
+user float uz_hhx_squadStatus_name_nhm_scale        = .75;
+user int   uz_hhx_squadStatus_name_hlm_posX         = -2;
+user int   uz_hhx_squadStatus_name_hlm_posY         = -35;
+user float uz_hhx_squadStatus_name_hlm_scale        = .75;
+
+user bool  uz_hhx_squadStatus_weapon_enabled        = true;
+user int   uz_hhx_squadStatus_weapon_nhm_posX       = 23;
+user int   uz_hhx_squadStatus_weapon_nhm_posY       = 0;
+user float uz_hhx_squadStatus_weapon_nhm_scale      = .75;
+user int   uz_hhx_squadStatus_weapon_hlm_posX       = 23;
+user int   uz_hhx_squadStatus_weapon_hlm_posY       = 0;
+user float uz_hhx_squadStatus_weapon_hlm_scale      = .75;
+
+user bool  uz_hhx_squadStatus_ekg_enabled           = true;
+user int   uz_hhx_squadStatus_ekg_nhm_posX          = 20;
+user int   uz_hhx_squadStatus_ekg_nhm_posY          = -18;
+user float uz_hhx_squadStatus_ekg_nhm_scale         = 1.25;
+user float uz_hhx_squadStatus_ekg_nhm_length        = 15;
+user int   uz_hhx_squadStatus_ekg_hlm_posX          = 20;
+user int   uz_hhx_squadStatus_ekg_hlm_posY          = -18;
+user float uz_hhx_squadStatus_ekg_hlm_scale         = 1.25;
+user float uz_hhx_squadStatus_ekg_hlm_length        = 15;
+
+user bool  uz_hhx_squadStatus_encumbrance_enabled   = true;
+user int   uz_hhx_squadStatus_encumbrance_nhm_posX  = 0;
+user int   uz_hhx_squadStatus_encumbrance_nhm_posY  = 0;
+user float uz_hhx_squadStatus_encumbrance_nhm_scale = 1.;
+user int   uz_hhx_squadStatus_encumbrance_hlm_posX  = 0;
+user int   uz_hhx_squadStatus_encumbrance_hlm_posY  = 0;
+user float uz_hhx_squadStatus_encumbrance_hlm_scale = 1.;
+
+user bool  uz_hhx_squadStatus_mugshot_enabled       = true;
+user int   uz_hhx_squadStatus_mugshot_nhm_posX      = 6;
+user int   uz_hhx_squadStatus_mugshot_nhm_posY      = -12;
+user float uz_hhx_squadStatus_mugshot_nhm_scale     = 1.;
+user int   uz_hhx_squadStatus_mugshot_hlm_posX      = 6;
+user int   uz_hhx_squadStatus_mugshot_hlm_posY      = -12;
+user float uz_hhx_squadStatus_mugshot_hlm_scale     = 1.;
+
 // STIM COUNTER CONFIGS
 user bool  uz_hhx_stimCounter_enabled       = true;
 user bool  uz_hhx_stimCounter_alwaysVisible = false;

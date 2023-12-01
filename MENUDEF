@@ -58,6 +58,7 @@ OptionMenu "HHXAdvanced" {
 	StaticText ""
 	SubMenu "$HHXAmmoCounters",      "HHXAmmoCounters"
 	SubMenu "$HHXArmour",            "HHXArmour"
+	SubMenu "$HHXBackground",        "HHXBackground"
 	SubMenu "$HHXCompass",           "HHXCompass"
 	SubMenu "$HHXEKG",               "HHXEKG"
 	SubMenu "$HHXEncumbrance",       "HHXEncumbrance"
@@ -68,7 +69,7 @@ OptionMenu "HHXAdvanced" {
 	SubMenu "$HHXKeys",              "HHXKeys"
 	SubMenu "$HHXMugshot",           "HHXMugshot"
 	SubMenu "$HHXObjectDescription", "HHXObjectDescription"
-	SubMenu "$HHXBackground",        "HHXBackground"
+	SubMenu "$HHXSquadStatus",       "HHXSquadStatus"
 	SubMenu "$HHXWeaponHelp",        "HHXWeaponHelp"
 	SubMenu "$HHXWeaponSprite",      "HHXWeaponSprite"
 	SubMenu "$HHXWeaponStash",       "HHXWeaponStash"
@@ -1702,6 +1703,176 @@ OptionMenu "HHXSecondFleshCounter" {
 	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetSecondFleshCounter", "uz_hhx_options_reset_nhm_secondFleshCounter"
 	SafeCommand "$HHXHHResetSecondFleshCounter", "uz_hhx_options_reset_hlm_secondFleshCounter"
+}
+
+OptionMenu "HHXSquadStatus" {
+	Title "$HHXSquadStatus"
+	
+	Option "$HHXEnabled", "uz_hhx_SquadStatus_enabled", "OnOff"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_squadStatus_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_squadStatus_enabled"
+	Slider "$HHXPosX", "uz_hhx_squadStatus_nhm_posX", -400, 400, 1, 0, "uz_hhx_squadStatus_enabled"
+	Slider "$HHXPosY", "uz_hhx_squadStatus_nhm_posY", -400, 400, 1, 0, "uz_hhx_squadStatus_enabled"
+	Slider "$HHXScale", "uz_hhx_squadStatus_nhm_scale", .01, 4., .05, 2, "uz_hhx_squadStatus_enabled"
+	Slider "$HHXScaleX", "uz_hhx_squadStatus_nhm_xScale", -64., 64., .05, 2, "uz_hhx_squadStatus_enabled"
+	Slider "$HHXScaleY", "uz_hhx_squadStatus_nhm_yScale", -64., 64., .05, 2, "uz_hhx_squadStatus_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_squadStatus_bg_nhm_ref", "uz_hhx_squadStatus_enabled"
+	Slider "$HHXPosX", "uz_hhx_squadStatus_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_squadStatus_enabled"
+	Slider "$HHXPosY", "uz_hhx_squadStatus_bg_nhm_posY", -400, 400, 1, 0, "uz_hhx_squadStatus_enabled"
+	Slider "$HHXScale", "uz_hhx_squadStatus_bg_nhm_scale", .01, 4., .05, 2, "uz_hhx_squadStatus_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_squadStatus_hlm_required", "OnOff", "uz_hhx_squadStatus_enabled"
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_squadStatus_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_squadStatus_enabled"
+	Slider "$HHXPosX", "uz_hhx_squadStatus_hlm_posX", -400, 400, 1, 0, "uz_hhx_squadStatus_enabled"
+	Slider "$HHXPosY", "uz_hhx_squadStatus_hlm_posY", -400, 400, 1, 0, "uz_hhx_squadStatus_enabled"
+	Slider "$HHXScale", "uz_hhx_squadStatus_hlm_scale", .01, 4., .05, 2, "uz_hhx_squadStatus_enabled"
+	Slider "$HHXScaleX", "uz_hhx_squadStatus_hlm_xScale", -64., 64., .05, 2, "uz_hhx_squadStatus_enabled"
+	Slider "$HHXScaleY", "uz_hhx_squadStatus_hlm_yScale", -64., 64., .05, 2, "uz_hhx_squadStatus_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_squadStatus_bg_hlm_ref", "uz_hhx_squadStatus_enabled"
+	Slider "$HHXPosX", "uz_hhx_squadStatus_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_squadStatus_enabled"
+	Slider "$HHXPosY", "uz_hhx_squadStatus_bg_hlm_posY", -400, 400, 1, 0, "uz_hhx_squadStatus_enabled"
+	Slider "$HHXScale", "uz_hhx_squadStatus_bg_hlm_scale", .01, 4., .05, 2, "uz_hhx_squadStatus_enabled"
+	
+	StaticText ""
+	SubMenu "$HHXAdvanced", "HHXSquadStatusAdvanced"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetSquadStatus", "uz_hhx_options_reset_nhm_squadStatus"
+	SafeCommand "$HHXHHResetSquadStatus", "uz_hhx_options_reset_hlm_squadStatus"
+}
+
+OptionMenu "HHXSquadStatusAdvanced" {
+	Title "$HHXAdvanced"
+
+	StaticText ""
+	StaticText "$HHXSquadStatusName", 1
+	Option "$HHXEnabled", "uz_hhx_SquadStatus_name_enabled", "OnOff"
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_squadStatus_name_nhm_posX", -400, 400, 1, 0, "uz_hhx_squadStatus_name_enabled"
+	Slider "$HHXPosY", "uz_hhx_squadStatus_name_nhm_posY", -400, 400, 1, 0, "uz_hhx_squadStatus_name_enabled"
+	Slider "$HHXScale", "uz_hhx_squadStatus_name_nhm_scale", .01, 4., .05, 2, "uz_hhx_squadStatus_name_enabled"
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_squadStatus_name_hlm_posX", -400, 400, 1, 0, "uz_hhx_squadStatus_name_enabled"
+	Slider "$HHXPosY", "uz_hhx_squadStatus_name_hlm_posY", -400, 400, 1, 0, "uz_hhx_squadStatus_name_enabled"
+	Slider "$HHXScale", "uz_hhx_squadStatus_name_hlm_scale", .01, 4., .05, 2, "uz_hhx_squadStatus_name_enabled"
+	
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetSquadStatus", "uz_hhx_options_reset_nhm_squadStatusName"
+	SafeCommand "$HHXHHResetSquadStatus", "uz_hhx_options_reset_hlm_squadStatusName"
+
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXSquadStatusWeapon", 1
+	Option "$HHXEnabled", "uz_hhx_SquadStatus_weapon_enabled", "OnOff"
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_squadStatus_weapon_nhm_posX", -400, 400, 1, 0, "uz_hhx_squadStatus_weapon_enabled"
+	Slider "$HHXPosY", "uz_hhx_squadStatus_weapon_nhm_posY", -400, 400, 1, 0, "uz_hhx_squadStatus_weapon_enabled"
+	Slider "$HHXScale", "uz_hhx_squadStatus_weapon_nhm_scale", .01, 4., .05, 2, "uz_hhx_squadStatus_weapon_enabled"
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_squadStatus_weapon_hlm_posX", -400, 400, 1, 0, "uz_hhx_squadStatus_weapon_enabled"
+	Slider "$HHXPosY", "uz_hhx_squadStatus_weapon_hlm_posY", -400, 400, 1, 0, "uz_hhx_squadStatus_weapon_enabled"
+	Slider "$HHXScale", "uz_hhx_squadStatus_weapon_hlm_scale", .01, 4., .05, 2, "uz_hhx_squadStatus_weapon_enabled"
+	
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetSquadStatus", "uz_hhx_options_reset_nhm_squadStatusWeapon"
+	SafeCommand "$HHXHHResetSquadStatus", "uz_hhx_options_reset_hlm_squadStatusWeapon"
+
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXSquadStatusEKG", 1
+	Option "$HHXEnabled", "uz_hhx_SquadStatus_ekg_enabled", "OnOff"
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_squadStatus_ekg_nhm_posX", -400, 400, 1, 0, "uz_hhx_squadStatus_ekg_enabled"
+	Slider "$HHXPosY", "uz_hhx_squadStatus_ekg_nhm_posY", -400, 400, 1, 0, "uz_hhx_squadStatus_ekg_enabled"
+	Slider "$HHXScale", "uz_hhx_squadStatus_ekg_nhm_scale", .01, 4., .05, 2, "uz_hhx_squadStatus_ekg_enabled"
+	Slider "$HHXLength", "uz_hhx_squadStatus_ekg_nhm_length", 1, 100, 1, 0, "uz_hhx_squadStatus_ekg_enabled"
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_squadStatus_ekg_hlm_posX", -400, 400, 1, 0, "uz_hhx_squadStatus_ekg_enabled"
+	Slider "$HHXPosY", "uz_hhx_squadStatus_ekg_hlm_posY", -400, 400, 1, 0, "uz_hhx_squadStatus_ekg_enabled"
+	Slider "$HHXScale", "uz_hhx_squadStatus_ekg_hlm_scale", .01, 4., .05, 2, "uz_hhx_squadStatus_ekg_enabled"
+	Slider "$HHXLength", "uz_hhx_squadStatus_ekg_hlm_length", 1, 100, 1, 0, "uz_hhx_squadStatus_ekg_enabled"
+	
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetSquadStatus", "uz_hhx_options_reset_nhm_squadStatusEKG"
+	SafeCommand "$HHXHHResetSquadStatus", "uz_hhx_options_reset_hlm_squadStatusEKG"
+
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXSquadStatusEncumbrance", 1
+	Option "$HHXEnabled", "uz_hhx_SquadStatus_encumbrance_enabled", "OnOff"
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_squadStatus_encumbrance_nhm_posX", -400, 400, 1, 0, "uz_hhx_squadStatus_encumbrance_enabled"
+	Slider "$HHXPosY", "uz_hhx_squadStatus_encumbrance_nhm_posY", -400, 400, 1, 0, "uz_hhx_squadStatus_encumbrance_enabled"
+	Slider "$HHXScale", "uz_hhx_squadStatus_encumbrance_nhm_scale", .01, 4., .05, 2, "uz_hhx_squadStatus_encumbrance_enabled"
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_squadStatus_encumbrance_hlm_posX", -400, 400, 1, 0, "uz_hhx_squadStatus_encumbrance_enabled"
+	Slider "$HHXPosY", "uz_hhx_squadStatus_encumbrance_hlm_posY", -400, 400, 1, 0, "uz_hhx_squadStatus_encumbrance_enabled"
+	Slider "$HHXScale", "uz_hhx_squadStatus_encumbrance_hlm_scale", .01, 4., .05, 2, "uz_hhx_squadStatus_encumbrance_enabled"
+	
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetSquadStatus", "uz_hhx_options_reset_nhm_squadStatusEncumbrance"
+	SafeCommand "$HHXHHResetSquadStatus", "uz_hhx_options_reset_hlm_squadStatusEncumbrance"
+
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXSquadStatusMugshot", 1
+	Option "$HHXEnabled", "uz_hhx_SquadStatus_mugshot_enabled", "OnOff"
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_squadStatus_mugshot_nhm_posX", -400, 400, 1, 0, "uz_hhx_squadStatus_mugshot_enabled"
+	Slider "$HHXPosY", "uz_hhx_squadStatus_mugshot_nhm_posY", -400, 400, 1, 0, "uz_hhx_squadStatus_mugshot_enabled"
+	Slider "$HHXScale", "uz_hhx_squadStatus_mugshot_nhm_scale", .01, 4., .05, 2, "uz_hhx_squadStatus_mugshot_enabled"
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Slider "$HHXPosX", "uz_hhx_squadStatus_mugshot_hlm_posX", -400, 400, 1, 0, "uz_hhx_squadStatus_mugshot_enabled"
+	Slider "$HHXPosY", "uz_hhx_squadStatus_mugshot_hlm_posY", -400, 400, 1, 0, "uz_hhx_squadStatus_mugshot_enabled"
+	Slider "$HHXScale", "uz_hhx_squadStatus_mugshot_hlm_scale", .01, 4., .05, 2, "uz_hhx_squadStatus_mugshot_enabled"
+	
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetSquadStatus", "uz_hhx_options_reset_nhm_squadStatusMugshot"
+	SafeCommand "$HHXHHResetSquadStatus", "uz_hhx_options_reset_hlm_squadStatusMugshot"
 }
 
 OptionMenu "HHXStimCounter" {
