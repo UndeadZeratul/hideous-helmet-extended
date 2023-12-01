@@ -442,7 +442,7 @@ user int    uz_hhx_ekg_bg_hlm_posX  = 0;
 user int    uz_hhx_ekg_bg_hlm_posY  = 0;
 user float  uz_hhx_ekg_bg_hlm_scale = 1.;
 
-// Encumbrance CONFIGS
+// ENCUMBRANCE CONFIGS
 user bool  uz_hhx_encumbrance_enabled      = true;
 
 user int   uz_hhx_encumbrance_nhm_hudLevel = 2;
