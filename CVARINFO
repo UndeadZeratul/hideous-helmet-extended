@@ -424,12 +424,14 @@ user int   uz_hhx_ekg_nhm_hudLevel = 1;
 user int   uz_hhx_ekg_nhm_posX     = -3;
 user int   uz_hhx_ekg_nhm_posY     = -7;
 user float uz_hhx_ekg_nhm_scale    = 1.;
+user int   uz_hhx_ekg_nhm_length   = 15;
 
 user bool  uz_hhx_ekg_hlm_required = false;
 user int   uz_hhx_ekg_hlm_hudLevel = 1;
 user int   uz_hhx_ekg_hlm_posX     = -3;
 user int   uz_hhx_ekg_hlm_posY     = -7;
 user float uz_hhx_ekg_hlm_scale    = 1.;
+user int   uz_hhx_ekg_hlm_length   = 15;
 
 user string uz_hhx_ekg_bg_nhm_ref   = "";
 user int    uz_hhx_ekg_bg_nhm_posX  = 0;

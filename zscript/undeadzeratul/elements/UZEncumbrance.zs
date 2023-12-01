@@ -84,7 +84,7 @@ class UZEncumbrance : HUDEncumbrance {
 				sb.drawstring(
 					sb.pnewsmallfont,
 					sb.FormatNumber(int(sb.hpl.enc)),
-					(posX + 4, posY + sb.mxht),
+					(posX + (4 * scale), posY + (sb.mxht * scale)),
 					sb.DI_TEXT_ALIGN_LEFT|sb.DI_SCREEN_LEFT_BOTTOM,
 					sb.hpl.overloaded < 0.8
 						? Font.CR_OLIVE 
@@ -98,25 +98,25 @@ class UZEncumbrance : HUDEncumbrance {
 
 				// Encumbrance Bar Border
 				sb.fill(
-					color(128,96,96,96),
+					color(128, 96, 96, 96),
 					posX,
-					posY + encbarheight,
+					posY + (encbarheight * scale),
 					scale,
 					-scale,
 					sb.DI_SCREEN_LEFT_BOTTOM|sb.DI_ITEM_LEFT
 				);
 				sb.fill(
-					color(128,96,96,96),
-					posX + 1,
-					posY + encbarheight,
+					color(128, 96, 96, 96),
+					posX + scale,
+					posY + (encbarheight * scale),
 					scale,
 					-20 * scale,
 					sb.DI_SCREEN_LEFT_BOTTOM|sb.DI_ITEM_LEFT
 				);
 				sb.fill(
-					color(128,96,96,96),
-					posX - 1,
-					posY + encbarheight,
+					color(128, 96, 96, 96),
+					posX - scale,
+					posY + (encbarheight * scale),
 					scale,
 					-20 * scale,
 					sb.DI_SCREEN_LEFT_BOTTOM|sb.DI_ITEM_LEFT
@@ -127,7 +127,7 @@ class UZEncumbrance : HUDEncumbrance {
 				// Encumbrance Bar Fill
 				sb.drawrect(
 					posX,
-					posY + encbarheight,
+					posY + (encbarheight * scale),
 					scale,
 					(-min(sb.hpl.maxpocketspace, pocketenc) * 19 / sb.hpl.maxpocketspace) * scale,
 					sb.DI_SCREEN_LEFT_BOTTOM|sb.DI_ITEM_LEFT
@@ -139,9 +139,9 @@ class UZEncumbrance : HUDEncumbrance {
 				sb.fill(
 					overenc ? color(255,216,194,42) : color(128,96,96,96),
 					posX,
-					posY + encbarheight - (19 * scale),
+					posY + ((encbarheight - 19) * scale),
 					scale,
-					overenc ? 3 * scale : scale,
+					(overenc ? 3 : 1) * scale,
 					sb.DI_SCREEN_LEFT_BOTTOM|sb.DI_ITEM_LEFT
 				);
 			}

@@ -86,6 +86,7 @@ HHXPosY                                 = "Vertical Position";
 HHXScale                                = "Scale";
 HHXScaleX                               = "Horizontal Scale";
 HHXScaleY                               = "Vertical Scale";
+HHXLength                               = "Length";
 HHXWrapLength                           = "Max Items per Row";
 
 // HUD Element Scaling Labels

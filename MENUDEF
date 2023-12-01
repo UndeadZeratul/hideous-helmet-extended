@@ -905,8 +905,6 @@ OptionMenu "HHXEKG" {
 	Title "$HHXEKG"
 
 	Option "$HHXEnabled", "uz_hhx_ekg_enabled", "OnOff"
-	StaticText ""
-	StaticText "Scaling not supported for EKG"
 	
 	StaticText ""
 	StaticText ""
@@ -915,7 +913,8 @@ OptionMenu "HHXEKG" {
 	Slider "$HHXHUDLevel", "uz_hhx_ekg_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_ekg_enabled"
 	Slider "$HHXPosX", "uz_hhx_ekg_nhm_posX", -400, 400, 1, 0, "uz_hhx_ekg_enabled"
 	Slider "$HHXPosY", "uz_hhx_ekg_nhm_posY", -400, 400, 1, 0, "uz_hhx_ekg_enabled"
-	Slider "$HHXScale", "uz_hhx_ekg_nhm_scale", .01, 4., .05, 2, "uz_hhx_disabled"
+	Slider "$HHXScale", "uz_hhx_ekg_nhm_scale", .01, 4., .05, 2, "uz_hhx_ekg_enabled"
+	Slider "$HHXLength", "uz_hhx_ekg_nhm_length", 1, 100, 1, 0, "uz_hhx_ekg_enabled"
 	StaticText ""
 	TextField "$HHXBgRef", "uz_hhx_ekg_bg_nhm_ref", "uz_hhx_ekg_enabled"
 	Slider "$HHXPosX", "uz_hhx_ekg_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_ekg_enabled"
@@ -932,7 +931,8 @@ OptionMenu "HHXEKG" {
 	Slider "$HHXHUDLevel", "uz_hhx_ekg_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_ekg_enabled"
 	Slider "$HHXPosX", "uz_hhx_ekg_hlm_posX", -400, 400, 1, 0, "uz_hhx_ekg_enabled"
 	Slider "$HHXPosY", "uz_hhx_ekg_hlm_posY", -400, 400, 1, 0, "uz_hhx_ekg_enabled"
-	Slider "$HHXScale", "uz_hhx_ekg_hlm_scale", .01, 4., .05, 2, "uz_hhx_disabled"
+	Slider "$HHXScale", "uz_hhx_ekg_hlm_scale", .01, 4., .05, 2, "uz_hhx_ekg_enabled"
+	Slider "$HHXLength", "uz_hhx_ekg_hlm_length", 1, 100, 1, 0, "uz_hhx_ekg_enabled"
 	StaticText ""
 	TextField "$HHXBgRef", "uz_hhx_ekg_bg_hlm_ref", "uz_hhx_ekg_enabled"
 	Slider "$HHXPosX", "uz_hhx_ekg_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_ekg_enabled"

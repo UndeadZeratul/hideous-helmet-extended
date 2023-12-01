@@ -9,10 +9,12 @@ class UZEKG : HUDEKG {
 	private transient CVar _hlm_posX;
 	private transient CVar _hlm_posY;
 	private transient CVar _hlm_scale;
+	private transient CVar _hlm_length;
 	private transient CVar _nhm_hudLevel;
 	private transient CVar _nhm_posX;
 	private transient CVar _nhm_posY;
 	private transient CVar _nhm_scale;
+	private transient CVar _nhm_length;
 
 	private transient CVar _nhm_bgRef;
 	private transient CVar _nhm_bgPosX;
@@ -22,6 +24,8 @@ class UZEKG : HUDEKG {
 	private transient CVar _hlm_bgPosX;
 	private transient CVar _hlm_bgPosY;
 	private transient CVar _hlm_bgScale;
+
+	private Array<int> healthBars;
 
 	override void Init(HCStatusbar sb) {
 		ZLayer    = 2;
@@ -37,10 +41,12 @@ class UZEKG : HUDEKG {
 		if (!_hlm_posX) _hlm_posX         = CVar.GetCVar("uz_hhx_ekg_hlm_posX", sb.CPlayer);
 		if (!_hlm_posY) _hlm_posY         = CVar.GetCVar("uz_hhx_ekg_hlm_posY", sb.CPlayer);
 		if (!_hlm_scale) _hlm_scale       = CVar.GetCVar("uz_hhx_ekg_hlm_scale", sb.CPlayer);
+		if (!_hlm_length) _hlm_length     = CVar.GetCVar("uz_hhx_ekg_hlm_length", sb.CPlayer);
 		if (!_nhm_hudLevel) _nhm_hudLevel = CVar.GetCVar("uz_hhx_ekg_nhm_hudLevel", sb.CPlayer);
 		if (!_nhm_posX) _nhm_posX         = CVar.GetCVar("uz_hhx_ekg_nhm_posX", sb.CPlayer);
 		if (!_nhm_posY) _nhm_posY         = CVar.GetCVar("uz_hhx_ekg_nhm_posY", sb.CPlayer);
 		if (!_nhm_scale) _nhm_scale       = CVar.GetCVar("uz_hhx_ekg_nhm_scale", sb.CPlayer);
+		if (!_nhm_length) _nhm_length     = CVar.GetCVar("uz_hhx_ekg_nhm_length", sb.CPlayer);
 
 		if (!_nhm_bgRef) _nhm_bgRef       = CVar.GetCVar("uz_hhx_ekg_bg_nhm_ref", sb.CPlayer);
 		if (!_nhm_bgPosX) _nhm_bgPosX     = CVar.GetCVar("uz_hhx_ekg_bg_nhm_posX", sb.CPlayer);
@@ -63,6 +69,8 @@ class UZEKG : HUDEKG {
 			|| sb.HUDLevel < hudLevel
 		) return;
 			
+		int length = hasHelmet ? _hlm_length.GetInt() : _nhm_length.GetInt();
+
 		int debugTran = sb.hpl.health > 70
 			? Font.CR_OLIVE
 			: (sb.hpl.health > 33
@@ -82,7 +90,7 @@ class UZEKG : HUDEKG {
 					scale:debugScale
 				);
 			} else {
-				sb.drawHealthTicker((40,-24),sb.DI_BOTTOMLEFT);
+				DrawEKG(sb, state, ticFrac, 40, -24, sb.DI_BOTTOMLEFT, 1., length);
 			}
 		} else if (CheckCommonStuff(sb, state, ticFrac)) {
 
@@ -113,8 +121,42 @@ class UZEKG : HUDEKG {
 					scale: debugScale
 				);
 			} else {
-				sb.drawHealthTicker((posX, posY));
+				DrawEKG(sb, state, ticFrac, posX, posY, sb.DI_SCREEN_CENTER_BOTTOM, scale, length);
 			}
+		}
+	}
+
+	private void DrawEKG(HCStatusbar sb, int state, double ticFrac, int posX, int posY, int flags, float scale, int length) {
+		Color sbcolour = sb.hpl.player.GetDisplayColor();
+
+		if (!sb.hpl.beatcount) {
+			int err = random[heart](0, max(0,((100 - sb.hpl.health) >> 3)));
+
+			healthBars.insert(0, clamp(18 - (sb.hpl.bloodloss >> 7) - (err >> 2), 1, 18));
+			healthBars.insert(0, (sb.hpl.inpain ? random[heart](1, 7) : 1) + err + random[heart](0, (sb.hpl.bloodpressure >> 3)));
+
+			while (healthBars.Size() > length) healthBars.Pop();
+		}
+
+		if (sb.hpl.health <= 0) for (int i = 0; i < length; i++) healthBars[i] = 1;
+
+		for (int i = 0; i < healthBars.Size(); i++) {
+			int alf = (i&1) ? 128 : 255;
+
+			sb.fill(
+				(
+					sb.hpl.health > 70
+						? color(alf,     sbcolour.r, sbcolour.g, sbcolour.b)
+						: sb.hpl.health > 33
+							? color(alf, 240,        210,        10)
+							: color(alf, 220,        0,          0)
+				),
+				posX + (i * scale) - (length >> 2),
+				(posY - (healthBars[i] * 0.3 * scale)),
+				0.8 * scale,
+				healthBars[i] * 0.6 * scale,
+				flags|(sb.hpl.health > 70 ? sb.DI_TRANSLATABLE : 0)
+			);
 		}
 	}
 }

@@ -64,13 +64,13 @@ class UZWeaponSprite : HUDWeaponSprite {
 			|| !(sb.HUDLevel >= hudLevel || _hd_hudsprite.GetBool() || !_r_drawplayersprites.GetBool())
 		) return;
 
-		if (AutomapActive) {
-			sb.drawselectedweapon(-80, -60, sb.DI_BOTTOMRIGHT);
-		} else if (CheckCommonStuff(sb, state, ticFrac)) {
+		int   posX  = hasHelmet ? _hlm_posX.GetInt()    : _nhm_posX.GetInt();
+		int   posY  = hasHelmet ? _hlm_posY.GetInt()    : _nhm_posY.GetInt();
+		float scale = hasHelmet ? _hlm_scale.GetFloat() : _nhm_scale.GetFloat();
 
-			int   posX  = hasHelmet ? _hlm_posX.GetInt()    : _nhm_posX.GetInt();
-			int   posY  = hasHelmet ? _hlm_posY.GetInt()    : _nhm_posY.GetInt();
-			float scale = hasHelmet ? _hlm_scale.GetFloat() : _nhm_scale.GetFloat();
+		if (AutomapActive) {
+			DrawSelectedWeapon(sb, state, ticFrac, -80, -60, sb.DI_BOTTOMRIGHT, scale);
+		} else if (CheckCommonStuff(sb, state, ticFrac)) {
 
 			string bgRef   = hasHelmet ? _hlm_bgRef.GetString()  : _nhm_bgRef.GetString();
 			int    bgPosX  = hasHelmet ? _hlm_bgPosX.GetInt()    : _nhm_bgPosX.GetInt();
@@ -85,10 +85,24 @@ class UZWeaponSprite : HUDWeaponSprite {
 				scale: (scale * bgScale, scale * bgScale)
 			);
 			
-			sb.drawselectedweapon(
-				posX,
-				posY,
-				sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_LEFT_BOTTOM
+			DrawSelectedWeapon(sb, state, ticFrac, posX, posY, sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_LEFT_BOTTOM, scale);
+		}
+	}
+
+	private void DrawSelectedWeapon(HCStatusbar sb, int state, double ticFrac, int posX, int posY, int flags, float scale) {
+		let weapon = hdweapon(sb.hpl.player.readyweapon);
+		if (!weapon) return;
+		
+		string sprite;
+		double spriteScale = 1.;
+		[sprite, spriteScale] = weapon.GetPickupSprite();
+
+		if (sprite != "") {
+			sb.DrawImage(
+				sprite,
+				(posx, posy),
+				flags,
+				scale: spriteScale ? (spriteScale * scale, spriteScale * scale) : (scale, scale)
 			);
 		}
 	}
