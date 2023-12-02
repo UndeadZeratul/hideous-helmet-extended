@@ -3,16 +3,19 @@ class UZCompass : HUDCompass {
 	private Service _HHFunc;
 
 	private transient CVar _enabled;
+	private transient CVar _font;
+	private transient CVar _fontScale;
+
 	private transient CVar _hlm_required;
+	private transient CVar _nhm_hudLevel;
+	private transient CVar _nhm_posX;
+	private transient CVar _nhm_posY;
+	private transient CVar _nhm_scale;
 
 	private transient CVar _hlm_hudLevel;
 	private transient CVar _hlm_posX;
 	private transient CVar _hlm_posY;
 	private transient CVar _hlm_scale;
-	private transient CVar _nhm_hudLevel;
-	private transient CVar _nhm_posX;
-	private transient CVar _nhm_posY;
-	private transient CVar _nhm_scale;
 
 	private transient CVar _nhm_bgRef;
 	private transient CVar _nhm_bgPosX;
@@ -23,10 +26,16 @@ class UZCompass : HUDCompass {
 	private transient CVar _hlm_bgPosY;
 	private transient CVar _hlm_bgScale;
 
+	private transient string _prevFont;
+	private transient HUDFont _hudFont;
+
 	override void Tick(HCStatusbar sb) {
 		if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
 
 		if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_compass_enabled", sb.CPlayer);
+		if (!_font) _font                 = CVar.GetCVar("uz_hhx_compass_font", sb.CPlayer);
+		if (!_fontScale) _fontScale       = CVar.GetCVar("uz_hhx_compass_fontScale", sb.CPlayer);
+
 		if (!_hlm_required) _hlm_required = CVar.GetCVar("uz_hhx_compass_hlm_required", sb.CPlayer);
 		if (!_hlm_hudLevel) _hlm_hudLevel = CVar.GetCVar("uz_hhx_compass_hlm_hudLevel", sb.CPlayer);
 		if (!_hlm_posX) _hlm_posX         = CVar.GetCVar("uz_hhx_compass_hlm_posX", sb.CPlayer);
@@ -45,6 +54,12 @@ class UZCompass : HUDCompass {
 		if (!_hlm_bgPosX) _hlm_bgPosX     = CVar.GetCVar("uz_hhx_compass_bg_hlm_posX", sb.CPlayer);
 		if (!_hlm_bgPosY) _hlm_bgPosY     = CVar.GetCVar("uz_hhx_compass_bg_hlm_posY", sb.CPlayer);
 		if (!_hlm_bgScale) _hlm_bgScale   = CVar.GetCVar("uz_hhx_compass_bg_hlm_scale", sb.CPlayer);
+
+		string newFont = _font.GetString();
+		if (_prevFont != newFont) {
+			_hudFont = HUDFont.create(Font.FindFont(newFont));
+			_prevFont = newFont;
+		}
 	}
 
 	override void DrawHUDStuff(HCStatusbar sb, int state, double ticFrac) {
@@ -62,6 +77,7 @@ class UZCompass : HUDCompass {
 			int   posX  = hasHelmet ? _hlm_posX.GetInt()    : _nhm_posX.GetInt();
 			int   posY  = hasHelmet ? _hlm_posY.GetInt()    : _nhm_posY.GetInt();
 			float scale = hasHelmet ? _hlm_scale.GetFloat() : _nhm_scale.GetFloat();
+			float fontScale = _fontScale.GetFloat();
 
 			string bgRef   = hasHelmet ? _hlm_bgRef.GetString()  : _nhm_bgRef.GetString();
 			int    bgPosX  = hasHelmet ? _hlm_bgPosX.GetInt()    : _nhm_bgPosX.GetInt();
@@ -76,7 +92,7 @@ class UZCompass : HUDCompass {
 				scale: (scale * bgScale, scale * bgScale)
 			);
 		
-			int wephelpheight = NewSmallFont.GetHeight() * 5 * scale;
+			int wephelpheight = _hudFont.mFont.GetHeight() * 5 * fontScale * scale;
 			
 			int     STB_COMPRAD = 12;
 			vector2 compos      = (-STB_COMPRAD,STB_COMPRAD) * 2;
@@ -84,58 +100,55 @@ class UZCompass : HUDCompass {
 			
 			double  compangle2 = sb.hpl.deltaangle(0, compangle);
 			if(abs(compangle2) < 120) {
-				screen.drawText(NewSmallFont,
-					font.CR_GOLD,
-					posX + (compangle2 * 32 * scale / sb.cplayer.fov),
-					posY + wephelpheight,
+				sb.DrawString(
+					_hudFont,
 					"E",
-					DTA_VirtualWidth,640,DTA_VirtualHeight,480,DTA_ScaleX,scale,DTA_ScaleY,scale
+					(posX + (compangle2 * 32 * scale / sb.cplayer.fov), posY + wephelpheight),
+					translation: Font.CR_GOLD,
+					scale: (fontScale * scale, fontScale * scale)
 				);
 			}
 			
 			compangle2 = sb.hpl.deltaangle(-90, compangle);
 			if(abs(compangle2) < 120) {
-				screen.drawText(NewSmallFont,
-					font.CR_BLACK,
-					posX + (compangle2 * 32 * scale / sb.cplayer.fov),
-					posY + wephelpheight,
+				sb.DrawString(
+					_hudFont,
 					"S",
-					DTA_VirtualWidth,640,DTA_VirtualHeight,480,DTA_ScaleX,scale,DTA_ScaleY,scale
+					(posX + (compangle2 * 32 * scale / sb.cplayer.fov), posY + wephelpheight),
+					translation: Font.CR_BLACK,
+					scale: (fontScale * scale, fontScale * scale)
 				);
 			}
 			
 			compangle2 = sb.hpl.deltaangle(180, compangle);
 			if(abs(compangle2) < 120) {
-				screen.drawText(
-					NewSmallFont,
-					font.CR_RED,
-					posX + (compangle2 * 32 * scale / sb.cplayer.fov),
-					posY + wephelpheight,
+				sb.DrawString(
+					_hudFont,
 					"W",
-					DTA_VirtualWidth,640,DTA_VirtualHeight,480,DTA_ScaleX,scale,DTA_ScaleY,scale
+					(posX + (compangle2 * 32 * scale / sb.cplayer.fov), posY + wephelpheight),
+					translation: Font.CR_RED,
+					scale: (fontScale * scale, fontScale * scale)
 				);
 			}
 			
 			compangle2 = sb.hpl.deltaangle(90, compangle);
 			if(abs(compangle2) < 120) {
-				screen.DrawText(
-					NewSmallFont,
-					font.CR_WHITE,
-					posX + (compangle2 * 32 * scale / sb.cplayer.fov),
-					posY + wephelpheight,
+				sb.DrawString(
+					_hudFont,
 					"N",
-					DTA_VirtualWidth,640,DTA_VirtualHeight,480,DTA_ScaleX,scale,DTA_ScaleY,scale
+					(posX + (compangle2 * 32 * scale / sb.cplayer.fov), posY + wephelpheight),
+					translation: Font.CR_WHITE,
+					scale: (fontScale * scale, fontScale * scale)
 				);
 			}
 			
-			wephelpheight += NewSmallFont.GetHeight();
-			screen.drawText(
-				NewSmallFont,
-				font.CR_OLIVE,
-				posX,
-				posY + wephelpheight,
+			wephelpheight += _hudFont.mFont.GetHeight() * fontScale * scale;
+			sb.DrawString(
+				_hudFont,
 				"^",
-				DTA_VirtualWidth,640,DTA_VirtualHeight,480,DTA_ScaleX,scale,DTA_ScaleY,scale
+				(posX, posY + wephelpheight),
+				translation: Font.CR_OLIVE,
+				scale: (fontScale * scale, fontScale * scale)
 			);
 		}
 	}

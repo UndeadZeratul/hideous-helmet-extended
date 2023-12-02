@@ -3,6 +3,9 @@ class UZAmmoCounters : HUDAmmoCounters {
 	private Service _HHFunc;
 
 	private transient CVar _enabled;
+	private transient CVar _font;
+	private transient CVar _fontColor;
+	private transient CVar _fontScale;
 
 	private transient CVar _nhm_hudLevel;
 	private transient CVar _nhm_posX;
@@ -30,10 +33,17 @@ class UZAmmoCounters : HUDAmmoCounters {
 	private transient CVar _hlm_bgPosY;
 	private transient CVar _hlm_bgScale;
 
+	private transient string _prevFont;
+	private transient HUDFont _hudFont;
+
 	override void Tick(HCStatusbar sb) {
 		if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
 
 		if (!_enabled) _enabled               = CVar.GetCVar("uz_hhx_ammoCounters_enabled", sb.CPlayer);
+		if (!_font) _font                     = CVar.GetCVar("uz_hhx_ammoCounters_font", sb.CPlayer);
+		if (!_fontColor) _fontColor           = CVar.GetCVar("uz_hhx_ammoCounters_fontColor", sb.CPlayer);
+		if (!_fontScale) _fontScale           = CVar.GetCVar("uz_hhx_ammoCounters_fontScale", sb.CPlayer);
+
 		if (!_nhm_hudLevel) _nhm_hudLevel     = CVar.GetCVar("uz_hhx_ammoCounters_nhm_hudLevel", sb.CPlayer);
 		if (!_nhm_posX) _nhm_posX             = CVar.GetCVar("uz_hhx_ammoCounters_nhm_posX", sb.CPlayer);
 		if (!_nhm_posY) _nhm_posY             = CVar.GetCVar("uz_hhx_ammoCounters_nhm_posY", sb.CPlayer);
@@ -59,6 +69,12 @@ class UZAmmoCounters : HUDAmmoCounters {
 		if (!_hlm_bgPosX) _hlm_bgPosX         = CVar.GetCVar("uz_hhx_ammoCounters_bg_hlm_posX", sb.CPlayer);
 		if (!_hlm_bgPosY) _hlm_bgPosY         = CVar.GetCVar("uz_hhx_ammoCounters_bg_hlm_posY", sb.CPlayer);
 		if (!_hlm_bgScale) _hlm_bgScale       = CVar.GetCVar("uz_hhx_ammoCounters_bg_hlm_scale", sb.CPlayer);
+
+		string newFont = _font.GetString();
+		if (_prevFont != newFont) {
+			_hudFont = HUDFont.create(Font.FindFont(newFont));
+			_prevFont = newFont;
+		}
 	}
 
 	override void DrawHUDStuff(HCStatusbar sb, int state, double ticFrac) {
@@ -121,13 +137,14 @@ class UZAmmoCounters : HUDAmmoCounters {
 					scale: (sb.ammoscales[i] * scale, sb.ammoscales[i] * scale)
 				);
 
+				float fontScale = _fontScale.GetFloat();
 				sb.DrawString(
-					sb.pnewsmallfont,
-					""..count,
+					_hudFont,
+					sb.FormatNumber(count),
 					(coords.x + 2, coords.y),
 					sb.DI_SCREEN_RIGHT_BOTTOM|sb.DI_ITEM_RIGHT_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT,
-					Font.CR_OLIVE,
-					scale: (0.5 * scale, 0.5 * scale)
+					_fontColor.GetInt(),
+					scale: (fontScale * scale, fontScale * scale)
 				);
 
 				ii++;

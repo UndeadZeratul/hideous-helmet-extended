@@ -3,18 +3,21 @@ class UZEKG : HUDEKG {
 	private Service _HHFunc;
 
 	private transient CVar _enabled;
-	private transient CVar _hlm_required;
+	private transient CVar _font;
+	private transient CVar _fontScale;
 
-	private transient CVar _hlm_hudLevel;
-	private transient CVar _hlm_posX;
-	private transient CVar _hlm_posY;
-	private transient CVar _hlm_scale;
-	private transient CVar _hlm_length;
 	private transient CVar _nhm_hudLevel;
 	private transient CVar _nhm_posX;
 	private transient CVar _nhm_posY;
 	private transient CVar _nhm_scale;
 	private transient CVar _nhm_length;
+
+	private transient CVar _hlm_required;
+	private transient CVar _hlm_hudLevel;
+	private transient CVar _hlm_posX;
+	private transient CVar _hlm_posY;
+	private transient CVar _hlm_scale;
+	private transient CVar _hlm_length;
 
 	private transient CVar _nhm_bgRef;
 	private transient CVar _nhm_bgPosX;
@@ -25,7 +28,10 @@ class UZEKG : HUDEKG {
 	private transient CVar _hlm_bgPosY;
 	private transient CVar _hlm_bgScale;
 
-	private Array<int> healthBars;
+	private transient string _prevFont;
+	private transient HUDFont _hudFont;
+
+	private transient Array<int> _healthBars;
 
 	override void Init(HCStatusbar sb) {
 		ZLayer    = 2;
@@ -36,6 +42,9 @@ class UZEKG : HUDEKG {
 		if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
 
 		if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_ekg_enabled", sb.CPlayer);
+		if (!_font) _font                 = CVar.GetCVar("uz_hhx_ekg_font", sb.CPlayer);
+		if (!_fontScale) _fontScale       = CVar.GetCVar("uz_hhx_ekg_fontScale", sb.CPlayer);
+
 		if (!_hlm_required) _hlm_required = CVar.GetCVar("uz_hhx_ekg_hlm_required", sb.CPlayer);
 		if (!_hlm_hudLevel) _hlm_hudLevel = CVar.GetCVar("uz_hhx_ekg_hlm_hudLevel", sb.CPlayer);
 		if (!_hlm_posX) _hlm_posX         = CVar.GetCVar("uz_hhx_ekg_hlm_posX", sb.CPlayer);
@@ -56,6 +65,12 @@ class UZEKG : HUDEKG {
 		if (!_hlm_bgPosX) _hlm_bgPosX     = CVar.GetCVar("uz_hhx_ekg_bg_hlm_posX", sb.CPlayer);
 		if (!_hlm_bgPosY) _hlm_bgPosY     = CVar.GetCVar("uz_hhx_ekg_bg_hlm_posY", sb.CPlayer);
 		if (!_hlm_bgScale) _hlm_bgScale   = CVar.GetCVar("uz_hhx_ekg_bg_hlm_scale", sb.CPlayer);
+
+		string newFont = _font.GetString();
+		if (_prevFont != newFont) {
+			_hudFont = HUDFont.create(Font.FindFont(newFont));
+			_prevFont = newFont;
+		}
 	}
 
 	override void DrawHUDStuff(HCStatusbar sb, int state, double ticFrac) {
@@ -68,35 +83,36 @@ class UZEKG : HUDEKG {
 			|| HDSpectator(sb.hpl)
 			|| sb.HUDLevel < hudLevel
 		) return;
-			
+
+		int   posX  = hasHelmet ? _hlm_posX.GetInt()    : _nhm_posX.GetInt();
+		int   posY  = hasHelmet ? _hlm_posY.GetInt()    : _nhm_posY.GetInt();
+		float scale = hasHelmet ? _hlm_scale.GetFloat() : _nhm_scale.GetFloat();
 		int length = hasHelmet ? _hlm_length.GetInt() : _nhm_length.GetInt();
 
+		float fontScale = _fontScale.GetFloat();
 		int debugTran = sb.hpl.health > 70
 			? Font.CR_OLIVE
 			: (sb.hpl.health > 33
 				? Font.CR_GOLD
 				: Font.CR_RED
 			  );
-		Vector2 debugScale = (0.5, 0.5);
+		Vector2 debugScale = (fontScale * scale, fontScale * scale);
 
 		if (AutomapActive) {
 			if(hd_debug){
 				sb.drawstring(
-					sb.pnewsmallfont,
+					_hudFont,
 					sb.FormatNumber(sb.hpl.health),
-					(34,-24),
+					(34, -24),
 					sb.DI_BOTTOMLEFT|sb.DI_TEXT_ALIGN_CENTER,
 					debugTran,
-					scale:debugScale
+					scale: debugScale
 				);
 			} else {
 				DrawEKG(sb, state, ticFrac, 40, -24, sb.DI_BOTTOMLEFT, 1., length);
 			}
 		} else if (CheckCommonStuff(sb, state, ticFrac)) {
 
-			int   posX  = hasHelmet ? _hlm_posX.GetInt()    : _nhm_posX.GetInt();
-			int   posY  = hasHelmet ? _hlm_posY.GetInt()    : _nhm_posY.GetInt();
-			float scale = hasHelmet ? _hlm_scale.GetFloat() : _nhm_scale.GetFloat();
 
 			string bgRef   = hasHelmet ? _hlm_bgRef.GetString()  : _nhm_bgRef.GetString();
 			int    bgPosX  = hasHelmet ? _hlm_bgPosX.GetInt()    : _nhm_bgPosX.GetInt();
@@ -113,9 +129,9 @@ class UZEKG : HUDEKG {
 
 			if(hd_debug) {
 				sb.drawstring(
-					sb.pnewsmallfont,
+					_hudFont,
 					sb.FormatNumber(sb.hpl.health),
-					(0,sb.mxht),
+					(posX, posY - _hudFont.mFont.GetHeight() * fontScale * scale),
 					sb.DI_TEXT_ALIGN_CENTER|sb.DI_SCREEN_CENTER_BOTTOM,
 					debugTran,
 					scale: debugScale
@@ -132,15 +148,15 @@ class UZEKG : HUDEKG {
 		if (!sb.hpl.beatcount) {
 			int err = random[heart](0, max(0,((100 - sb.hpl.health) >> 3)));
 
-			healthBars.insert(0, clamp(18 - (sb.hpl.bloodloss >> 7) - (err >> 2), 1, 18));
-			healthBars.insert(0, (sb.hpl.inpain ? random[heart](1, 7) : 1) + err + random[heart](0, (sb.hpl.bloodpressure >> 3)));
+			_healthBars.insert(0, clamp(18 - (sb.hpl.bloodloss >> 7) - (err >> 2), 1, 18));
+			_healthBars.insert(0, (sb.hpl.inpain ? random[heart](1, 7) : 1) + err + random[heart](0, (sb.hpl.bloodpressure >> 3)));
 
-			while (healthBars.Size() > length) healthBars.Pop();
+			while (_healthBars.Size() > length) _healthBars.Pop();
 		}
 
-		if (sb.hpl.health <= 0) for (int i = 0; i < length; i++) healthBars[i] = 1;
+		if (sb.hpl.health <= 0) for (int i = 0; i < length; i++) _healthBars[i] = 1;
 
-		for (int i = 0; i < healthBars.Size(); i++) {
+		for (int i = 0; i < _healthBars.Size(); i++) {
 			int alf = (i&1) ? 128 : 255;
 
 			sb.fill(
@@ -152,9 +168,9 @@ class UZEKG : HUDEKG {
 							: color(alf, 220,        0,          0)
 				),
 				posX + (i * scale) - (length >> 2),
-				(posY - (healthBars[i] * 0.3 * scale)),
+				(posY - (_healthBars[i] * 0.3 * scale)),
 				0.8 * scale,
-				healthBars[i] * 0.6 * scale,
+				_healthBars[i] * 0.6 * scale,
 				flags|(sb.hpl.health > 70 ? sb.DI_TRANSLATABLE : 0)
 			);
 		}

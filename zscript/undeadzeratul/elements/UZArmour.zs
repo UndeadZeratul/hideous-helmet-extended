@@ -44,16 +44,19 @@ class UZArmour : HUDElement {
 	private transient CVar _hh_helmetoffsety;
 
 	private transient CVar _enabled;
-	private transient CVar _hlm_required;
+	private transient CVar _font;
+	private transient CVar _fontScale;
 
-	private transient CVar _hlm_hudLevel;
-	private transient CVar _hlm_posX;
-	private transient CVar _hlm_posY;
-	private transient CVar _hlm_scale;
 	private transient CVar _nhm_hudLevel;
 	private transient CVar _nhm_posX;
 	private transient CVar _nhm_posY;
 	private transient CVar _nhm_scale;
+
+	private transient CVar _hlm_required;
+	private transient CVar _hlm_hudLevel;
+	private transient CVar _hlm_posX;
+	private transient CVar _hlm_posY;
+	private transient CVar _hlm_scale;
 	
 	private transient CVar _helmet_hlm_posX;
 	private transient CVar _helmet_hlm_posY;
@@ -85,6 +88,9 @@ class UZArmour : HUDElement {
 	private transient CVar _hlm_bgPosY;
 	private transient CVar _hlm_bgScale;
 
+	private transient string _prevFont;
+	private transient HUDFont _hudFont;
+
 	private transient Array<UZHDArmourStats> _arms;
 	private transient Array<int> _slots;
 
@@ -101,6 +107,9 @@ class UZArmour : HUDElement {
 
 		// Global CVARs
 		if (!_enabled) _enabled                   = CVar.GetCVar("uz_hhx_armour_enabled", sb.CPlayer);
+		if (!_font) _font                         = CVar.GetCVar("uz_hhx_armour_font", sb.CPlayer);
+		if (!_fontScale) _fontScale               = CVar.GetCVar("uz_hhx_armour_fontScale", sb.CPlayer);
+
 		if (!_hlm_required) _hlm_required         = CVar.GetCVar("uz_hhx_armour_hlm_required", sb.CPlayer);
 		if (!_hlm_hudLevel) _hlm_hudLevel         = CVar.GetCVar("uz_hhx_armour_hlm_hudLevel", sb.CPlayer);
 		if (!_hlm_posX) _hlm_posX                 = CVar.GetCVar("uz_hhx_armour_hlm_posX", sb.CPlayer);
@@ -143,6 +152,12 @@ class UZArmour : HUDElement {
 		if (!_boots_nhm_posX) _boots_nhm_posX     = CVar.GetCVar("uz_hhx_armour_boots_nhm_posX", sb.CPlayer);
 		if (!_boots_nhm_posY) _boots_nhm_posY     = CVar.GetCVar("uz_hhx_armour_boots_nhm_posY", sb.CPlayer);
 		if (!_boots_nhm_scale) _boots_nhm_scale   = CVar.GetCVar("uz_hhx_armour_boots_nhm_scale", sb.CPlayer);
+
+		string newFont = _font.GetString();
+		if (_prevFont != newFont) {
+			_hudFont = HUDFont.create(Font.FindFont(newFont));
+			_prevFont = newFont;
+		}
 	}
 
 	override void DrawHUDStuff(HCStatusbar sb, int state, double ticFrac) {
@@ -236,7 +251,7 @@ class UZArmour : HUDElement {
 		}
 
 		// Initialize Armor Slot counts
-		int slotDurabilities[3];
+		string slotDurabilities[3];
 
 		// Loop through the list and render each item's durability text
 		for (int i = 0; i < _arms.Size(); i++) {
@@ -247,6 +262,7 @@ class UZArmour : HUDElement {
 
 				// Only draw the durability if HHelmet isn't installed or we have a helmet equipped
 				if (!_HHFunc || _HHFunc.GetIntUI("GetShowHUD", objectArg: sb.hpl)) {
+					float fontScale = _fontScale.GetFloat();
 
 					// If the armor has a valid durability, render using the durability bar
 					if (AutomapActive) {
@@ -255,8 +271,9 @@ class UZArmour : HUDElement {
 							arm.durability,
 							sb.DI_TOPLEFT,
 							arm.fontColor,
-							14 + arm.offX + arm.durOffX - (slotDurabilities[arm.slot] * 12),
-							79 + arm.offY + arm.durOffY + (arm.slot == 1 ? (_hh_durabilitytop && _hh_durabilitytop.GetBool() ? -10 : -3) : 0)
+							14 + arm.offX + arm.durOffX - (_hudFont.mFont.StringWidth(slotDurabilities[arm.slot]) * fontScale * scale),
+							79 + arm.offY + arm.durOffY + (arm.slot == 1 ? (_hh_durabilitytop && _hh_durabilitytop.GetBool() ? -10 : -3) : 0),
+							fontScale * scale
 						);
 					} else if (CheckCommonStuff(sb, state, ticFrac)) {
 						DrawDurability(
@@ -264,14 +281,15 @@ class UZArmour : HUDElement {
 							arm.durability,
 							sb.DI_SCREEN_CENTER_BOTTOM | sb.DI_TEXT_ALIGN_RIGHT,
 							arm.fontColor,
-							posX + arm.offX + arm.durOffX - (slotDurabilities[arm.slot] * 12),
-							posY + arm.offY + arm.durOffY + (arm.slot == 1 ? (_hh_durabilitytop && _hh_durabilitytop.GetBool() ? -10 : -3) : 0)
+							posX + arm.offX + arm.durOffX - (_hudFont.mFont.StringWidth(slotDurabilities[arm.slot]) * fontScale * scale),
+							posY + arm.offY + arm.durOffY + (arm.slot == 1 ? (_hh_durabilitytop && _hh_durabilitytop.GetBool() ? -10 : -3) : 0),
+							fontScale * scale
 						);
 					}
+			
+					slotDurabilities[arm.slot] = slotDurabilities[arm.slot]..arm.durability.."";
 				}
 			}
-			
-			slotDurabilities[arm.slot]++;
 		}
 	}
 	
@@ -288,12 +306,12 @@ class UZArmour : HUDElement {
 
 	void drawDurability(HCStatusBar sb, int durability, int flags, int fontColor, int posX, int posY, float scale = 1.) {
 		sb.DrawString(
-			sb.pNewSmallFont,
+			_hudFont,
 			sb.FormatNumber(durability),
 			(posX, posY - 4),
 			flags,
 			fontColor,
-			scale: (0.5 * scale, 0.5 * scale)
+			scale: (scale, scale)
 		);
 	}
 

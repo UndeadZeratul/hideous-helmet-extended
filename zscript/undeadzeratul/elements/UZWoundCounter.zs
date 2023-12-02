@@ -3,7 +3,8 @@ class UZWoundCounter : HUDElement {
 	private Service _HHFunc;
 
 	private transient CVar _enabled;
-	private transient CVar _hlm_required;
+	private transient CVar _font;
+	private transient CVar _fontScale;
 	
 	private transient CVar _hh_showbleed;
 	private transient CVar _hh_showbleedwhenbleeding;
@@ -11,16 +12,16 @@ class UZWoundCounter : HUDElement {
 	private transient CVar _hh_onlyshowopenwounds;
 	private transient CVar _hh_wc_usedynamiccol;
 	
-	private string _WoundCounter;
-	
-	private transient CVar _hlm_hudLevel;
-	private transient CVar _hlm_posX;
-	private transient CVar _hlm_posY;
-	private transient CVar _hlm_scale;
 	private transient CVar _nhm_hudLevel;
 	private transient CVar _nhm_posX;
 	private transient CVar _nhm_posY;
 	private transient CVar _nhm_scale;
+
+	private transient CVar _hlm_required;
+	private transient CVar _hlm_hudLevel;
+	private transient CVar _hlm_posX;
+	private transient CVar _hlm_posY;
+	private transient CVar _hlm_scale;
 
 	private transient CVar _nhm_bgRef;
 	private transient CVar _nhm_bgPosX;
@@ -30,6 +31,11 @@ class UZWoundCounter : HUDElement {
 	private transient CVar _hlm_bgPosX;
 	private transient CVar _hlm_bgPosY;
 	private transient CVar _hlm_bgScale;
+
+	private transient string _prevFont;
+	private transient HUDFont _hudFont;
+	
+	private transient string _WoundCounter;
 
 	override void Init(HCStatusbar sb) {
 		ZLayer    = 2;
@@ -46,6 +52,9 @@ class UZWoundCounter : HUDElement {
 		if (!_hh_wc_usedynamiccol) _hh_wc_usedynamiccol           = CVar.GetCVar("hh_wc_usedynamiccol", sb.CPlayer);
 			
 		if (!_enabled) _enabled                                   = CVar.GetCVar("uz_hhx_woundCounter_enabled", sb.CPlayer);
+		if (!_font) _font                                         = CVar.GetCVar("uz_hhx_woundCounter_font", sb.CPlayer);
+		if (!_fontScale) _fontScale                               = CVar.GetCVar("uz_hhx_woundCounter_fontScale", sb.CPlayer);
+
 		if (!_hlm_required) _hlm_required                         = CVar.GetCVar("uz_hhx_woundCounter_hlm_required", sb.CPlayer);
 		if (!_hlm_hudLevel) _hlm_hudLevel                         = CVar.GetCVar("uz_hhx_woundCounter_hlm_hudLevel", sb.CPlayer);
 		if (!_hlm_posX) _hlm_posX                                 = CVar.GetCVar("uz_hhx_woundCounter_hlm_posX", sb.CPlayer);
@@ -64,6 +73,12 @@ class UZWoundCounter : HUDElement {
 		if (!_hlm_bgPosX) _hlm_bgPosX                             = CVar.GetCVar("uz_hhx_woundCounter_bg_hlm_posX", sb.CPlayer);
 		if (!_hlm_bgPosY) _hlm_bgPosY                             = CVar.GetCVar("uz_hhx_woundCounter_bg_hlm_posY", sb.CPlayer);
 		if (!_hlm_bgScale) _hlm_bgScale                           = CVar.GetCVar("uz_hhx_woundCounter_bg_hlm_scale", sb.CPlayer);
+
+		string newFont = _font.GetString();
+		if (_prevFont != newFont) {
+			_hudFont = HUDFont.create(Font.FindFont(newFont));
+			_prevFont = newFont;
+		}
 
 		if (!sb.hpl)
 			return;
@@ -178,12 +193,13 @@ class UZWoundCounter : HUDElement {
 			);
 
 			if (!_hh_woundcounter || _hh_woundcounter.GetBool()) {
+				float fontScale = _fontScale.GetFloat();
 				sb.DrawString(
-					sb.mIndexFont,
+					_hudFont,
 					_woundCounter,
 					(coords.x + (4 * scale), coords.y + scale),
 					sb.DI_SCREEN_CENTER_BOTTOM | sb.DI_TEXT_ALIGN_LEFT,
-					scale: (scale, scale)
+					scale: (fontScale * scale, fontScale * scale)
 				);
 			}
 		}

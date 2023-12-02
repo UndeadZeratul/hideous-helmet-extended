@@ -3,20 +3,23 @@ class UZSquadStatus : HUDElement {
     private Service _HHFunc;
 
     private transient CVar _enabled;
-    private transient CVar _hlm_required;
+	private transient CVar _font;
+	private transient CVar _fontScale;
 
-    private transient CVar _hlm_hudLevel;
-    private transient CVar _hlm_posX;
-    private transient CVar _hlm_posY;
-    private transient CVar _hlm_scale;
-    private transient CVar _hlm_scaleX;
-    private transient CVar _hlm_scaleY;
     private transient CVar _nhm_hudLevel;
     private transient CVar _nhm_posX;
     private transient CVar _nhm_posY;
     private transient CVar _nhm_scale;
     private transient CVar _nhm_scaleX;
     private transient CVar _nhm_scaleY;
+
+    private transient CVar _hlm_required;
+    private transient CVar _hlm_hudLevel;
+    private transient CVar _hlm_posX;
+    private transient CVar _hlm_posY;
+    private transient CVar _hlm_scale;
+    private transient CVar _hlm_scaleX;
+    private transient CVar _hlm_scaleY;
 
     private transient CVar _nhm_bgRef;
     private transient CVar _nhm_bgPosX;
@@ -68,8 +71,11 @@ class UZSquadStatus : HUDElement {
     private transient CVar _mugshot_hlm_posX;
     private transient CVar _mugshot_hlm_posY;
     private transient CVar _mugshot_hlm_scale;
+
+	private transient string _prevFont;
+	private transient HUDFont _hudFont;
     
-    private Array<int> healthBars[MAXPLAYERS];
+    private transient Array<int> healthBars[MAXPLAYERS];
 
     override void Init(HCStatusbar sb) {
         ZLayer    = 2;
@@ -80,6 +86,9 @@ class UZSquadStatus : HUDElement {
         if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
 
         if (!_enabled) _enabled                             = CVar.GetCVar("uz_hhx_squadStatus_enabled", sb.CPlayer);
+        if (!_font) _font                                   = CVar.GetCVar("uz_hhx_squadStatus_font", sb.CPlayer);
+		if (!_fontScale) _fontScale                         = CVar.GetCVar("uz_hhx_squadStatus_fontScale", sb.CPlayer);
+
         if (!_hlm_required) _hlm_required                   = CVar.GetCVar("uz_hhx_squadStatus_hlm_required", sb.CPlayer);
         if (!_hlm_hudLevel) _hlm_hudLevel                   = CVar.GetCVar("uz_hhx_squadStatus_hlm_hudLevel", sb.CPlayer);
         if (!_hlm_posX) _hlm_posX                           = CVar.GetCVar("uz_hhx_squadStatus_hlm_posX", sb.CPlayer);
@@ -144,6 +153,12 @@ class UZSquadStatus : HUDElement {
         if (!_mugshot_hlm_posX) _mugshot_hlm_posX           = CVar.GetCVar("uz_hhx_squadStatus_mugshot_hlm_posX", sb.CPlayer);
         if (!_mugshot_hlm_posY) _mugshot_hlm_posY           = CVar.GetCVar("uz_hhx_squadStatus_mugshot_hlm_posY", sb.CPlayer);
         if (!_mugshot_hlm_scale) _mugshot_hlm_scale         = CVar.GetCVar("uz_hhx_squadStatus_mugshot_hlm_scale", sb.CPlayer);
+
+		string newFont = _font.GetString();
+		if (_prevFont != newFont) {
+			_hudFont = HUDFont.create(Font.FindFont(newFont));
+			_prevFont = newFont;
+		}
     }
 
     override void DrawHUDStuff(HCStatusbar sb, int state, double ticFrac) {
@@ -234,12 +249,13 @@ class UZSquadStatus : HUDElement {
 
     void DrawName(HCStatusbar sb, HDPlayerPawn plr, int state, double ticFrac, int posX, int posY, int flags, float scale) {
         if (_name_enabled.GetBool()) {
+            float fontScale = _fontScale.GetFloat();
             sb.DrawString(
-                sb.pnewsmallfont,
+                _hudFont,
                 plr.player.GetUserName(),
                 (posX, posY),
                 flags,
-                scale: (0.75 * scale, 0.75 * scale)
+                scale: (fontScale * scale, fontScale * scale)
             );
         }
     }
@@ -285,23 +301,24 @@ class UZSquadStatus : HUDElement {
     // Encumbrance
     void DrawBulk(HCStatusbar sb, HDPlayerPawn plr, int state, double ticFrac, int posX, int posY, int flags, float scale) {
         if (_encumbrance_enabled.GetBool() && plr.enc) {
+            float fontScale = _fontScale.GetFloat();
             double pocketenc = plr.pocketenc;
 
             // Encumbrance Bulk Value
             sb.drawstring(
-                sb.pnewsmallfont,
+                _hudFont,
                 sb.FormatNumber(int(plr.enc)),
-                (posX + (4 * scale), posY + (sb.mxht * scale)),
+                (posX + (4 * scale), posY + ((-4 - _hudFont.mFont.GetHeight()) * fontScale * scale)),
                 flags,
                 plr.overloaded < 0.8
                     ? Font.CR_OLIVE 
                     : plr.overloaded > 1.6
                         ? Font.CR_RED
                         : Font.CR_GOLD,
-                scale: (0.5 * scale, 0.5 * scale)
+                scale: (fontScale * scale, fontScale * scale)
             );
 
-            int encbarheight = sb.mxht + 5;
+            int encbarheight = -4 - _hudFont.mFont.GetHeight() + 5;
 
             // Encumbrance Bar Border
             sb.fill(

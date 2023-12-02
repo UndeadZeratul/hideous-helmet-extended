@@ -231,7 +231,9 @@ HHXHHelmetRequired = "Requires Hideous Helmet";
 HHXAlwaysVisible                        = "Always Visible";
 HHXBarDirection                         = "Durability Bar Direction";
 HHXCounterStyle                         = "Counter Style";
+HHXFont                                 = "Font";
 HHXFontColor                            = "Font Color";
+HHXFontScale                            = "Font Scale";
 HHXMaxValue                             = "Max Value";
 
 // HUD Counter Styles

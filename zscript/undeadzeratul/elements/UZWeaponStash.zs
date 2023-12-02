@@ -3,6 +3,9 @@ class UZWeaponStash : HUDWeaponStash {
 	private Service _HHFunc;
 
 	private transient CVar _enabled;
+	private transient CVar _font;
+	private transient CVar _fontColor;
+	private transient CVar _fontScale;
 
 	private transient CVar _nhm_hudLevel;
 	private transient CVar _nhm_posX;
@@ -30,10 +33,17 @@ class UZWeaponStash : HUDWeaponStash {
 	private transient CVar _hlm_bgPosY;
 	private transient CVar _hlm_bgScale;
 
+	private transient string _prevFont;
+	private transient HUDFont _hudFont;
+
 	override void Tick(HCStatusbar sb) {
 		if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
 
 		if (!_enabled) _enabled               = CVar.GetCVar("uz_hhx_weaponStash_enabled", sb.CPlayer);
+		if (!_font) _font                     = CVar.GetCVar("uz_hhx_weaponStash_font", sb.CPlayer);
+		if (!_fontColor) _fontColor           = CVar.GetCVar("uz_hhx_weaponStash_fontColor", sb.CPlayer);
+		if (!_fontScale) _fontScale           = CVar.GetCVar("uz_hhx_weaponStash_fontScale", sb.CPlayer);
+
 		if (!_nhm_hudLevel) _nhm_hudLevel     = CVar.GetCVar("uz_hhx_weaponStash_nhm_hudLevel", sb.CPlayer);
 		if (!_nhm_posX) _nhm_posX             = CVar.GetCVar("uz_hhx_weaponStash_nhm_posX", sb.CPlayer);
 		if (!_nhm_posY) _nhm_posY             = CVar.GetCVar("uz_hhx_weaponStash_nhm_posY", sb.CPlayer);
@@ -59,6 +69,12 @@ class UZWeaponStash : HUDWeaponStash {
 		if (!_hlm_bgPosX) _hlm_bgPosX         = CVar.GetCVar("uz_hhx_weaponStash_bg_hlm_posX", sb.CPlayer);
 		if (!_hlm_bgPosY) _hlm_bgPosY         = CVar.GetCVar("uz_hhx_weaponStash_bg_hlm_posY", sb.CPlayer);
 		if (!_hlm_bgScale) _hlm_bgScale       = CVar.GetCVar("uz_hhx_weaponStash_bg_hlm_scale", sb.CPlayer);
+
+		string newFont = _font.GetString();
+		if (_prevFont != newFont) {
+			_hudFont = HUDFont.create(Font.FindFont(newFont));
+			_prevFont = newFont;
+		}
 	}
 
 	override void DrawHUDStuff(HCStatusbar sb, int state, double ticFrac) {
@@ -80,7 +96,7 @@ class UZWeaponStash : HUDWeaponStash {
 		int   wrapLength = hasHelmet ? _hlm_wrapLength.getInt() : _nhm_wrapLength.GetInt();
 
 		if (AutomapActive) {
-			drawWeaponStash(sb, sb.DI_SCREEN_RIGHT_BOTTOM|sb.DI_ITEM_RIGHT, -8, -48, xScale: 0., yScale: 0.);
+			DrawWeaponStash(sb, sb.DI_SCREEN_RIGHT_BOTTOM|sb.DI_ITEM_RIGHT, -8, -48, xScale: 0., yScale: 0.);
 		} else if (CheckCommonStuff(sb, state, ticFrac)) {
 
 			string bgRef   = hasHelmet ? _hlm_bgRef.GetString()  : _nhm_bgRef.GetString();
@@ -96,7 +112,7 @@ class UZWeaponStash : HUDWeaponStash {
 				scale: (scale * bgScale, scale * bgScale)
 			);
 
-			drawWeaponStash(sb, sb.DI_SCREEN_LEFT_BOTTOM|sb.DI_ITEM_LEFT, posX, posY, wrapLength, scale, xScale, yScale);
+			DrawWeaponStash(sb, sb.DI_SCREEN_LEFT_BOTTOM|sb.DI_ITEM_LEFT, posX, posY, wrapLength, scale, xScale, yScale);
 		}
 	}
 
@@ -123,13 +139,14 @@ class UZWeaponStash : HUDWeaponStash {
 			// should they be carrying more than one
 			int count = sb.wepSpriteCounts[i];
 			if(count > 1) {
+				float fontScale = _fontScale.GetFloat();
 				sb.DrawString(
-					sb.psmallfont,
+					_hudFont,
 					count.."x",
 					(coords.x - (flags & sb.DI_ITEM_RIGHT ? 10 : 2), coords.y - 3),
 					flags|sb.DI_ITEM_BOTTOM|sb.DI_TEXT_ALIGN_LEFT,
-					Font.CR_DARKGRAY,
-					scale: (scale, scale)
+					_fontColor.GetInt(),
+					scale: (fontScale * scale, fontScale * scale)
 				);
 			}
 		}

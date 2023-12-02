@@ -15,22 +15,25 @@ class BaseCounterHUDElement : HUDElement abstract {
 	private Service _HHFunc;
 
 	private transient CVar _enabled;
-	private transient CVar _hlm_required;
 
 	private transient CVar _alwaysVisible;
     private transient CVar _counterStyle;
+	private transient CVar _font;
     private transient CVar _fontColor;
+	private transient CVar _fontScale;
     private transient CVar _barDirection;
     private transient CVar _maxValue;
 	
-	private transient CVar _hlm_hudLevel;
-	private transient CVar _hlm_posX;
-	private transient CVar _hlm_posY;
-	private transient CVar _hlm_scale;
 	private transient CVar _nhm_hudLevel;
 	private transient CVar _nhm_posX;
 	private transient CVar _nhm_posY;
 	private transient CVar _nhm_scale;
+
+	private transient CVar _hlm_required;
+	private transient CVar _hlm_hudLevel;
+	private transient CVar _hlm_posX;
+	private transient CVar _hlm_posY;
+	private transient CVar _hlm_scale;
 
 	private transient CVar _nhm_bgRef;
 	private transient CVar _nhm_bgPosX;
@@ -41,6 +44,9 @@ class BaseCounterHUDElement : HUDElement abstract {
 	private transient CVar _hlm_bgPosY;
 	private transient CVar _hlm_bgScale;
 
+	private transient string _prevFont;
+	private transient HUDFont _hudFont;
+
     override void Init(HCStatusBar sb) {
 		counterIcon   = "";
         counterLabel  = "";
@@ -50,13 +56,16 @@ class BaseCounterHUDElement : HUDElement abstract {
 	override void Tick(HCStatusbar sb) {
 		if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
 
+		if (!_enabled) _enabled             = CVar.GetCVar("uz_hhx_"..Namespace.."_enabled", sb.CPlayer);
+
 		if (!_alwaysVisible) _alwaysVisible = CVar.GetCVar("uz_hhx_"..Namespace.."_alwaysVisible", sb.CPlayer);
 		if (!_counterStyle) _counterStyle   = CVar.GetCVar("uz_hhx_"..Namespace.."_style", sb.CPlayer);
+		if (!_font) _font                   = CVar.GetCVar("uz_hhx_"..Namespace.."_font", sb.CPlayer);
 		if (!_fontColor) _fontColor         = CVar.GetCVar("uz_hhx_"..Namespace.."_fontColor", sb.CPlayer);
+		if (!_fontScale) _fontScale         = CVar.GetCVar("uz_hhx_"..Namespace.."_fontScale", sb.CPlayer);
 		if (!_barDirection) _barDirection   = CVar.GetCVar("uz_hhx_"..Namespace.."_barDirection", sb.CPlayer);
 		if (!_maxValue) _maxValue           = CVar.GetCVar("uz_hhx_"..Namespace.."_maxValue", sb.CPlayer);
 
-		if (!_enabled) _enabled             = CVar.GetCVar("uz_hhx_"..Namespace.."_enabled", sb.CPlayer);
 		if (!_hlm_required) _hlm_required   = CVar.GetCVar("uz_hhx_"..Namespace.."_hlm_required", sb.CPlayer);
 		if (!_hlm_hudLevel) _hlm_hudLevel   = CVar.GetCVar("uz_hhx_"..Namespace.."_hlm_hudLevel", sb.CPlayer);
 		if (!_hlm_posX) _hlm_posX           = CVar.GetCVar("uz_hhx_"..Namespace.."_hlm_posX", sb.CPlayer);
@@ -75,6 +84,12 @@ class BaseCounterHUDElement : HUDElement abstract {
 		if (!_hlm_bgPosX) _hlm_bgPosX       = CVar.GetCVar("uz_hhx_"..Namespace.."_bg_hlm_posX", sb.CPlayer);
 		if (!_hlm_bgPosY) _hlm_bgPosY       = CVar.GetCVar("uz_hhx_"..Namespace.."_bg_hlm_posY", sb.CPlayer);
 		if (!_hlm_bgScale) _hlm_bgScale     = CVar.GetCVar("uz_hhx_"..Namespace.."_bg_hlm_scale", sb.CPlayer);
+
+		string newFont = _font.GetString();
+		if (_prevFont != newFont) {
+			_hudFont = HUDFont.create(Font.FindFont(newFont));
+			_prevFont = newFont;
+		}
     }
 
 	override void DrawHUDStuff(HCStatusbar sb, int state, double ticFrac) {
@@ -134,25 +149,26 @@ class BaseCounterHUDElement : HUDElement abstract {
         let maxValue = GetCounterMaxValue(sb);
 
         if (hd_debug || _alwaysVisible.GetBool() || ShouldDrawCounter(sb, value)) {
+            float fontScale = _fontScale.GetFloat();
             switch (_counterStyle ? _counterStyle.GetInt() : LABEL_WITH_VALUE) {
                 case VALUE_ONLY:
                     sb.DrawString(
-                        sb.mIndexFont,
+                        _hudFont,
                         FormatValue(sb, value, maxValue),
                         (posX + (8 * scale), posY + scale),
                         sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_LEFT,
                         _fontColor.GetInt(),
-                        scale: (scale, scale)
+                        scale: (fontScale * scale, fontScale * scale)
                     );
                     break;
                 case LABEL_WITH_VALUE:
                     sb.DrawString(
-                        sb.pNewSmallFont,
+                        _hudFont,
                         counterLabel..FormatValue(sb, value, maxValue),
                         (posX + (8 * scale), posY + scale),
                         sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_LEFT,
                         _fontColor.GetInt(),
-                        scale: (scale, scale)
+                        scale: (fontScale * scale, fontScale * scale)
                     );
                     break;
                 case ICON_WITH_VALUE:
@@ -165,12 +181,12 @@ class BaseCounterHUDElement : HUDElement abstract {
                     );
 
                     sb.DrawString(
-                        sb.mIndexFont,
+                        _hudFont,
                         FormatValue(sb, value, maxValue),
                         (posX + (8 * scale), posY + scale),
                         sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_LEFT,
                         _fontColor.GetInt(),
-                        scale: (scale, scale)
+                        scale: (fontScale * scale, fontScale * scale)
                     );
                     break;
                 case DURABILITY_BAR:
