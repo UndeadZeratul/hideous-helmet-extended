@@ -2090,8 +2090,6 @@ OptionMenu "HHXWeaponSprite" {
 	Title "$HHXWeaponSprite"
 
 	Option "$HHXEnabled", "uz_hhx_weaponSprite_enabled", "OnOff"
-	StaticText ""	
-	StaticText "Scaling not supported for Weapon Sprite"
 
 	StaticText ""
 	StaticText ""	
@@ -2100,7 +2098,7 @@ OptionMenu "HHXWeaponSprite" {
 	Slider "$HHXHUDLevel", "uz_hhx_weaponSprite_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_weaponSprite_enabled"
 	Slider "$HHXPosX", "uz_hhx_weaponSprite_nhm_posX", -400, 400, 1, 0, "uz_hhx_weaponSprite_enabled"
 	Slider "$HHXPosY", "uz_hhx_weaponSprite_nhm_posY", -400, 400, 1, 0, "uz_hhx_weaponSprite_enabled"
-	Slider "$HHXScale", "uz_hhx_weaponSprite_nhm_scale", .01, 4., .05, 2, "uz_hhx_disabled"
+	Slider "$HHXScale", "uz_hhx_weaponSprite_nhm_scale", .01, 4., .05, 2, "uz_hhx_weaponSprite_enabled"
 	StaticText ""
 	TextField "$HHXBgRef", "uz_hhx_weaponSprite_bg_nhm_ref", "uz_hhx_weaponSprite_enabled"
 	Slider "$HHXPosX", "uz_hhx_weaponSprite_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_weaponSprite_enabled"
@@ -2117,7 +2115,7 @@ OptionMenu "HHXWeaponSprite" {
 	Slider "$HHXHUDLevel", "uz_hhx_weaponSprite_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_weaponSprite_enabled"
 	Slider "$HHXPosX", "uz_hhx_weaponSprite_hlm_posX", -400, 400, 1, 0, "uz_hhx_weaponSprite_enabled"
 	Slider "$HHXPosY", "uz_hhx_weaponSprite_hlm_posY", -400, 400, 1, 0, "uz_hhx_weaponSprite_enabled"
-	Slider "$HHXScale", "uz_hhx_weaponSprite_hlm_scale", .01, 4., .05, 2, "uz_hhx_disabled"
+	Slider "$HHXScale", "uz_hhx_weaponSprite_hlm_scale", .01, 4., .05, 2, "uz_hhx_weaponSprite_enabled"
 	StaticText ""
 	TextField "$HHXBgRef", "uz_hhx_weaponSprite_bg_hlm_ref", "uz_hhx_weaponSprite_enabled"
 	Slider "$HHXPosX", "uz_hhx_weaponSprite_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_weaponSprite_enabled"
