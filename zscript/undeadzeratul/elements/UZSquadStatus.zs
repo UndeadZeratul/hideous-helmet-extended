@@ -75,7 +75,7 @@ class UZSquadStatus : HUDElement {
 	private transient string _prevFont;
 	private transient HUDFont _hudFont;
     
-    private transient Array<int> healthBars[MAXPLAYERS];
+    private transient Array<int> _healthBars[MAXPLAYERS];
 
     override void Init(HCStatusbar sb) {
         ZLayer    = 2;
@@ -269,15 +269,15 @@ class UZSquadStatus : HUDElement {
             if (!plr.beatcount) {
                 int err = random[heart](0, max(0,((100 - plr.health) >> 3)));
 
-                healthBars[extra].insert(0, clamp(18 - (plr.bloodloss >> 7) - (err >> 2), 1, 18));
-                healthBars[extra].insert(0, (plr.inpain ? random[heart](1, 7) : 1) + err + random[heart](0, (plr.bloodpressure >> 3)));
+                _healthBars[extra].insert(0, clamp(18 - (plr.bloodloss >> 7) - (err >> 2), 1, 18));
+                _healthBars[extra].insert(0, (plr.inpain ? random[heart](1, 7) : 1) + err + random[heart](0, (plr.bloodpressure >> 3)));
 
-			    while (healthBars[extra].Size() > length) healthBars[extra].Pop();
+			    while (_healthBars[extra].Size() > length) _healthBars[extra].Pop();
             }
 
-            if (plr.health <= 0) for (int i = 0; i < length; i++) healthBars[extra][i] = 1;
+            if (plr.health <= 0) for (int i = 0; i < length; i++) _healthBars[extra][i] = 1;
 
-            for (int i = 0; i < healthBars[extra].Size(); i++) {
+            for (int i = 0; i < _healthBars[extra].Size(); i++) {
                 int alf = (i&1) ? 128 : 255;
 
                 sb.fill(
@@ -289,9 +289,9 @@ class UZSquadStatus : HUDElement {
                                 : color(alf, 220,        0,          0)
                     ),
                     posX + (i * scale) - (length >> 2),
-                    (posY - (healthBars[extra][i] * 0.3 * scale)),
+                    (posY - (_healthBars[extra][i] * 0.3 * scale)),
                     0.8 * scale,
-                    healthBars[extra][i] * 0.6 * scale,
+                    _healthBars[extra][i] * 0.6 * scale,
                     flags|(plr.health > 70 ? sb.DI_TRANSLATABLE : 0)
                 );
             }
@@ -301,14 +301,14 @@ class UZSquadStatus : HUDElement {
     // Encumbrance
     void DrawBulk(HCStatusbar sb, HDPlayerPawn plr, int state, double ticFrac, int posX, int posY, int flags, float scale) {
         if (_encumbrance_enabled.GetBool() && plr.enc) {
-            float fontScale = _fontScale.GetFloat();
             double pocketenc = plr.pocketenc;
 
             // Encumbrance Bulk Value
+            float fontScale = _fontScale.GetFloat();
             sb.drawstring(
                 _hudFont,
                 sb.FormatNumber(int(plr.enc)),
-                (posX + (4 * scale), posY + ((-4 - _hudFont.mFont.GetHeight()) * fontScale * scale)),
+                (posX + (4 * fontScale * scale), posY - ((_hudFont.mFont.GetHeight() >> 1) * fontScale * scale)),
                 flags,
                 plr.overloaded < 0.8
                     ? Font.CR_OLIVE 
@@ -318,13 +318,11 @@ class UZSquadStatus : HUDElement {
                 scale: (fontScale * scale, fontScale * scale)
             );
 
-            int encbarheight = -4 - _hudFont.mFont.GetHeight() + 5;
-
             // Encumbrance Bar Border
             sb.fill(
                 color(128, 96, 96, 96),
                 posX,
-                posY + (encbarheight * scale),
+                posY,
                 scale,
                 -scale,
                 flags
@@ -332,7 +330,7 @@ class UZSquadStatus : HUDElement {
             sb.fill(
                 color(128, 96, 96, 96),
                 posX + scale,
-                posY + (encbarheight * scale),
+                posY,
                 scale,
                 -20 * scale,
                 flags
@@ -340,18 +338,16 @@ class UZSquadStatus : HUDElement {
             sb.fill(
                 color(128, 96, 96, 96),
                 posX - scale,
-                posY + (encbarheight * scale),
+                posY,
                 scale,
                 -20 * scale,
                 flags
             );
 
-            encbarheight--;
-
             // Encumbrance Bar Fill
             sb.drawrect(
                 posX,
-                posY + (encbarheight * scale),
+                posY - scale,
                 scale,
                 (-min(plr.maxpocketspace, pocketenc) * 19 / plr.maxpocketspace) * scale,
                 flags
@@ -363,9 +359,9 @@ class UZSquadStatus : HUDElement {
             sb.fill(
                 overenc ? color(255,216,194,42) : color(128,96,96,96),
                 posX,
-                posY + ((encbarheight - 19) * scale),
+                posY - (19 * scale),
                 scale,
-                (overenc ? 3 : 1) * scale,
+                -(overenc ? 3 : 1) * scale,
                 flags
             );
         }

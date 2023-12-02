@@ -1837,8 +1837,8 @@ OptionMenu "HHXSquadStatusAdvanced" {
 	
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
-	SafeCommand "$HHXResetSquadStatus", "uz_hhx_options_reset_nhm_squadStatusName"
-	SafeCommand "$HHXHHResetSquadStatus", "uz_hhx_options_reset_hlm_squadStatusName"
+	SafeCommand "$HHXResetSquadStatusName", "uz_hhx_options_reset_nhm_squadStatusName"
+	SafeCommand "$HHXHHResetSquadStatusName", "uz_hhx_options_reset_hlm_squadStatusName"
 
 	StaticText ""
 	StaticText ""
@@ -1860,8 +1860,8 @@ OptionMenu "HHXSquadStatusAdvanced" {
 	
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
-	SafeCommand "$HHXResetSquadStatus", "uz_hhx_options_reset_nhm_squadStatusWeapon"
-	SafeCommand "$HHXHHResetSquadStatus", "uz_hhx_options_reset_hlm_squadStatusWeapon"
+	SafeCommand "$HHXResetSquadStatusWeapon", "uz_hhx_options_reset_nhm_squadStatusWeapon"
+	SafeCommand "$HHXHHResetSquadStatusWeapon", "uz_hhx_options_reset_hlm_squadStatusWeapon"
 
 	StaticText ""
 	StaticText ""
@@ -1885,8 +1885,8 @@ OptionMenu "HHXSquadStatusAdvanced" {
 	
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
-	SafeCommand "$HHXResetSquadStatus", "uz_hhx_options_reset_nhm_squadStatusEKG"
-	SafeCommand "$HHXHHResetSquadStatus", "uz_hhx_options_reset_hlm_squadStatusEKG"
+	SafeCommand "$HHXResetSquadStatusEKG", "uz_hhx_options_reset_nhm_squadStatusEKG"
+	SafeCommand "$HHXHHResetSquadStatusEKG", "uz_hhx_options_reset_hlm_squadStatusEKG"
 
 	StaticText ""
 	StaticText ""
@@ -1908,8 +1908,8 @@ OptionMenu "HHXSquadStatusAdvanced" {
 	
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
-	SafeCommand "$HHXResetSquadStatus", "uz_hhx_options_reset_nhm_squadStatusEncumbrance"
-	SafeCommand "$HHXHHResetSquadStatus", "uz_hhx_options_reset_hlm_squadStatusEncumbrance"
+	SafeCommand "$HHXResetSquadStatusEncumbrance", "uz_hhx_options_reset_nhm_squadStatusEncumbrance"
+	SafeCommand "$HHXHHResetSquadStatusEncumbrance", "uz_hhx_options_reset_hlm_squadStatusEncumbrance"
 
 	StaticText ""
 	StaticText ""
@@ -1931,8 +1931,8 @@ OptionMenu "HHXSquadStatusAdvanced" {
 	
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
-	SafeCommand "$HHXResetSquadStatus", "uz_hhx_options_reset_nhm_squadStatusMugshot"
-	SafeCommand "$HHXHHResetSquadStatus", "uz_hhx_options_reset_hlm_squadStatusMugshot"
+	SafeCommand "$HHXResetSquadStatusMugshot", "uz_hhx_options_reset_nhm_squadStatusMugshot"
+	SafeCommand "$HHXHHResetSquadStatusMugshot", "uz_hhx_options_reset_hlm_squadStatusMugshot"
 }
 
 OptionMenu "HHXStimCounter" {
