@@ -59,6 +59,7 @@ HHXHeatCounter                          = "Heat Counter Options";
 HHXMercBucksCounter                     = "Mercenary Bucks Counter Options";
 HHXIncapCounter                         = "Incap Counter Options";
 HHXSecondFleshCounter                   = "Second Flesh Counter Options";
+HHXSpeedCounter                         = "Speed Counter Options";
 HHXStimCounter                          = "Stim Counter Options";
 HHXStunnedCounter                       = "Stunned Counter Options";
 
@@ -154,6 +155,7 @@ HHXResetHeatCounter                     = "Reset Heat Counter Options";
 HHXResetIncapCounter                    = "Reset Incap Counter Options";
 HHXResetMercBucksCounter                = "Reset Mercenary Bocks Counter Options";
 HHXResetSecondFleshCounter              = "Reset Second Flesh Counter Options";
+HHXResetSpeedCounter                    = "Reset Speed Counter Options";
 HHXResetStimCounter                     = "Reset Stim Counter Options";
 HHXResetStunnedCounter                  = "Reset Stunned Counter Options";
 
@@ -205,6 +207,7 @@ HHXHHResetHeatCounter                   = "Reset Heat Counter HHelmet Options";
 HHXHHResetIncapCounter                  = "Reset Incap Counter HHelmet Options";
 HHXHHResetMercBucksCounter              = "Reset Mercenary Bucks HHlmet Options";
 HHXHHResetSecondFleshCounter            = "Reset Second Flesh Counter HHelmet Options";
+HHXHHResetSpeedCounter                  = "Reset Speed Counter HHelmet Options";
 HHXHHResetStimCounter                   = "Reset Stim Counter HHelmet Options";
 HHXHHResetStunnedCounter                = "Reset Stunned Counter HHelmet Options";
 
@@ -235,6 +238,7 @@ HHXFont                                 = "Font";
 HHXFontColor                            = "Font Color";
 HHXFontScale                            = "Font Scale";
 HHXMaxValue                             = "Max Value";
+HHXUnits                                = "Units";
 
 // HUD Counter Styles
 HHXOPTIONVALUE_COUNTER_VALUE_ONLY       = "Value Only";
@@ -263,6 +267,7 @@ HHXHeatCounterLabel                     = "Heat";
 HHXIncapCounterLabel                    = "Incap";
 HHXMercBucksCounterLabel                = "Mercenary Bucks";
 HHXSecondFleshCounterLabel              = "Second Flesh";
+HHXSpeedCounterLabel                    = "Speed";
 HHXStimCounterLabel                     = "Stims";
 HHXStunnedCounterLabel                  = "Stunned";
 

@@ -45,6 +45,7 @@ version "4.10"
 #include "zscript/undeadzeratul/elements/counters/UZIncapCounter.zs"
 #include "zscript/undeadzeratul/elements/counters/UZMercBucksCounter.zs"
 #include "zscript/undeadzeratul/elements/counters/UZSecondFleshCounter.zs"
+#include "zscript/undeadzeratul/elements/counters/UZSpeedCounter.zs"
 #include "zscript/undeadzeratul/elements/counters/UZStimCounter.zs"
 #include "zscript/undeadzeratul/elements/counters/UZStunnedCounter.zs"
 
