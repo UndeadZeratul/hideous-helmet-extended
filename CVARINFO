@@ -731,27 +731,29 @@ user int    uz_hhx_incapCounter_bg_hlm_posY   = 0;
 user float  uz_hhx_incapCounter_bg_hlm_scale  = 1.;
 
 // INVENTORY CONFIGS
-user bool  uz_hhx_inventory_enabled      = true;
+user bool   uz_hhx_inventory_enabled      = true;
+user string uz_hhx_inventory_font         = "NewSmallFont";
+user float  uz_hhx_inventory_fontScale    = .5;
 
-user int   uz_hhx_inventory_nhm_hudLevel = 1;
-user int   uz_hhx_inventory_nhm_posX     = 25;
-user int   uz_hhx_inventory_nhm_posY     = -14;
-user float uz_hhx_inventory_nhm_scale    = 1.;
+user int    uz_hhx_inventory_nhm_hudLevel = 1;
+user int    uz_hhx_inventory_nhm_posX     = 25;
+user int    uz_hhx_inventory_nhm_posY     = -14;
+user float  uz_hhx_inventory_nhm_scale    = 1.;
 
-user bool  uz_hhx_inventory_hlm_required = false;
-user int   uz_hhx_inventory_hlm_hudLevel = 1;
-user int   uz_hhx_inventory_hlm_posX     = 25;
-user int   uz_hhx_inventory_hlm_posY     = -14;
-user float uz_hhx_inventory_hlm_scale    = 1.;
+user bool   uz_hhx_inventory_hlm_required = false;
+user int    uz_hhx_inventory_hlm_hudLevel = 1;
+user int    uz_hhx_inventory_hlm_posX     = 25;
+user int    uz_hhx_inventory_hlm_posY     = -14;
+user float  uz_hhx_inventory_hlm_scale    = 1.;
 
-user string uz_hhx_inventory_bg_nhm_ref    = "";
-user int    uz_hhx_inventory_bg_nhm_posX   = 0;
-user int    uz_hhx_inventory_bg_nhm_posY   = 0;
-user float  uz_hhx_inventory_bg_nhm_scale  = 1.;
-user string uz_hhx_inventory_bg_hlm_ref    = "";
-user int    uz_hhx_inventory_bg_hlm_posX   = 0;
-user int    uz_hhx_inventory_bg_hlm_posY   = 0;
-user float  uz_hhx_inventory_bg_hlm_scale  = 1.;
+user string uz_hhx_inventory_bg_nhm_ref   = "";
+user int    uz_hhx_inventory_bg_nhm_posX  = 0;
+user int    uz_hhx_inventory_bg_nhm_posY  = 0;
+user float  uz_hhx_inventory_bg_nhm_scale = 1.;
+user string uz_hhx_inventory_bg_hlm_ref   = "";
+user int    uz_hhx_inventory_bg_hlm_posX  = 0;
+user int    uz_hhx_inventory_bg_hlm_posY  = 0;
+user float  uz_hhx_inventory_bg_hlm_scale = 1.;
 
 // KEYS CONFIGS
 user bool  uz_hhx_keys_enabled      = true;

@@ -1444,8 +1444,8 @@ OptionMenu "HHXInventory" {
 	Title "$HHXInventory"
 
 	Option "$HHXEnabled", "uz_hhx_inventory_enabled", "OnOff"
-	StaticText ""
-	StaticText "Scaling not supported for Inventory Display"
+	TextField "$HHXFont", "uz_hhx_inventory_font", "uz_hhx_inventory_enabled"
+	Slider "$HHXFontScale", "uz_hhx_inventory_fontScale", .01, 4., .05, 2, "uz_hhx_inventory_enabled"
 	
 	StaticText ""
 	StaticText ""
@@ -1454,7 +1454,7 @@ OptionMenu "HHXInventory" {
 	Slider "$HHXHUDLevel", "uz_hhx_inventory_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_inventory_enabled"
 	Slider "$HHXPosX", "uz_hhx_inventory_nhm_posX", -400, 400, 1, 0, "uz_hhx_inventory_enabled"
 	Slider "$HHXPosY", "uz_hhx_inventory_nhm_posY", -400, 400, 1, 0, "uz_hhx_inventory_enabled"
-	Slider "$HHXScale", "uz_hhx_inventory_nhm_scale", .01, 4., .05, 2, "uz_hhx_disabled"
+	Slider "$HHXScale", "uz_hhx_inventory_nhm_scale", .01, 4., .05, 2, "uz_hhx_inventory_enabled"
 	StaticText ""
 	TextField "$HHXBgRef", "uz_hhx_inventory_bg_nhm_ref", "uz_hhx_inventory_enabled"
 	Slider "$HHXPosX", "uz_hhx_inventory_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_inventory_enabled"
@@ -1471,7 +1471,7 @@ OptionMenu "HHXInventory" {
 	Slider "$HHXHUDLevel", "uz_hhx_inventory_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_inventory_enabled"
 	Slider "$HHXPosX", "uz_hhx_inventory_hlm_posX", -400, 400, 1, 0, "uz_hhx_inventory_enabled"
 	Slider "$HHXPosY", "uz_hhx_inventory_hlm_posY", -400, 400, 1, 0, "uz_hhx_inventory_enabled"
-	Slider "$HHXScale", "uz_hhx_inventory_hlm_scale", .01, 4., .05, 2, "uz_hhx_disabled"
+	Slider "$HHXScale", "uz_hhx_inventory_hlm_scale", .01, 4., .05, 2, "uz_hhx_inventory_enabled"
 	StaticText ""
 	TextField "$HHXBgRef", "uz_hhx_inventory_bg_hlm_ref", "uz_hhx_inventory_enabled"
 	Slider "$HHXPosX", "uz_hhx_inventory_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_inventory_enabled"
