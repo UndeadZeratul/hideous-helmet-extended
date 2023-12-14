@@ -1,15 +1,15 @@
 class UZSecondFleshCounter : BaseCounterHUDElement {
 
-	override void Init(HCStatusbar sb) {
-		ZLayer    = 2;
-		Namespace = "secondFleshCounter";
+    override void Init(HCStatusbar sb) {
+        ZLayer    = 2;
+        Namespace = "secondFleshCounter";
 
-		counterIcon   = "2FCNTR0";
+        counterIcon   = "2FCNTR0";
         counterIconBG = "2FCNTR1";
         counterLabel  = Stringtable.Localize("$HHXSecondFleshCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
-	}
+    }
 
-	override float GetCounterValue(HCStatusBar sb) {
-		return sb.hpl.CountInv('SecondFlesh');
-	}
+    override float GetCounterValue(HCStatusBar sb) {
+        return sb.hpl.CountInv('SecondFlesh');
+    }
 }

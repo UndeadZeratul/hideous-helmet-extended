@@ -3,8 +3,8 @@ class UZSquadStatus : HUDElement {
     private Service _HHFunc;
 
     private transient CVar _enabled;
-	private transient CVar _font;
-	private transient CVar _fontScale;
+    private transient CVar _font;
+    private transient CVar _fontScale;
 
     private transient CVar _nhm_hudLevel;
     private transient CVar _nhm_posX;
@@ -72,8 +72,8 @@ class UZSquadStatus : HUDElement {
     private transient CVar _mugshot_hlm_posY;
     private transient CVar _mugshot_hlm_scale;
 
-	private transient string _prevFont;
-	private transient HUDFont _hudFont;
+    private transient string _prevFont;
+    private transient HUDFont _hudFont;
     
     private transient Array<int> _healthBars[MAXPLAYERS];
 
@@ -87,7 +87,7 @@ class UZSquadStatus : HUDElement {
 
         if (!_enabled) _enabled                             = CVar.GetCVar("uz_hhx_squadStatus_enabled", sb.CPlayer);
         if (!_font) _font                                   = CVar.GetCVar("uz_hhx_squadStatus_font", sb.CPlayer);
-		if (!_fontScale) _fontScale                         = CVar.GetCVar("uz_hhx_squadStatus_fontScale", sb.CPlayer);
+        if (!_fontScale) _fontScale                         = CVar.GetCVar("uz_hhx_squadStatus_fontScale", sb.CPlayer);
 
         if (!_hlm_required) _hlm_required                   = CVar.GetCVar("uz_hhx_squadStatus_hlm_required", sb.CPlayer);
         if (!_hlm_hudLevel) _hlm_hudLevel                   = CVar.GetCVar("uz_hhx_squadStatus_hlm_hudLevel", sb.CPlayer);
@@ -154,11 +154,11 @@ class UZSquadStatus : HUDElement {
         if (!_mugshot_hlm_posY) _mugshot_hlm_posY           = CVar.GetCVar("uz_hhx_squadStatus_mugshot_hlm_posY", sb.CPlayer);
         if (!_mugshot_hlm_scale) _mugshot_hlm_scale         = CVar.GetCVar("uz_hhx_squadStatus_mugshot_hlm_scale", sb.CPlayer);
 
-		string newFont = _font.GetString();
-		if (_prevFont != newFont) {
-			_hudFont = HUDFont.create(Font.FindFont(newFont));
-			_prevFont = newFont;
-		}
+        string newFont = _font.GetString();
+        if (_prevFont != newFont) {
+            _hudFont = HUDFont.create(Font.FindFont(newFont));
+            _prevFont = newFont;
+        }
     }
 
     override void DrawHUDStuff(HCStatusbar sb, int state, double ticFrac) {
@@ -272,7 +272,7 @@ class UZSquadStatus : HUDElement {
                 _healthBars[extra].insert(0, clamp(18 - (plr.bloodloss >> 7) - (err >> 2), 1, 18));
                 _healthBars[extra].insert(0, (plr.inpain ? random[heart](1, 7) : 1) + err + random[heart](0, (plr.bloodpressure >> 3)));
 
-			    while (_healthBars[extra].Size() > length) _healthBars[extra].Pop();
+                while (_healthBars[extra].Size() > length) _healthBars[extra].Pop();
             }
 
             if (plr.health <= 0) for (int i = 0; i < length; i++) _healthBars[extra][i] = 1;

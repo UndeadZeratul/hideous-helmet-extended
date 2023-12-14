@@ -2,7 +2,7 @@ const HDCONST_KPHTOMPH = 0.6213712;
 
 class UZSpeedCounter : BaseCounterHUDElement {
 
-	private transient CVar _units;
+    private transient CVar _units;
 
     override void Init(HCStatusbar sb) {
         ZLayer    = 2;
@@ -13,10 +13,10 @@ class UZSpeedCounter : BaseCounterHUDElement {
         counterLabel  = Stringtable.Localize("$HHXSpeedCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
     }
 
-	override void Tick(HCStatusbar sb) {
+    override void Tick(HCStatusbar sb) {
         super.Tick(sb);
 
-		if (!_units) _units = CVar.GetCVar("uz_hhx_"..Namespace.."_units", sb.CPlayer);
+        if (!_units) _units = CVar.GetCVar("uz_hhx_"..Namespace.."_units", sb.CPlayer);
     }
 
     override float GetCounterValue(HCStatusBar sb) {
