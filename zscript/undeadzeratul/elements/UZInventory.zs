@@ -175,23 +175,6 @@ class UZInventory : HUDInventory {
             
             if (item == sb.hpl.invsel) thisindex = i;
 
-            // if (drawfull) {
-            //     textureid icon;
-            //     vector2 applyscale;
-            //     [icon, applyscale] = sb.GetIcon(item, 0);
-                
-            //     let ivsp = HDPickup(item);
-            //     let ivsw = HDWeapon(item);
-                
-            //     float currItemRatio = i == thisindex ? 1. : 0.6;
-            //     sb.DrawTexture(icon,
-            //         (-18 - ((i % 5) * 20 * scale), sb.bigitemyofs - (20 * (i / 5)) * scale),
-            //         sb.DI_SCREEN_RIGHT_BOTTOM|sb.DI_ITEM_CENTER_BOTTOM|(((ivsp && ivsp.bdroptranslation) || (ivsw && ivsw.bdroptranslation)) ? sb.DI_TRANSLATABLE : 0),
-            //         alpha: currItemRatio,
-            //         scale: applyscale * currItemRatio * scale
-            //     );
-            // }
-
             i++;
         }
 
