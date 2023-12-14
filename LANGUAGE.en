@@ -61,6 +61,7 @@ HHXIncapCounter                         = "Incap Counter Options";
 HHXSecondFleshCounter                   = "Second Flesh Counter Options";
 HHXSpeedCounter                         = "Speed Counter Options";
 HHXStimCounter                          = "Stim Counter Options";
+HHXStripCounter                         = "Strip Time Counter Options";
 HHXStunnedCounter                       = "Stunned Counter Options";
 
 
@@ -157,6 +158,7 @@ HHXResetMercBucksCounter                = "Reset Mercenary Bocks Counter Options
 HHXResetSecondFleshCounter              = "Reset Second Flesh Counter Options";
 HHXResetSpeedCounter                    = "Reset Speed Counter Options";
 HHXResetStimCounter                     = "Reset Stim Counter Options";
+HHXResetStripCounter                    = "Reset Strip Time Counter Options";
 HHXResetStunnedCounter                  = "Reset Stunned Counter Options";
 
 // Reset Helmet Options Labels
@@ -209,6 +211,7 @@ HHXHHResetMercBucksCounter              = "Reset Mercenary Bucks HHlmet Options"
 HHXHHResetSecondFleshCounter            = "Reset Second Flesh Counter HHelmet Options";
 HHXHHResetSpeedCounter                  = "Reset Speed Counter HHelmet Options";
 HHXHHResetStimCounter                   = "Reset Stim Counter HHelmet Options";
+HHXHHResetStripCounter                  = "Reset Strip Time Counter HHelmet Options";
 HHXHHResetStunnedCounter                = "Reset Stunned Counter HHelmet Options";
 
 // Preset Menu Labels
@@ -269,6 +272,11 @@ HHXMercBucksCounterLabel                = "Mercenary Bucks";
 HHXSecondFleshCounterLabel              = "Second Flesh";
 HHXSpeedCounterLabel                    = "Speed";
 HHXStimCounterLabel                     = "Stims";
+HHXStripCounterLabel                    = "Strip Time";
 HHXStunnedCounterLabel                  = "Stunned";
 
 HHXCounterSeparator                     = ": ";
+
+// HUD Counter Units
+HHXTics                                 = "Tics";
+HHXSeconds                              = "Seconds";

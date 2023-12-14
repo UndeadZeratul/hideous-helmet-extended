@@ -47,6 +47,7 @@ version "4.10"
 #include "zscript/undeadzeratul/elements/counters/UZSecondFleshCounter.zs"
 #include "zscript/undeadzeratul/elements/counters/UZSpeedCounter.zs"
 #include "zscript/undeadzeratul/elements/counters/UZStimCounter.zs"
+#include "zscript/undeadzeratul/elements/counters/UZStripCounter.zs"
 #include "zscript/undeadzeratul/elements/counters/UZStunnedCounter.zs"
 
 #include "zscript/undeadzeratul/overrides/UZArmourOverride.zs"

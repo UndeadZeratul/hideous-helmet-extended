@@ -48,6 +48,11 @@ OptionValue "SpeedUnit" {
 	2,"Miles per Hour"
 }
 
+OptionValue "StripUnit" {
+	0,"Tics"
+	1,"Seconds"
+}
+
 OptionMenu "HHXOptions" {
 	Title "$HHXOptions"
 	
@@ -131,6 +136,7 @@ OptionMenu "HHXCounters" {
 	SubMenu "$HHXSecondFleshCounter",     "HHXSecondFleshCounter"
 	SubMenu "$HHXSpeedCounter",           "HHXSpeedCounter"
 	SubMenu "$HHXStimCounter",            "HHXStimCounter"
+	SubMenu "$HHXStripCounter",           "HHXStripCounter"
 	SubMenu "$HHXStunnedCounter",         "HHXStunnedCounter"
 	
 	StaticText ""
@@ -2048,6 +2054,61 @@ OptionMenu "HHXStimCounter" {
 	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetStimCounter", "uz_hhx_options_reset_nhm_stimCounter"
 	SafeCommand "$HHXHHResetStimCounter", "uz_hhx_options_reset_hlm_stimCounter"
+}
+
+OptionMenu "HHXStripCounter" {
+	Title "$HHXStripCounter"
+
+	Option "$HHXEnabled", "uz_hhx_stripCounter_enabled", "OnOff"
+	StaticText ""
+	Option "$HHXAlwaysVisible", "uz_hhx_stripCounter_alwaysVisible", "OnOff", "uz_hhx_stripCounter_enabled"
+	Option "$HHXCounterStyle", "uz_hhx_stripCounter_style", "CounterStyle", "uz_hhx_stripCounter_enabled"
+	TextField "$HHXFont", "uz_hhx_stripCounter_font", "uz_hhx_stripCounter_enabled"
+	Option "$HHXFontColor", "uz_hhx_stripCounter_fontColor", "FontColor", "uz_hhx_stripCounter_enabled"
+	Slider "$HHXFontScale", "uz_hhx_stripCounter_fontScale", .01, 4., .05, 2, "uz_hhx_stripCounter_enabled"
+	StaticText ""
+	Option "$HHXBarDirection", "uz_hhx_stripCounter_barDirection", "BarDirection", "uz_hhx_stripCounter_enabled"
+	StaticText ""
+	Slider "$HHXMaxValue", "uz_hhx_stripCounter_maxValue", 0, 1000, 1, 0, "uz_hhx_stripCounter_enabled"
+	StaticText ""
+	Option "$HHXUnits", "uz_hhx_stripCounter_units", "StripUnit", "uz_hhx_stripCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_stripCounter_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_stripCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_stripCounter_nhm_posX", -400, 400, 1, 0, "uz_hhx_stripCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_stripCounter_nhm_posY", -400, 400, 1, 0, "uz_hhx_stripCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_stripCounter_nhm_scale", .01, 4., .05, 2, "uz_hhx_stripCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_stripCounter_bg_nhm_ref", "uz_hhx_stripCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_stripCounter_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_stripCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_stripCounter_bg_nhm_posY", -400, 400, 1, 0, "uz_hhx_stripCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_stripCounter_bg_nhm_scale", .01, 4., .05, 2, "uz_hhx_stripCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_stripCounter_hlm_required", "OnOff", "uz_hhx_stripCounter_enabled"
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_stripCounter_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_stripCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_stripCounter_hlm_posX", -400, 400, 1, 0, "uz_hhx_stripCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_stripCounter_hlm_posY", -400, 400, 1, 0, "uz_hhx_stripCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_stripCounter_hlm_scale", .01, 4., .05, 2, "uz_hhx_stripCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_stripCounter_bg_hlm_ref", "uz_hhx_stripCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_stripCounter_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_stripCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_stripCounter_bg_hlm_posY", -400, 400, 1, 0, "uz_hhx_stripCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_stripCounter_bg_hlm_scale", .01, 4., .05, 2, "uz_hhx_stripCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetStripCounter", "uz_hhx_options_reset_nhm_stripCounter"
+	SafeCommand "$HHXHHResetStripCounter", "uz_hhx_options_reset_hlm_stripCounter"
 }
 
 OptionMenu "HHXStunnedCounter" {
