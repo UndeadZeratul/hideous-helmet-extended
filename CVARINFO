@@ -280,6 +280,7 @@ user int    uz_hhx_bloodLossCounter_fontColor     = 0;
 user float  uz_hhx_bloodLossCounter_fontScale     = 1.;
 user int    uz_hhx_bloodLossCounter_barDirection  = 2;
 user int    uz_hhx_bloodLossCounter_maxValue      = 100;
+user int    uz_hhx_bloodLossCounter_units         = 0;
 
 user int    uz_hhx_bloodLossCounter_nhm_hudLevel  = 1;
 user int    uz_hhx_bloodLossCounter_nhm_posX      = -215;

@@ -42,6 +42,12 @@ OptionValue "BarDirection" {
 	3,"Vertical (Reverse)"
 }
 
+OptionValue "BloodLossUnit" {
+	0,"Millilitres"
+	1,"Litres"
+	2,"Gallons"
+}
+
 OptionValue "SpeedUnit" {
 	0,"Metres per Second"
 	1,"Kilometres per Hour"
@@ -649,6 +655,8 @@ OptionMenu "HHXBloodLossCounter" {
 	Option "$HHXBarDirection", "uz_hhx_bloodLossCounter_barDirection", "BarDirection", "uz_hhx_bloodLossCounter_enabled"
 	StaticText ""
 	Slider "$HHXMaxValue", "uz_hhx_bloodLossCounter_maxValue", 0, 1000, 1, 0, "uz_hhx_bloodLossCounter_enabled"
+	StaticText ""
+	Option "$HHXUnits", "uz_hhx_bloodLossCounter_units", "BloodLossUnit", "uz_hhx_bloodLossCounter_enabled"
 	
 	StaticText ""
 	StaticText ""
