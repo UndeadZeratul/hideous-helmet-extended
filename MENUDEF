@@ -59,6 +59,15 @@ OptionValue "StripUnit" {
 	1,"Seconds"
 }
 
+OptionValue "LevelInfoUnit" {
+	0,"Amount"
+	1,"Amount / Total"
+	2,"Amount%"
+	3,"Remaining"
+	4,"Remaining / Total"
+	5,"Remaining%"
+}
+
 OptionMenu "HHXOptions" {
 	Title "$HHXOptions"
 	
@@ -138,6 +147,8 @@ OptionMenu "HHXCounters" {
 	SubMenu "$HHXHeartrateCounter",       "HHXHeartrateCounter"
 	SubMenu "$HHXHeatCounter",            "HHXHeatCounter"
 	SubMenu "$HHXIncapCounter",           "HHXIncapCounter"
+	SubMenu "$HHXLevelKillsCounter",      "HHXLevelKillsCounter"
+	SubMenu "$HHXLevelSecretsCounter",    "HHXLevelSecretsCounter"
 	SubMenu "$HHXMercBucksCounter",       "HHXMercBucksCounter"
 	SubMenu "$HHXSecondFleshCounter",     "HHXSecondFleshCounter"
 	SubMenu "$HHXSpeedCounter",           "HHXSpeedCounter"
@@ -1551,6 +1562,116 @@ OptionMenu "HHXKeys" {
 	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetKeys", "uz_hhx_options_reset_nhm_keys"
 	SafeCommand "$HHXHHResetKeys", "uz_hhx_options_reset_hlm_keys"
+}
+
+OptionMenu "HHXLevelKillsCounter" {
+	Title "$HHXLevelKillsCounter"
+
+	Option "$HHXEnabled", "uz_hhx_levelKillsCounter_enabled", "OnOff"
+	StaticText ""
+	Option "$HHXAlwaysVisible", "uz_hhx_levelKillsCounter_alwaysVisible", "OnOff", "uz_hhx_levelKillsCounter_enabled"
+	Option "$HHXCounterStyle", "uz_hhx_levelKillsCounter_style", "CounterStyle", "uz_hhx_levelKillsCounter_enabled"
+	TextField "$HHXFont", "uz_hhx_levelKillsCounter_font", "uz_hhx_levelKillsCounter_enabled"
+	Option "$HHXFontColor", "uz_hhx_levelKillsCounter_fontColor", "FontColor", "uz_hhx_levelKillsCounter_enabled"
+	Slider "$HHXFontScale", "uz_hhx_levelKillsCounter_fontScale", .01, 4., .05, 2, "uz_hhx_levelKillsCounter_enabled"
+	StaticText ""
+	Option "$HHXBarDirection", "uz_hhx_levelKillsCounter_barDirection", "BarDirection", "uz_hhx_levelKillsCounter_enabled"
+	StaticText ""
+	Slider "$HHXMaxValue", "uz_hhx_levelKillsCounter_maxValue", 0, 1000, 1, 0, "uz_hhx_levelKillsCounter_enabled"
+	StaticText ""
+	Option "$HHXUnits", "uz_hhx_levelKillsCounter_units", "LevelInfoUnit", "uz_hhx_levelKillsCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_levelKillsCounter_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_levelKillsCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_levelKillsCounter_nhm_posX", -400, 400, 1, 0, "uz_hhx_levelKillsCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_levelKillsCounter_nhm_posY", -400, 400, 1, 0, "uz_hhx_levelKillsCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_levelKillsCounter_nhm_scale", .01, 4., .05, 2, "uz_hhx_levelKillsCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_levelKillsCounter_bg_nhm_ref", "uz_hhx_levelKillsCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_levelKillsCounter_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_levelKillsCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_levelKillsCounter_bg_nhm_posY", -400, 400, 1, 0, "uz_hhx_levelKillsCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_levelKillsCounter_bg_nhm_scale", .01, 4., .05, 2, "uz_hhx_levelKillsCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_levelKillsCounter_hlm_required", "OnOff", "uz_hhx_levelKillsCounter_enabled"
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_levelKillsCounter_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_levelKillsCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_levelKillsCounter_hlm_posX", -400, 400, 1, 0, "uz_hhx_levelKillsCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_levelKillsCounter_hlm_posY", -400, 400, 1, 0, "uz_hhx_levelKillsCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_levelKillsCounter_hlm_scale", .01, 4., .05, 2, "uz_hhx_levelKillsCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_levelKillsCounter_bg_hlm_ref", "uz_hhx_levelKillsCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_levelKillsCounter_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_levelKillsCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_levelKillsCounter_bg_hlm_posY", -400, 400, 1, 0, "uz_hhx_levelKillsCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_levelKillsCounter_bg_hlm_scale", .01, 4., .05, 2, "uz_hhx_levelKillsCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetLevelKillsCounter", "uz_hhx_options_reset_nhm_levelKillsCounter"
+	SafeCommand "$HHXHHResetLevelKillsCounter", "uz_hhx_options_reset_hlm_levelKillsCounter"
+}
+
+OptionMenu "HHXLevelSecretsCounter" {
+	Title "$HHXLevelSecretsCounter"
+
+	Option "$HHXEnabled", "uz_hhx_levelSecretsCounter_enabled", "OnOff"
+	StaticText ""
+	Option "$HHXAlwaysVisible", "uz_hhx_levelSecretsCounter_alwaysVisible", "OnOff", "uz_hhx_levelSecretsCounter_enabled"
+	Option "$HHXCounterStyle", "uz_hhx_levelSecretsCounter_style", "CounterStyle", "uz_hhx_levelSecretsCounter_enabled"
+	TextField "$HHXFont", "uz_hhx_levelSecretsCounter_font", "uz_hhx_levelSecretsCounter_enabled"
+	Option "$HHXFontColor", "uz_hhx_levelSecretsCounter_fontColor", "FontColor", "uz_hhx_levelSecretsCounter_enabled"
+	Slider "$HHXFontScale", "uz_hhx_levelSecretsCounter_fontScale", .01, 4., .05, 2, "uz_hhx_levelSecretsCounter_enabled"
+	StaticText ""
+	Option "$HHXBarDirection", "uz_hhx_levelSecretsCounter_barDirection", "BarDirection", "uz_hhx_levelSecretsCounter_enabled"
+	StaticText ""
+	Slider "$HHXMaxValue", "uz_hhx_levelSecretsCounter_maxValue", 0, 1000, 1, 0, "uz_hhx_levelSecretsCounter_enabled"
+	StaticText ""
+	Option "$HHXUnits", "uz_hhx_levelSecretsCounter_units", "LevelInfoUnit", "uz_hhx_levelSecretsCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_levelSecretsCounter_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_levelSecretsCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_levelSecretsCounter_nhm_posX", -400, 400, 1, 0, "uz_hhx_levelSecretsCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_levelSecretsCounter_nhm_posY", -400, 400, 1, 0, "uz_hhx_levelSecretsCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_levelSecretsCounter_nhm_scale", .01, 4., .05, 2, "uz_hhx_levelSecretsCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_levelSecretsCounter_bg_nhm_ref", "uz_hhx_levelSecretsCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_levelSecretsCounter_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_levelSecretsCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_levelSecretsCounter_bg_nhm_posY", -400, 400, 1, 0, "uz_hhx_levelSecretsCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_levelSecretsCounter_bg_nhm_scale", .01, 4., .05, 2, "uz_hhx_levelSecretsCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_levelSecretsCounter_hlm_required", "OnOff", "uz_hhx_levelSecretsCounter_enabled"
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_levelSecretsCounter_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_levelSecretsCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_levelSecretsCounter_hlm_posX", -400, 400, 1, 0, "uz_hhx_levelSecretsCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_levelSecretsCounter_hlm_posY", -400, 400, 1, 0, "uz_hhx_levelSecretsCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_levelSecretsCounter_hlm_scale", .01, 4., .05, 2, "uz_hhx_levelSecretsCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_levelSecretsCounter_bg_hlm_ref", "uz_hhx_levelSecretsCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_levelSecretsCounter_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_levelSecretsCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_levelSecretsCounter_bg_hlm_posY", -400, 400, 1, 0, "uz_hhx_levelSecretsCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_levelSecretsCounter_bg_hlm_scale", .01, 4., .05, 2, "uz_hhx_levelSecretsCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetLevelSecretsCounter", "uz_hhx_options_reset_nhm_levelSecretsCounter"
+	SafeCommand "$HHXHHResetLevelSecretsCounter", "uz_hhx_options_reset_hlm_levelSecretsCounter"
 }
 
 OptionMenu "HHXMercBucksCounter" {
