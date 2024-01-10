@@ -1,17 +1,17 @@
 class UZStimCounter : BaseCounterHUDElement {
 
-	override void Init(HCStatusbar sb) {
-		ZLayer    = 2;
-		Namespace = "stimCounter";
+    override void Init(HCStatusbar sb) {
+        ZLayer    = 2;
+        Namespace = "stimCounter";
 
-		counterIcon   = "HLMSA0";
-        counterIconBG = "HLMSA1";
+        counterIcon   = "STMCNTR0";
+        counterIconBG = "STMCNTR1";
         counterLabel  = Stringtable.Localize("$HHXStimCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
-	}
+    }
 
-	override float GetCounterValue(HCStatusBar sb) {
-		return sb.hpl.CountInv('HDStim') / 4;
-	}
+    override float GetCounterValue(HCStatusBar sb) {
+        return sb.hpl.CountInv('HDStim') / 4;
+    }
 
     override string FormatValue(HCStatusBar sb, float counterValue, float maxValue) {
         return String.Format("%i%%", counterValue);
