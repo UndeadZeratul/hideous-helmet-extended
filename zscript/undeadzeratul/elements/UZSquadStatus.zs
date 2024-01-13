@@ -275,7 +275,7 @@ class UZSquadStatus : HUDElement {
                 while (_healthBars[extra].Size() > length) _healthBars[extra].Pop();
             }
 
-            if (plr.health <= 0) for (int i = 0; i < length; i++) _healthBars[extra][i] = 1;
+            if (plr.health <= 0) for (int i = 0; i < _healthBars[extra].Size(); i++) _healthBars[extra][i] = 1;
 
             for (int i = 0; i < _healthBars[extra].Size(); i++) {
                 int alf = (i&1) ? 128 : 255;
