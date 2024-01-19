@@ -65,6 +65,7 @@ HHXSpeedCounter                         = "Speed Counter Options";
 HHXStimCounter                          = "Stim Counter Options";
 HHXStripCounter                         = "Strip Time Counter Options";
 HHXStunnedCounter                       = "Stunned Counter Options";
+HHXTissueDamageCounter                  = "Tissue Damage Counter Options";
 
 
 // Batch Commands
@@ -164,6 +165,7 @@ HHXResetSpeedCounter                    = "Reset Speed Counter Options";
 HHXResetStimCounter                     = "Reset Stim Counter Options";
 HHXResetStripCounter                    = "Reset Strip Time Counter Options";
 HHXResetStunnedCounter                  = "Reset Stunned Counter Options";
+HHXResetTissueDamageCounter             = "Reset Tissue Damage Counter Options";
 
 // Reset Helmet Options Labels
 HHXHHResetAmmoCounters                  = "Reset Ammo Counters HHelmet Options";
@@ -219,6 +221,7 @@ HHXHHResetSpeedCounter                  = "Reset Speed Counter HHelmet Options";
 HHXHHResetStimCounter                   = "Reset Stim Counter HHelmet Options";
 HHXHHResetStripCounter                  = "Reset Strip Time Counter HHelmet Options";
 HHXHHResetStunnedCounter                = "Reset Stunned Counter HHelmet Options";
+HHXHHResetTissueDamageCounter           = "Reset Tissue Damage Counter HHelmet Options";
 
 // Preset Menu Labels
 HHXPresetDescription                    = "Here are some presets to get you started.";
@@ -282,6 +285,7 @@ HHXSpeedCounterLabel                    = "Speed";
 HHXStimCounterLabel                     = "Stims";
 HHXStripCounterLabel                    = "Strip Time";
 HHXStunnedCounterLabel                  = "Stunned";
+HHXTissueDamageCounterLabel             = "Tissue Damage";
 
 HHXCounterSeparator                     = ": ";
 

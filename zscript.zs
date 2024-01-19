@@ -51,6 +51,7 @@ version "4.10"
 #include "zscript/undeadzeratul/elements/counters/UZStimCounter.zs"
 #include "zscript/undeadzeratul/elements/counters/UZStripCounter.zs"
 #include "zscript/undeadzeratul/elements/counters/UZStunnedCounter.zs"
+#include "zscript/undeadzeratul/elements/counters/UZTissueDamageCounter.zs"
 
 #include "zscript/undeadzeratul/overrides/UZArmourOverride.zs"
 #include "zscript/undeadzeratul/overrides/UZBloodBagOverride.zs"

@@ -155,6 +155,7 @@ OptionMenu "HHXCounters" {
 	SubMenu "$HHXStimCounter",            "HHXStimCounter"
 	SubMenu "$HHXStripCounter",           "HHXStripCounter"
 	SubMenu "$HHXStunnedCounter",         "HHXStunnedCounter"
+	SubMenu "$HHXTissueDamageCounter",    "HHXTissueDamageCounter"
 	
 	StaticText ""
 	StaticText ""
@@ -2291,6 +2292,59 @@ OptionMenu "HHXStunnedCounter" {
 	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetStunnedCounter", "uz_hhx_options_reset_nhm_stunnedCounter"
 	SafeCommand "$HHXHHResetStunnedCounter", "uz_hhx_options_reset_hlm_stunnedCounter"
+}
+
+OptionMenu "HHXTissueDamageCounter" {
+	Title "$HHXTissueDamageCounter"
+
+	Option "$HHXEnabled", "uz_hhx_tissueDamageCounter_enabled", "OnOff"
+	StaticText ""
+	Option "$HHXAlwaysVisible", "uz_hhx_tissueDamageCounter_alwaysVisible", "OnOff", "uz_hhx_tissueDamageCounter_enabled"
+	Option "$HHXCounterStyle", "uz_hhx_tissueDamageCounter_style", "CounterStyle", "uz_hhx_tissueDamageCounter_enabled"
+	TextField "$HHXFont", "uz_hhx_tissueDamageCounter_font", "uz_hhx_tissueDamageCounter_enabled"
+	Option "$HHXFontColor", "uz_hhx_tissueDamageCounter_fontColor", "FontColor", "uz_hhx_tissueDamageCounter_enabled"
+	Slider "$HHXFontScale", "uz_hhx_tissueDamageCounter_fontScale", .01, 4., .05, 2, "uz_hhx_tissueDamageCounter_enabled"
+	StaticText ""
+	Option "$HHXBarDirection", "uz_hhx_tissueDamageCounter_barDirection", "BarDirection", "uz_hhx_tissueDamageCounter_enabled"
+	StaticText ""
+	Slider "$HHXMaxValue", "uz_hhx_tissueDamageCounter_maxValue", 0, 1000, 1, 0, "uz_hhx_tissueDamageCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_tissueDamageCounter_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_tissueDamageCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_tissueDamageCounter_nhm_posX", -400, 400, 1, 0, "uz_hhx_tissueDamageCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_tissueDamageCounter_nhm_posY", -400, 400, 1, 0, "uz_hhx_tissueDamageCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_tissueDamageCounter_nhm_scale", .01, 4., .05, 2, "uz_hhx_tissueDamageCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_tissueDamageCounter_bg_nhm_ref", "uz_hhx_tissueDamageCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_tissueDamageCounter_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_tissueDamageCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_tissueDamageCounter_bg_nhm_posY", -400, 400, 1, 0, "uz_hhx_tissueDamageCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_tissueDamageCounter_bg_nhm_scale", .01, 4., .05, 2, "uz_hhx_tissueDamageCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_tissueDamageCounter_hlm_required", "OnOff", "uz_hhx_tissueDamageCounter_enabled"
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_tissueDamageCounter_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_tissueDamageCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_tissueDamageCounter_hlm_posX", -400, 400, 1, 0, "uz_hhx_tissueDamageCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_tissueDamageCounter_hlm_posY", -400, 400, 1, 0, "uz_hhx_tissueDamageCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_tissueDamageCounter_hlm_scale", .01, 4., .05, 2, "uz_hhx_tissueDamageCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_tissueDamageCounter_bg_hlm_ref", "uz_hhx_tissueDamageCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_tissueDamageCounter_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_tissueDamageCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_tissueDamageCounter_bg_hlm_posY", -400, 400, 1, 0, "uz_hhx_tissueDamageCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_tissueDamageCounter_bg_hlm_scale", .01, 4., .05, 2, "uz_hhx_tissueDamageCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetTissueDamageCounter", "uz_hhx_options_reset_nhm_tissueDamageCounter"
+	SafeCommand "$HHXHHResetTissueDamageCounter", "uz_hhx_options_reset_hlm_tissueDamageCounter"
 }
 
 OptionMenu "HHXWeaponHelp" {
