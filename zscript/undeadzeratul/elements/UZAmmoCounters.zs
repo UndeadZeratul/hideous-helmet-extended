@@ -72,7 +72,8 @@ class UZAmmoCounters : HUDAmmoCounters {
 
         string newFont = _font.GetString();
         if (_prevFont != newFont) {
-            _hudFont = HUDFont.create(Font.FindFont(newFont));
+            let font = Font.FindFont(newFont);
+            _hudFont = HUDFont.create(font ? font : Font.FindFont('NewSmallFont'));
             _prevFont = newFont;
         }
     }
