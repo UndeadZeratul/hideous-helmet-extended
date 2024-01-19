@@ -12,4 +12,8 @@ class UZAggroCounter : BaseCounterHUDElement {
     override float GetCounterValue(HCStatusBar sb) {
         return sb.hpl.aggravatedDamage;
     }
+
+    override string FormatValue(HCStatusBar sb, float counterValue, float maxValue) {
+        return String.Format("%.0f", counterValue);
+    }
 }
