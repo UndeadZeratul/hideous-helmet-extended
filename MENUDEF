@@ -331,7 +331,7 @@ OptionMenu "HHXAmmoCounters" {
 	StaticText ""
 	TextField "$HHXFont", "uz_hhx_ammoCounters_font", "uz_hhx_ammoCounters_enabled"
 	Option "$HHXFontColor", "uz_hhx_ammoCounters_fontColor", "FontColor", "uz_hhx_ammoCounters_enabled"
-	Slider "$HHXFontScale", "uz_hhx_ammoCounters_fontScale", .01, 4., .05, 2, "uz_hhx_alcoholCounter_enabled"
+	Slider "$HHXFontScale", "uz_hhx_ammoCounters_fontScale", .01, 4., .05, 2, "uz_hhx_ammoCounters_enabled"
 	
 	StaticText ""
 	StaticText ""
