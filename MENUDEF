@@ -1224,6 +1224,10 @@ OptionMenu "HHXFullInventory" {
 	Title "$HHXFullInventory"
 
 	Option "$HHXEnabled", "uz_hhx_fullInventory_enabled", "OnOff"
+	StaticText ""
+	TextField "$HHXFont", "uz_hhx_fullInventory_font", "uz_hhx_fullInventory_enabled"
+	Option "$HHXFontColor", "uz_hhx_fullInventory_fontColor", "FontColor", "uz_hhx_fullInventory_enabled"
+	Slider "$HHXFontScale", "uz_hhx_fullInventory_fontScale", .01, 4., .05, 2, "uz_hhx_fullInventory_enabled"
 
 	StaticText ""
 	StaticText ""	
