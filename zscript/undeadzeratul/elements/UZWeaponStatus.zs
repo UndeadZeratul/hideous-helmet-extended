@@ -85,32 +85,11 @@ class UZWeaponStatus : HUDWeaponStatus {
                 sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_CENTER_BOTTOM,
                 scale: (scale * bgScale, scale * bgScale)
             );
-            
-            let hdw = hdweapon(sb.cplayer.readyweapon);
-            if(hdw) {
-                hdw.DrawHUDStuff(sb, hdw, sb.hpl);
-            } else {
-    
-                if(sb.cplayer.readyweapon.ammotype1) {
-                    sb.drawwepnum(
-                        sb.hpl.countinv(sb.cplayer.readyweapon.ammotype1),
-                        getdefaultbytype(sb.cplayer.readyweapon.ammotype1).maxamount,
-                        posX,
-                        posY
-                    );
-                }
 
-                if(sb.cplayer.readyweapon.ammotype2) {
-                    sb.drawwepnum(
-                        sb.hpl.countinv(sb.cplayer.readyweapon.ammotype2),
-                        getdefaultbytype(sb.cplayer.readyweapon.ammotype2).maxamount,
-                        posX,
-                        posY - 4
-                    );
-                }
+			//weapon readouts!
+			if(sb.cplayer.readyweapon && sb.cplayer.readyweapon != WP_NOCHANGE) {
+				DrawItemHUDAdditions(sb);
             }
-        } else if (!_hh_hidefiremode.GetBool()) {
-            _HHFunc.GetIntUI("GetWeaponFiremode", objectArg: sb);
         }
     }
 }
