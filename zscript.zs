@@ -2,6 +2,7 @@ version "4.11"
 
 // Base Classes
 #include "zscript/undeadzeratul/base/BaseCounter.zs"
+#include "zscript/undeadzeratul/base/BaseWeaponStatusOverride.zs"
 
 
 // HUD Elements
@@ -69,3 +70,11 @@ version "4.11"
 
 // Overlay Overrides
 #include "zscript/undeadzeratul/overrides/overlays/UZRadsuitOverride.zs"
+
+
+// Weapon Overrides
+#include "zscript/undeadzeratul/overrides/weapons/vanilla/UZPistolOverride.zs"
+#include "zscript/undeadzeratul/overrides/weapons/vanilla/UZSmgOverride.zs"
+#include "zscript/undeadzeratul/overrides/weapons/vanilla/UZZM66Override.zs"
+
+#include "zscript/undeadzeratul/overrides/weapons/icarus/UZPD42Override.zs"
