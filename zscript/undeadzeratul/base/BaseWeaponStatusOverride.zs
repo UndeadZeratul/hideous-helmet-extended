@@ -73,7 +73,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
     }
 
     override bool CheckItem(Inventory item) {
-        return !_enabled || _enabled.GetBool() && item.GetClassName() == weaponName;
+        return (!_enabled || _enabled.GetBool()) && item.GetClassName() == weaponName;
     }
 
     virtual void initCvars(HCStatusBar sb) {
