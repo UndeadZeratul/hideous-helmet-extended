@@ -9,11 +9,10 @@ class UZBloodBagOverride : HCItemOverride {
 
     // Ignore Bloodbag to handle in UZBloodBagCounter
     override bool CheckItem(Inventory item) {
-        return (!_enabled || _enabled.GetBool())
-            && item.GetClassName() == "BloodBagWorn";
+        return (!_enabled || _enabled.GetBool()) && item.GetClassName() == "BloodBagWorn";
     }
 
-    override void DrawHUDStuff(HCStatusbar sb, Inventory item, int hdFlags, int gzFlags) {
-        if (!_enabled) _enabled = CVar.GetCVar("uz_hhx_bloodBag_enabled", sb.CPlayer);
+    override void Tick(HCStatusbar sb) {
+        if (!_enabled) _enabled = CVar.GetCVar("uz_hhx_bloodBagCounter_enabled", sb.CPlayer);
     }
 }
