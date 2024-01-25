@@ -17,8 +17,6 @@ class UZSmgOverride : BaseWeaponStatusOverride {
         fireModes[0] = 'STSEMAUT';
         fireModes[1] = 'STBURAUT';
         fireModes[2] = 'STFULAUT';
-
-        style = CHAMBER_AND_MAG;
     }
 
     override int GetMagRounds(HDWeapon wpn) {
@@ -33,8 +31,16 @@ class UZSmgOverride : BaseWeaponStatusOverride {
         return (3.0, 3.0);
     }
 
+    override bool ShouldDrawMagazine(HDWeapon wpn, HDMagAmmo mag) {
+        return true;
+    }
+
     override bool ShouldDrawFireMode(HDWeapon wpn) {
         return wpn.weaponStatus[5] != 1;
+    }
+
+    override bool ShouldDrawMagRounds(HDWeapon wpn, HDMagAmmo mag) {
+        return GetMagRounds(wpn) > 0;
     }
 
     override bool ShouldDrawChamberedRound(HDWeapon wpn) {
