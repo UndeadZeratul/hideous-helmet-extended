@@ -19,8 +19,6 @@ class UZZM66Override : BaseWeaponStatusOverride {
         fireModes[0] = 'STSEMAUT';
         fireModes[1] = 'STFULAUT';
         fireModes[2] = 'STBURAUT';
-
-        style = CHAMBER_AND_MAG;
     }
 
     override int GetMagRounds(HDWeapon wpn) {
@@ -48,7 +46,7 @@ class UZZM66Override : BaseWeaponStatusOverride {
     }
 
     override Vector2 GetAmmoOffsets() {
-        return (-16, -1);
+        return (-46, 2);
     }
 
     override Vector2 GetMagazineScale(HDWeapon wpn, HDMagAmmo mag) {
@@ -67,6 +65,10 @@ class UZZM66Override : BaseWeaponStatusOverride {
         return (-4, -8);
     }
 
+    override bool ShouldDrawMagazine(HDWeapon wpn, HDMagAmmo mag) {
+        return true;
+    }
+
     override bool ShouldDrawFullMagazine(int value, int maxValue) {
         return value > magCapacity;
     }
@@ -77,6 +79,14 @@ class UZZM66Override : BaseWeaponStatusOverride {
 
     override bool ShouldDrawFireMode(HDWeapon wpn) {
         return !(wpn.weaponStatus[0] & 32);
+    }
+
+    override bool ShouldDrawMagRounds(HDWeapon wpn, HDMagAmmo mag) {
+        return GetMagRounds(wpn) > 0;
+    }
+
+    override bool ShouldDrawAmmoCount(HDWeapon wpn) {
+        return true;
     }
 
     override bool ShouldDrawChamberedRound(HDWeapon wpn) {
@@ -92,7 +102,7 @@ class UZZM66Override : BaseWeaponStatusOverride {
     }
 
     override bool ShouldDrawWeaponZoom(HDWeapon wpn) {
-        return wpn.weaponStatus[3];
+        return !ShouldDrawRangeFinder(wpn) && wpn.weaponStatus[3];
     }
 
     override void DrawWeaponStatus(HCStatusBar sb, HDWeapon wpn, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
@@ -100,33 +110,9 @@ class UZZM66Override : BaseWeaponStatusOverride {
                 
         let mag = GetMagazine(sb.hpl.FindInventory(magName));
 
-        if (ShouldDrawAmmoCount(wpn)) {
-            let offs = GetAmmoCountOffsets();
-            DrawAmmoCount(sb, wpn, GetAmmoCount(wpn, mag), posX + (offs.x * scale), posY + (offs.y * scale), scale, hudFont, fontColor, fontScale);
-        }
-
         if (ShouldDrawChamberedGrenade(wpn)) {
             let offs = GetChamberedGrenadeOffsets();
             DrawChamberedGrenade(sb, wpn, posX + (offs.x * scale), posY + (offs.y * scale), scale);
-        }
-
-        if (ShouldDrawRangeFinder(wpn)) {
-            let offs = GetRangeFinderOffsets();
-            DrawRangeFinder(sb, wpn, posX + (offs.x * scale), posY + (offs.y * scale), scale, hudFont, fontColor, fontScale);
-        } else {
-            let offs = GetWeaponZoomOffsets();
-            DrawWeaponZoom(sb, wpn, posX + (offs.x * scale), posY + (offs.y * scale), scale, hudFont, fontColor, fontScale);
-        }
-    }
-
-    override void DrawMagazine(HCStatusBar sb, HDWeapon wpn, HDMagAmmo mag, int value, int maxValue, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
-        super.DrawMagazine(sb, wpn, mag, value, maxValue, posX, posY, scale, hudFont, fontColor, fontScale);
-
-        let ammo = GetAmmo(sb.hpl.FindInventory(ammoName));
-
-        if (ShouldDrawAmmo(wpn, ammo)) {
-            let offs = GetAmmoOffsets();
-            DrawAmmo(sb, wpn, ammo, posX + (offs.x * scale), posY + (offs.y * scale), scale, hudFont, fontColor, fontScale);
         }
     }
 
