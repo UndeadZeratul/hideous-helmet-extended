@@ -1,7 +1,10 @@
 version "4.10"
 
+// Base Classes
 #include "zscript/undeadzeratul/base/BaseCounter.zs"
 
+
+// HUD Elements
 #include "zscript/undeadzeratul/elements/UZAmmoCounters.zs"
 #include "zscript/undeadzeratul/elements/UZArmour.zs"
 #include "zscript/undeadzeratul/elements/UZBackground.zs"
@@ -23,9 +26,11 @@ version "4.10"
 #include "zscript/undeadzeratul/elements/UZWeaponHelp.zs"
 #include "zscript/undeadzeratul/elements/UZWeaponSprite.zs"
 #include "zscript/undeadzeratul/elements/UZWeaponStash.zs"
-// #include "zscript/undeadzeratul/elements/UZWeaponStatus.zs"
+#include "zscript/undeadzeratul/elements/UZWeaponStatus.zs"
 #include "zscript/undeadzeratul/elements/UZWoundCounter.zs"
 
+
+// Stat Counters
 #include "zscript/undeadzeratul/elements/counters/UZAggroCounter.zs"
 #include "zscript/undeadzeratul/elements/counters/UZAirCounter.zs"
 #include "zscript/undeadzeratul/elements/counters/UZAlcoholCounter.zs"
@@ -53,6 +58,11 @@ version "4.10"
 #include "zscript/undeadzeratul/elements/counters/UZStunnedCounter.zs"
 #include "zscript/undeadzeratul/elements/counters/UZTissueDamageCounter.zs"
 
-#include "zscript/undeadzeratul/overrides/UZArmourOverride.zs"
-#include "zscript/undeadzeratul/overrides/UZBloodBagOverride.zs"
-#include "zscript/undeadzeratul/overrides/UZRadsuitOverride.zs"
+
+// Item Overrides
+#include "zscript/undeadzeratul/overrides/items/UZArmourOverride.zs"
+#include "zscript/undeadzeratul/overrides/items/UZBloodBagOverride.zs"
+
+
+// Overlay Overrides
+#include "zscript/undeadzeratul/overrides/overlays/UZRadsuitOverride.zs"
