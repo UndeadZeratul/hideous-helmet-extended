@@ -1,12 +1,3 @@
-enum HHX_WEAPON_STATUS_STYLE {
-    CHAMBER_AND_MAG,
-    CHAMBER_MAG_AND_SADDLES,
-    GL_RANGE_FINDER,
-    CELL_WEAPON,
-    BOLT_ACTION,
-    CUSTOM
-}
-
 class BaseWeaponStatusOverride : HCItemOverride abstract {
 
     protected name weaponName;
@@ -23,8 +14,6 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
     protected string ammoIcon;
 
     protected string fireModes[7];
-
-    protected int style;
 
     protected transient TextureID magFullTex;
     protected transient TextureID magEmptyTex;
@@ -212,12 +201,12 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         return 0;
     }
 
-    virtual int GetAmmoCount(HDWeapon wpn, HDMagAmmo mag) {
-        return GetMagRounds(wpn) + ShouldDrawChamberedRound(wpn);
-    }
-
     virtual int GetMagCapacity(HDWeapon wpn, HDMagAmmo mag) {
         return mag ? int(mag.maxPerUnit) : magCapacity;
+    }
+
+    virtual int GetAmmoCount(HDWeapon wpn, HDMagAmmo mag) {
+        return GetMagRounds(wpn) + ShouldDrawChamberedRound(wpn);
     }
 
     virtual int GetFireMode(HDWeapon wpn) {
@@ -274,7 +263,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
      *************************************************************/
 
     virtual bool ShouldDrawMagazine(HDWeapon wpn, HDMagAmmo mag) {
-        return true;
+        return false;
     }
 
     virtual bool ShouldDrawFullMagazine(int value, int maxValue) {
@@ -290,31 +279,31 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
     }
 
     virtual bool ShouldDrawAmmo(HDWeapon wpn, HDAmmo ammo) {
-        return true;
+        return false;
     }
 
     virtual bool ShouldDrawFireMode(HDWeapon wpn) {
-        return true;
+        return false;
     }
 
     virtual bool ShouldDrawMagRounds(HDWeapon wpn, HDMagAmmo mag) {
-        return true;
+        return false;
     }
 
     virtual bool ShouldDrawAmmoCount(HDWeapon wpn) {
-        return true;
+        return false;
     }
 
     virtual bool ShouldDrawChamberedRound(HDWeapon wpn) {
-        return true;
+        return false;
     }
 
     virtual bool ShouldDrawRangeFinder(HDWeapon wpn) {
-        return true;
+        return false;
     }
 
     virtual bool ShouldDrawWeaponZoom(HDWeapon wpn) {
-        return true;
+        return false;
     }
 
 
@@ -323,49 +312,48 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
      ****************************************************/
 
     virtual void DrawWeaponStatus(HCStatusBar sb, HDWeapon wpn, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
-        switch (GetStyle(wpn)) {
-            case CHAMBER_AND_MAG:
-                
-                let mag = GetMagazine(sb.hpl.FindInventory(magName));
-                
-                if (ShouldDrawMagazine(wpn, mag)) {
-                    let offs = GetMagazineOffsets();
-                    DrawMagazine(sb, wpn, mag, sb.GetNextLoadMag(mag), GetMagCapacity(wpn, mag), posX + (offs.x * scale), posY + (offs.y * scale), scale, hudFont, fontColor, fontScale);
-                }
 
-                if (ShouldDrawFireMode(wpn)) {
-                    let offs = GetFireModeOffsets();
-                    DrawFireMode(sb, wpn, posX + (offs.x * scale), posY + (offs.y * scale), scale);
-                }
+        let mag  = GetMagazine(sb.hpl.FindInventory(magName));
+        let ammo = GetAmmo(sb.hpl.FindInventory(ammoName));
+        
+        if (ShouldDrawMagazine(wpn, mag)) {
+            let offs = GetMagazineOffsets();
+            DrawMagazine(sb, wpn, mag, sb.GetNextLoadMag(mag), GetMagCapacity(wpn, mag), posX + (offs.x * scale), posY + (offs.y * scale), scale, hudFont, fontColor, fontScale);
+        }
+        
+        if (ShouldDrawAmmo(wpn, ammo)) {
+            let offs = GetAmmoOffsets();
+            DrawAmmo(sb, wpn, ammo, posX + (offs.x * scale), posY + (offs.y * scale), scale, hudFont, fontColor, fontScale);
+        }
 
-                if (ShouldDrawMagRounds(wpn, mag)) {
-                    let offs = GetMagazineRoundsOffsets();
-                    DrawMagazineRounds(sb, wpn, GetMagRounds(wpn), GetMagCapacity(wpn, mag), posX + (offs.x * scale), posY + (offs.y * scale), scale, hudFont, fontColor, fontScale);
-                }
+        if (ShouldDrawAmmoCount(wpn)) {
+            let offs = GetAmmoCountOffsets();
+            DrawAmmoCount(sb, wpn, GetAmmoCount(wpn, mag), posX + (offs.x * scale), posY + (offs.y * scale), scale, hudFont, fontColor, fontScale);
+        }
 
-                if (ShouldDrawChamberedRound(wpn)) {
-                    let offs = GetChamberedRoundOffsets();
-                    DrawChamberedRound(sb, wpn, posX + (offs.x * scale), posY + (offs.y * scale), scale);
-                }
+        if (ShouldDrawFireMode(wpn)) {
+            let offs = GetFireModeOffsets();
+            DrawFireMode(sb, wpn, posX + (offs.x * scale), posY + (offs.y * scale), scale);
+        }
 
-                break;
-            case CHAMBER_MAG_AND_SADDLES:
-                break;
-            case GL_RANGE_FINDER:
+        if (ShouldDrawMagRounds(wpn, mag)) {
+            let offs = GetMagazineRoundsOffsets();
+            DrawMagazineRounds(sb, wpn, GetMagRounds(wpn), GetMagCapacity(wpn, mag), posX + (offs.x * scale), posY + (offs.y * scale), scale, hudFont, fontColor, fontScale);
+        }
 
-                if (ShouldDrawRangeFinder(wpn)) {
-                    let offs = GetRangeFinderOffsets();
-                    DrawRangeFinder(sb, wpn, posX + (offs.x * scale), posY + (offs.y * scale), scale, hudFont, fontColor, fontScale);
-                }
-    
-                break;
-            case CELL_WEAPON:
-                break;
-            case BOLT_ACTION:
-                break;
-            case CUSTOM:
-            default:
-                break;
+        if (ShouldDrawChamberedRound(wpn)) {
+            let offs = GetChamberedRoundOffsets();
+            DrawChamberedRound(sb, wpn, posX + (offs.x * scale), posY + (offs.y * scale), scale);
+        }
+
+        if (ShouldDrawRangeFinder(wpn)) {
+            let offs = GetRangeFinderOffsets();
+            DrawRangeFinder(sb, wpn, posX + (offs.x * scale), posY + (offs.y * scale), scale, hudFont, fontColor, fontScale);
+        }
+
+        if (ShouldDrawWeaponZoom(wpn)) {
+            let offs = GetWeaponZoomOffsets();
+            DrawWeaponZoom(sb, wpn, posX + (offs.x * scale), posY + (offs.y * scale), scale, hudFont, fontColor, fontScale);
         }
     }
 

@@ -19,8 +19,6 @@ class UZPD42Override : BaseWeaponStatusOverride {
         fireModes[0] = 'STSEMAUT';
         fireModes[1] = 'STBURAUT';
         fireModes[2] = 'STFULAUT';
-
-        style = CHAMBER_AND_MAG;
     }
 
     override int GetMagRounds(HDWeapon wpn) {
@@ -31,8 +29,28 @@ class UZPD42Override : BaseWeaponStatusOverride {
         return wpn.weaponStatus[3];
     }
 
+    override Vector2 GetAmmoOffsets() {
+        return (-43, 2);
+    }
+
     virtual Vector2 GetChamberedSlugOffsets() {
         return (-4, -9);
+    }
+
+    override bool ShouldDrawMagazine(HDWeapon wpn, HDMagAmmo mag) {
+        return true;
+    }
+
+    override bool ShouldDrawAmmo(HDWeapon wpn, HDAmmo ammo) {
+        return wpn.weaponStatus[0] & 4;
+    }
+
+    override bool ShouldDrawFireMode(HDWeapon wpn) {
+        return true;
+    }
+
+    override bool ShouldDrawMagRounds(HDWeapon wpn, HDMagAmmo mag) {
+        return GetMagRounds(wpn) > 0;
     }
 
     override bool ShouldDrawChamberedRound(HDWeapon wpn) {
@@ -49,28 +67,6 @@ class UZPD42Override : BaseWeaponStatusOverride {
         if (ShouldDrawChamberedSlug(wpn)) {
             let offs = GetChamberedSlugOffsets();
             DrawChamberedSlug(sb, wpn, posX + (offs.x * scale), posY + (offs.y * scale), scale);
-        }
-    }
-
-    override void DrawMagazine(HCStatusBar sb, HDWeapon wpn, HDMagAmmo mag, int value, int maxValue, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
-        super.DrawMagazine(sb, wpn, mag, value, maxValue, posX, posY, scale, hudFont, fontColor, fontScale);
-        
-        if (wpn.weaponStatus[0] & 4) {
-            sb.DrawImage(
-                ammoIcon,
-                (posX - (13 * scale), posY - (5 * scale)),
-                sb.DI_SCREEN_CENTER_BOTTOM,
-                scale: (ammoScale.x * scale, ammoScale.y * scale)
-            );
-
-            sb.DrawString(
-                hudFont,
-                sb.FormatNumber(sb.hpl.CountInv(ammoName)),
-                (posX - (12 * scale), posY - (5 * scale)),
-                sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT,
-                fontColor,
-                scale: (fontScale * scale, fontScale * scale)
-            );
         }
     }
 
