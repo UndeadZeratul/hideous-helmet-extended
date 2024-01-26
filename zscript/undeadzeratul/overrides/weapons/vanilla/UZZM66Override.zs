@@ -108,15 +108,25 @@ class UZZM66Override : BaseWeaponStatusOverride {
     override void DrawWeaponStatus(HCStatusBar sb, HDWeapon wpn, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
         super.DrawWeaponStatus(sb, wpn, posX, posY, scale, hudFont, fontColor, fontScale);
                 
-        let mag = GetMagazine(sb.hpl.FindInventory(magName));
-
         if (ShouldDrawChamberedGrenade(wpn)) {
             let offs = GetChamberedGrenadeOffsets();
-            DrawChamberedGrenade(sb, wpn, posX + (offs.x * scale), posY + (offs.y * scale), scale);
+            DrawChamberedGrenade(
+                sb, wpn,
+                Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
+                posX + (offs.x * scale),
+                posY + (offs.y * scale),
+                scale,
+                sb.DI_SCREEN_CENTER_BOTTOM
+            );
         }
     }
 
-    virtual void DrawChamberedGrenade(HCStatusBar sb, HDWeapon wpn, int posX, int posY, float scale) {
-        sb.DrawRect(posX, posY, 4 * scale, 2.6 * scale);
+    virtual void DrawChamberedGrenade(HCStatusBar sb, HDWeapon wpn, Color color, int posX, int posY, float scale, int flags) {
+        sb.Fill(
+            color,
+            posX, posY,
+            4 * scale, 2.6 * scale,
+            flags
+        );
     }
 }

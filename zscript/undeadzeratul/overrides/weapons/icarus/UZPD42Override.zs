@@ -70,17 +70,36 @@ class UZPD42Override : BaseWeaponStatusOverride {
 
         if (ShouldDrawChamberedSlug(wpn)) {
             let offs = GetChamberedSlugOffsets();
-            DrawChamberedSlug(sb, wpn, 1, posX + (offs.x * scale), posY + (offs.y * scale), scale);
+            DrawChamberedSlug(
+                sb, wpn,
+                0, Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
+                posX + (offs.x * scale),
+                posY + (offs.y * scale),
+                scale,
+                sb.DI_SCREEN_CENTER_BOTTOM
+            );
         }
     }
 
-    virtual void DrawChamberedSlug(HCStatusBar sb, HDWeapon wpn, int style, int posX, int posY, float scale) {
+    virtual void DrawChamberedSlug(HCStatusBar sb, HDWeapon wpn, int style, Color color, int posX, int posY, float scale, int flags) {
         switch (style) {
             case 0:
-                sb.DrawRect(posX, posY, 4 * scale, 2.6 * scale);
+                sb.Fill(
+                    color,
+                    posX, posY,
+                    4 * scale, 2.6 * scale,
+                    flags
+                );
                 break;
             case 1:
-                DrawVectorShell(sb, wpn, 2, posX + (2 * scale), posY, scale);
+                DrawHorzVectorShell(
+                    sb, wpn,
+                    2, color,
+                    posX + (2 * scale),
+                    posY,
+                    scale,
+                    flags
+                );
                 break;
         }
     }
