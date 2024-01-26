@@ -185,10 +185,6 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
      * Getters for various pieces of Weapon Status
      **********************************************/
 
-    virtual int GetStyle(HDWeapon wpn) {
-        return style;
-    }
-
     virtual HDMagAmmo GetMagazine(Inventory item) {
         return HDMagAmmo(item);
     }
@@ -205,7 +201,15 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         return mag ? int(mag.maxPerUnit) : magCapacity;
     }
 
-    virtual int GetAmmoCount(HDWeapon wpn, HDMagAmmo mag) {
+    virtual int GetSideSaddleRounds(HDWeapon wpn) {
+        return 0;
+    }
+
+    virtual int GetSideSaddleCapacity(HDWeapon wpn) {
+        return 0;
+    }
+
+    virtual int GetAmmoCounter(HDWeapon wpn, HDMagAmmo mag) {
         return GetMagRounds(wpn) + ShouldDrawChamberedRound(wpn);
     }
 
@@ -221,8 +225,16 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         return (-30, 3);
     }
 
+    virtual Vector2 GetMagazineCountOffsets() {
+        return (3, -5);
+    }
+
     virtual Vector2 GetAmmoOffsets() {
         return (-30, 3);
+    }
+
+    virtual Vector2 GetAmmoCountOffsets() {
+        return (6, -4);
     }
 
     virtual Vector2 GetFireModeOffsets() {
@@ -233,7 +245,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         return (0, 0);
     }
 
-    virtual Vector2 GetAmmoCountOffsets() {
+    virtual Vector2 GetAmmoCounterOffsets() {
         return (0, -16);
     }
 
@@ -246,6 +258,10 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
     }
 
     virtual Vector2 GetWeaponZoomOffsets() {
+        return (-14, -16);
+    }
+
+    virtual Vector2 GetSideSaddleOffsets() {
         return (-14, -16);
     }
 
@@ -290,7 +306,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         return false;
     }
 
-    virtual bool ShouldDrawAmmoCount(HDWeapon wpn) {
+    virtual bool ShouldDrawAmmoCounter(HDWeapon wpn) {
         return false;
     }
 
@@ -303,6 +319,10 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
     }
 
     virtual bool ShouldDrawWeaponZoom(HDWeapon wpn) {
+        return false;
+    }
+
+    virtual bool ShouldDrawSideSaddles(HDWeapon wpn) {
         return false;
     }
 
@@ -326,9 +346,9 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
             DrawAmmo(sb, wpn, ammo, posX + (offs.x * scale), posY + (offs.y * scale), scale, hudFont, fontColor, fontScale);
         }
 
-        if (ShouldDrawAmmoCount(wpn)) {
-            let offs = GetAmmoCountOffsets();
-            DrawAmmoCount(sb, wpn, GetAmmoCount(wpn, mag), posX + (offs.x * scale), posY + (offs.y * scale), scale, hudFont, fontColor, fontScale);
+        if (ShouldDrawAmmoCounter(wpn)) {
+            let offs = GetAmmoCounterOffsets();
+            DrawAmmoCounter(sb, wpn, GetAmmoCounter(wpn, mag), posX + (offs.x * scale), posY + (offs.y * scale), scale, hudFont, fontColor, fontScale);
         }
 
         if (ShouldDrawFireMode(wpn)) {
@@ -354,6 +374,11 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         if (ShouldDrawWeaponZoom(wpn)) {
             let offs = GetWeaponZoomOffsets();
             DrawWeaponZoom(sb, wpn, posX + (offs.x * scale), posY + (offs.y * scale), scale, hudFont, fontColor, fontScale);
+        }
+
+        if (ShouldDrawSideSaddles(wpn)) {
+            let offs = GetSideSaddleOffsets();
+            DrawSideSaddles(sb, wpn, posX + (offs.x * scale), posY + (offs.y * scale), scale, hudFont, fontColor, fontScale);
         }
     }
 
@@ -388,10 +413,11 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
             );
         }
 
+        let offs = GetMagazineCountOffsets();
         sb.DrawString(
             hudFont,
             sb.FormatNumber(sb.hpl.CountInv(mag ? mag.GetClassName() : magName)),
-            (posX + (3 * scale), posY - (5 * scale)),
+            (posX + (offs.x * scale), posY + (offs.y * scale)),
             sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT,
             fontColor,
             scale: (fontScale * scale, fontScale * scale)
@@ -408,10 +434,11 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
             scale: (iconScale.x * scale, iconScale.y * scale)
         );
 
+        let offs = GetAmmoCountOffsets();
         sb.DrawString(
             hudFont,
             sb.FormatNumber(sb.hpl.CountInv(ammo ? ammo.GetClassName() : ammoName)),
-            (posX + (6 * scale), posY - (4 * scale)),
+            (posX + (offs.x * scale), posY + (offs.y * scale)),
             sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT,
             fontColor,
             scale: (fontScale * scale, fontScale * scale)
@@ -463,7 +490,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         }
     }
 
-    virtual void DrawAmmoCount(HCStatusBar sb, HDWeapon wpn, int value, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
+    virtual void DrawAmmoCounter(HCStatusBar sb, HDWeapon wpn, int value, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
         sb.DrawString(
             hudFont,
             sb.FormatNumber(value),
@@ -518,5 +545,84 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
             Font.CR_DARKGRAY,
             scale: (fontScale * scale, fontScale * scale)
         );
+    }
+
+    virtual void DrawSideSaddles(HCStatusBar sb, HDWeapon wpn, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
+        for (int i = GetSideSaddleRounds(wpn); i > 0; i--) {
+            sb.DrawRect(
+                posX - (i * 2 * scale), posY,
+                scale, 3 * scale
+            );
+        }
+    }
+
+    virtual void DrawVectorShell(HCStatusBar sb, HDWeapon wpn, int style, int posX, int posY, float scale) {
+
+        // Empty Casing
+        sb.drawrect(
+            posX, posY,
+            2 * scale, 3 * scale
+        );
+
+        switch (style) {
+            case 0:
+
+                // Vanilla-style Shell
+                sb.drawrect(
+                    posX - (6 * scale), posY,
+                    5 * scale, 3 * scale
+                );
+                break;
+            case 1:
+
+                // Peppergrinder-style Shell
+				sb.drawrect(
+                    posX - (6 * scale), posY,
+                    scale, scale
+                );
+                sb.drawrect(
+                    posX - (4 * scale), posY,
+                    scale, scale
+                );
+                sb.drawrect(
+                    posX - (2 * scale), posY,
+                    scale, scale
+                );
+				
+                sb.drawrect(
+                    posX - (5 * scale), posY + scale,
+                    scale, scale
+                );
+                sb.drawrect(
+                    posX - (3 * scale), posY + scale,
+                    scale, scale
+                );
+				
+                sb.drawrect(
+                    posX - (6 * scale), posY + (2 * scale),
+                    scale, scale
+                );
+                sb.drawrect(
+                    posX - (4 * scale), posY + (2 * scale),
+                    scale, scale
+                );
+                sb.drawrect(
+                    posX - (2 * scale), posY + (2 * scale),
+                    scale, scale
+                );
+                break;
+            case 2:
+
+                // Peppergrinder-style Slug
+				sb.drawrect(
+                    posX - (5 * scale), posY,
+                    4 * scale, 3 * scale
+                );
+				sb.drawrect(
+                    posX - (6 * scale), posY + (1 * scale),
+                    scale, scale
+                );
+                break;
+        }
     }
 }
