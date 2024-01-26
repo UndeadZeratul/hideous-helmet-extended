@@ -25,7 +25,7 @@ class UZZM66Override : BaseWeaponStatusOverride {
         return wpn.weaponStatus[1];
     }
 
-    override int GetAmmoCount(HDWeapon wpn, HDMagAmmo mag) {
+    override int GetAmmoCounter(HDWeapon wpn, HDMagAmmo mag) {
 
         // Coerce the magazine value into the size of the 4mm Mag
         int count = clamp(GetMagRounds(wpn) % 100, 0, magCapacity);
@@ -85,7 +85,7 @@ class UZZM66Override : BaseWeaponStatusOverride {
         return GetMagRounds(wpn) > 0;
     }
 
-    override bool ShouldDrawAmmoCount(HDWeapon wpn) {
+    override bool ShouldDrawAmmoCounter(HDWeapon wpn) {
         return true;
     }
 
