@@ -30,7 +30,11 @@ class UZPD42Override : BaseWeaponStatusOverride {
     }
 
     override Vector2 GetAmmoOffsets() {
-        return (-43, 2);
+        return (-43, -4);
+    }
+
+    override Vector2 GetAmmoCountOffsets() {
+        return (1, 2);
     }
 
     virtual Vector2 GetChamberedSlugOffsets() {
@@ -66,11 +70,18 @@ class UZPD42Override : BaseWeaponStatusOverride {
 
         if (ShouldDrawChamberedSlug(wpn)) {
             let offs = GetChamberedSlugOffsets();
-            DrawChamberedSlug(sb, wpn, posX + (offs.x * scale), posY + (offs.y * scale), scale);
+            DrawChamberedSlug(sb, wpn, 1, posX + (offs.x * scale), posY + (offs.y * scale), scale);
         }
     }
 
-    virtual void DrawChamberedSlug(HCStatusBar sb, HDWeapon wpn, int posX, int posY, float scale) {
-        sb.DrawRect(posX, posY, 4 * scale, 2.6 * scale);
+    virtual void DrawChamberedSlug(HCStatusBar sb, HDWeapon wpn, int style, int posX, int posY, float scale) {
+        switch (style) {
+            case 0:
+                sb.DrawRect(posX, posY, 4 * scale, 2.6 * scale);
+                break;
+            case 1:
+                DrawVectorShell(sb, wpn, 2, posX + (2 * scale), posY, scale);
+                break;
+        }
     }
 }
