@@ -338,65 +338,151 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         
         if (ShouldDrawMagazine(wpn, mag)) {
             let offs = GetMagazineOffsets();
-            DrawMagazine(sb, wpn, mag, sb.GetNextLoadMag(mag), GetMagCapacity(wpn, mag), posX + (offs.x * scale), posY + (offs.y * scale), scale, hudFont, fontColor, fontScale);
+            DrawMagazine(
+                sb, wpn, mag,
+                sb.GetNextLoadMag(mag),
+                GetMagCapacity(wpn, mag),
+                posX + (offs.x * scale),
+                posY + (offs.y * scale),
+                scale,
+                hudFont,
+                fontColor,
+                fontScale,
+                sb.DI_SCREEN_CENTER_BOTTOM,
+                sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT
+            );
         }
         
         if (ShouldDrawAmmo(wpn, ammo)) {
             let offs = GetAmmoOffsets();
-            DrawAmmo(sb, wpn, ammo, posX + (offs.x * scale), posY + (offs.y * scale), scale, hudFont, fontColor, fontScale);
+            DrawAmmo(
+                sb, wpn, ammo,
+                posX + (offs.x * scale),
+                posY + (offs.y * scale),
+                scale,
+                hudFont,
+                fontColor,
+                fontScale,
+                sb.DI_SCREEN_CENTER_BOTTOM,
+                sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT
+            );
         }
 
         if (ShouldDrawAmmoCounter(wpn)) {
             let offs = GetAmmoCounterOffsets();
-            DrawAmmoCounter(sb, wpn, GetAmmoCounter(wpn, mag), posX + (offs.x * scale), posY + (offs.y * scale), scale, hudFont, fontColor, fontScale);
+            DrawAmmoCounter(
+                sb, wpn,
+                GetAmmoCounter(wpn, mag),
+                posX + (offs.x * scale),
+                posY + (offs.y * scale),
+                scale,
+                hudFont,
+                fontColor,
+                fontScale,
+                sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT
+            );
         }
 
         if (ShouldDrawFireMode(wpn)) {
             let offs = GetFireModeOffsets();
-            DrawFireMode(sb, wpn, posX + (offs.x * scale), posY + (offs.y * scale), scale);
+            DrawFireMode(
+                sb, wpn,
+                posX + (offs.x * scale),
+                posY + (offs.y * scale),
+                scale,
+                sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TRANSLATABLE|sb.DI_ITEM_RIGHT
+            );
         }
 
         if (ShouldDrawMagRounds(wpn, mag)) {
             let offs = GetMagazineRoundsOffsets();
-            DrawMagazineRounds(sb, wpn, GetMagRounds(wpn), GetMagCapacity(wpn, mag), posX + (offs.x * scale), posY + (offs.y * scale), scale, hudFont, fontColor, fontScale);
+            DrawMagazineRounds(
+                sb, wpn,
+                GetMagRounds(wpn),
+                GetMagCapacity(wpn, mag),
+                Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
+                posX + (offs.x * scale),
+                posY + (offs.y * scale),
+                scale,
+                hudFont,
+                fontColor,
+                fontScale,
+                sb.DI_SCREEN_CENTER_BOTTOM
+            );
         }
 
         if (ShouldDrawChamberedRound(wpn)) {
             let offs = GetChamberedRoundOffsets();
-            DrawChamberedRound(sb, wpn, posX + (offs.x * scale), posY + (offs.y * scale), scale);
+            DrawChamberedRound(
+                sb, wpn,
+                Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
+                posX + (offs.x * scale),
+                posY + (offs.y * scale),
+                scale,
+                SB.DI_SCREEN_CENTER_BOTTOM
+            );
         }
 
         if (ShouldDrawRangeFinder(wpn)) {
             let offs = GetRangeFinderOffsets();
-            DrawRangeFinder(sb, wpn, posX + (offs.x * scale), posY + (offs.y * scale), scale, hudFont, fontColor, fontScale);
+            DrawRangeFinder(
+                sb, wpn,
+                Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
+                posX + (offs.x * scale),
+                posY + (offs.y * scale),
+                scale,
+                hudFont,
+                fontColor,
+                fontScale,
+                sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT
+            );
         }
 
         if (ShouldDrawWeaponZoom(wpn)) {
             let offs = GetWeaponZoomOffsets();
-            DrawWeaponZoom(sb, wpn, posX + (offs.x * scale), posY + (offs.y * scale), scale, hudFont, fontColor, fontScale);
+            DrawWeaponZoom(
+                sb, wpn,
+                posX + (offs.x * scale),
+                posY + (offs.y * scale),
+                scale,
+                hudFont,
+                fontColor,
+                fontScale,
+                sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT
+            );
         }
 
         if (ShouldDrawSideSaddles(wpn)) {
             let offs = GetSideSaddleOffsets();
-            DrawSideSaddles(sb, wpn, posX + (offs.x * scale), posY + (offs.y * scale), scale, hudFont, fontColor, fontScale);
+            DrawSideSaddles(
+                sb, wpn,
+                Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
+                posX + (offs.x * scale),
+                posY + (offs.y * scale),
+                scale,
+                hudFont,
+                fontColor,
+                fontScale,
+                sb.DI_SCREEN_CENTER_BOTTOM
+            );
         }
     }
 
-    virtual void DrawMagazine(HCStatusBar sb, HDWeapon wpn, HDMagAmmo mag, int value, int maxValue, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
+    virtual void DrawMagazine(HCStatusBar sb, HDWeapon wpn, HDMagAmmo mag, int value, int maxValue, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale, int iconFlags, int countFlags) {
         let iconScale = GetMagazineScale(wpn, mag);
 
         if (ShouldDrawFullMagazine(value, maxValue)) {
             sb.DrawImage(
                 magIconFull,
                 (posX, posY),
-                sb.DI_SCREEN_CENTER_BOTTOM,
+                iconFlags,
                 scale: (iconScale.x * scale, iconScale.y * scale)
             );
         } else if (ShouldDrawEmptyMagazine(value, maxValue)) {
             sb.DrawImage(
                 magIconEmpty,
                 (posX, posY),
-                sb.DI_SCREEN_CENTER_BOTTOM,
+                iconFlags,
                 alpha: value == 0 ? 1.0 : 0.6,
                 scale: (iconScale.x * scale, iconScale.y * scale)
             );
@@ -409,7 +495,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 (posX, posY),
                 -1,
                 sb.SHADER_VERT,
-                sb.DI_SCREEN_CENTER_BOTTOM
+                iconFlags
             );
         }
 
@@ -418,19 +504,19 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
             hudFont,
             sb.FormatNumber(sb.hpl.CountInv(mag ? mag.GetClassName() : magName)),
             (posX + (offs.x * scale), posY + (offs.y * scale)),
-            sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT,
+            countFlags,
             fontColor,
             scale: (fontScale * scale, fontScale * scale)
         );
     }
 
-    virtual void DrawAmmo(HCStatusBar sb, HDWeapon wpn, HDAmmo ammo, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
+    virtual void DrawAmmo(HCStatusBar sb, HDWeapon wpn, HDAmmo ammo, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale, int iconFlags, int countFlags) {
         let iconScale = GetAmmoScale(wpn, ammo);
 
         sb.DrawImage(
             ammoIcon,
             (posX, posY),
-            sb.DI_SCREEN_CENTER_BOTTOM,
+            iconFlags,
             scale: (iconScale.x * scale, iconScale.y * scale)
         );
 
@@ -439,13 +525,13 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
             hudFont,
             sb.FormatNumber(sb.hpl.CountInv(ammo ? ammo.GetClassName() : ammoName)),
             (posX + (offs.x * scale), posY + (offs.y * scale)),
-            sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT,
+            countFlags,
             fontColor,
             scale: (fontScale * scale, fontScale * scale)
         );
     }
 
-    virtual void DrawFireMode(HCStatusBar sb, HDWeapon wpn, int posX, int posY, float scale) {
+    virtual void DrawFireMode(HCStatusBar sb, HDWeapon wpn, int posX, int posY, float scale, int flags) {
         int input = min(GetFireMode(wpn), 6);
         string result = "";
 
@@ -461,166 +547,293 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
             sb.DrawImage(
                 result,
                 (posX, posY),
-                sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TRANSLATABLE|sb.DI_ITEM_RIGHT,
+                flags,
                 scale: (scale, scale)
             );
         }
     }
 
-    virtual void DrawMagazineRounds(HCStatusBar sb, HDWeapon wpn, int value, int maxValue, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
+    virtual void DrawMagazineRounds(HCStatusBar sb, HDWeapon wpn, int value, int maxValue, Color color, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale, int flags) {
         if (!maxValue) return;
         
         double valX = max(((value * 6 / maxValue) << 2), (value > 0));
 
-        sb.DrawRect(
-            posX,
-            posY,
-            max(-24, -valX) * scale,
-            -2 * scale
+        sb.Fill(
+            color,
+            posX, posY,
+            max(-24, -valX) * scale, -2 * scale,
+            flags
         );
 
         if (valX > 24) {
             sb.Fill(
                 Color(255, 240, 230, 40),
                 posX, posY,
-                -1,
-                -2,
-                sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_RIGHT
+                -1, -2,
+                flags
             );
         }
     }
 
-    virtual void DrawAmmoCounter(HCStatusBar sb, HDWeapon wpn, int value, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
+    virtual void DrawAmmoCounter(HCStatusBar sb, HDWeapon wpn, int value, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale, int flags) {
         sb.DrawString(
             hudFont,
             sb.FormatNumber(value),
             (posX, posY),
-            sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT,
+            flags,
             Font.CR_RED,
             scale: (fontScale * scale, fontScale * scale)
         );
     }
 
-    virtual void DrawChamberedRound(HCStatusBar sb, HDWeapon wpn, int posX, int posY, float scale) {
-        sb.DrawRect(posX, posY, 3 * scale, 1 * scale);
+    virtual void DrawChamberedRound(HCStatusBar sb, HDWeapon wpn, Color color, int posX, int posY, float scale, int flags) {
+        sb.Fill(
+            color,
+            posX, posY,
+            3 * scale, 1 * scale,
+            flags
+        );
     }
 
-    virtual void DrawRangeFinder(HCStatusBar sb, HDWeapon wpn, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
+    virtual void DrawRangeFinder(HCStatusBar sb, HDWeapon wpn, Color color, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale, int flags) {
         let ab = wpn.airburst;
 
         sb.DrawString(
             hudFont,
             ab ? String.Format("%.2f", ab * 0.01) : "--.--", // TODO: Allow for multiple distance units?  Currently in cm.
             (posX, posY),
-            sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT,
+            flags,
             ab ? Font.CR_WHITE : Font.CR_BLACK,
             scale: (fontScale * scale, fontScale * scale)
         );
 
-        sb.DrawRect(
-            posX - 4, posY - 18 + min(16, ab >> 9),
-            4 * scale,
-            scale
+        sb.Fill(
+            color,
+            posX - (4 * scale), posY + ((-18 + min(16, ab >> 9)) * scale),
+            4 * scale, scale,
+            flags
         );
 
-        sb.DrawRect(
-            posX - 1, posY - 17,
-            scale,
-            16 * scale
+        sb.Fill(
+            color,
+            posX - scale, posY - (17 * scale),
+            scale, 16 * scale,
+            flags
         );
 
-        sb.DrawRect(
-            posX - 3, posY - 17,
-            scale,
-            16 * scale
+        sb.Fill(
+            color,
+            posX - (3 * scale), posY - (17 * scale),
+            scale, 16 * scale,
+            flags
         );
     }
 
-    virtual void DrawWeaponZoom(HCStatusBar sb, HDWeapon wpn, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
+    virtual void DrawWeaponZoom(HCStatusBar sb, HDWeapon wpn, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale, int flags) {
         sb.DrawString(
             hudFont,
             sb.FormatNumber(GetWeaponZoom(wpn)),
             (posX, posY),
-            sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT,
+            flags,
             Font.CR_DARKGRAY,
             scale: (fontScale * scale, fontScale * scale)
         );
     }
 
-    virtual void DrawSideSaddles(HCStatusBar sb, HDWeapon wpn, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
+    virtual void DrawSideSaddles(HCStatusBar sb, HDWeapon wpn, Color color, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale, int flags) {
         for (int i = GetSideSaddleRounds(wpn); i > 0; i--) {
-            sb.DrawRect(
+            sb.Fill(
+                color,
                 posX - (i * 2 * scale), posY,
-                scale, 3 * scale
+                scale, 3 * scale,
+                flags
             );
         }
     }
 
-    virtual void DrawVectorShell(HCStatusBar sb, HDWeapon wpn, int style, int posX, int posY, float scale) {
+    virtual void DrawHorzVectorShell(HCStatusBar sb, HDWeapon wpn, int style, Color color, int posX, int posY, float scale, int flags) {
 
         // Empty Casing
-        sb.drawrect(
+        sb.Fill(
+            color,
             posX, posY,
-            2 * scale, 3 * scale
+            2 * scale, 3 * scale,
+            flags
         );
 
         switch (style) {
             case 0:
 
                 // Vanilla-style Shell
-                sb.drawrect(
+                sb.Fill(
+                    color,
                     posX - (6 * scale), posY,
-                    5 * scale, 3 * scale
+                    5 * scale, 3 * scale,
+                    flags
                 );
                 break;
             case 1:
 
                 // Peppergrinder-style Shell
-				sb.drawrect(
+				sb.Fill(
+                    color,
                     posX - (6 * scale), posY,
-                    scale, scale
+                    scale, scale,
+                    flags
                 );
-                sb.drawrect(
+                sb.Fill(
+                    color,
                     posX - (4 * scale), posY,
-                    scale, scale
+                    scale, scale,
+                    flags
                 );
-                sb.drawrect(
+                sb.Fill(
+                    color,
                     posX - (2 * scale), posY,
-                    scale, scale
+                    scale, scale,
+                    flags
                 );
 				
-                sb.drawrect(
+                sb.Fill(
+                    color,
                     posX - (5 * scale), posY + scale,
-                    scale, scale
+                    scale, scale,
+                    flags
                 );
-                sb.drawrect(
+                sb.Fill(
+                    color,
                     posX - (3 * scale), posY + scale,
-                    scale, scale
+                    scale, scale,
+                    flags
                 );
 				
-                sb.drawrect(
+                sb.Fill(
+                    color,
                     posX - (6 * scale), posY + (2 * scale),
-                    scale, scale
+                    scale, scale,
+                    flags
                 );
-                sb.drawrect(
+                sb.Fill(
+                    color,
                     posX - (4 * scale), posY + (2 * scale),
-                    scale, scale
+                    scale, scale,
+                    flags
                 );
-                sb.drawrect(
+                sb.Fill(
+                    color,
                     posX - (2 * scale), posY + (2 * scale),
-                    scale, scale
+                    scale, scale,
+                    flags
                 );
                 break;
             case 2:
 
                 // Peppergrinder-style Slug
-				sb.drawrect(
+				sb.Fill(
+                    color,
                     posX - (5 * scale), posY,
-                    4 * scale, 3 * scale
+                    4 * scale, 3 * scale,
+                    flags
                 );
-				sb.drawrect(
+				sb.Fill(
+                    color,
                     posX - (6 * scale), posY + (1 * scale),
-                    scale, scale
+                    scale, scale,
+                    flags
+                );
+                break;
+        }
+    }
+
+    virtual void DrawVertVectorShell(HCStatusBar sb, HDWeapon wpn, int style, Color color, int posX, int posY, float scale, int flags) {
+
+        // Empty Casing
+        sb.Fill(
+            color,
+            posX, posY,
+            3 * scale, 2 * scale,
+            flags
+        );
+
+        switch (style) {
+            case 0:
+
+                // Vanilla-style Shell
+                sb.Fill(
+                    color,
+                    posX, posY - (6 * scale),
+                    3 * scale, 5 * scale,
+                    flags
+                );
+                break;
+            case 1:
+
+                // Peppergrinder-style Shell
+				sb.Fill(
+                    color,
+                    posX, posY - (6 * scale),
+                    scale, scale,
+                    flags
+                );
+                sb.Fill(
+                    color,
+                    posX, posY - (4 * scale),
+                    scale, scale,
+                    flags
+                );
+                sb.Fill(
+                    color,
+                    posX, posY - (2 * scale),
+                    scale, scale,
+                    flags
+                );
+				
+                sb.Fill(
+                    color,
+                    posX + scale, posY - (5 * scale),
+                    scale, scale,
+                    flags
+                );
+                sb.Fill(
+                    color,
+                    posX + scale, posY - (3 * scale),
+                    scale, scale,
+                    flags
+                );
+				
+                sb.Fill(
+                    color,
+                    posX + (2 * scale), posY - (6 * scale),
+                    scale, scale,
+                    flags
+                );
+                sb.Fill(
+                    color,
+                    posX + (2 * scale), posY - (4 * scale),
+                    scale, scale,
+                    flags
+                );
+                sb.Fill(
+                    color,
+                    posX + (2 * scale), posY - (2 * scale),
+                    scale, scale,
+                    flags
+                );
+                break;
+            case 2:
+
+                // Peppergrinder-style Slug
+				sb.Fill(
+                    color,
+                    posX, posY - (5 * scale),
+                    3 * scale, 4 * scale,
+                    flags
+                );
+				sb.Fill(
+                    color,
+                    posX + (1 * scale), posY - (6 * scale),
+                    scale, scale,
+                    flags
                 );
                 break;
         }
