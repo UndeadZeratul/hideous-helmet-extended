@@ -165,6 +165,10 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         return 0;
     }
 
+    virtual int GetMagAmount(int amount) {
+        return amount;
+    }
+
     virtual int GetMagCapacity(HDWeapon wpn, HDMagAmmo mag) {
         return mag ? int(mag.maxPerUnit) : magCapacity;
     }
@@ -484,7 +488,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 DrawMagazine(
                     sb, wpn, mag,
                     ammoCount,
-                    sb.GetNextLoadMag(mag),
+                    GetMagAmount(sb.GetNextLoadMag(mag)),
                     GetMagCapacity(wpn, mag),
                     posX + (ammoCount.offsets.x * scale),
                     posY + (ammoCount.offsets.y * scale),
