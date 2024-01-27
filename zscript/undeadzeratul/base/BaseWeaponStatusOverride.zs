@@ -1,27 +1,37 @@
+class WeaponStatusAmmoCounter {
+    
+    name name;
+
+    bool isMag;
+
+    int magCapacity;
+    
+    string magIconFull;
+    string magIconEmpty;
+    string magIconFG;
+    string magIconBG;
+
+    string ammoIcon;
+
+    Vector2 iconScale;
+
+    Vector2 offsets;
+    Vector2 countOffsets;
+
+    int iconFlags;
+    int countFlags;
+}
+
 class BaseWeaponStatusOverride : HCItemOverride abstract {
 
     protected name weaponName;
     protected name magName;
-    protected name ammoName;
 
     protected int magCapacity;
-    
-    protected string magIconFull;
-    protected string magIconEmpty;
-    protected string magIconFG;
-    protected string magIconBG;
 
-    protected string ammoIcon;
+    protected Array<WeaponStatusAmmoCounter> ammoCounts;
 
     protected string fireModes[7];
-
-    protected transient TextureID magFullTex;
-    protected transient TextureID magEmptyTex;
-    protected transient Vector2 magFullScale;
-    protected transient Vector2 magEmptyScale;
-
-    protected transient TextureID ammoTex;
-    protected transient Vector2 ammoScale;
 
     private Service _HHFunc;
 
@@ -65,7 +75,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         return (!_enabled || _enabled.GetBool()) && item.GetClassName() == weaponName;
     }
 
-    virtual void initCvars(HCStatusBar sb) {
+    virtual void InitCvars(HCStatusBar sb) {
         if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
 
         if (!_hh_hidefiremode) _hh_hidefiremode = CVar.GetCVar("hh_hidefiremode", sb.CPlayer);
@@ -101,56 +111,14 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
             _hudFont = HUDFont.create(font ? font : Font.FindFont('NewSmallFont'));
             _prevFont = newFont;
         }
-
-        if (!magFullTex && magIconFull) {
-            magFullTex = TexMan.CheckForTexture(magIconFull, TexMan.Type_Any);
-
-            if (magFullTex) {
-                int x, y;
-                [x, y] = TexMan.GetSize(magFullTex);
-                Vector2 scaledSize = TexMan.GetScaledSize(magFullTex);
-                
-                magFullScale = (scaledSize.x > 0 && scaledSize.y > 0)
-                    ? (x / scaledSize.x, y / scaledSize.y)
-                    : (0, 0);
-            }
-        }
-
-        if (!magEmptyTex && magIconEmpty) {
-            magEmptyTex = TexMan.CheckForTexture(magIconEmpty, TexMan.Type_Any);
-
-            if (magEmptyTex) {
-                int x, y;
-                [x, y] = TexMan.GetSize(magEmptyTex);
-                Vector2 scaledSize = TexMan.GetScaledSize(magEmptyTex);
-                
-                magEmptyScale = (scaledSize.x > 0 && scaledSize.y > 0)
-                    ? (x / scaledSize.x, y / scaledSize.y)
-                    : (0, 0);
-            }
-        }
-
-        if (!ammoTex && ammoIcon) {
-            ammoTex = TexMan.CheckForTexture(ammoIcon, TexMan.Type_Any);
-
-            if (ammoTex) {
-                int x, y;
-                [x, y] = TexMan.GetSize(ammoTex);
-                Vector2 scaledSize = TexMan.GetScaledSize(ammoTex);
-                
-                ammoScale = (scaledSize.x > 0 && scaledSize.y > 0)
-                    ? (x / scaledSize.x, y / scaledSize.y)
-                    : (0, 0);
-            }
-        }
     }
 
     override void Tick(HCStatusbar sb) {
-        initCvars(sb);
+        InitCvars(sb);
     }
 
     override void DrawHUDStuff(HCStatusbar sb, Inventory item, int hdFlags, int gzFlags) {
-        initCvars(sb);
+        InitCvars(sb);
         
         bool hasHelmet = _HHFunc && _HHFunc.GetIntUI("GetShowHUD", objectArg: sb.hpl);
         int  hudLevel  = hasHelmet ? _hlm_hudLevel.GetInt() : _nhm_hudLevel.GetInt();
@@ -213,6 +181,14 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         return GetMagRounds(wpn) + ShouldDrawChamberedRound(wpn);
     }
 
+    virtual int GetNumCylinders(HDWeapon wpn) {
+        return 0;
+    }
+
+    virtual int GetCylinderRadius(HDWeapon wpn) {
+        return 1;
+    }
+
     virtual int GetFireMode(HDWeapon wpn) {
         return 0;
     }
@@ -221,65 +197,99 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         return 0;
     }
 
-    virtual Vector2 GetMagazineOffsets() {
-        return (-30, 3);
-    }
-
-    virtual Vector2 GetMagazineCountOffsets() {
-        return (3, -5);
-    }
-
-    virtual Vector2 GetAmmoOffsets() {
-        return (-30, 3);
-    }
-
-    virtual Vector2 GetAmmoCountOffsets() {
-        return (6, -4);
-    }
-
-    virtual Vector2 GetFireModeOffsets() {
+    virtual Vector2 GetFireModeOffsets(HDWeapon wpn) {
         return (-6, -4);
     }
 
-    virtual Vector2 GetMagazineRoundsOffsets() {
+    virtual Vector2 GetMagazineRoundsOffsets(HDWeapon wpn) {
         return (0, 0);
     }
 
-    virtual Vector2 GetAmmoCounterOffsets() {
+    virtual Vector2 GetAmmoCounterOffsets(HDWeapon wpn) {
         return (0, -16);
     }
 
-    virtual Vector2 GetChamberedRoundOffsets() {
+    virtual Vector2 GetChamberedRoundOffsets(HDWeapon wpn) {
         return (-3, -5);
     }
 
-    virtual Vector2 GetRangeFinderOffsets() {
+    virtual Vector2 GetRevolverCylindersOffsets(HDWeapon wpn) {
+        return (-6, -14);
+    }
+
+    virtual double GetRevolverCylinderAngle(HDWeapon wpn, int i, int numCylinders) {
+        return i * (360.0 / double(numCylinders)) - 150;
+    }
+
+    virtual Vector2 GetRevolverCylinderOffsets(HDWeapon wpn, int i, int numCylinders) {
+        double cylAngle = GetRevolverCylinderAngle(wpn, i, numCylinders);
+
+        return (cos(cylAngle), sin(cylAngle)) * GetCylinderRadius(wpn);
+    }
+
+    virtual Vector2 GetRangeFinderOffsets(HDWeapon wpn) {
         return (-14, -19);
     }
 
-    virtual Vector2 GetWeaponZoomOffsets() {
+    virtual Vector2 GetWeaponZoomOffsets(HDWeapon wpn) {
         return (-14, -16);
     }
 
-    virtual Vector2 GetSideSaddleOffsets() {
+    virtual Vector2 GetSideSaddleOffsets(HDWeapon wpn) {
         return (-14, -16);
     }
 
-    virtual Vector2 GetMagazineScale(HDWeapon wpn, HDMagAmmo mag) {
-        return (1.0, 1.0);
-    }
 
-    virtual Vector2 GetAmmoScale(HDWeapon wpn, HDAmmo ammo) {
-        return (1.0, 1.0);
-    }
+    /**********************************************
+     * Setters for various pieces of Weapon Status
+     **********************************************/
+
+     virtual void AddMagCount(name name, int capacity, name iconFull, name iconEmpty, name iconFG, name iconBG, Vector2 iconScale, Vector2 offsets, Vector2 countOffsets, int iconFlags, int countFlags) {
+
+        let mag = WeaponStatusAmmoCounter(new ('WeaponStatusAmmoCounter'));
+
+        mag.name = name;
+        mag.isMag = true;
+        mag.magCapacity = capacity;
+        mag.magIconFull = iconFull;
+        mag.magIconEmpty = iconEmpty;
+        mag.magIconFG = iconFG;
+        mag.magIconBG = iconBG;
+        mag.iconScale = iconScale;
+        mag.offsets = offsets;
+        mag.countOffsets = countOffsets;
+        mag.iconFlags = iconFlags;
+        mag.countFlags = countFlags;
+
+        ammoCounts.push(mag);
+     }
+
+     virtual void AddAmmoCount(name name, name icon, Vector2 iconScale, Vector2 offsets, Vector2 countOffsets, int iconFlags, int countFlags) {
+
+        let ammo = WeaponStatusAmmoCounter(new ('WeaponStatusAmmoCounter'));
+
+        ammo.name = name;
+        ammo.ammoIcon = icon;
+        ammo.iconScale = iconScale;
+        ammo.offsets = offsets;
+        ammo.countOffsets = countOffsets;
+        ammo.iconFlags = iconFlags;
+        ammo.countFlags = countFlags;
+
+        ammoCounts.push(ammo);
+     }
 
 
     /*************************************************************
      * Checks for whether to draw various pieces of Weapon Status
      *************************************************************/
 
-    virtual bool ShouldDrawMagazine(HDWeapon wpn, HDMagAmmo mag) {
+    virtual bool ShouldDrawAmmoCounts(HDWeapon wpn) {
         return false;
+    }
+
+    virtual bool ShouldDrawAmmoCount(HDWeapon wpn, bool isMag, WeaponStatusAmmoCounter ammoCounter, Inventory item) {
+        return !!item;
     }
 
     virtual bool ShouldDrawFullMagazine(int value, int maxValue) {
@@ -292,10 +302,6 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
 
     virtual bool ShouldDrawPartialMagazine(int value, int maxValue) {
         return true;
-    }
-
-    virtual bool ShouldDrawAmmo(HDWeapon wpn, HDAmmo ammo) {
-        return false;
     }
 
     virtual bool ShouldDrawFireMode(HDWeapon wpn) {
@@ -311,6 +317,10 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
     }
 
     virtual bool ShouldDrawChamberedRound(HDWeapon wpn) {
+        return false;
+    }
+
+    virtual bool ShouldDrawRevolverCylinders(HDWeapon wpn) {
         return false;
     }
 
@@ -333,43 +343,25 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
 
     virtual void DrawWeaponStatus(HCStatusBar sb, HDWeapon wpn, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
 
-        let mag  = GetMagazine(sb.hpl.FindInventory(magName));
-        let ammo = GetAmmo(sb.hpl.FindInventory(ammoName));
-        
-        if (ShouldDrawMagazine(wpn, mag)) {
-            let offs = GetMagazineOffsets();
-            DrawMagazine(
-                sb, wpn, mag,
-                sb.GetNextLoadMag(mag),
-                GetMagCapacity(wpn, mag),
-                posX + (offs.x * scale),
-                posY + (offs.y * scale),
+        if (ShouldDrawAmmoCounts(wpn)) {
+            // let offs = GetAmmoCountOffsets(wpn);
+            DrawAmmoCounts(
+                sb, wpn,
+                ammoCounts,
+                posX/*  + (offs.x * scale) */,
+                posY/*  + (offs.y * scale) */,
                 scale,
                 hudFont,
                 fontColor,
-                fontScale,
-                sb.DI_SCREEN_CENTER_BOTTOM,
-                sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT
-            );
-        }
-        
-        if (ShouldDrawAmmo(wpn, ammo)) {
-            let offs = GetAmmoOffsets();
-            DrawAmmo(
-                sb, wpn, ammo,
-                posX + (offs.x * scale),
-                posY + (offs.y * scale),
-                scale,
-                hudFont,
-                fontColor,
-                fontScale,
-                sb.DI_SCREEN_CENTER_BOTTOM,
-                sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT
+                fontScale
             );
         }
 
+        let mag  = GetMagazine(sb.hpl.FindInventory(magName));
+        // let ammo = GetAmmo(sb.hpl.FindInventory(ammoName));
+
         if (ShouldDrawAmmoCounter(wpn)) {
-            let offs = GetAmmoCounterOffsets();
+            let offs = GetAmmoCounterOffsets(wpn);
             DrawAmmoCounter(
                 sb, wpn,
                 GetAmmoCounter(wpn, mag),
@@ -384,7 +376,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         }
 
         if (ShouldDrawFireMode(wpn)) {
-            let offs = GetFireModeOffsets();
+            let offs = GetFireModeOffsets(wpn);
             DrawFireMode(
                 sb, wpn,
                 posX + (offs.x * scale),
@@ -395,7 +387,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         }
 
         if (ShouldDrawMagRounds(wpn, mag)) {
-            let offs = GetMagazineRoundsOffsets();
+            let offs = GetMagazineRoundsOffsets(wpn);
             DrawMagazineRounds(
                 sb, wpn,
                 GetMagRounds(wpn),
@@ -411,8 +403,22 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
             );
         }
 
+        if (ShouldDrawRevolverCylinders(wpn)) {
+            let offs = GetRevolverCylindersOffsets(wpn);
+            DrawRevolverCylinders(
+                sb, wpn,
+                GetNumCylinders(wpn),
+                Color(255, 240, 230, 40),
+                Color(200, 30,  26,  24),
+                posX + (offs.x * scale),
+                posY + (offs.y * scale),
+                scale,
+                SB.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_RIGHT
+            );
+        }
+
         if (ShouldDrawChamberedRound(wpn)) {
-            let offs = GetChamberedRoundOffsets();
+            let offs = GetChamberedRoundOffsets(wpn);
             DrawChamberedRound(
                 sb, wpn,
                 Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
@@ -424,7 +430,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         }
 
         if (ShouldDrawRangeFinder(wpn)) {
-            let offs = GetRangeFinderOffsets();
+            let offs = GetRangeFinderOffsets(wpn);
             DrawRangeFinder(
                 sb, wpn,
                 Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
@@ -439,7 +445,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         }
 
         if (ShouldDrawWeaponZoom(wpn)) {
-            let offs = GetWeaponZoomOffsets();
+            let offs = GetWeaponZoomOffsets(wpn);
             DrawWeaponZoom(
                 sb, wpn,
                 posX + (offs.x * scale),
@@ -453,7 +459,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         }
 
         if (ShouldDrawSideSaddles(wpn)) {
-            let offs = GetSideSaddleOffsets();
+            let offs = GetSideSaddleOffsets(wpn);
             DrawSideSaddles(
                 sb, wpn,
                 Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
@@ -468,64 +474,92 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         }
     }
 
-    virtual void DrawMagazine(HCStatusBar sb, HDWeapon wpn, HDMagAmmo mag, int value, int maxValue, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale, int iconFlags, int countFlags) {
-        let iconScale = GetMagazineScale(wpn, mag);
+    virtual void DrawAmmoCounts(HCStatusBar sb, HDWeapon wpn, Array<WeaponStatusAmmoCounter> ammoCounts, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
+        foreach (ammoCount : ammoCounts) {
 
+            let mag  = GetMagazine(sb.hpl.FindInventory(ammoCount.name));
+            let ammo = GetAmmo(sb.hpl.FindInventory(ammoCount.name));
+
+            if (ShouldDrawAmmoCount(wpn, true, ammoCount, mag)) {
+                DrawMagazine(
+                    sb, wpn, mag,
+                    ammoCount,
+                    sb.GetNextLoadMag(mag),
+                    GetMagCapacity(wpn, mag),
+                    posX + (ammoCount.offsets.x * scale),
+                    posY + (ammoCount.offsets.y * scale),
+                    scale,
+                    hudFont,
+                    fontColor,
+                    fontScale
+                );
+            } else if (ShouldDrawAmmoCount(wpn, false, ammoCount, ammo)) {
+                DrawAmmo(
+                    sb, wpn, ammo,
+                    ammoCount,
+                    posX + (ammoCount.offsets.x * scale),
+                    posY + (ammoCount.offsets.y * scale),
+                    scale,
+                    hudFont,
+                    fontColor,
+                    fontScale
+                );
+            }
+        }
+    }
+
+    virtual void DrawMagazine(HCStatusBar sb, HDWeapon wpn, HDMagAmmo mag, WeaponStatusAmmoCounter ammoCounter, int value, int maxValue, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
         if (ShouldDrawFullMagazine(value, maxValue)) {
             sb.DrawImage(
-                magIconFull,
+                ammoCounter.magIconFull,
                 (posX, posY),
-                iconFlags,
-                scale: (iconScale.x * scale, iconScale.y * scale)
+                ammoCounter.iconFlags,
+                scale: (ammoCounter.iconScale.x * scale, ammoCounter.iconScale.y * scale)
             );
         } else if (ShouldDrawEmptyMagazine(value, maxValue)) {
             sb.DrawImage(
-                magIconEmpty,
+                ammoCounter.magIconEmpty,
                 (posX, posY),
-                iconFlags,
+                ammoCounter.iconFlags,
                 alpha: value == 0 ? 1.0 : 0.6,
-                scale: (iconScale.x * scale, iconScale.y * scale)
+                scale: (ammoCounter.iconScale.x * scale, ammoCounter.iconScale.y * scale)
             );
         } else if (ShouldDrawPartialMagazine(value, maxValue)) {
             sb.DrawBar(
-                magIconFG,
-                magIconBG,
+                ammoCounter.magIconFG,
+                ammoCounter.magIconBG,
                 value,
                 maxValue,
                 (posX, posY),
                 -1,
                 sb.SHADER_VERT,
-                iconFlags
+                ammoCounter.iconFlags
             );
         }
 
-        let offs = GetMagazineCountOffsets();
         sb.DrawString(
             hudFont,
-            sb.FormatNumber(sb.hpl.CountInv(mag ? mag.GetClassName() : magName)),
-            (posX + (offs.x * scale), posY + (offs.y * scale)),
-            countFlags,
+            sb.FormatNumber(sb.hpl.CountInv(mag ? mag.GetClassName() : ammoCounter.name)),
+            (posX + (ammoCounter.countOffsets.x * scale), posY + (ammoCounter.countOffsets.y * scale)),
+            ammoCounter.countFlags,
             fontColor,
             scale: (fontScale * scale, fontScale * scale)
         );
     }
 
-    virtual void DrawAmmo(HCStatusBar sb, HDWeapon wpn, HDAmmo ammo, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale, int iconFlags, int countFlags) {
-        let iconScale = GetAmmoScale(wpn, ammo);
-
+    virtual void DrawAmmo(HCStatusBar sb, HDWeapon wpn, HDAmmo ammo, WeaponStatusAmmoCounter ammoCounter, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
         sb.DrawImage(
-            ammoIcon,
+            ammoCounter.ammoIcon,
             (posX, posY),
-            iconFlags,
-            scale: (iconScale.x * scale, iconScale.y * scale)
+            ammoCounter.iconFlags,
+            scale: (ammoCounter.iconScale.x * scale, ammoCounter.iconScale.y * scale)
         );
 
-        let offs = GetAmmoCountOffsets();
         sb.DrawString(
             hudFont,
-            sb.FormatNumber(sb.hpl.CountInv(ammo ? ammo.GetClassName() : ammoName)),
-            (posX + (offs.x * scale), posY + (offs.y * scale)),
-            countFlags,
+            sb.FormatNumber(sb.hpl.CountInv(ammo ? ammo.GetClassName() : ammoCounter.name)),
+            (posX + (ammoCounter.countOffsets.x * scale), posY + (ammoCounter.countOffsets.y * scale)),
+            ammoCounter.countFlags,
             fontColor,
             scale: (fontScale * scale, fontScale * scale)
         );
@@ -538,7 +572,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         for (int i = input; i >= 0; i--) {
             if (input == i) {
                 if (fireModes[i] == "blank") break;
-				else if(fireModes[i] == "") input--;
+				else if (fireModes[i] == "") input--;
                 else result = fireModes[i];
             }
         }
@@ -591,6 +625,30 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
             color,
             posX, posY,
             3 * scale, 1 * scale,
+            flags
+        );
+    }
+
+    virtual void DrawRevolverCylinders(HCStatusBar sb, HDWeapon wpn, int numCylinders, Color colorFull, Color colorEmpty, int posX, int posY, float scale, int flags) {
+        for (int i = 1; i <= numCylinders; i++) {
+            let cylOffs = GetRevolverCylinderOffsets(wpn, i, numCylinders);
+            DrawRevolverCylinder(
+                sb, wpn,
+                wpn.weaponStatus[i] > 0 ? colorFull : colorEmpty,
+                posX + (cylOffs.x * scale),
+                posY + (cylOffs.y * scale),
+                scale,
+                flags
+            );
+        }
+    }
+
+    virtual void DrawRevolverCylinder(HCStatusBar sb, HDWeapon wpn, Color color, int posX, int posY, float scale, int flags) {
+        sb.fill(
+            color,
+            posX,
+            posY,
+            3 * scale, 3 * scale,
             flags
         );
     }
