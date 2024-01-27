@@ -4,21 +4,36 @@ class UZPD42Override : BaseWeaponStatusOverride {
         super.Init(sb);
 
         weaponName = 'HDPDFour';
+
         magName = 'HDPDFourMag';
-        ammoName = 'HDSlugAmmo';
-
         magCapacity = 36;
-
-        magIconFull = 'PDMGA0';
-        magIconEmpty = 'PDMGB0';
-        magIconFG = 'PDMGNORM';
-        magIconBG = 'PDMGGREY';
-
-        ammoIcon = 'SLG1A0';
 
         fireModes[0] = 'STSEMAUT';
         fireModes[1] = 'STBURAUT';
         fireModes[2] = 'STFULAUT';
+
+        AddMagCount(
+            'HDPDFourMag',                                    // name
+            36,                                               // capacity
+            'PDMGA0',                                         // iconFull
+            'PDMGB0',                                         // iconEmpty
+            'PDMGNORM', 'PDMGGREY',                           // iconFG, iconBG
+            (1.0, 1.0),                                       // iconScale
+            (-30, 3),                                         // offsets
+            (3, -5),                                          // countOffsets
+            sb.DI_SCREEN_CENTER_BOTTOM,                       // iconFlags
+            sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT // countFlags
+        );
+
+        AddAmmoCount(
+            'HDSlugAmmo',                                     // name
+            'SLG1A0',                                         // icon
+            (1.0, 1.0),                                       // iconScale
+            (-43, -4),                                        // offsets
+            (1, 2),                                           // countOffsets
+            sb.DI_SCREEN_CENTER_BOTTOM,                       // iconFlags
+            sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT // countFlags
+        );
     }
 
     override int GetMagRounds(HDWeapon wpn) {
@@ -29,24 +44,20 @@ class UZPD42Override : BaseWeaponStatusOverride {
         return wpn.weaponStatus[3];
     }
 
-    override Vector2 GetAmmoOffsets() {
-        return (-43, -4);
-    }
-
-    override Vector2 GetAmmoCountOffsets() {
-        return (1, 2);
-    }
-
-    virtual Vector2 GetChamberedSlugOffsets() {
+    virtual Vector2 GetChamberedSlugOffsets(HDWeapon wpn) {
         return (-4, -9);
     }
 
-    override bool ShouldDrawMagazine(HDWeapon wpn, HDMagAmmo mag) {
+    override bool ShouldDrawAmmoCounts(HDWeapon wpn) {
         return true;
     }
 
-    override bool ShouldDrawAmmo(HDWeapon wpn, HDAmmo ammo) {
-        return wpn.weaponStatus[0] & 4;
+    override bool ShouldDrawAmmoCount(HDWeapon wpn, bool isMag, WeaponStatusAmmoCounter ammoCounter, Inventory item) {
+        switch (ammoCounter.name) {
+            case 'HDPDFourMag': return ammoCounter.isMag == isMag;
+            case 'HDSlugAmmo':  return ammoCounter.isMag == isMag && wpn.weaponStatus[0] & 4;
+            default:            return false;
+        }
     }
 
     override bool ShouldDrawFireMode(HDWeapon wpn) {
@@ -69,7 +80,7 @@ class UZPD42Override : BaseWeaponStatusOverride {
         super.DrawWeaponStatus(sb, wpn, posX, posY, scale, hudFont, fontColor, fontScale);
 
         if (ShouldDrawChamberedSlug(wpn)) {
-            let offs = GetChamberedSlugOffsets();
+            let offs = GetChamberedSlugOffsets(wpn);
             DrawChamberedSlug(
                 sb, wpn,
                 0, Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),

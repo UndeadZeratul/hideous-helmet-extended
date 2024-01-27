@@ -4,11 +4,18 @@ class UZSlayerOverride : BaseWeaponStatusOverride {
         super.Init(sb);
 
         weaponName = 'Slayer';
-        ammoName = 'HDShellAmmo';
-
-        ammoIcon = 'SHL1A0';
 
         fireModes[0] = 'STBURAUT';
+
+        AddAmmoCount(
+            'HDShellAmmo',                                    // name
+            'SHL1A0',                                         // icon
+            (1.0, 1.0),                                       // iconScale
+            (-31, -4),                                        // offsets
+            (1, 2),                                           // countOffsets
+            sb.DI_SCREEN_CENTER_BOTTOM,                       // iconFlags
+            sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT // countFlags
+        );
     }
 
     virtual int GetLeftChamberedRound(HDWeapon wpn) {
@@ -31,28 +38,24 @@ class UZSlayerOverride : BaseWeaponStatusOverride {
         return 12;
     }
 
-    override Vector2 GetAmmoOffsets() {
-        return (-31, -4);
-    }
-
-    override Vector2 GetAmmoCountOffsets() {
-        return (1, 2);
-    }
-
-    override Vector2 GetFireModeOffsets() {
+    override Vector2 GetFireModeOffsets(HDWeapon wpn) {
         return (-7, -11);
     }
 
-    override Vector2 GetChamberedRoundOffsets() {
+    override Vector2 GetChamberedRoundOffsets(HDWeapon wpn) {
         return (0, -3);
     }
 
-    override Vector2 GetSideSaddleOffsets() {
+    override Vector2 GetSideSaddleOffsets(HDWeapon wpn) {
         return (5, 1);
     }
 
-    override bool ShouldDrawAmmo(HDWeapon wpn, HDAmmo ammo) {
+    override bool ShouldDrawAmmoCounts(HDWeapon wpn) {
         return true;
+    }
+
+    override bool ShouldDrawAmmoCount(HDWeapon wpn, bool isMag, WeaponStatusAmmoCounter ammoCounter, Inventory item) {
+        return ammoCounter.isMag == isMag;
     }
 
     override bool ShouldDrawFireMode(HDWeapon wpn) {
