@@ -4,21 +4,36 @@ class UZZM66Override : BaseWeaponStatusOverride {
         super.Init(sb);
 
         weaponName = 'ZM66AssaultRifle';
+
         magName = 'HD4mMag';
-        ammoName = 'HDRocketAmmo';
-
         magCapacity = 50;
-
-        magIconFull = 'ZMAGA0';
-        magIconEmpty = 'ZMAGC0';
-        magIconFG = 'ZMAGNORM';
-        magIconBG = 'ZMAGGREY';
-
-        ammoIcon = 'ROQPA0';
 
         fireModes[0] = 'STSEMAUT';
         fireModes[1] = 'STFULAUT';
         fireModes[2] = 'STBURAUT';
+
+        AddMagCount(
+            'HD4mMag',                                        // name
+            50,                                               // capacity
+            'ZMAGA0',                                         // iconFull
+            'ZMAGC0',                                         // iconEmpty
+            'ZMAGNORM', 'ZMAGGREY',                           // iconFG, iconBG
+            (2.0, 2.0),                                       // iconScale
+            (-30, 3),                                         // offsets
+            (3, -5),                                          // countOffsets
+            sb.DI_SCREEN_CENTER_BOTTOM,                       // iconFlags
+            sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT // countFlags
+        );
+
+        AddAmmoCount(
+            'HDRocketAmmo',                                   // name
+            'ROQPA0',                                         // icon
+            (0.6, 0.6),                                       // iconScale
+            (-46, 2),                                         // offsets
+            (6, -4),                                          // countOffsets
+            sb.DI_SCREEN_CENTER_BOTTOM,                       // iconFlags
+            sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT // countFlags
+        );
     }
 
     override int GetMagRounds(HDWeapon wpn) {
@@ -45,36 +60,28 @@ class UZZM66Override : BaseWeaponStatusOverride {
         return wpn.weaponStatus[3];
     }
 
-    override Vector2 GetAmmoOffsets() {
-        return (-46, 2);
-    }
-
-    override Vector2 GetMagazineScale(HDWeapon wpn, HDMagAmmo mag) {
-        return (2.0, 2.0);
-    }
-
-    override Vector2 GetAmmoScale(HDWeapon wpn, HDAmmo ammo) {
-        return (0.6, 0.6);
-    }
-
-    override Vector2 GetChamberedRoundOffsets() {
+    override Vector2 GetChamberedRoundOffsets(HDWeapon wpn) {
         return (-3, -4);
     }
 
-    virtual Vector2 GetChamberedGrenadeOffsets() {
+    virtual Vector2 GetChamberedGrenadeOffsets(HDWeapon wpn) {
         return (-4, -8);
     }
 
-    override bool ShouldDrawMagazine(HDWeapon wpn, HDMagAmmo mag) {
+    override bool ShouldDrawAmmoCounts(HDWeapon wpn) {
         return true;
+    }
+
+    override bool ShouldDrawAmmoCount(HDWeapon wpn, bool isMag, WeaponStatusAmmoCounter ammoCounter, Inventory item) {
+        switch (ammoCounter.name) {
+            case 'HD4mMag':       return ammoCounter.isMag == isMag;
+            case 'HDRocketAmmo':  return ammoCounter.isMag == isMag && !(wpn.weaponStatus[0] & 16);
+            default:              return false;
+        }
     }
 
     override bool ShouldDrawFullMagazine(int value, int maxValue) {
         return value > magCapacity;
-    }
-
-    override bool ShouldDrawAmmo(HDWeapon wpn, HDAmmo ammo) {
-        return !(wpn.weaponStatus[0] & 16);
     }
 
     override bool ShouldDrawFireMode(HDWeapon wpn) {
@@ -109,7 +116,7 @@ class UZZM66Override : BaseWeaponStatusOverride {
         super.DrawWeaponStatus(sb, wpn, posX, posY, scale, hudFont, fontColor, fontScale);
                 
         if (ShouldDrawChamberedGrenade(wpn)) {
-            let offs = GetChamberedGrenadeOffsets();
+            let offs = GetChamberedGrenadeOffsets(wpn);
             DrawChamberedGrenade(
                 sb, wpn,
                 Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),

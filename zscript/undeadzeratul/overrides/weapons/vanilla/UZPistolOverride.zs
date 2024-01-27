@@ -4,18 +4,25 @@ class UZPistolOverride : BaseWeaponStatusOverride {
         super.Init(sb);
 
         weaponName = 'HDPistol';
+
         magName = 'HD9mMag15';
-        ammoName = 'HDPistolAmmo';
-
         magCapacity = 15;
-
-        magIconFull = 'CLP2NORM';
-        magIconEmpty = 'CLP2EMPTY';
-        magIconFG = 'CLP2NORM';
-        magIconBG = 'CLP2GREY';
 
         fireModes[0] = 'STSEMAUT';
         fireModes[1] = 'STFULAUT';
+
+        AddMagCount(
+            'HD9mMag15',                                      // name
+            15,                                               // capacity
+            'CLP2NORM',                                       // iconFull
+            'CLP2EMPTY',                                      // iconEmpty
+            'CLP2NORM', 'CLP2GREY',                           // iconFG, iconBG
+            (1.0, 1.0),                                       // iconScale
+            (-30, 3),                                         // offsets
+            (3, -5),                                          // countOffsets
+            sb.DI_SCREEN_CENTER_BOTTOM,                       // iconFlags
+            sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT // countFlags
+        );
     }
 
     override int GetMagRounds(HDWeapon wpn) {
@@ -26,8 +33,12 @@ class UZPistolOverride : BaseWeaponStatusOverride {
         return wpn.weaponStatus[0] & 2;
     }
 
-    override bool ShouldDrawMagazine(HDWeapon wpn, HDMagAmmo mag) {
+    override bool ShouldDrawAmmoCounts(HDWeapon wpn) {
         return true;
+    }
+
+    override bool ShouldDrawAmmoCount(HDWeapon wpn, bool isMag, WeaponStatusAmmoCounter ammoCounter, Inventory item) {
+        return ammoCounter.isMag == isMag;
     }
 
     override bool ShouldDrawFireMode(HDWeapon wpn) {
