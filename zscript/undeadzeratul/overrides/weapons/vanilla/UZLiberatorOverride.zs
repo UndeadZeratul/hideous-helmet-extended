@@ -14,9 +14,7 @@ class UZLiberatorOverride : BaseWeaponStatusOverride {
         AddMagCount(
             'HD7mMag',                                        // name
             30,                                               // capacity
-            'RMAGNORM',                                       // iconFull
-            'RMAGEMPTY',                                      // iconEmpty
-            'RMAGNORM', 'RMAGGREY',                           // iconFG, iconBG
+            'RMAGNORM', 'RMAGEMPTY', 'RMAGNORM', 'RMAGGREY',  // icons
             (1.0, 1.0),                                       // iconScale
             (-30, 3),                                         // offsets
             (3, -5),                                          // countOffsets
@@ -63,10 +61,10 @@ class UZLiberatorOverride : BaseWeaponStatusOverride {
         return true;
     }
 
-    override bool ShouldDrawAmmoCount(HDWeapon wpn, bool isMag, WeaponStatusAmmoCounter ammoCounter, Inventory item) {
+    override bool ShouldDrawAmmoCount(HDWeapon wpn, int type, WeaponStatusAmmoCounter ammoCounter, Inventory item) {
         switch (ammoCounter.name) {
-            case 'HD7mMag':       return ammoCounter.isMag == isMag;
-            case 'HDRocketAmmo':  return ammoCounter.isMag == isMag && !(wpn.weaponStatus[0] & 8);
+            case 'HD7mMag':       return ammoCounter.type == type;
+            case 'HDRocketAmmo':  return ammoCounter.type == type && !(wpn.weaponStatus[0] & 8);
             default:              return false;
         }
     }

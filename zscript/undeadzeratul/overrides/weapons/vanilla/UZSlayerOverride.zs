@@ -54,8 +54,8 @@ class UZSlayerOverride : BaseWeaponStatusOverride {
         return true;
     }
 
-    override bool ShouldDrawAmmoCount(HDWeapon wpn, bool isMag, WeaponStatusAmmoCounter ammoCounter, Inventory item) {
-        return ammoCounter.isMag == isMag;
+    override bool ShouldDrawAmmoCount(HDWeapon wpn, int type, WeaponStatusAmmoCounter ammoCounter, Inventory item) {
+        return ammoCounter.type == type;
     }
 
     override bool ShouldDrawFireMode(HDWeapon wpn) {

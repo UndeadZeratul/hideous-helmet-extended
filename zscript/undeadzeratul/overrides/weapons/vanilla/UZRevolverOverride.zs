@@ -98,10 +98,10 @@ class UZRevolverOverride : BaseWeaponStatusOverride {
         return true;
     }
 
-    override bool ShouldDrawAmmoCount(HDWeapon wpn, bool isMag, WeaponStatusAmmoCounter ammoCounter, Inventory item) {
+    override bool ShouldDrawAmmoCount(HDWeapon wpn, int type, WeaponStatusAmmoCounter ammoCounter, Inventory item) {
         switch (ammoCounter.name) {
-            case 'HDRevolverAmmo': return ammoCounter.isMag == isMag;
-            case 'HDPistolAmmo':   return ammoCounter.isMag == isMag && !!item;
+            case 'HDRevolverAmmo': return ammoCounter.type == type;
+            case 'HDPistolAmmo':   return ammoCounter.type == type && !!item;
             default:               return false;
         }
     }
