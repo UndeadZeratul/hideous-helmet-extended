@@ -2,16 +2,11 @@ class WeaponStatusAmmoCounter {
     
     name name;
 
-    bool isMag;
+    int type;
 
     int magCapacity;
-    
-    string magIconFull;
-    string magIconEmpty;
-    string magIconFG;
-    string magIconBG;
 
-    string ammoIcon;
+    Array<string> icons;
 
     Vector2 iconScale;
 
@@ -153,12 +148,16 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
      * Getters for various pieces of Weapon Status
      **********************************************/
 
+    virtual HDAmmo GetAmmo(Inventory item) {
+        return HDAmmo(item);
+    }
+
     virtual HDMagAmmo GetMagazine(Inventory item) {
         return HDMagAmmo(item);
     }
 
-    virtual HDAmmo GetAmmo(Inventory item) {
-        return HDAmmo(item);
+    virtual HDBattery GetBattery(Inventory item) {
+        return HDBattery(item);
     }
 
     virtual int GetMagRounds(HDWeapon wpn) {
@@ -248,17 +247,33 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
      * Setters for various pieces of Weapon Status
      **********************************************/
 
+     virtual void AddAmmoCount(name name, name icon, Vector2 iconScale, Vector2 offsets, Vector2 countOffsets, int iconFlags, int countFlags) {
+
+        let ammo = WeaponStatusAmmoCounter(new ('WeaponStatusAmmoCounter'));
+
+        ammo.name = name;
+        ammo.type = 0;
+        ammo.icons.push(icon);
+        ammo.iconScale = iconScale;
+        ammo.offsets = offsets;
+        ammo.countOffsets = countOffsets;
+        ammo.iconFlags = iconFlags;
+        ammo.countFlags = countFlags;
+
+        ammoCounts.push(ammo);
+     }
+
      virtual void AddMagCount(name name, int capacity, name iconFull, name iconEmpty, name iconFG, name iconBG, Vector2 iconScale, Vector2 offsets, Vector2 countOffsets, int iconFlags, int countFlags) {
 
         let mag = WeaponStatusAmmoCounter(new ('WeaponStatusAmmoCounter'));
 
         mag.name = name;
-        mag.isMag = true;
+        mag.type = 1;
         mag.magCapacity = capacity;
-        mag.magIconFull = iconFull;
-        mag.magIconEmpty = iconEmpty;
-        mag.magIconFG = iconFG;
-        mag.magIconBG = iconBG;
+        mag.icons.push(iconFull);
+        mag.icons.push(iconEmpty);
+        mag.icons.push(iconFG);
+        mag.icons.push(iconBG);
         mag.iconScale = iconScale;
         mag.offsets = offsets;
         mag.countOffsets = countOffsets;
@@ -268,19 +283,24 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         ammoCounts.push(mag);
      }
 
-     virtual void AddAmmoCount(name name, name icon, Vector2 iconScale, Vector2 offsets, Vector2 countOffsets, int iconFlags, int countFlags) {
+     virtual void AddBatteryCount(name name, int capacity, name iconFull, name iconHigh, name iconLow, name iconEmpty, Vector2 iconScale, Vector2 offsets, Vector2 countOffsets, int iconFlags, int countFlags) {
 
-        let ammo = WeaponStatusAmmoCounter(new ('WeaponStatusAmmoCounter'));
+        let bat = WeaponStatusAmmoCounter(new ('WeaponStatusAmmoCounter'));
 
-        ammo.name = name;
-        ammo.ammoIcon = icon;
-        ammo.iconScale = iconScale;
-        ammo.offsets = offsets;
-        ammo.countOffsets = countOffsets;
-        ammo.iconFlags = iconFlags;
-        ammo.countFlags = countFlags;
+        bat.name = name;
+        bat.type = 2;
+        bat.magCapacity = capacity;
+        bat.icons.push(iconFull);
+        bat.icons.push(iconHigh);
+        bat.icons.push(iconLow);
+        bat.icons.push(iconEmpty);
+        bat.iconScale = iconScale;
+        bat.offsets = offsets;
+        bat.countOffsets = countOffsets;
+        bat.iconFlags = iconFlags;
+        bat.countFlags = countFlags;
 
-        ammoCounts.push(ammo);
+        ammoCounts.push(bat);
      }
 
 
@@ -292,7 +312,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         return false;
     }
 
-    virtual bool ShouldDrawAmmoCount(HDWeapon wpn, bool isMag, WeaponStatusAmmoCounter ammoCounter, Inventory item) {
+    virtual bool ShouldDrawAmmoCount(HDWeapon wpn, int type, WeaponStatusAmmoCounter ammoCounter, Inventory item) {
         return !!item;
     }
 
@@ -482,9 +502,21 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         foreach (ammoCount : ammoCounts) {
 
             let mag  = GetMagazine(sb.hpl.FindInventory(ammoCount.name));
+            let bat  = GetBattery(sb.hpl.FindInventory(ammoCount.name));
             let ammo = GetAmmo(sb.hpl.FindInventory(ammoCount.name));
 
-            if (ShouldDrawAmmoCount(wpn, true, ammoCount, mag)) {
+            if (ShouldDrawAmmoCount(wpn, 0, ammoCount, ammo)) {
+                DrawAmmo(
+                    sb, wpn, ammo,
+                    ammoCount,
+                    posX + (ammoCount.offsets.x * scale),
+                    posY + (ammoCount.offsets.y * scale),
+                    scale,
+                    hudFont,
+                    fontColor,
+                    fontScale
+                );
+            } else if (ShouldDrawAmmoCount(wpn, 1, ammoCount, mag)) {
                 DrawMagazine(
                     sb, wpn, mag,
                     ammoCount,
@@ -497,10 +529,11 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                     fontColor,
                     fontScale
                 );
-            } else if (ShouldDrawAmmoCount(wpn, false, ammoCount, ammo)) {
-                DrawAmmo(
-                    sb, wpn, ammo,
+            } else if (ShouldDrawAmmoCount(wpn, 2, ammoCount, bat)) {
+                DrawBattery(
+                    sb, wpn, bat,
                     ammoCount,
+                    GetMagAmount(sb.GetNextLoadMag(bat)),
                     posX + (ammoCount.offsets.x * scale),
                     posY + (ammoCount.offsets.y * scale),
                     scale,
@@ -508,21 +541,73 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                     fontColor,
                     fontScale
                 );
-            }
+            } 
         }
+    }
+
+    virtual void DrawBattery(HCStatusBar sb, HDWeapon wpn, HDBattery bat, WeaponStatusAmmoCounter ammoCounter, int value, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
+        string batIcon;
+        
+        if (bat && bat.mags.size() > 0) {
+            if (bat.chargemode) {
+                if (bat.chargemode == HDBattery.BATT_CHARGEMAX) {
+                    sb.DrawImage(
+                        'CELPA0',
+                        (posX + (2 * scale), posy + (6 * scale)),
+                        flags: sb.DI_SCREEN_CENTER_BOTTOM,
+                        scale: (0.3 * scale, 0.3 * scale)
+                    );
+                } else if (bat.chargemode == HDBattery.BATT_CHARGESELECTED) {
+                    sb.DrawImage(
+                        'CELPA0',
+                        (posX, posY + (4 * scale)),
+                        flags: sb.DI_SCREEN_CENTER_BOTTOM,
+                        scale: (0.3 * scale, 0.3 * scale)
+                    );
+                }
+            }
+
+            if (value < 1) {
+                batIcon = ammoCounter.icons[3];
+            } else if (value <= 6) {
+                batIcon = ammoCounter.icons[2];
+            } else if (value <= 13) {
+                batIcon = ammoCounter.icons[1];
+            } else {
+                batIcon = ammoCounter.icons[0];
+            }
+        } else {
+            batIcon = ammoCounter.icons[3];
+        }
+
+        sb.DrawImage(
+            batIcon,
+            (posX, posY),
+            flags: sb.DI_SCREEN_CENTER_BOTTOM,
+            alpha: bat ? 1.0 : 0.3
+        );
+
+        sb.DrawString(
+            hudFont,
+            sb.FormatNumber(sb.hpl.CountInv(bat ? bat.GetClassName() : ammoCounter.name)),
+            (posX + (ammoCounter.countOffsets.x * scale), posY + (ammoCounter.countOffsets.y * scale)),
+            ammoCounter.countFlags,
+            fontColor,
+            scale: (fontScale * scale, fontScale * scale)
+        );
     }
 
     virtual void DrawMagazine(HCStatusBar sb, HDWeapon wpn, HDMagAmmo mag, WeaponStatusAmmoCounter ammoCounter, int value, int maxValue, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
         if (ShouldDrawFullMagazine(value, maxValue)) {
             sb.DrawImage(
-                ammoCounter.magIconFull,
+                ammoCounter.icons[0],
                 (posX, posY),
                 ammoCounter.iconFlags,
                 scale: (ammoCounter.iconScale.x * scale, ammoCounter.iconScale.y * scale)
             );
         } else if (ShouldDrawEmptyMagazine(value, maxValue)) {
             sb.DrawImage(
-                ammoCounter.magIconEmpty,
+                ammoCounter.icons[1],
                 (posX, posY),
                 ammoCounter.iconFlags,
                 alpha: value == 0 ? 1.0 : 0.6,
@@ -530,8 +615,8 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
             );
         } else if (ShouldDrawPartialMagazine(value, maxValue)) {
             sb.DrawBar(
-                ammoCounter.magIconFG,
-                ammoCounter.magIconBG,
+                ammoCounter.icons[2],
+                ammoCounter.icons[3],
                 value,
                 maxValue,
                 (posX, posY),
@@ -553,7 +638,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
 
     virtual void DrawAmmo(HCStatusBar sb, HDWeapon wpn, HDAmmo ammo, WeaponStatusAmmoCounter ammoCounter, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
         sb.DrawImage(
-            ammoCounter.ammoIcon,
+            ammoCounter.icons[0],
             (posX, posY),
             ammoCounter.iconFlags,
             scale: (ammoCounter.iconScale.x * scale, ammoCounter.iconScale.y * scale)
