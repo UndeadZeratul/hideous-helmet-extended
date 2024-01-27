@@ -4,13 +4,20 @@ class UZHunterOverride : BaseWeaponStatusOverride {
         super.Init(sb);
 
         weaponName = 'Hunter';
-        ammoName = 'HDShellAmmo';
-
-        ammoIcon = 'SHL1A0';
 
         fireModes[0] = 'blank';
         fireModes[1] = 'STSEMAUT';
         fireModes[2] = 'STFULAUT';
+
+        AddAmmoCount(
+            'HDShellAmmo',                                    // name
+            'SHL1A0',                                         // icon
+            (1.0, 1.0),                                       // iconScale
+            (-31, -4),                                        // offsets
+            (1, 2),                                           // countOffsets
+            sb.DI_SCREEN_CENTER_BOTTOM,                       // iconFlags
+            sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT // countFlags
+        );
     }
 
     override int GetMagRounds(HDWeapon wpn) {
@@ -33,32 +40,28 @@ class UZHunterOverride : BaseWeaponStatusOverride {
         return wpn.weaponStatus[1];
     }
 
-    override Vector2 GetAmmoOffsets() {
-        return (-31, -4);
-    }
-
-    override Vector2 GetAmmoCountOffsets() {
-        return (1, 2);
-    }
-
-    override Vector2 GetFireModeOffsets() {
+    override Vector2 GetFireModeOffsets(HDWeapon wpn) {
         return (-10, -6);
     }
 
-    override Vector2 GetMagazineRoundsOffsets() {
+    override Vector2 GetMagazineRoundsOffsets(HDWeapon wpn) {
         return (0, -1);
     }
 
-    override Vector2 GetChamberedRoundOffsets() {
+    override Vector2 GetChamberedRoundOffsets(HDWeapon wpn) {
         return (-2, -8);
     }
 
-    override Vector2 GetSideSaddleOffsets() {
+    override Vector2 GetSideSaddleOffsets(HDWeapon wpn) {
         return (0, 1);
     }
 
-    override bool ShouldDrawAmmo(HDWeapon wpn, HDAmmo ammo) {
+    override bool ShouldDrawAmmoCounts(HDWeapon wpn) {
         return true;
+    }
+
+    override bool ShouldDrawAmmoCount(HDWeapon wpn, bool isMag, WeaponStatusAmmoCounter ammoCounter, Inventory item) {
+        return ammoCounter.isMag == isMag;
     }
 
     override bool ShouldDrawFireMode(HDWeapon wpn) {
