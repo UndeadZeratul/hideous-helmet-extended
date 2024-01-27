@@ -15,9 +15,7 @@ class UZSmgOverride : BaseWeaponStatusOverride {
         AddMagCount(
             'HD9mMag30',                                      // name
             30,                                               // capacity
-            'CLP3A0',                                         // iconFull
-            'CLP3B0',                                         // iconEmpty
-            'CLP3NORM', 'CLP3GREY',                           // iconFG, iconBG
+            'CLP3A0', 'CLP3B0', 'CLP3NORM', 'CLP3GREY',       // icons
             (3.0, 3.0),                                       // iconScale
             (-30, 3),                                         // offsets
             (3, -5),                                          // countOffsets
@@ -38,8 +36,8 @@ class UZSmgOverride : BaseWeaponStatusOverride {
         return true;
     }
 
-    override bool ShouldDrawAmmoCount(HDWeapon wpn, bool isMag, WeaponStatusAmmoCounter ammoCounter, Inventory item) {
-        return ammoCounter.isMag == isMag;
+    override bool ShouldDrawAmmoCount(HDWeapon wpn, int type, WeaponStatusAmmoCounter ammoCounter, Inventory item) {
+        return ammoCounter.type == type;
     }
 
     override bool ShouldDrawFireMode(HDWeapon wpn) {

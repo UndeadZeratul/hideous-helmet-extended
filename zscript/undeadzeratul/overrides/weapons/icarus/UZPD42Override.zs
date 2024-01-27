@@ -15,9 +15,7 @@ class UZPD42Override : BaseWeaponStatusOverride {
         AddMagCount(
             'HDPDFourMag',                                    // name
             36,                                               // capacity
-            'PDMGA0',                                         // iconFull
-            'PDMGB0',                                         // iconEmpty
-            'PDMGNORM', 'PDMGGREY',                           // iconFG, iconBG
+            'PDMGA0', 'PDMGB0', 'PDMGNORM', 'PDMGGREY',       // icons
             (1.0, 1.0),                                       // iconScale
             (-30, 3),                                         // offsets
             (3, -5),                                          // countOffsets
@@ -52,10 +50,10 @@ class UZPD42Override : BaseWeaponStatusOverride {
         return true;
     }
 
-    override bool ShouldDrawAmmoCount(HDWeapon wpn, bool isMag, WeaponStatusAmmoCounter ammoCounter, Inventory item) {
+    override bool ShouldDrawAmmoCount(HDWeapon wpn, int type, WeaponStatusAmmoCounter ammoCounter, Inventory item) {
         switch (ammoCounter.name) {
-            case 'HDPDFourMag': return ammoCounter.isMag == isMag;
-            case 'HDSlugAmmo':  return ammoCounter.isMag == isMag && wpn.weaponStatus[0] & 4;
+            case 'HDPDFourMag': return ammoCounter.type == type;
+            case 'HDSlugAmmo':  return ammoCounter.type == type && wpn.weaponStatus[0] & 4;
             default:            return false;
         }
     }
