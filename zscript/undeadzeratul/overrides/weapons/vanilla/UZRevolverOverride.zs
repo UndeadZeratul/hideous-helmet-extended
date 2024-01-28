@@ -59,7 +59,7 @@ class UZRevolverOverride : BaseWeaponStatusOverride {
         int plf = wpn.owner && wpn.owner.player ? wpn.owner.player.GetPSprite(PSP_WEAPON).frame : 0;
         if (plf == 4) {
             return baseOffs + (-8, 6);
-        } else if (plf ==5 || plf == 6) {
+        } else if (plf ==5 || plf == 6 || HDPlayerPawn(wpn.owner).wepHelpText.IndexOf(StringTable.Localize('$REVCWH_ALTFIRE')) >= 0) {
             return baseOffs + (-12, 8);
         } else {
             return baseOffs;
@@ -72,7 +72,7 @@ class UZRevolverOverride : BaseWeaponStatusOverride {
         int plf = wpn.owner && wpn.owner.player ? wpn.owner.player.GetPSprite(PSP_WEAPON).frame : 0;
         if (plf == 4) {
             return baseAngle - 45.0;
-        } else if (plf ==5 || plf == 6) {
+        } else if (plf ==5 || plf == 6 || HDPlayerPawn(wpn.owner).wepHelpText.IndexOf(StringTable.Localize('$REVCWH_ALTFIRE')) >= 0) {
             return baseAngle - 90.0;
         } else {
             return baseAngle;
