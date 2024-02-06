@@ -33,12 +33,16 @@ class UZLiberatorOverride : BaseWeaponStatusOverride {
         );
     }
 
+    override int GetChamberedRounds(HDWeapon wpn) {
+        return wpn.weaponStatus[1];
+    }
+
     override int GetMagRounds(HDWeapon wpn) {
         return wpn.weaponStatus[2];
     }
 
     override int GetMagAmount(int amount) {
-        return amount % 100;
+        return clamp(amount % 100, 0, magCapacity);
     }
 
     override int GetMagCapacity(HDWeapon wpn, HDMagAmmo mag) {
@@ -82,7 +86,7 @@ class UZLiberatorOverride : BaseWeaponStatusOverride {
     }
 
     override bool ShouldDrawChamberedRound(HDWeapon wpn) {
-        return wpn.weaponStatus[1] == 2;
+        return GetChamberedRounds(wpn) == 2;
     }
 
     virtual bool ShouldDrawChamberedGrenade(HDWeapon wpn) {
