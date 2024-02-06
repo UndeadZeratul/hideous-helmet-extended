@@ -12,4 +12,4 @@ runs:
     env:
       CURRENT_DATE: ${{ steps.current-date.outputs.CURRENT_DATE }}
     with:
-      args: zip -r "hideous-helmet-extended-${{ github.ref_name }}-${{ $CURRENT_DATE }}.pk3" . -i graphics/* zscript/* CVARINFO KEYCONF LANGUAGE.* LICENSE MENUDEF readme.md TEXTURES.* zscript.zs
+      args: zip -r "hideous-helmet-extended-${{ github.ref_name }}-$CURRENT_DATE.pk3" . -i graphics/* zscript/* CVARINFO KEYCONF LANGUAGE.* LICENSE MENUDEF readme.md TEXTURES.* zscript.zs
