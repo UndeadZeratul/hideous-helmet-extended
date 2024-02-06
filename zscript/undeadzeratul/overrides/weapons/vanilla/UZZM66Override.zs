@@ -34,20 +34,25 @@ class UZZM66Override : BaseWeaponStatusOverride {
         );
     }
 
+    override int GetChamberedRounds(HDWeapon wpn) {
+        return wpn.weaponStatus[0] & 1;
+    }
+
     override int GetMagRounds(HDWeapon wpn) {
         return wpn.weaponStatus[1];
     }
 
-    override int GetAmmoCounter(HDWeapon wpn, HDMagAmmo mag) {
-
+    override int GetMagAmount(int amount) {
         // Coerce the magazine value into the size of the 4mm Mag
-        int count = clamp(GetMagRounds(wpn) % 100, 0, magCapacity);
+        return clamp(amount % 100, 0, magCapacity);
+    }
 
-        // If we have a round in the chamber, add one more.
-        if (ShouldDrawChamberedRound(wpn)) count++;
+    override int GetAmmoCounter(HDWeapon wpn, HDMagAmmo mag) {
+        int magAmt = GetMagAmount(GetMagRounds(wpn));
 
-        // If the magazine that's inserted is dirty, randomize the counter value
-        return GetMagRounds(wpn) > 100 ? random[shitgun](10,99) : count;
+        // If the magazine that's inserted is dirty, randomize the counter value.
+        // Otherwise draw the amount in the mag as well as the chambered round, if any.
+        return magAmt > 100 ? random[shitgun](10,99) : magAmt + GetChamberedRounds(wpn);
     }
 
     override int GetFireMode(HDWeapon wpn) {
@@ -95,7 +100,7 @@ class UZZM66Override : BaseWeaponStatusOverride {
     }
 
     override bool ShouldDrawChamberedRound(HDWeapon wpn) {
-        return wpn.weaponStatus[0] & 1;
+        return GetChamberedRounds(wpn);
     }
 
     virtual bool ShouldDrawChamberedGrenade(HDWeapon wpn) {

@@ -31,6 +31,10 @@ class UZRevolverOverride : BaseWeaponStatusOverride {
         );
     }
 
+    override int GetChamberedRounds(HDWeapon wpn) {
+        return wpn.weaponStatus[2];
+    }
+
     override void InitCvars(HCStatusBar sb) {
         super.InitCvars(sb);
         
@@ -115,7 +119,7 @@ class UZRevolverOverride : BaseWeaponStatusOverride {
     }
 
     override bool ShouldDrawChamberedRound(HDWeapon wpn) {
-        return wpn.weaponStatus[2] == 2;
+        return GetChamberedRounds(wpn) == 2;
     }
 
     override bool ShouldDrawRevolverCylinders(HDWeapon wpn) {

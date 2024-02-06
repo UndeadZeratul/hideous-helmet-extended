@@ -160,6 +160,10 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         return HDBattery(item);
     }
 
+    virtual int GetChamberedRounds(HDWeapon wpn) {
+        return 0;
+    }
+
     virtual int GetMagRounds(HDWeapon wpn) {
         return 0;
     }
@@ -181,7 +185,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
     }
 
     virtual int GetAmmoCounter(HDWeapon wpn, HDMagAmmo mag) {
-        return GetMagRounds(wpn) + ShouldDrawChamberedRound(wpn);
+        return GetMagRounds(wpn) + GetChamberedRounds(wpn);
     }
 
     virtual int GetNumCylinders(HDWeapon wpn) {
