@@ -4,10 +4,6 @@ runs:
   using: "composite"
   steps:
   - uses: actions/checkout@v4
-  - name: currentDate
-    id: current-date
-    shell: bash
-    run: echo "CURRENT_DATE=$(date +'%Y%m%d')" >> "$GITHUB_OUTPUT"
   - uses: montudor/action-zip@v1
     with:
-      args: zip -r "hideous-helmet-extended-${{ github.ref_name }}-${{ steps.current-date.outputs.CURRENT_DATE }}.pk3" . -i graphics/* zscript/* CVARINFO KEYCONF LANGUAGE.* LICENSE MENUDEF readme.md TEXTURES.* zscript.zs
+      args: zip -r "hideous-helmet-extended-${{ env.SUFFIX }}.pk3" . -i graphics/* zscript/* CVARINFO KEYCONF LANGUAGE.* LICENSE MENUDEF readme.md TEXTURES.* zscript.zs

@@ -10,7 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - id: build-suffix
+        shell: bash
+        run: echo "SUFFIX=${{ github.ref_name }} >> "$GITHUB_OUTPUT"
       - uses: ./.github/workflows/build-pk3
+        env:
+          SUFFIX: ${{ steps.build-suffix.outputs.SUFFIX }}
       - uses: softprops/action-gh-release@v0.1.7
         with:
           generate_release_notes: true
