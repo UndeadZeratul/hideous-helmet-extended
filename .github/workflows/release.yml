@@ -9,7 +9,7 @@ jobs:
   buildAndRelease:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./.github/workflows/build-pk3
       - uses: softprops/action-gh-release@v0.1.7
         with:
