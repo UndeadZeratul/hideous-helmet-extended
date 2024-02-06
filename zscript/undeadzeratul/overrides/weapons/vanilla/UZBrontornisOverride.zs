@@ -16,6 +16,10 @@ class UZBrotornisOverride : BaseWeaponStatusOverride {
         );
     }
 
+    override int GetChamberedRounds(HDWeapon wpn) {
+        return wpn.weaponStatus[1];
+    }
+
     override int GetMagRounds(HDWeapon wpn) {
         return wpn.owner.CountInv('BrontornisRound');
     }
@@ -41,7 +45,7 @@ class UZBrotornisOverride : BaseWeaponStatusOverride {
     }
 
     override bool ShouldDrawChamberedRound(HDWeapon wpn) {
-        return wpn.weaponStatus[1];
+        return GetChamberedRounds(wpn) > 0;
     }
 
     override void DrawChamberedRound(HCStatusBar sb, HDWeapon wpn, Color color, int posX, int posY, float scale, int flags) {

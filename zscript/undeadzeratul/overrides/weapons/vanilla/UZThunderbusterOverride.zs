@@ -22,6 +22,10 @@ class UZThunderbusterOverride : BaseWeaponStatusOverride {
         );
     }
 
+    override int GetChamberedRounds(HDWeapon wpn) {
+        return wpn.weaponStatus[2];
+    }
+
     override int GetMagRounds(HDWeapon wpn) {
         return wpn.weaponStatus[1];
     }
@@ -59,7 +63,7 @@ class UZThunderbusterOverride : BaseWeaponStatusOverride {
     }
 
     override bool ShouldDrawChamberedRound(HDWeapon wpn) {
-        return wpn.weaponStatus[2] == 2;
+        return GetChamberedRounds(wpn) == 2;
     }
 
     override void DrawWeaponStatus(HCStatusBar sb, HDWeapon wpn, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
