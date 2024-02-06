@@ -1,5 +1,7 @@
 # Hideous Helmet Extended
 
+[![Nightly Build](https://github.com/UndeadZeratul/hideous-helmet-extended/actions/workflows/nightly.yml/badge.svg)](https://github.com/UndeadZeratul/hideous-helmet-extended/actions/workflows/nightly.yml)
+
 _Requires [HUDCore](https://github.com/dastrukar/hdest-hudcore) by Dastrukar_  
 _Supports [Hideous Helmet](https://github.com/dastrukar/hideous-helmet) by Dastrukar_
 
