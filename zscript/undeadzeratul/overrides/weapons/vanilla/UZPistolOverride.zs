@@ -23,6 +23,10 @@ class UZPistolOverride : BaseWeaponStatusOverride {
         );
     }
 
+    override int GetChamberedRounds(HDWeapon wpn) {
+        return wpn.weaponStatus[2];
+    }
+
     override int GetMagRounds(HDWeapon wpn) {
         return wpn.weaponStatus[1];
     }
@@ -48,6 +52,6 @@ class UZPistolOverride : BaseWeaponStatusOverride {
     }
 
     override bool ShouldDrawChamberedRound(HDWeapon wpn) {
-        return wpn.weaponStatus[2] == 2;
+        return GetChamberedRounds(wpn) == 2;
     }
 }
