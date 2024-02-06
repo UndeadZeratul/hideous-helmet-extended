@@ -10,4 +10,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/workflows/composite-action/build.yml
+      - uses: ./.github/workflows/build-pk3

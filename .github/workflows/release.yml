@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/workflows/composite-action/build.yml
+      - uses: ./.github/workflows/build-pk3
       - uses: softprops/action-gh-release@v0.1.7
         with:
           generate_release_notes: true

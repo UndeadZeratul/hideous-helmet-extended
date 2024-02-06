@@ -3,6 +3,7 @@ description: Builds the PK3
 runs:
   using: "composite"
   steps:
+  - uses: actions/checkout@v3
   - name: currentDate
     id: current-date
     run: echo "CURRENT_DATE=$(date +'%Y%m%d')" >> "$GITHUB_OUTPUT"
