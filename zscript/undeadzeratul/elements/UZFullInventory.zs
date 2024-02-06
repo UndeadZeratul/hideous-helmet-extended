@@ -3,6 +3,9 @@ class UZFullInventory : HUDElement {
     private Service _HHFunc;
 
     private transient CVar _enabled;
+    private transient CVar _font;
+    private transient CVar _fontColor;
+    private transient CVar _fontScale;
     
     private transient CVar _nhm_hudLevel;
     private transient CVar _nhm_posX;
@@ -29,6 +32,9 @@ class UZFullInventory : HUDElement {
     private transient CVar _hlm_bgPosX;
     private transient CVar _hlm_bgPosY;
     private transient CVar _hlm_bgScale;
+
+    private transient string _prevFont;
+    private transient HUDFont _hudFont;
     
     
     override void Init(HCStatusbar sb) {
@@ -40,6 +46,10 @@ class UZFullInventory : HUDElement {
         if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
 
         if (!_enabled) _enabled               = CVar.GetCVar("uz_hhx_fullInventory_enabled", sb.CPlayer);
+        if (!_font) _font                     = CVar.GetCVar("uz_hhx_fullInventory_font", sb.CPlayer);
+        if (!_fontColor) _fontColor           = CVar.GetCVar("uz_hhx_fullInventory_fontColor", sb.CPlayer);
+        if (!_fontScale) _fontScale           = CVar.GetCVar("uz_hhx_fullInventory_fontScale", sb.CPlayer);
+
         if (!_nhm_hudLevel) _nhm_hudLevel     = CVar.GetCVar("uz_hhx_fullInventory_nhm_hudLevel", sb.CPlayer);
         if (!_nhm_posX) _nhm_posX             = CVar.GetCVar("uz_hhx_fullInventory_nhm_posX", sb.CPlayer);
         if (!_nhm_posY) _nhm_posY             = CVar.GetCVar("uz_hhx_fullInventory_nhm_posY", sb.CPlayer);
@@ -65,6 +75,13 @@ class UZFullInventory : HUDElement {
         if (!_hlm_bgPosX) _hlm_bgPosX         = CVar.GetCVar("uz_hhx_fullInventory_bg_hlm_posX", sb.CPlayer);
         if (!_hlm_bgPosY) _hlm_bgPosY         = CVar.GetCVar("uz_hhx_fullInventory_bg_hlm_posY", sb.CPlayer);
         if (!_hlm_bgScale) _hlm_bgScale       = CVar.GetCVar("uz_hhx_fullInventory_bg_hlm_scale", sb.CPlayer);
+
+        string newFont = _font.GetString();
+        if (_prevFont != newFont) {
+            let font = Font.FindFont(newFont);
+            _hudFont = HUDFont.create(font ? font : Font.FindFont('NewSmallFont'));
+            _prevFont = newFont;
+        }
     }
 
     override void DrawHUDStuff(HCStatusbar sb, int state, double ticFrac) {
@@ -104,8 +121,8 @@ class UZFullInventory : HUDElement {
                 scale: (scale * bgScale, scale * bgScale)
             );
             
-            for (let item = sb.cplayer.mo.inv; item != NULL; item = item.inv) {
-                if (!item || (!item.binvbar && item != sb.cplayer.mo.invsel)) {
+            for (let item = sb.hpl.inv; item != NULL; item = item.inv) {
+                if (!item || (!item.binvbar && item != sb.hpl.invsel)) {
                     continue;
                 }
                 
@@ -126,17 +143,41 @@ class UZFullInventory : HUDElement {
                 
                 let ivsh = hdpickup(item);
                 let ivsw = hdweapon(item);
+            
+                Vector2 coords = (posX - xoffs - (row * xScale), posY + sb.bigitemyofs - yoffs - (col * yScale));
+
+                // sb.DrawImage(
+                //     icon,
+                //     coords + (0, sb.bigitemyofs),
+                //     sb.DI_SCREEN_RIGHT_BOTTOM|sb.DI_ITEM_RIGHT_BOTTOM
+                //     |((
+                //         (ivsh && ivsh.bdroptranslation)
+                //         ||(ivsw && ivsw.bdroptranslation)
+                //     ) ? sb.DI_TRANSLATABLE : 0),
+                //     alpha:isthis ? 1. : 0.6,
+                //     scale:applyscale * (isthis ? 1. : 0.6) * scale
+                // );
                 
                 sb.drawtexture(
                     icon,
-                    (posX - xoffs - (row * xScale), posY + sb.bigitemyofs - yoffs - (col * yScale)),
-                    sb.DI_ITEM_CENTER_BOTTOM|sb.DI_SCREEN_RIGHT_BOTTOM
+                    coords,
+                    sb.DI_SCREEN_RIGHT_BOTTOM|sb.DI_ITEM_RIGHT_BOTTOM
                     |((
                         (ivsh && ivsh.bdroptranslation)
                         ||(ivsw && ivsw.bdroptranslation)
                     ) ? sb.DI_TRANSLATABLE : 0),
                     alpha:isthis ? 1. : 0.6,
                     scale:applyscale * (isthis ? 1. : 0.6) * scale
+                );
+
+                float fontScale = _fontScale.GetFloat();
+                sb.DrawString(
+                    _hudFont,
+                    sb.FormatNumber(sb.hpl.countinv(item.GetClassName())),
+                    coords + (2, 0),
+                    sb.DI_SCREEN_RIGHT_BOTTOM|sb.DI_ITEM_RIGHT_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT,
+                    _fontColor.GetInt(),
+                    scale: (fontScale * scale, fontScale * scale)
                 );
 
                 i++;

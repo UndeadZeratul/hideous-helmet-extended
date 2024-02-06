@@ -1,0 +1,12 @@
+name: Nightly Build
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/workflows/composit-action/build.yml
