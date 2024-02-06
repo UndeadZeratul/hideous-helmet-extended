@@ -6,6 +6,7 @@ runs:
   - uses: actions/checkout@v3
   - name: currentDate
     id: current-date
+    shell: bash
     run: echo "CURRENT_DATE=$(date +'%Y%m%d')" >> "$GITHUB_OUTPUT"
   - uses: montudor/action-zip@v1
     env:
