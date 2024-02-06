@@ -20,6 +20,10 @@ class UZHunterOverride : BaseWeaponStatusOverride {
         );
     }
 
+    override int GetChamberedRounds(HDWeapon wpn) {
+        return wpn.weaponStatus[2];
+    }
+
     override int GetMagRounds(HDWeapon wpn) {
         return wpn.weaponStatus[4];
     }
@@ -73,7 +77,7 @@ class UZHunterOverride : BaseWeaponStatusOverride {
     }
 
     override bool ShouldDrawChamberedRound(HDWeapon wpn) {
-        return wpn.weaponStatus[2] > 0;
+        return GetChamberedRounds(wpn) > 0;
     }
 
     override bool ShouldDrawSideSaddles(HDWeapon wpn) {
@@ -83,7 +87,7 @@ class UZHunterOverride : BaseWeaponStatusOverride {
     override void DrawChamberedRound(HCStatusBar sb, HDWeapon wpn, Color color, int posX, int posY, float scale, int flags) {
         DrawHorzVectorShell(
             sb, wpn,
-            ShouldDrawChamberedRound(wpn) > 1 ? 0 : -1,
+            GetChamberedRounds(wpn) > 1 ? 0 : -1,
             color,
             posX, posY,
             scale,
