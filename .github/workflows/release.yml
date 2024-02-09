@@ -1,6 +1,7 @@
 name: Release PK3s
 
 on:
+  workflow_dispatch:
   push:
     tags:
       - "v*.*.*"
@@ -16,7 +17,7 @@ jobs:
       - uses: ./.github/workflows/build-pk3
         env:
           SUFFIX: ${{ steps.build-suffix.outputs.SUFFIX }}
-      - uses: softprops/action-gh-release@v0.1.7
+      - uses: softprops/action-gh-release@v0.1.15
         with:
           generate_release_notes: true
           discussion_category_name: 'Releases'
