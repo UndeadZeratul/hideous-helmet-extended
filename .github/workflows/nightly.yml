@@ -16,7 +16,6 @@ jobs:
       - uses: ./.github/workflows/build-pk3
         env:
           SUFFIX: ${{ steps.build-suffix.outputs.SUFFIX }}
-      - uses: actions/upload-artifact@v4
+      - uses: kittaakos/upload-artifact-as-is@v0
         with:
-          name: Artifacts
           path: ./*.pk3
