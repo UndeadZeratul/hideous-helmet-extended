@@ -26,7 +26,7 @@ version "4.11"
 #include "zscript/undeadzeratul/elements/UZWeaponHelp.zs"
 #include "zscript/undeadzeratul/elements/UZWeaponSprite.zs"
 #include "zscript/undeadzeratul/elements/UZWeaponStash.zs"
-#include "zscript/undeadzeratul/elements/UZWeaponStatus.zs"
+// #include "zscript/undeadzeratul/elements/UZWeaponStatus.zs"
 #include "zscript/undeadzeratul/elements/UZWoundCounter.zs"
 
 
