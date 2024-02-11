@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+-   Fixed WeaponStatus HUD Element being imported in main ZScript file incorrectly.
 -   Update Build Scripts.
 
 ## [v0.8.4] - 2024-02-05
