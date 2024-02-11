@@ -7,9 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.8.5] - 2024-02-11
 
 ### Changed
 
+-   Fixed WeaponStatus HUD Element being imported in main ZScript file incorrectly.
 -   Update Build Scripts.
 
 ## [v0.8.4] - 2024-02-05
@@ -204,7 +206,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -   Initial Release.
 
-[Unreleased]: https://github.com/UndeadZeratul/hideous-helmet-extended/compare/v0.8.4...HEAD
+[Unreleased]: https://github.com/UndeadZeratul/hideous-helmet-extended/compare/v0.8.5...HEAD
+
+[v0.8.5]: https://github.com/UndeadZeratul/hideous-helmet-extended/compare/v0.8.4...v0.8.5
 
 [v0.8.4]: https://github.com/UndeadZeratul/hideous-helmet-extended/compare/v0.8.3..v0.8.4
 
