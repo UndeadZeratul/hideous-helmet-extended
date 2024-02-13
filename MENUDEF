@@ -54,6 +54,46 @@ OptionValue "SpeedUnit" {
 	2,"Miles per Hour"
 }
 
+// Technically just distance units but shedding Time (T).
+OptionValue "PosUnit" {
+	// Also "Default" case.
+	0,"Map Units"
+	
+	// Other values.
+	1,"Metres"
+	2,"Kilometres"
+	3,"Miles"
+}
+
+// For precision (The amount of digits to keep on a float).
+// Can probably have extra positions added rather easily. 
+OptionValue "UnitPrecision"{
+	// Also "default" case.
+	0, "0      (+ 0 Points, Vanilla)"
+	
+	// Other digits.
+	1, "0.0    (+ 1 Point)"
+	2, "0.00   (+ 2 Points)"
+	3, "0.000  (+ 3 Points)"
+	4, "0.0000 (+ 4 Points)"
+	
+	// So that adding more precision doesn't run into this in case statements. 
+	-1, "%f    (Full Precision)"
+}
+
+// For rounding numbers. Includes examples since math is scary. 
+OptionValue "UnitRounding"{
+	// Also "default" case.
+	0, "Truncate (Discard Extra, Vanilla)"
+	
+	// Other values.
+	1, "Round Up (+0.5 Becomes 1.0)"
+	2, "Ceil     ( 0.1 Becomes 1.0)"
+	
+	// Same as truncate internally, could actually do the math maybe?
+	3, "Floor    (+0.5 Becomes 0.0)"
+}
+
 OptionValue "StripUnit" {
 	0,"Tics"
 	1,"Seconds"
@@ -875,6 +915,21 @@ OptionMenu "HHXCompass" {
 	TextField "$HHXFont", "uz_hhx_compass_font", "uz_hhx_compass_enabled"
 	Slider "$HHXFontScale", "uz_hhx_compass_fontScale", .01, 4., .05, 2, "uz_hhx_compass_enabled"
 	
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXCompassUnits", 1
+	StaticText ""
+	Option "$HHXEnabled",  "uz_hhx_compass_units_enabled", "OnOff", "uz_hhx_compass_enabled"
+	Option "$HHXOneLinebreaks", "uz_hhx_compass_unit_linebreak", "OnOff", "uz_hhx_compass_enabled"
+	Option "$HHXUnits", "uz_hhx_compass_units", "PosUnit", "uz_hhx_compass_enabled"
+	Option "$HHXUnitsSuffix", "uz_hhx_compass_unit_suffix", "OnOff", "uz_hhx_compass_enabled"
+	Option "$HHXUnitsPrecision", "uz_hhx_compass_unit_precision", "UnitPrecision", "uz_hhx_compass_enabled"
+	Option "$HHXUnitsRounding", "uz_hhx_compass_unit_rounding", "UnitRounding", "uz_hhx_compass_enabled"
+	Option "$HHXUnitsDir", "uz_hhx_compass_unit_dir", "OnOff", "uz_hhx_compass_enabled"
+	Option "$HHXUnitsXYZ", "uz_hhx_compass_unit_xyz", "OnOff", "uz_hhx_compass_enabled"
+
+
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXNHM", 1

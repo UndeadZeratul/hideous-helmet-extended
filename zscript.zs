@@ -1,6 +1,15 @@
 version "4.10"
 
+#include "zscript/undeadzeratul/constants/UZUnits.zs"
+
 #include "zscript/undeadzeratul/base/BaseCounter.zs"
+#include "zscript/undeadzeratul/base/BaseData.zs"
+
+#include "zscript/undeadzeratul/data/UZDouble.zs"
+#include "zscript/undeadzeratul/data/UZPosition3.zs"
+#include "zscript/undeadzeratul/data/UZStringArray.zs"
+//#include "zscript/undeadzeratul/data/UZStringMatrix.zs"
+#include "zscript/undeadzeratul/data/UZStringPosition3.zs"
 
 #include "zscript/undeadzeratul/elements/UZAmmoCounters.zs"
 #include "zscript/undeadzeratul/elements/UZArmour.zs"

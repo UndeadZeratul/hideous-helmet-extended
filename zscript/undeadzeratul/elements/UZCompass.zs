@@ -11,6 +11,7 @@ class UZCompass : HUDCompass {
     private transient CVar _nhm_posX;
     private transient CVar _nhm_posY;
     private transient CVar _nhm_scale;
+	private transient CVar _nhm_units;
 
     private transient CVar _hlm_hudLevel;
     private transient CVar _hlm_posX;
@@ -29,7 +30,8 @@ class UZCompass : HUDCompass {
     private transient string _prevFont;
     private transient HUDFont _hudFont;
 
-    override void Tick(HCStatusbar sb) {
+    override void Tick(HCStatusbar sb)
+	{
         if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
 
         if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_compass_enabled", sb.CPlayer);
@@ -100,6 +102,8 @@ class UZCompass : HUDCompass {
             double  compangle   = sb.hpl.angle % 360;
             
             double  compangle2 = sb.hpl.deltaangle(0, compangle);
+			
+			// East
             if(abs(compangle2) < 120) {
                 sb.DrawString(
                     _hudFont,
@@ -110,6 +114,7 @@ class UZCompass : HUDCompass {
                 );
             }
             
+			// South
             compangle2 = sb.hpl.deltaangle(-90, compangle);
             if(abs(compangle2) < 120) {
                 sb.DrawString(
@@ -121,6 +126,7 @@ class UZCompass : HUDCompass {
                 );
             }
             
+			// West
             compangle2 = sb.hpl.deltaangle(180, compangle);
             if(abs(compangle2) < 120) {
                 sb.DrawString(
@@ -132,6 +138,7 @@ class UZCompass : HUDCompass {
                 );
             }
             
+			// North
             compangle2 = sb.hpl.deltaangle(90, compangle);
             if(abs(compangle2) < 120) {
                 sb.DrawString(
@@ -142,7 +149,8 @@ class UZCompass : HUDCompass {
                     scale: (fontScale * scale, fontScale * scale)
                 );
             }
-            
+			
+			// Draw Position.
             wephelpheight += _hudFont.mFont.GetHeight() * fontScale * scale;
             sb.DrawString(
                 _hudFont,

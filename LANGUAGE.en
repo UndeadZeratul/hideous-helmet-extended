@@ -17,6 +17,7 @@ HHXArmourBody                           = "Body Slot Options";
 HHXArmourBoots                          = "Boots Slot Options";
 HHXBackground                           = "HUD Background Options";
 HHXCompass                              = "Compass Options";
+HHXCompassUnits                         = "Compass Unit Options";
 HHXEKG                                  = "EKG Options";
 HHXEncumbrance                          = "Encumbrance Options";
 HHXFullInventory                        = "Full Inventory Options";
@@ -251,6 +252,9 @@ HHXFontColor                            = "Font Color";
 HHXFontScale                            = "Font Scale";
 HHXMaxValue                             = "Max Value";
 HHXUnits                                = "Units";
+HHXUnitsSuffix                          = "Show Unit Name";
+HHXUnitsDir                             = "Show Unit Direction (North, South. etc):";
+HHXUnitsXYZ                             = "Show Unit Components (x, y, z)";
 
 // HUD Counter Styles
 HHXOPTIONVALUE_COUNTER_VALUE_ONLY       = "Value Only";

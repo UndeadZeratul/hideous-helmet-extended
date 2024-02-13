@@ -393,9 +393,20 @@ user int    uz_hhx_burnCounter_bg_hlm_posY   = 0;
 user float  uz_hhx_burnCounter_bg_hlm_scale  = 1.;
 
 // COMPASS CONFIGS
-user bool   uz_hhx_compass_enabled      = true;
-user string uz_hhx_compass_font         = "NewSmallFont";
-user float  uz_hhx_compass_fontScale    = .5;
+user bool   uz_hhx_compass_enabled        = true;
+user string uz_hhx_compass_font           = "NewSmallFont";
+user float  uz_hhx_compass_fontScale      = .5;
+
+
+user int    uz_hhx_compass_units           = 0;
+user bool   uz_hhx_compass_units_enabled   = true;
+user bool   uz_hhx_compass_unit_linebreak  = false;
+user bool   uz_hhx_compass_unit_suffix     = true;
+user bool   uz_hhx_compass_unit_dir        = true;
+user bool   uz_hhx_compass_unit_xyz        = true;
+user int    uz_hhx_compass_unit_precision  = 0;
+user int    uz_hhx_compass_unit_rounding   = 0;
+
 
 user int    uz_hhx_compass_nhm_hudLevel = 2;
 user int    uz_hhx_compass_nhm_posX     = 600;
