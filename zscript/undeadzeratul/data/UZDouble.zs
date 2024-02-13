@@ -161,7 +161,7 @@ class UZDouble : UZBaseData
 //
 
 
-// All Set...() functions call 'processRecalculate()', you cannot suppress this.
+// All Set...() functions call '_checkInit(), _UpdateSingle()', you cannot suppress this.
 //
 	// Change raw contents.
 	virtual void SetContents(double newContents)

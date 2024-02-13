@@ -914,14 +914,13 @@ OptionMenu "HHXCompass" {
 	StaticText ""
 	TextField "$HHXFont", "uz_hhx_compass_font", "uz_hhx_compass_enabled"
 	Slider "$HHXFontScale", "uz_hhx_compass_fontScale", .01, 4., .05, 2, "uz_hhx_compass_enabled"
-	
+	Option "$HHXLinebreaks", "uz_hhx_compass_unit_linebreak", "OnOff", "uz_hhx_compass_enabled"	
 	
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXCompassUnits", 1
 	StaticText ""
 	Option "$HHXEnabled",  "uz_hhx_compass_units_enabled", "OnOff", "uz_hhx_compass_enabled"
-	Option "$HHXOneLinebreaks", "uz_hhx_compass_unit_linebreak", "OnOff", "uz_hhx_compass_enabled"
 	Option "$HHXUnits", "uz_hhx_compass_units", "PosUnit", "uz_hhx_compass_enabled"
 	Option "$HHXUnitsSuffix", "uz_hhx_compass_unit_suffix", "OnOff", "uz_hhx_compass_enabled"
 	Option "$HHXUnitsPrecision", "uz_hhx_compass_unit_precision", "UnitPrecision", "uz_hhx_compass_enabled"

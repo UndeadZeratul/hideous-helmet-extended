@@ -24,6 +24,7 @@ HHXFullInventory                        = "Full Inventory Options";
 HHXHeartbeat                            = "Heartbeat Options";
 HHXInventory                            = "Inventory Options";
 HHXKeys                                 = "Keys Options";
+$HHXLinebreaks                          = "Linebreak Options";
 HHXMugshot                              = "Mugshot Options";
 HHXObjectDescription                    = "Object Description Options";
 HHXRadsuitOverride                      = "Radsuit Overlay Options";
