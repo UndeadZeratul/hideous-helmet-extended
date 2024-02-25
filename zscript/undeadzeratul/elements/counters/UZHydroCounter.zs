@@ -36,6 +36,11 @@ class UZHydroCounter : BaseCounterHUDElement {
             format = "%.2f %s";
             break;
             case 2:
+            amt   = counterValue * HDCONST_MLTOLITRE * HDCONST_LITRETOFLOZ;
+            units = "fl oz";
+            format = "%.2f %s";
+            break;
+            case 3:
             amt   = counterValue * HDCONST_MLTOLITRE * HDCONST_LITRETOGALLON;
             units = "gal";
             format = "%.2f %s";

@@ -52,6 +52,7 @@ OptionValue "EnergyUnit" {
 OptionValue "FluidUnit" {
 	0,"Millilitres"
 	1,"Litres"
+	2,"Fluid Ounces"
 	2,"Gallons"
 }
 

@@ -1,5 +1,6 @@
 const HDCONST_TUTOMILLILITRE = 1000.;
 const HDCONST_TUTOLITRE = 1.;
+const HDCONST_LITRETOFLOZ = 33.81413;
 const HDCONST_LITRETOGALLON = 0.2641729;
 
 class UZBloodLossCounter : BaseCounterHUDElement {
@@ -29,25 +30,35 @@ class UZBloodLossCounter : BaseCounterHUDElement {
 
         float  amt = 0.;
         string units;
+        string format;
         switch (_units.GetInt()) {
             case 0:
             amt   = counterValue * HDCONST_TUTOMILLILITRE;
             units = "mL";
+            format = "%.2f %s";
             break;
             case 1:
             amt   = counterValue * HDCONST_TUTOLITRE;
             units = "L";
+            format = "%.2f %s";
             break;
             case 2:
+            amt   = counterValue * HDCONST_TUTOLITRE * HDCONST_LITRETOFLOZ;
+            units = "fl oz";
+            format = "%.2f %s";
+            break;
+            case 3:
             amt   = counterValue * HDCONST_TUTOLITRE * HDCONST_LITRETOGALLON;
             units = "gal";
+            format = "%.2f %s";
             break;
             default:
             amt   = counterValue;
             units = StringTable.Localize("$MEDIKIT_TRANSFUSIONUNITS");
+            format = "%.2f %s";
             break;
         }
 
-        return String.Format("%.2f %s", amt, units);
+        return String.Format(format, amt, units);
     }
 }
