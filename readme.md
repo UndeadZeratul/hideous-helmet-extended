@@ -20,6 +20,8 @@ _NOTE: The screenshots shown below contain extra addons to achieve the desired e
 ![paranthropus-hud-1](./screenshots/paranthropus-hud-1.png)  
 ![paranthropus-hud-2](./screenshots/paranthropus-hud-2.png)  
 ![red-hud-1](./screenshots/red-hud-1.png)  
+![zudwa-hud-1](./screenshots/zudwa-hud-1.png)  
+![zudwa-hud-2](./screenshots/zudwa-hud-2.png)  
 
 ### Limitations
 While I've done what I can to allow HUD Elements to be customizable, some elements have their limitations, such as not being able to be scaled or repositioned at all.  This is due to how the HUD draws its elements and where that control is given when doing so.  Drawing armour durability bars does not support scaling and must be drawn at 100% its original size.  Weapon Statuses are entirely under the control of the weapon that draws them, so this HUD cannot move them around or scale them.
