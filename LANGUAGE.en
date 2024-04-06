@@ -258,6 +258,7 @@ HHXCounterStyle                         = "Counter Style";
 HHXFont                                 = "Font";
 HHXFontColor                            = "Font Color";
 HHXFontScale                            = "Font Scale";
+HHXMagDirection                         = "Magazine Fill Direction";
 HHXMaxValue                             = "Max Value";
 HHXUnits                                = "Units";
 
