@@ -37,6 +37,8 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
     private transient CVar _font;
     private transient CVar _fontColor;
     private transient CVar _fontScale;
+
+    private transient CVar _mag_mag_barDirection;
     
     private transient CVar _nhm_hudLevel;
     private transient CVar _nhm_posX;
@@ -74,6 +76,8 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
 
         if (!_hh_hidefiremode) _hh_hidefiremode = CVar.GetCVar("hh_hidefiremode", sb.CPlayer);
+
+        if (!_mag_mag_barDirection) _mag_mag_barDirection = CVar.GetCVar("uz_hhx_weaponStatus_mag_BarDirection", sb.CPlayer);
 
         if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_weaponStatus_enabled", sb.CPlayer);
         if (!_font) _font                 = CVar.GetCVar("uz_hhx_weaponStatus_font", sb.CPlayer);
@@ -625,7 +629,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 maxValue,
                 (posX, posY),
                 -1,
-                sb.SHADER_VERT,
+                _mag_mag_barDirection.GetInt(),
                 ammoCounter.iconFlags
             );
         }
