@@ -66,9 +66,9 @@ class UZBossRifleOverride : BaseWeaponStatusOverride {
 
     override bool ShouldDrawAmmoCount(HDWeapon wpn, int type, WeaponStatusAmmoCounter ammoCounter, Inventory item) {
         switch (ammoCounter.name) {
-            case 'HD7mClip':           return true;
-            case 'SevenMilAmmo':       return true;
-            case 'SevenMilAmmoRecast': return !!item;
+            case 'HD7mClip':           return ammoCounter.type == type;
+            case 'SevenMilAmmo':       return ammoCounter.type == type;
+            case 'SevenMilAmmoRecast': return ammoCounter.type == type && !!item;
             default:                   return false;
         }
     }
