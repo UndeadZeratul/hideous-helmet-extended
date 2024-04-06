@@ -22,11 +22,7 @@ class UZThunderbusterOverride : BaseWeaponStatusOverride {
         );
     }
 
-    override int GetChamberedRounds(HDWeapon wpn) {
-        return wpn.weaponStatus[2];
-    }
-
-    override int GetMagRounds(HDWeapon wpn) {
+    override int GetBatteryCharge(HDWeapon wpn) {
         return wpn.weaponStatus[1];
     }
 
@@ -59,7 +55,11 @@ class UZThunderbusterOverride : BaseWeaponStatusOverride {
     }
 
     override bool ShouldDrawMagRounds(HDWeapon wpn, HDMagAmmo mag) {
-        return GetMagRounds(wpn) > 0;
+        return false;
+    }
+
+    override bool ShouldDrawBatteryCharge(HDWeapon wpn, HDMagAmmo mag) {
+        return GetBatteryCharge(wpn) > 0;
     }
 
     override bool ShouldDrawChamberedRound(HDWeapon wpn) {
@@ -83,21 +83,6 @@ class UZThunderbusterOverride : BaseWeaponStatusOverride {
                 Font.CR_GRAY,
                 fontScale,
                 sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT
-            );
-        }
-    }
-
-    override void DrawMagazineRounds(HCStatusBar sb, HDWeapon wpn, int value, int maxValue, Color color, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale, int flags) {
-        if (value > 0) {
-            super.DrawMagazineRounds(sb, wpn, value, maxValue, color, posX, posY, scale, hudFont, fontColor, fontScale, flags);
-        } else {
-            sb.DrawString(
-                sb.mAmountFont,
-                "00000",
-                (posX, posY),
-                sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TRANSLATABLE|sb.DI_TEXT_ALIGN_RIGHT,
-                Font.CR_DARKGRAY,
-                scale: (fontScale * scale, fontScale * scale)
             );
         }
     }
