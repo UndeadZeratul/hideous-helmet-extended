@@ -89,6 +89,7 @@ version "4.11"
 
 // Weapon Overrides
 #include "zscript/undeadzeratul/overrides/weapons/vanilla/UZBrontornisOverride.zs"
+#include "zscript/undeadzeratul/overrides/weapons/vanilla/UZBossRifleOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/vanilla/UZHunterOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/vanilla/UZLiberatorOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/vanilla/UZPistolOverride.zs"
