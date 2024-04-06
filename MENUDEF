@@ -3159,6 +3159,8 @@ OptionMenu "HHXWeaponStatus" {
 	TextField "$HHXFont", "uz_hhx_weaponStatus_font", "uz_hhx_weaponStatus_enabled"
 	Option "$HHXFontColor", "uz_hhx_weaponStatus_fontColor", "FontColor", "uz_hhx_weaponStatus_enabled"
 	Slider "$HHXFontScale", "uz_hhx_weaponStatus_fontScale", .01, 4., .05, 2, "uz_hhx_weaponStatus_enabled"
+	StaticText ""
+	Option "$HHXMagDirection", "uz_hhx_weaponStatus_mag_barDirection", "BarDirection", "uz_hhx_weaponStatus_enabled"
 	
 	StaticText ""
 	StaticText ""
