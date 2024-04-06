@@ -802,12 +802,12 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         let ab = wpn.airburst;
 
         sb.DrawString(
-            hudFont,
+            ab ? hudFont : sb.mAmountFont,
             ab ? String.Format("%.2f", ab * 0.01) : "--.--", // TODO: Allow for multiple distance units?  Currently in cm.
             (posX, posY),
             flags,
             ab ? Font.CR_WHITE : Font.CR_BLACK,
-            scale: (fontScale * scale, fontScale * scale)
+            scale: ab ? (fontScale * scale, fontScale * scale) : (scale, scale)
         );
 
         sb.Fill(
