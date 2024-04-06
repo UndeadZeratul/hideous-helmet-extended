@@ -97,6 +97,7 @@ version "4.11"
 #include "zscript/undeadzeratul/overrides/weapons/vanilla/UZRevolverOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/vanilla/UZSmgOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/vanilla/UZThunderbusterOverride.zs"
+#include "zscript/undeadzeratul/overrides/weapons/vanilla/UZVulcanetteOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/vanilla/UZZM66Override.zs"
 
 #include "zscript/undeadzeratul/overrides/weapons/icarus/UZPD42Override.zs"

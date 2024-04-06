@@ -172,12 +172,20 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         return 0;
     }
 
+    virtual int GetBatteryCharge(HDWeapon wpn) {
+        return 0;
+    }
+
     virtual int GetMagAmount(int amount) {
         return amount;
     }
 
     virtual int GetMagCapacity(HDWeapon wpn, HDMagAmmo mag) {
         return mag ? int(mag.maxPerUnit) : magCapacity;
+    }
+
+    virtual int GetBatteryCapacity(HDWeapon wpn, HDBattery bat) {
+        return bat ? int(bat.maxPerUnit) : 20;
     }
 
     virtual int GetSideSaddleRounds(HDWeapon wpn) {
@@ -213,6 +221,10 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
     }
 
     virtual Vector2 GetMagazineRoundsOffsets(HDWeapon wpn) {
+        return (0, 0);
+    }
+
+    virtual Vector2 GetBatteryChargeOffsets(HDWeapon wpn) {
         return (0, 0);
     }
 
@@ -344,6 +356,10 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         return false;
     }
 
+    virtual bool ShouldDrawBatteryCharge(HDWeapon wpn, HDMagAmmo mag) {
+        return false;
+    }
+
     virtual bool ShouldDrawAmmoCounter(HDWeapon wpn) {
         return false;
     }
@@ -424,6 +440,23 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 sb, wpn,
                 GetMagRounds(wpn),
                 GetMagCapacity(wpn, mag),
+                Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
+                posX + (offs.x * scale),
+                posY + (offs.y * scale),
+                scale,
+                hudFont,
+                fontColor,
+                fontScale,
+                sb.DI_SCREEN_CENTER_BOTTOM
+            );
+        }
+
+        if (ShouldDrawBatteryCharge(wpn, mag)) {
+            let offs = GetBatteryChargeOffsets(wpn);
+            DrawBatteryCharge(
+                sb, wpn,
+                GetBatteryCharge(wpn),
+                GetBatteryCapacity(wpn, GetBattery(sb.hpl.FindInventory('HDBattery'))),
                 Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
                 posX + (offs.x * scale),
                 posY + (offs.y * scale),
@@ -702,6 +735,21 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 posX, posY,
                 -1, -2,
                 flags
+            );
+        }
+    }
+
+    virtual void DrawBatteryCharge(HCStatusBar sb, HDWeapon wpn, int value, int maxValue, Color color, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale, int flags) {
+        if (value > 0) {
+            DrawMagazineRounds(sb, wpn, value, maxValue, color, posX, posY, scale, hudFont, fontColor, fontScale, flags);
+        } else {
+            sb.DrawString(
+                sb.mAmountFont,
+                "00000",
+                (posX, posY - scale),
+                sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TRANSLATABLE|sb.DI_TEXT_ALIGN_RIGHT,
+                Font.CR_DARKGRAY,
+                scale: (scale, scale)
             );
         }
     }
