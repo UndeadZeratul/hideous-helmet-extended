@@ -112,7 +112,7 @@ class UZZM66Override : BaseWeaponStatusOverride {
     }
 
     override bool ShouldDrawWeaponZoom(HDWeapon wpn) {
-        return !ShouldDrawRangeFinder(wpn) && wpn.weaponStatus[3];
+        return !ShouldDrawRangeFinder(wpn) && GetWeaponZoom(wpn);
     }
 
     override void DrawWeaponStatus(HCStatusBar sb, HDWeapon wpn, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
