@@ -216,6 +216,14 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         return 0;
     }
 
+    virtual Vector2 GetRangeFinderSize() {
+        return (4, 16);
+    }
+
+    virtual int GetRangeFinderScale() {
+        return 9;
+    }
+
     virtual Vector2 GetFireModeOffsets(HDWeapon wpn) {
         return (-6, -4);
     }
@@ -252,6 +260,10 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
 
     virtual Vector2 GetRangeFinderOffsets(HDWeapon wpn) {
         return (-14, -19);
+    }
+
+    virtual Vector2 GetRangeFinderTextOffsets(HDWeapon wpn) {
+        return (0, 0);
     }
 
     virtual Vector2 GetWeaponZoomOffsets(HDWeapon wpn) {
@@ -333,7 +345,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
     }
 
     virtual bool ShouldDrawAmmoCount(HDWeapon wpn, int type, WeaponStatusAmmoCounter ammoCounter, Inventory item) {
-        return !!item;
+        return ammoCounter.type == type && !!item;
     }
 
     virtual bool ShouldDrawFullMagazine(int value, int maxValue) {
@@ -496,12 +508,17 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
 
         if (ShouldDrawRangeFinder(wpn)) {
             let offs = GetRangeFinderOffsets(wpn);
+            let textOffs = GetRangeFinderTextOffsets(wpn);
             DrawRangeFinder(
                 sb, wpn,
+                GetRangeFinderSize(),
+                GetRangeFinderScale(),
                 Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
                 posX + (offs.x * scale),
                 posY + (offs.y * scale),
                 scale,
+                textOffs.x,
+                textOffs.y,
                 hudFont,
                 fontColor,
                 fontScale,
@@ -798,13 +815,13 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         );
     }
 
-    virtual void DrawRangeFinder(HCStatusBar sb, HDWeapon wpn, Color color, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale, int flags) {
+    virtual void DrawRangeFinder(HCStatusBar sb, HDWeapon wpn, Vector2 barSize, int barScale, Color color, int posX, int posY, float scale, int textPosX, int textPosY, HUDFont hudFont, int fontColor, float fontScale, int flags) {
         let ab = wpn.airburst;
 
         sb.DrawString(
             ab ? hudFont : sb.mAmountFont,
             ab ? String.Format("%.2f", ab * 0.01) : "--.--", // TODO: Allow for multiple distance units?  Currently in cm.
-            (posX, posY),
+            (posX + (textPosX * scale), posY + (textPosY * scale)),
             flags,
             ab ? Font.CR_WHITE : Font.CR_BLACK,
             scale: ab ? (fontScale * scale, fontScale * scale) : (scale, scale)
@@ -812,22 +829,22 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
 
         sb.Fill(
             color,
-            posX - (4 * scale), posY + ((-18 + min(16, ab >> 9)) * scale),
-            4 * scale, scale,
+            posX - (barSize.x * scale), posY + ((-(barSize.y + 2) + min(barSize.y, ab >> barScale)) * scale),
+            barSize.x * scale, scale,
             flags
         );
 
         sb.Fill(
             color,
-            posX - scale, posY - (17 * scale),
-            scale, 16 * scale,
+            posX - scale, posY - ((barSize.y + 1) * scale),
+            scale, barSize.y * scale,
             flags
         );
 
         sb.Fill(
             color,
-            posX - (3 * scale), posY - (17 * scale),
-            scale, 16 * scale,
+            posX - (3 * scale), posY - ((barSize.y + 1) * scale),
+            scale, barSize.y * scale,
             flags
         );
     }
