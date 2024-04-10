@@ -388,6 +388,14 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         return false;
     }
 
+    virtual bool ShouldDrawRangeFinderBar(HDWeapon wpn) {
+        return true;
+    }
+
+    virtual bool ShouldDrawRangeFinderText(HDWeapon wpn) {
+        return true;
+    }
+
     virtual bool ShouldDrawWeaponZoom(HDWeapon wpn) {
         return false;
     }
@@ -818,35 +826,39 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
     virtual void DrawRangeFinder(HCStatusBar sb, HDWeapon wpn, Vector2 barSize, int barScale, Color color, int posX, int posY, float scale, int textPosX, int textPosY, HUDFont hudFont, int fontColor, float fontScale, int flags) {
         let ab = wpn.airburst;
 
-        sb.DrawString(
-            ab ? hudFont : sb.mAmountFont,
-            ab ? String.Format("%.2f", ab * 0.01) : "--.--", // TODO: Allow for multiple distance units?  Currently in cm.
-            (posX + (textPosX * scale), posY + (textPosY * scale)),
-            flags,
-            ab ? Font.CR_WHITE : Font.CR_BLACK,
-            scale: ab ? (fontScale * scale, fontScale * scale) : (scale, scale)
-        );
+        if (ShouldDrawRangeFinderText(wpn)) {
+            sb.DrawString(
+                ab ? hudFont : sb.mAmountFont,
+                ab ? String.Format("%.2f", ab * 0.01) : "--.--", // TODO: Allow for multiple distance units?  Currently in cm.
+                (posX + (textPosX * scale), posY + (textPosY * scale)),
+                flags,
+                ab ? Font.CR_WHITE : Font.CR_BLACK,
+                scale: ab ? (fontScale * scale, fontScale * scale) : (scale, scale)
+            );
+        }
 
-        sb.Fill(
-            color,
-            posX - (barSize.x * scale), posY + ((-(barSize.y + 2) + min(barSize.y, ab >> barScale)) * scale),
-            barSize.x * scale, scale,
-            flags
-        );
+        if (ShouldDrawRangeFinderBar(wpn)) {
+            sb.Fill(
+                color,
+                posX - (barSize.x * scale), posY + ((-(barSize.y + 2) + min(barSize.y, ab >> barScale)) * scale),
+                barSize.x * scale, scale,
+                flags
+            );
 
-        sb.Fill(
-            color,
-            posX - scale, posY - ((barSize.y + 1) * scale),
-            scale, barSize.y * scale,
-            flags
-        );
+            sb.Fill(
+                color,
+                posX - scale, posY - ((barSize.y + 1) * scale),
+                scale, barSize.y * scale,
+                flags
+            );
 
-        sb.Fill(
-            color,
-            posX - (3 * scale), posY - ((barSize.y + 1) * scale),
-            scale, barSize.y * scale,
-            flags
-        );
+            sb.Fill(
+                color,
+                posX - (3 * scale), posY - ((barSize.y + 1) * scale),
+                scale, barSize.y * scale,
+                flags
+            );
+        }
     }
 
     virtual void DrawWeaponZoom(HCStatusBar sb, HDWeapon wpn, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale, int flags) {
