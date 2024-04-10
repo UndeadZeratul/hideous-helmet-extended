@@ -89,6 +89,7 @@ version "4.11"
 
 // Weapon Overrides
 #include "zscript/undeadzeratul/overrides/weapons/vanilla/UZBlooperOverride.zs"
+#include "zscript/undeadzeratul/overrides/weapons/vanilla/UZBFG9000Override.zs"
 #include "zscript/undeadzeratul/overrides/weapons/vanilla/UZBrontornisOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/vanilla/UZBossRifleOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/vanilla/UZHunterOverride.zs"
