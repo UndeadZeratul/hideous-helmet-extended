@@ -285,7 +285,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
      * Setters for various pieces of Weapon Status
      **********************************************/
 
-     virtual void AddAmmoCount(name name, name icon, Vector2 iconScale, Vector2 offsets, Vector2 countOffsets, int iconFlags, int countFlags) {
+    virtual void AddAmmoCount(name name, name icon, Vector2 iconScale, Vector2 offsets, Vector2 countOffsets, int iconFlags, int countFlags) {
 
         let ammo = WeaponStatusAmmoCounter(new ('WeaponStatusAmmoCounter'));
 
@@ -299,9 +299,9 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         ammo.countFlags = countFlags;
 
         ammoCounts.push(ammo);
-     }
+    }
 
-     virtual void AddMagCount(name name, int capacity, name iconFull, name iconEmpty, name iconFG, name iconBG, Vector2 iconScale, Vector2 offsets, Vector2 countOffsets, int iconFlags, int countFlags) {
+    virtual void AddMagCount(name name, int capacity, name iconFull, name iconEmpty, name iconFG, name iconBG, Vector2 iconScale, Vector2 offsets, Vector2 countOffsets, int iconFlags, int countFlags) {
 
         let mag = WeaponStatusAmmoCounter(new ('WeaponStatusAmmoCounter'));
 
@@ -319,9 +319,9 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         mag.countFlags = countFlags;
 
         ammoCounts.push(mag);
-     }
+    }
 
-     virtual void AddBatteryCount(name name, int capacity, name iconFull, name iconHigh, name iconLow, name iconEmpty, Vector2 iconScale, Vector2 offsets, Vector2 countOffsets, int iconFlags, int countFlags) {
+    virtual void AddBatteryCount(name name, int capacity, name iconFull, name iconHigh, name iconLow, name iconEmpty, Vector2 iconScale, Vector2 offsets, Vector2 countOffsets, int iconFlags, int countFlags) {
 
         let bat = WeaponStatusAmmoCounter(new ('WeaponStatusAmmoCounter'));
 
@@ -339,7 +339,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         bat.countFlags = countFlags;
 
         ammoCounts.push(bat);
-     }
+    }
 
 
     /*************************************************************
@@ -733,7 +733,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         for (int i = input; i >= 0; i--) {
             if (input == i) {
                 if (fireModes[i] == "blank") break;
-				else if (fireModes[i] == "") input--;
+                else if (fireModes[i] == "") input--;
                 else result = fireModes[i];
             }
         }
@@ -913,7 +913,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
             case 1:
 
                 // Peppergrinder-style Shell
-				sb.Fill(
+                sb.Fill(
                     color,
                     posX - (6 * scale), posY,
                     scale, scale,
@@ -931,7 +931,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                     scale, scale,
                     flags
                 );
-				
+                
                 sb.Fill(
                     color,
                     posX - (5 * scale), posY + scale,
@@ -944,7 +944,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                     scale, scale,
                     flags
                 );
-				
+                
                 sb.Fill(
                     color,
                     posX - (6 * scale), posY + (2 * scale),
@@ -967,13 +967,13 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
             case 2:
 
                 // Peppergrinder-style Slug
-				sb.Fill(
+                sb.Fill(
                     color,
                     posX - (5 * scale), posY,
                     4 * scale, 3 * scale,
                     flags
                 );
-				sb.Fill(
+                sb.Fill(
                     color,
                     posX - (6 * scale), posY + (1 * scale),
                     scale, scale,
@@ -1007,7 +1007,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
             case 1:
 
                 // Peppergrinder-style Shell
-				sb.Fill(
+                sb.Fill(
                     color,
                     posX, posY - (6 * scale),
                     scale, scale,
@@ -1025,7 +1025,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                     scale, scale,
                     flags
                 );
-				
+                
                 sb.Fill(
                     color,
                     posX + scale, posY - (5 * scale),
@@ -1038,7 +1038,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                     scale, scale,
                     flags
                 );
-				
+                
                 sb.Fill(
                     color,
                     posX + (2 * scale), posY - (6 * scale),
@@ -1061,13 +1061,13 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
             case 2:
 
                 // Peppergrinder-style Slug
-				sb.Fill(
+                sb.Fill(
                     color,
                     posX, posY - (5 * scale),
                     3 * scale, 4 * scale,
                     flags
                 );
-				sb.Fill(
+                sb.Fill(
                     color,
                     posX + (1 * scale), posY - (6 * scale),
                     scale, scale,
