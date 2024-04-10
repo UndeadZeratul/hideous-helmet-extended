@@ -44,10 +44,6 @@ class UZRocketLauncherOverride : BaseWeaponStatusOverride {
         return (-2, -10);
     }
 
-    // override Vector2 GetMagazineRoundsOffsets(HDWeapon wpn) {
-    //     return (0, 0);
-    // }
-
     override Vector2 GetChamberedRoundOffsets(HDWeapon wpn) {
         return (-3, -5);
     }
