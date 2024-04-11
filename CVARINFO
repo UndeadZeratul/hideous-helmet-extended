@@ -1635,6 +1635,7 @@ user int    uz_hhx_weaponStatus_fontColor        = 15;
 user float  uz_hhx_weaponStatus_fontScale        = .5;
 
 user int    uz_hhx_weaponStatus_mag_BarDirection = 2;
+user int    uz_hhx_weaponStatus_shellStyle       = 0;
 
 user int    uz_hhx_weaponStatus_nhm_hudLevel     = 1;
 user int    uz_hhx_weaponStatus_nhm_posX         = -16;
