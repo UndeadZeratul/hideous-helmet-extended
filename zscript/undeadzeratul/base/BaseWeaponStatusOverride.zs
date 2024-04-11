@@ -38,7 +38,8 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
     private transient CVar _fontColor;
     private transient CVar _fontScale;
 
-    private transient CVar _mag_mag_barDirection;
+    private transient CVar _mag_barDirection;
+    private transient CVar _shellStyle;
     
     private transient CVar _nhm_hudLevel;
     private transient CVar _nhm_posX;
@@ -77,7 +78,8 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
 
         if (!_hh_hidefiremode) _hh_hidefiremode = CVar.GetCVar("hh_hidefiremode", sb.CPlayer);
 
-        if (!_mag_mag_barDirection) _mag_mag_barDirection = CVar.GetCVar("uz_hhx_weaponStatus_mag_BarDirection", sb.CPlayer);
+        if (!_mag_barDirection) _mag_barDirection = CVar.GetCVar("uz_hhx_weaponStatus_mag_BarDirection", sb.CPlayer);
+        if (!_shellStyle) _shellStyle             = CVar.GetCVar("uz_hhx_weaponStatus_shellStyle", sb.CPlayer);
 
         if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_weaponStatus_enabled", sb.CPlayer);
         if (!_font) _font                 = CVar.GetCVar("uz_hhx_weaponStatus_font", sb.CPlayer);
@@ -220,6 +222,28 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
 
     virtual int GetWeaponZoom(HDWeapon wpn) {
         return 0;
+    }
+
+    virtual int GetShellStyle(HDWeapon wpn, int state) {
+        let cvar = _shellStyle.GetInt();
+
+        // Depending on the CVAR value, return the appropriate style
+        // Possible State Values include:
+        // -1 = Empty Casing
+        // 0 = Simple Shell 
+        // 1 = Fancy Shell
+        // 2 = Fancy Slug
+        switch (cvar) {
+            // Automatic
+            case 0: return state;
+            // Force Vanilla
+            case 1: return state > -1 ? 0 : -1;
+            // Force Fancy (1 = Shell, 2 = Slug)
+            case 2: return state > -1 ? max(1, min(2, state)) : -1;
+        }
+
+        // Invalid CVAR value, fallback to empty casing
+        return -1;
     }
 
     virtual Vector2 GetRangeFinderSize() {
@@ -693,7 +717,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 maxValue,
                 (posX, posY),
                 -1,
-                _mag_mag_barDirection.GetInt(),
+                _mag_barDirection.GetInt(),
                 ammoCounter.iconFlags
             );
         }
@@ -889,12 +913,12 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         }
     }
 
-    virtual void DrawHorzVectorShell(HCStatusBar sb, HDWeapon wpn, int style, Color color, int posX, int posY, float scale, int flags) {
+    virtual void DrawHorzVectorShell(HCStatusBar sb, HDWeapon wpn, int style, bool flipped, Color color, int posX, int posY, float scale, int flags) {
 
         // Empty Casing
         sb.Fill(
             color,
-            posX, posY,
+            posX - (9 * scale * flipped), posY,
             2 * scale, 3 * scale,
             flags
         );
@@ -969,13 +993,13 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 // Peppergrinder-style Slug
                 sb.Fill(
                     color,
-                    posX - (5 * scale), posY,
+                    posX - ((5 + flipped) * scale), posY,
                     4 * scale, 3 * scale,
                     flags
                 );
                 sb.Fill(
                     color,
-                    posX - (6 * scale), posY + (1 * scale),
+                    posX - ((6 - (4 * flipped)) * scale), posY + (1 * scale),
                     scale, scale,
                     flags
                 );
@@ -983,12 +1007,12 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         }
     }
 
-    virtual void DrawVertVectorShell(HCStatusBar sb, HDWeapon wpn, int style, Color color, int posX, int posY, float scale, int flags) {
+    virtual void DrawVertVectorShell(HCStatusBar sb, HDWeapon wpn, int style, bool flipped, Color color, int posX, int posY, float scale, int flags) {
 
         // Empty Casing
         sb.Fill(
             color,
-            posX, posY,
+            posX, posY - (9 * scale * flipped),
             3 * scale, 2 * scale,
             flags
         );
@@ -1063,13 +1087,13 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 // Peppergrinder-style Slug
                 sb.Fill(
                     color,
-                    posX, posY - (5 * scale),
+                    posX, posY - ((5 + flipped) * scale),
                     3 * scale, 4 * scale,
                     flags
                 );
                 sb.Fill(
                     color,
-                    posX + (1 * scale), posY - (6 * scale),
+                    posX + (1 * scale), posY - ((6 - (4 * flipped)) * scale),
                     scale, scale,
                     flags
                 );

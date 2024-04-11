@@ -1,28 +1,38 @@
-class UZSlayerOverride : BaseWeaponStatusOverride {
+class UZAltisOverride : BaseWeaponStatusOverride {
     
     override void Init(HCStatusbar sb) {
         super.Init(sb);
 
-        weaponName = 'Slayer';
+        weaponName = 'HDAltis';
 
         fireModes[0] = 'STBURAUT';
+
+        AddAmmoCount(
+            'HDSlugAmmo',                                     // name
+            'SLG1A0',                                         // icon
+            (1.0, 1.0),                                       // iconScale
+            (-22, -19),                                       // offsets
+            (1, 0),                                           // countOffsets
+            sb.DI_SCREEN_CENTER_BOTTOM,                       // iconFlags
+            sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT // countFlags
+        );
 
         AddAmmoCount(
             'HDShellAmmo',                                    // name
             'SHL1A0',                                         // icon
             (1.0, 1.0),                                       // iconScale
-            (-31, -4),                                        // offsets
-            (1, 2),                                           // countOffsets
+            (-22, -2),                                        // offsets
+            (1, 0),                                           // countOffsets
             sb.DI_SCREEN_CENTER_BOTTOM,                       // iconFlags
             sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT // countFlags
         );
     }
 
-    virtual int GetLeftChamberedRound(HDWeapon wpn) {
+    virtual int GetTopChamberedRound(HDWeapon wpn) {
         return wpn.weaponStatus[1];
     }
 
-    virtual int GetRightChamberedRound(HDWeapon wpn) {
+    virtual int GetBottomChamberedRound(HDWeapon wpn) {
         return wpn.weaponStatus[2];
     }
 
@@ -38,12 +48,23 @@ class UZSlayerOverride : BaseWeaponStatusOverride {
         return 12;
     }
 
+    // virtual int GetShellStyle(HDWeapon wpn, int state) {
+    //     let style = super.GetShellStyle();
+
+    //     switch (style) {
+    //         case 0:
+
+    //     }
+
+    //     return  _shellStyle.GetInt();
+    // }
+
     override Vector2 GetFireModeOffsets(HDWeapon wpn) {
-        return (-7, -11);
+        return (0, -4);
     }
 
     override Vector2 GetChamberedRoundOffsets(HDWeapon wpn) {
-        return (0, -3);
+        return (-3, 6);
     }
 
     override Vector2 GetSideSaddleOffsets(HDWeapon wpn) {
@@ -63,7 +84,7 @@ class UZSlayerOverride : BaseWeaponStatusOverride {
     }
 
     override bool ShouldDrawChamberedRound(HDWeapon wpn) {
-        return GetLeftChamberedRound(wpn) > 0 || GetRightChamberedRound(wpn) > 0;
+        return GetTopChamberedRound(wpn) > 0 || GetBottomChamberedRound(wpn) > 0;
     }
 
     override bool ShouldDrawSideSaddles(HDWeapon wpn) {
@@ -77,28 +98,28 @@ class UZSlayerOverride : BaseWeaponStatusOverride {
     override void DrawChamberedRound(HCStatusBar sb, HDWeapon wpn, Color color, int posX, int posY, float scale, int flags) {
         let double = ShouldDrawFireMode(wpn);
         
-        let leftBarrel = GetLeftChamberedRound(wpn);
-        let rightBarrel = GetRightChamberedRound(wpn);
+        let topBarrel = GetTopChamberedRound(wpn);
+        let bottomBarrel = GetBottomChamberedRound(wpn);
 
-        if (leftBarrel) {
-            DrawVertVectorShell(
+        if (topBarrel) {
+            DrawHorzVectorShell(
                 sb, wpn,
-                GetShellStyle(wpn, leftBarrel > 1 ? 0 : -1),
-                false,
+                GetShellStyle(wpn, !(topBarrel % 2) ? (topBarrel / 2) : -1),
+                true,
                 Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
-                posX + ((-15 + (4 * double)) * scale), posY,
+                posX, posY - ((18 - (3 * double)) * scale),
                 scale,
                 flags
             );
         }
 
-        if (rightBarrel) {
-            DrawVertVectorShell(
+        if (bottomBarrel) {
+            DrawHorzVectorShell(
                 sb, wpn,
-                GetShellStyle(wpn, rightBarrel > 1 ? 0 : -1),
-                false,
+                GetShellStyle(wpn, !(bottomBarrel % 2) ? (bottomBarrel / 2) : -1),
+                true,
                 Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
-                posX - ((2 + (4 * double + double)) * scale), posY,
+                posX, posY - ((7 + (4 * double)) * scale),
                 scale,
                 flags
             );

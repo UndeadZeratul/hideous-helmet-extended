@@ -81,7 +81,8 @@ class UZPD42Override : BaseWeaponStatusOverride {
             let offs = GetChamberedSlugOffsets(wpn);
             DrawChamberedSlug(
                 sb, wpn,
-                0, Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
+                GetShellStyle(wpn, 0),
+                Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
                 posX + (offs.x * scale),
                 posY + (offs.y * scale),
                 scale,
@@ -103,7 +104,9 @@ class UZPD42Override : BaseWeaponStatusOverride {
             case 1:
                 DrawHorzVectorShell(
                     sb, wpn,
-                    2, color,
+                    GetShellStyle(wpn, 2),
+                    false,
+                    color,
                     posX + (2 * scale),
                     posY,
                     scale,
