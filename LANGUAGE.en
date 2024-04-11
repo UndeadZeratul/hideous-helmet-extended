@@ -291,6 +291,7 @@ HHXFontColor                            = "Font Color";
 HHXFontScale                            = "Font Scale";
 HHXMagDirection                         = "Magazine Fill Direction";
 HHXMaxValue                             = "Max Value";
+HHXShellStyle                           = "Shell/Slug Style";
 HHXUnits                                = "Units";
 
 // HUD Counter Styles
