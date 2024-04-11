@@ -83,6 +83,12 @@ OptionValue "LevelInfoUnit" {
 	5,"Remaining%"
 }
 
+OptionValue "ShellStyle" {
+	0,"Auto"
+	1,"Simple"
+	2,"Fancy"
+}
+
 OptionMenu "HHXOptions" {
 	Title "$HHXOptions"
 	
@@ -3161,6 +3167,7 @@ OptionMenu "HHXWeaponStatus" {
 	Slider "$HHXFontScale", "uz_hhx_weaponStatus_fontScale", .01, 4., .05, 2, "uz_hhx_weaponStatus_enabled"
 	StaticText ""
 	Option "$HHXMagDirection", "uz_hhx_weaponStatus_mag_barDirection", "BarDirection", "uz_hhx_weaponStatus_enabled"
+	Option "$HHXShellStyle", "uz_hhx_weaponStatus_shellStyle", "ShellStyle", "uz_hhx_weaponStatus_enabled"
 	
 	StaticText ""
 	StaticText ""
