@@ -87,7 +87,8 @@ class UZHunterOverride : BaseWeaponStatusOverride {
     override void DrawChamberedRound(HCStatusBar sb, HDWeapon wpn, Color color, int posX, int posY, float scale, int flags) {
         DrawHorzVectorShell(
             sb, wpn,
-            GetChamberedRounds(wpn) > 1 ? 0 : -1,
+            GetShellStyle(wpn, GetChamberedRounds(wpn) > 1 ? 0 : -1),
+            false,
             color,
             posX, posY,
             scale,
