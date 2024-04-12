@@ -38,12 +38,20 @@ class UZPD42Override : BaseWeaponStatusOverride {
         return wpn.weaponStatus[1];
     }
 
+    virtual int GetChamberedSlug(HDWeapon wpn) {
+        return wpn.weaponStatus[5];
+    }
+
     override int GetFireMode(HDWeapon wpn) {
         return wpn.weaponStatus[3];
     }
 
+    override Vector2 GetFireModeOffsets(HDWeapon wpn) {
+        return (-9, -4);
+    }
+
     virtual Vector2 GetChamberedSlugOffsets(HDWeapon wpn) {
-        return (-4, -9);
+        return (-2, -9);
     }
 
     override bool ShouldDrawAmmoCounts(HDWeapon wpn) {
@@ -53,7 +61,7 @@ class UZPD42Override : BaseWeaponStatusOverride {
     override bool ShouldDrawAmmoCount(HDWeapon wpn, int type, WeaponStatusAmmoCounter ammoCounter, Inventory item) {
         switch (ammoCounter.name) {
             case 'HDPDFourMag': return ammoCounter.type == type;
-            case 'HDSlugAmmo':  return ammoCounter.type == type && wpn.weaponStatus[0] & 4;
+            case 'HDSlugAmmo':  return ammoCounter.type == type && wpn.weaponStatus[0] & 2;
             default:            return false;
         }
     }
@@ -71,7 +79,7 @@ class UZPD42Override : BaseWeaponStatusOverride {
     }
 
     virtual bool ShouldDrawChamberedSlug(HDWeapon wpn) {
-        return wpn.weaponStatus[0] & 2;
+        return GetChamberedSlug(wpn);
     }
 
     override void DrawWeaponStatus(HCStatusBar sb, HDWeapon wpn, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
@@ -79,40 +87,17 @@ class UZPD42Override : BaseWeaponStatusOverride {
 
         if (ShouldDrawChamberedSlug(wpn)) {
             let offs = GetChamberedSlugOffsets(wpn);
-            DrawChamberedSlug(
+            let barrel = GetChamberedSlug(wpn);
+            DrawHorzVectorShell(
                 sb, wpn,
-                GetShellStyle(wpn, 0),
+                GetShellStyle(wpn, !(barrel % 2) ? 2 : -1),
+                false,
                 Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
                 posX + (offs.x * scale),
                 posY + (offs.y * scale),
                 scale,
                 sb.DI_SCREEN_CENTER_BOTTOM
             );
-        }
-    }
-
-    virtual void DrawChamberedSlug(HCStatusBar sb, HDWeapon wpn, int style, Color color, int posX, int posY, float scale, int flags) {
-        switch (style) {
-            case 0:
-                sb.Fill(
-                    color,
-                    posX, posY,
-                    4 * scale, 2.6 * scale,
-                    flags
-                );
-                break;
-            case 1:
-                DrawHorzVectorShell(
-                    sb, wpn,
-                    GetShellStyle(wpn, 2),
-                    false,
-                    color,
-                    posX + (2 * scale),
-                    posY,
-                    scale,
-                    flags
-                );
-                break;
         }
     }
 }
