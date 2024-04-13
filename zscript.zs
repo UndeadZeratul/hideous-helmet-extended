@@ -107,6 +107,7 @@ version "4.11"
 
 #include "zscript/undeadzeratul/overrides/weapons/icarus/UZPD42Override.zs"
 
+#include "zscript/undeadzeratul/overrides/weapons/peppergrinder/UZAurochsOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/peppergrinder/UZGreelyOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/peppergrinder/UZOtis5Override.zs"
 
