@@ -10,7 +10,9 @@ class UZPistolOverride : BaseWeaponStatusOverride {
 
         fireModes[0] = 'STSEMAUT';
         fireModes[1] = 'STFULAUT';
+    }
 
+    override void AddAmmoCounts(HCStatusBar sb) {
         AddMagCount(
             'HD9mMag15',                                      // name
             15,                                               // capacity

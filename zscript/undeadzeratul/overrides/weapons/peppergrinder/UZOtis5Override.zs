@@ -4,7 +4,9 @@ class UZOtis5Override : UZRevolverOverride {
         super.Init(sb);
 
         weaponName = 'HDOtisGun';
+    }
 
+    override void AddAmmoCounts(HCStatusBar sb) {
         AddAmmoCount(
             'HD500SWHeavyAmmo',                               // name
             'SWRNB0',                                         // icon

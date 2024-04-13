@@ -11,7 +11,9 @@ class UZPD42Override : BaseWeaponStatusOverride {
         fireModes[0] = 'STSEMAUT';
         fireModes[1] = 'STBURAUT';
         fireModes[2] = 'STFULAUT';
+    }
 
+    override void AddAmmoCounts(HCStatusBar sb) {
         AddMagCount(
             'HDPDFourMag',                                    // name
             36,                                               // capacity

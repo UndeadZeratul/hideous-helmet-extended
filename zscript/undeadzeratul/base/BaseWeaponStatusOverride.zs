@@ -67,6 +67,8 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
     override void Init(HCStatusbar sb) {
         Priority     = 1;
         OverrideType = HCOVERRIDETYPE_WEAPON;
+
+        AddAmmoCounts(sb);
     }
 
     override bool CheckItem(Inventory item) {
@@ -324,6 +326,10 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
     /**********************************************
      * Setters for various pieces of Weapon Status
      **********************************************/
+
+    virtual void AddAmmoCounts(HCStatusBar sb) {
+        // no-op, add ammo counts in child classes.
+    }
 
     virtual void AddAmmoCount(name name, name icon, Vector2 iconScale, Vector2 offsets, Vector2 countOffsets, int iconFlags, int countFlags) {
 

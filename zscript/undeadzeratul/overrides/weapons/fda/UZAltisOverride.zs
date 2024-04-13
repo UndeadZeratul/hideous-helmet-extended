@@ -6,7 +6,9 @@ class UZAltisOverride : BaseWeaponStatusOverride {
         weaponName = 'HDAltis';
 
         fireModes[0] = 'STBURAUT';
+    }
 
+    override void AddAmmoCounts(HCStatusBar sb) {
         AddAmmoCount(
             'HDSlugAmmo',                                     // name
             'SLG1A0',                                         // icon
@@ -47,17 +49,6 @@ class UZAltisOverride : BaseWeaponStatusOverride {
     override int GetSideSaddleCapacity(HDWeapon wpn) {
         return 12;
     }
-
-    // virtual int GetShellStyle(HDWeapon wpn, int state) {
-    //     let style = super.GetShellStyle();
-
-    //     switch (style) {
-    //         case 0:
-
-    //     }
-
-    //     return  _shellStyle.GetInt();
-    // }
 
     override Vector2 GetFireModeOffsets(HDWeapon wpn) {
         return (0, -4);
