@@ -4,7 +4,9 @@ class UZAurochsOverride : UZRevolverOverride {
         super.Init(sb);
 
         weaponName = 'HDAurochs';
+    }
 
+    override void AddAmmoCounts(HCStatusBar sb) {
         AddAmmoCount(
             'HDAurochsAmmo',                                  // name
             '420BA0',                                         // icon
