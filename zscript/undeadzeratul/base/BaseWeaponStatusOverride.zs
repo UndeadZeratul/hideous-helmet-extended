@@ -212,6 +212,10 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         return 0;
     }
 
+    virtual int GetCylinderRound(HDWeapon wpn, int i) {
+        return 0;
+    }
+
     virtual int GetCylinderRadius(HDWeapon wpn) {
         return 1;
     }
@@ -279,7 +283,11 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
     }
 
     virtual double GetRevolverCylinderAngle(HDWeapon wpn, int i, int numCylinders) {
-        return i * (360.0 / double(numCylinders)) - 150;
+        return i * (360.0 / double(numCylinders)) + GetRevolverCylinderRotation(wpn);
+    }
+
+    virtual int GetRevolverCylinderRotation(HDWeapon wpn) {
+        return -150;
     }
 
     virtual Vector2 GetRevolverCylinderOffsets(HDWeapon wpn, int i, int numCylinders) {
@@ -836,9 +844,11 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
             let cylOffs = GetRevolverCylinderOffsets(wpn, i, numCylinders);
             let pos = (posX, posY) + cylOffs * radius;
 
+			if (hd_debug) console.printf('[UZHHX] Cylinder #'..i..' = cos: '..cylOffs.x..', sin: '..cylOffs.y..', pos: ('..pos.x..', '..pos.y..')');
+
             DrawRevolverCylinder(
                 sb, wpn,
-                wpn.weaponStatus[i] > 0 ? colorFull : colorEmpty,
+                GetCylinderRound(wpn, i) ? colorFull : colorEmpty,
                 pos.x,
                 pos.y,
                 scale,
