@@ -5,9 +5,10 @@ class UZBossRifleOverride : BaseWeaponStatusOverride {
 
         weaponName = 'BossRifle';
 
-        // magName = 'HD7mClip';
         magCapacity = 10;
+    }
 
+    override void AddAmmoCounts(HCStatusBar sb) {
         AddMagCount(
             'HD7mClip',                                       // name
             50,                                               // capacity

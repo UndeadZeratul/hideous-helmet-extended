@@ -7,7 +7,9 @@ class UZBFG9KOverride : BaseWeaponStatusOverride {
 
         magName = 'HDBattery';
         magCapacity = 20;
+    }
 
+    override void AddAmmoCounts(HCStatusBar sb) {
         AddBatteryCount(
             'HDBattery',                                      // name
             20,                                               // capacity

@@ -6,7 +6,9 @@ class UZRocketLauncherOverride : BaseWeaponStatusOverride {
         weaponName = 'HDRL';
 
         magCapacity = 6;
+    }
 
+    override void AddAmmoCounts(HCStatusBar sb) {
         AddAmmoCount(
             'HDRocketAmmo',                                   // name
             'ROQPA0',                                         // icon

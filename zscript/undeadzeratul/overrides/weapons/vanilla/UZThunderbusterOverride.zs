@@ -9,7 +9,9 @@ class UZThunderbusterOverride : BaseWeaponStatusOverride {
         magCapacity = 20;
 
         fireModes[1] = 'STBURAUT';
+    }
 
+    override void AddAmmoCounts(HCStatusBar sb) {
         AddBatteryCount(
             'HDBattery',                                      // name
             20,                                               // capacity

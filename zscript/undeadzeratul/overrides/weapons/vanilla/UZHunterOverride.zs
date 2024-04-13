@@ -8,7 +8,9 @@ class UZHunterOverride : BaseWeaponStatusOverride {
         fireModes[0] = 'blank';
         fireModes[1] = 'STSEMAUT';
         fireModes[2] = 'STFULAUT';
+    }
 
+    override void AddAmmoCounts(HCStatusBar sb) {
         AddAmmoCount(
             'HDShellAmmo',                                    // name
             'SHL1A0',                                         // icon

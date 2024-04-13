@@ -10,7 +10,9 @@ class UZLiberatorOverride : BaseWeaponStatusOverride {
 
         fireModes[0] = 'STSEMAUT';
         fireModes[1] = 'STFULAUT';
+    }
 
+    override void AddAmmoCounts(HCStatusBar sb) {
         AddMagCount(
             'HD7mMag',                                        // name
             30,                                               // capacity

@@ -10,7 +10,9 @@ class UZVulcanetteOverride : BaseWeaponStatusOverride {
 
         fireModes[0] = 'blank';
         fireModes[1] = 'STFULAUT';
+    }
 
+    override void AddAmmoCounts(HCStatusBar sb) {
         AddMagCount(
             'HD4mMag',                                        // name
             50,                                               // capacity

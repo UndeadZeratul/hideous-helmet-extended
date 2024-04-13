@@ -4,7 +4,9 @@ class UZBlooperOverride : BaseWeaponStatusOverride {
         super.Init(sb);
 
         weaponName = 'Blooper';
+    }
 
+    override void AddAmmoCounts(HCStatusBar sb) {
         AddAmmoCount(
             'HDRocketAmmo',                                   // name
             'ROQPA0',                                         // icon
