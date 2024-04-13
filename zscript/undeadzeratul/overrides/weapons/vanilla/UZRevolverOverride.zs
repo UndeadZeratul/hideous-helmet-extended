@@ -43,7 +43,7 @@ class UZRevolverOverride : BaseWeaponStatusOverride {
     }
 
     override int GetCylinderRound(HDWeapon wpn, int i) {
-        return wpn.weaponStatus[i] > 0;
+        return wpn.weaponStatus[i];
     }
 
     virtual bool IsCylinderOpen(HDWeapon wpn) {
