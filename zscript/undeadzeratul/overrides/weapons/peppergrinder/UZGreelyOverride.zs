@@ -6,7 +6,9 @@ class UZGreelyOverride : BaseWeaponStatusOverride {
         weaponName = 'HDGreely';
 
         magCapacity = 3;
+    }
 
+    override void AddAmmoCounts(HCStatusBar sb) {
         AddAmmoCount(
             'HDShellAmmo',                                    // name
             'SHL1A0',                                         // icon
