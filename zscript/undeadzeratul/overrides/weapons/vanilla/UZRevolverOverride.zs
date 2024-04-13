@@ -58,22 +58,20 @@ class UZRevolverOverride : BaseWeaponStatusOverride {
     }
 
     override Vector2 GetRevolverCylindersOffsets(HDWeapon wpn) {
-        Vector2 baseOffs = super.GetRevolverCylindersOffsets(wpn);
-
-        int plf = wpn.owner && wpn.owner.player ? wpn.owner.player.GetPSprite(PSP_WEAPON).frame : 0;
+        int plf = (wpn.owner && wpn.owner.player) ? wpn.owner.player.GetPSprite(PSP_WEAPON).frame : 0;
         if (plf == 4) {
-            return baseOffs + (-8, 6);
+            return (-14, -8);
         } else if (plf ==5 || plf == 6 || HDPlayerPawn(wpn.owner).wepHelpText.IndexOf(StringTable.Localize('$REVCWH_ALTFIRE')) >= 0) {
-            return baseOffs + (-12, 8);
+            return (-18, -6);
         } else {
-            return baseOffs;
+            return (-6, -14);
         }
     }
 
     override double GetRevolverCylinderAngle(HDWeapon wpn, int i, int numCylinders) {
         double baseAngle = super.GetRevolverCylinderAngle(wpn, i, numCylinders);
 
-        int plf = wpn.owner && wpn.owner.player ? wpn.owner.player.GetPSprite(PSP_WEAPON).frame : 0;
+        int plf = (wpn.owner && wpn.owner.player) ? wpn.owner.player.GetPSprite(PSP_WEAPON).frame : 0;
         if (plf == 4) {
             return baseAngle - 45.0;
         } else if (plf ==5 || plf == 6 || HDPlayerPawn(wpn.owner).wepHelpText.IndexOf(StringTable.Localize('$REVCWH_ALTFIRE')) >= 0) {
@@ -89,13 +87,22 @@ class UZRevolverOverride : BaseWeaponStatusOverride {
         double cdrngl = cos(angle);
         double sdrngl = sin(angle);
 
-        int plf = wpn.owner && wpn.owner.player ? wpn.owner.player.GetPSprite(PSP_WEAPON).frame : 0;
-        if (!(plf ==5 || plf == 6) && _aspectScale && _aspectScale.getbool()) {
+        int plf = (wpn.owner && wpn.owner.player) ? wpn.owner.player.GetPSprite(PSP_WEAPON).frame : 0;
+        if (
+            !(
+                plf == 4
+                || plf == 5
+                || plf == 6
+                || HDPlayerPawn(wpn.owner).wepHelpText.IndexOf(StringTable.Localize('$REVCWH_ALTFIRE')) >= 0
+            )
+            && _aspectScale
+            && _aspectScale.getbool()
+        ) {
             cdrngl *= 1.1;
             sdrngl *= (1.0 / 1.1);
         }
 
-        return (cdrngl, sdrngl) * GetCylinderRadius(wpn);
+        return (cdrngl, sdrngl);
     }
 
     override bool ShouldDrawAmmoCounts(HDWeapon wpn) {
