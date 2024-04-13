@@ -212,6 +212,14 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         return 0;
     }
 
+    virtual Color GetFullCylinderColor(HDWeapon wpn, int i) {
+        return Color(255, 240, 230, 40);
+    }
+
+    virtual Color GetEmptyCylinderColor(HDWeapon wpn, int i) {
+        return Color(200, 30,  26,  24);
+    }
+
     virtual int GetCylinderRound(HDWeapon wpn, int i) {
         return 0;
     }
@@ -531,8 +539,6 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
             DrawRevolverCylinders(
                 sb, wpn,
                 GetNumCylinders(wpn),
-                Color(255, 240, 230, 40),
-                Color(200, 30,  26,  24),
                 posX + (offs.x * scale),
                 posY + (offs.y * scale),
                 scale,
@@ -837,7 +843,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         );
     }
 
-    virtual void DrawRevolverCylinders(HCStatusBar sb, HDWeapon wpn, int numCylinders, Color colorFull, Color colorEmpty, int posX, int posY, float scale, int flags) {
+    virtual void DrawRevolverCylinders(HCStatusBar sb, HDWeapon wpn, int numCylinders, int posX, int posY, float scale, int flags) {
         let radius = GetCylinderRadius(wpn);
 
         for (int i = 1; i <= numCylinders; i++) {
@@ -848,7 +854,9 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
 
             DrawRevolverCylinder(
                 sb, wpn,
-                GetCylinderRound(wpn, i) ? colorFull : colorEmpty,
+                GetCylinderRound(wpn, i)
+                    ? GetFullCylinderColor(wpn, i)
+                    : GetEmptyCylinderColor(wpn, i),
                 pos.x,
                 pos.y,
                 scale,
