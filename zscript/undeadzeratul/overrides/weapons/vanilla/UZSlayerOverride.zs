@@ -6,7 +6,9 @@ class UZSlayerOverride : BaseWeaponStatusOverride {
         weaponName = 'Slayer';
 
         fireModes[0] = 'STBURAUT';
+    }
 
+    override void AddAmmoCounts(HCStatusBar sb) {
         AddAmmoCount(
             'HDShellAmmo',                                    // name
             'SHL1A0',                                         // icon

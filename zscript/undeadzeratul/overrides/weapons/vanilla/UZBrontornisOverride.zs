@@ -4,7 +4,9 @@ class UZBrotornisOverride : BaseWeaponStatusOverride {
         super.Init(sb);
 
         weaponName = 'Brontornis';
+    }
 
+    override void AddAmmoCounts(HCStatusBar sb) {
         AddAmmoCount(
             'BrontornisRound',                                // name
             'BROCA0',                                         // icon

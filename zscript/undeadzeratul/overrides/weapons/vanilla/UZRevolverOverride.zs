@@ -6,7 +6,15 @@ class UZRevolverOverride : BaseWeaponStatusOverride {
         super.Init(sb);
 
         weaponName = 'HDRevolver';
+    }
 
+    override void InitCvars(HCStatusBar sb) {
+        super.InitCvars(sb);
+        
+        if (!_aspectScale) _aspectScale = CVar.GetCVar('hud_aspectscale', sb.CPlayer);
+    }
+
+    override void AddAmmoCounts(HCStatusBar sb) {
         AddAmmoCount(
             'HDRevolverAmmo',                                 // name
             '3RNDA0',                                         // icon
@@ -26,12 +34,6 @@ class UZRevolverOverride : BaseWeaponStatusOverride {
             sb.DI_SCREEN_CENTER_BOTTOM,                       // iconFlags
             sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT // countFlags
         );
-    }
-
-    override void InitCvars(HCStatusBar sb) {
-        super.InitCvars(sb);
-        
-        if (!_aspectScale) _aspectScale = CVar.GetCVar('hud_aspectscale', sb.CPlayer);
     }
 
     override int GetNumCylinders(HDWeapon wpn) {
