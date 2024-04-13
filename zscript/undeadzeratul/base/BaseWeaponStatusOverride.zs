@@ -285,7 +285,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
     virtual Vector2 GetRevolverCylinderOffsets(HDWeapon wpn, int i, int numCylinders) {
         double cylAngle = GetRevolverCylinderAngle(wpn, i, numCylinders);
 
-        return (cos(cylAngle), sin(cylAngle)) * GetCylinderRadius(wpn);
+        return (cos(cylAngle), sin(cylAngle));
     }
 
     virtual Vector2 GetRangeFinderOffsets(HDWeapon wpn) {
@@ -528,7 +528,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 posX + (offs.x * scale),
                 posY + (offs.y * scale),
                 scale,
-                SB.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_RIGHT
+                sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_RIGHT
             );
         }
 
@@ -540,7 +540,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 posX + (offs.x * scale),
                 posY + (offs.y * scale),
                 scale,
-                SB.DI_SCREEN_CENTER_BOTTOM
+                sb.DI_SCREEN_CENTER_BOTTOM
             );
         }
 
@@ -830,13 +830,17 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
     }
 
     virtual void DrawRevolverCylinders(HCStatusBar sb, HDWeapon wpn, int numCylinders, Color colorFull, Color colorEmpty, int posX, int posY, float scale, int flags) {
+        let radius = GetCylinderRadius(wpn);
+
         for (int i = 1; i <= numCylinders; i++) {
             let cylOffs = GetRevolverCylinderOffsets(wpn, i, numCylinders);
+            let pos = (posX, posY) + cylOffs * radius;
+
             DrawRevolverCylinder(
                 sb, wpn,
                 wpn.weaponStatus[i] > 0 ? colorFull : colorEmpty,
-                posX + (cylOffs.x * scale),
-                posY + (cylOffs.y * scale),
+                pos.x,
+                pos.y,
                 scale,
                 flags
             );
