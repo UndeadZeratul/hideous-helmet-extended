@@ -11,7 +11,9 @@ class UZSmgOverride : BaseWeaponStatusOverride {
         fireModes[0] = 'STSEMAUT';
         fireModes[1] = 'STBURAUT';
         fireModes[2] = 'STFULAUT';
+    }
 
+    override void AddAmmoCounts(HCStatusBar sb) {
         AddMagCount(
             'HD9mMag30',                                      // name
             30,                                               // capacity
