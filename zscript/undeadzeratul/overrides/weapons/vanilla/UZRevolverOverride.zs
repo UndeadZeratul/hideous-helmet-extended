@@ -7,9 +7,6 @@ class UZRevolverOverride : BaseWeaponStatusOverride {
 
         weaponName = 'HDRevolver';
 
-        fireModes[0] = 'STSEMAUT';
-        fireModes[1] = 'STFULAUT';
-
         AddAmmoCount(
             'HDRevolverAmmo',                                 // name
             '3RNDA0',                                         // icon
@@ -31,18 +28,10 @@ class UZRevolverOverride : BaseWeaponStatusOverride {
         );
     }
 
-    override int GetChamberedRounds(HDWeapon wpn) {
-        return wpn.weaponStatus[2];
-    }
-
     override void InitCvars(HCStatusBar sb) {
         super.InitCvars(sb);
         
         if (!_aspectScale) _aspectScale = CVar.GetCVar('hud_aspectscale', sb.CPlayer);
-    }
-
-    override int GetMagRounds(HDWeapon wpn) {
-        return wpn.weaponStatus[1];
     }
 
     override int GetNumCylinders(HDWeapon wpn) {
@@ -53,15 +42,19 @@ class UZRevolverOverride : BaseWeaponStatusOverride {
         return 5;
     }
 
-    override int GetFireMode(HDWeapon wpn) {
-        return wpn.weaponStatus[0] & 2;
+    override int GetCylinderRound(HDWeapon wpn, int i) {
+        return wpn.weaponStatus[i] > 0;
+    }
+
+    virtual bool IsCylinderOpen(HDWeapon wpn) {
+        int plf = (wpn.owner && wpn.owner.player) ? wpn.owner.player.GetPSprite(PSP_WEAPON).frame : 0;
+        return (plf == 4 || plf == 5 || plf == 6 || HDPlayerPawn(wpn.owner).wepHelpText.IndexOf(StringTable.Localize('$REVCWH_FIRE')) >= 0);
     }
 
     override Vector2 GetRevolverCylindersOffsets(HDWeapon wpn) {
-        int plf = (wpn.owner && wpn.owner.player) ? wpn.owner.player.GetPSprite(PSP_WEAPON).frame : 0;
-        if (plf == 4) {
+        if (wpn.owner && wpn.owner.player && wpn.owner.player.GetPSprite(PSP_WEAPON).frame == 4) {
             return (-14, -8);
-        } else if (plf ==5 || plf == 6 || HDPlayerPawn(wpn.owner).wepHelpText.IndexOf(StringTable.Localize('$REVCWH_ALTFIRE')) >= 0) {
+        } else if (IsCylinderOpen(wpn)) {
             return (-18, -6);
         } else {
             return (-6, -14);
@@ -71,10 +64,9 @@ class UZRevolverOverride : BaseWeaponStatusOverride {
     override double GetRevolverCylinderAngle(HDWeapon wpn, int i, int numCylinders) {
         double baseAngle = super.GetRevolverCylinderAngle(wpn, i, numCylinders);
 
-        int plf = (wpn.owner && wpn.owner.player) ? wpn.owner.player.GetPSprite(PSP_WEAPON).frame : 0;
-        if (plf == 4) {
+        if (wpn.owner && wpn.owner.player && wpn.owner.player.GetPSprite(PSP_WEAPON).frame == 4) {
             return baseAngle - 45.0;
-        } else if (plf ==5 || plf == 6 || HDPlayerPawn(wpn.owner).wepHelpText.IndexOf(StringTable.Localize('$REVCWH_ALTFIRE')) >= 0) {
+        } else if (IsCylinderOpen(wpn)) {
             return baseAngle - 90.0;
         } else {
             return baseAngle;
@@ -87,17 +79,7 @@ class UZRevolverOverride : BaseWeaponStatusOverride {
         double cdrngl = cos(angle);
         double sdrngl = sin(angle);
 
-        int plf = (wpn.owner && wpn.owner.player) ? wpn.owner.player.GetPSprite(PSP_WEAPON).frame : 0;
-        if (
-            !(
-                plf == 4
-                || plf == 5
-                || plf == 6
-                || HDPlayerPawn(wpn.owner).wepHelpText.IndexOf(StringTable.Localize('$REVCWH_ALTFIRE')) >= 0
-            )
-            && _aspectScale
-            && _aspectScale.getbool()
-        ) {
+        if (!IsCylinderOpen(wpn) && _aspectScale && _aspectScale.getbool()) {
             cdrngl *= 1.1;
             sdrngl *= (1.0 / 1.1);
         }
@@ -115,18 +97,6 @@ class UZRevolverOverride : BaseWeaponStatusOverride {
             case 'HDPistolAmmo':   return ammoCounter.type == type && !!item;
             default:               return false;
         }
-    }
-
-    override bool ShouldDrawFireMode(HDWeapon wpn) {
-        return wpn.weaponStatus[0] & 1;
-    }
-
-    override bool ShouldDrawMagRounds(HDWeapon wpn, HDMagAmmo mag) {
-        return GetMagRounds(wpn) > 0;
-    }
-
-    override bool ShouldDrawChamberedRound(HDWeapon wpn) {
-        return GetChamberedRounds(wpn) == 2;
     }
 
     override bool ShouldDrawRevolverCylinders(HDWeapon wpn) {
