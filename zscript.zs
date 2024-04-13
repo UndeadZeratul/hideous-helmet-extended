@@ -111,6 +111,7 @@ version "4.11"
 #include "zscript/undeadzeratul/overrides/weapons/peppergrinder/UZGreelyOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/peppergrinder/UZOtis5Override.zs"
 
+#include "zscript/undeadzeratul/overrides/weapons/radtech/UZGoldSingleActionRevolverOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/radtech/UZObrozzOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/radtech/UZSingleActionRevolverOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/radtech/UZSnubnoseRevolverOverride.zs"
