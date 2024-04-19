@@ -39,6 +39,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
     private transient CVar _fontScale;
 
     private transient CVar _mag_barDirection;
+    private transient CVar _mag_precise;
     private transient CVar _shellStyle;
     
     private transient CVar _nhm_hudLevel;
@@ -80,7 +81,8 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
 
         if (!_hh_hidefiremode) _hh_hidefiremode = CVar.GetCVar("hh_hidefiremode", sb.CPlayer);
 
-        if (!_mag_barDirection) _mag_barDirection = CVar.GetCVar("uz_hhx_weaponStatus_mag_BarDirection", sb.CPlayer);
+        if (!_mag_barDirection) _mag_barDirection = CVar.GetCVar("uz_hhx_weaponStatus_mag_barDirection", sb.CPlayer);
+        if (!_mag_precise) _mag_precise           = CVar.GetCVar("uz_hhx_weaponStatus_mag_precise", sb.CPlayer);
         if (!_shellStyle) _shellStyle             = CVar.GetCVar("uz_hhx_weaponStatus_shellStyle", sb.CPlayer);
 
         if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_weaponStatus_enabled", sb.CPlayer);
@@ -192,6 +194,10 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
 
     virtual int GetMagCapacity(HDWeapon wpn, HDMagAmmo mag) {
         return mag ? int(mag.maxPerUnit) : magCapacity;
+    }
+
+    virtual bool GetMagRoundsPrecision(HDWeapon wpn) {
+        return false;
     }
 
     virtual int GetBatteryCapacity(HDWeapon wpn, HDBattery bat) {
@@ -428,6 +434,18 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         return false;
     }
 
+    virtual bool ShouldDrawMagRoundsPrecise(HDWeapon wpn, bool state) {
+        // Force Mag Rounds Precision via CVar
+        switch (_mag_precise.GetInt()) {
+            case 0:
+                return false;
+            case 1:
+                return true;
+            default:
+                return state;
+        }
+    }
+
     virtual bool ShouldDrawBatteryCharge(HDWeapon wpn, HDMagAmmo mag) {
         return false;
     }
@@ -520,6 +538,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 sb, wpn,
                 GetMagRounds(wpn),
                 GetMagCapacity(wpn, mag),
+                ShouldDrawMagRoundsPrecise(wpn, GetMagRoundsPrecision(wpn)),
                 Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
                 posX + (offs.x * scale),
                 posY + (offs.y * scale),
@@ -537,6 +556,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 sb, wpn,
                 GetBatteryCharge(wpn),
                 GetBatteryCapacity(wpn, GetBattery(sb.hpl.FindInventory('HDBattery'))),
+                ShouldDrawMagRoundsPrecise(wpn, GetMagRoundsPrecision(wpn)),
                 Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
                 posX + (offs.x * scale),
                 posY + (offs.y * scale),
@@ -800,10 +820,12 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         }
     }
 
-    virtual void DrawMagazineRounds(HCStatusBar sb, HDWeapon wpn, int value, int maxValue, Color color, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale, int flags) {
+    virtual void DrawMagazineRounds(HCStatusBar sb, HDWeapon wpn, int value, int maxValue, bool precise, Color color, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale, int flags) {
         if (!maxValue) return;
         
-        double valX = max(((value * 6 / maxValue) << 2), (value > 0));
+        double valX = !precise
+            ? max(((value * 6 / maxValue) << 2), (value > 0))
+            : (value * 24 / maxValue);
 
         sb.Fill(
             color,
@@ -815,16 +837,16 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         if (valX > 24) {
             sb.Fill(
                 Color(255, 240, 230, 40),
-                posX, posY,
+                posX - 24, posY,
                 -1, -2,
                 flags
             );
         }
     }
 
-    virtual void DrawBatteryCharge(HCStatusBar sb, HDWeapon wpn, int value, int maxValue, Color color, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale, int flags) {
+    virtual void DrawBatteryCharge(HCStatusBar sb, HDWeapon wpn, int value, int maxValue, bool precise, Color color, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale, int flags) {
         if (value > 0) {
-            DrawMagazineRounds(sb, wpn, value, maxValue, color, posX, posY, scale, hudFont, fontColor, fontScale, flags);
+            DrawMagazineRounds(sb, wpn, value, maxValue, precise, color, posX, posY, scale, hudFont, fontColor, fontScale, flags);
         } else {
             sb.DrawString(
                 sb.mAmountFont,
