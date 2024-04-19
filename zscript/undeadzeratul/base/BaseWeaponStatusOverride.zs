@@ -251,13 +251,21 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
             // Automatic
             case 0: return state;
             // Force Vanilla
-            case 1: return state > -1 ? 0 : -1;
+            case 1: return GetVanillaShellStyle(wpn, state);
             // Force Fancy (1 = Shell, 2 = Slug)
-            case 2: return state > -1 ? max(1, min(2, state)) : -1;
+            case 2: return GetFancyShellStyle(wpn, state);
         }
 
         // Invalid CVAR value, fallback to empty casing
         return -1;
+    }
+
+    virtual int GetVanillaShellStyle(HDweapon wpn, int state) {
+        return state > -1 ? 0 : -1;
+    }
+
+    virtual int GetFancyShellStyle(HDWeapon wpn, int state) {
+        return state > -1 ? max(1, min(2, state)) : -1;
     }
 
     virtual Vector2 GetRangeFinderSize() {
@@ -463,7 +471,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
 
     virtual void DrawWeaponStatus(HCStatusBar sb, HDWeapon wpn, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
 
-        if (ShouldDrawAmmoCounts(wpn)) {
+        if (sb.HUDLevel == 1 && ShouldDrawAmmoCounts(wpn)) {
             // let offs = GetAmmoCountOffsets(wpn);
             DrawAmmoCounts(
                 sb, wpn,
