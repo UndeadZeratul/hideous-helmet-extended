@@ -112,6 +112,7 @@ version "4.11"
 #include "zscript/undeadzeratul/overrides/weapons/peppergrinder/UZOtis5Override.zs"
 
 #include "zscript/undeadzeratul/overrides/weapons/radtech/UZ10mmPistolOverride.zs"
+#include "zscript/undeadzeratul/overrides/weapons/radtech/UZCombatShotgunOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/radtech/UZColt1911Override.zs"
 #include "zscript/undeadzeratul/overrides/weapons/radtech/UZGoldSingleActionRevolverOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/radtech/UZObrozzOverride.zs"
