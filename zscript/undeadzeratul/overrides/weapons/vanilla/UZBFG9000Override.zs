@@ -93,13 +93,13 @@ class UZBFG9KOverride : BaseWeaponStatusOverride {
         );
     }
 
-    override void DrawMagazineRounds(HCStatusBar sb, HDWeapon wpn, int value, int maxValue, Color color, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale, int flags) {
-        DrawBatteryCharge(sb, wpn, value, maxValue, color, posX, posY, scale, hudFont, fontColor, fontScale, flags);
+    override void DrawMagazineRounds(HCStatusBar sb, HDWeapon wpn, int value, int maxValue, bool precise, Color color, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale, int flags) {
+        DrawBatteryCharge(sb, wpn, value, maxValue, precise, color, posX, posY, scale, hudFont, fontColor, fontScale, flags);
     }
 
-    override void DrawBatteryCharge(HCStatusBar sb, HDWeapon wpn, int value, int maxValue, Color color, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale, int flags) {
+    override void DrawBatteryCharge(HCStatusBar sb, HDWeapon wpn, int value, int maxValue, bool precise, Color color, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale, int flags) {
         if (value > 0) {
-            super.DrawMagazineRounds(sb, wpn, value, maxValue, color, posX, posY, scale, hudFont, fontColor, fontScale, flags);
+            super.DrawMagazineRounds(sb, wpn, value, maxValue, precise, color, posX, posY, scale, hudFont, fontColor, fontScale, flags);
         } else {
             sb.DrawString(
                 sb.mAmountFont,
