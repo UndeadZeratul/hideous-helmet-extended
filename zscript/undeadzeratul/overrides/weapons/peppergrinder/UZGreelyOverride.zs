@@ -80,7 +80,7 @@ class UZGreelyOverride : BaseWeaponStatusOverride {
         );
     }
 
-    override void DrawMagazineRounds(HCStatusBar sb, HDWeapon wpn, int value, int maxValue, Color color, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale, int flags) {
+    override void DrawMagazineRounds(HCStatusBar sb, HDWeapon wpn, int value, int maxValue, bool precise, Color color, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale, int flags) {
 
         for (let i = 0; i < magCapacity; i++) {
             let tube = wpn.weaponStatus[i + 1];

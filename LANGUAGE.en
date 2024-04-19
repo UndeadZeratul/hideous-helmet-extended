@@ -290,6 +290,7 @@ HHXFont                                 = "Font";
 HHXFontColor                            = "Font Color";
 HHXFontScale                            = "Font Scale";
 HHXMagDirection                         = "Magazine Fill Direction";
+HHXMagPrecise                           = "Magazine Bar is Always Precise";
 HHXMaxValue                             = "Max Value";
 HHXShellStyle                           = "Shell/Slug Style";
 HHXUnits                                = "Units";
