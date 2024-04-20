@@ -896,8 +896,8 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 GetCylinderRound(wpn, i)
                     ? GetFullCylinderColor(wpn, i)
                     : GetEmptyCylinderColor(wpn, i),
-                posX + cylOffs.x < 0 ? floor(cylOffs.x) : ceil(cylOffs.x),
-                posY + cylOffs.y < 0 ? floor(cylOffs.y) : ceil(cylOffs.y),
+                posX + (cylOffs.x < 0 ? floor(cylOffs.x) : ceil(cylOffs.x)) * scale,
+                posY + (cylOffs.y < 0 ? floor(cylOffs.y) : ceil(cylOffs.y)) * scale,
                 scale,
                 flags
             );
