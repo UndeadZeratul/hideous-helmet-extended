@@ -106,7 +106,7 @@ class UZVulcanetteOverride : BaseWeaponStatusOverride {
     }
 
     override bool ShouldDrawFireMode(HDWeapon wpn) {
-        return !(wpn.weaponStatus[0] & 32);
+        return true;
     }
 
     override bool ShouldDrawMagRounds(HDWeapon wpn, HDMagAmmo mag) {
