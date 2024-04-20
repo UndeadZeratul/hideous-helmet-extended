@@ -889,18 +889,15 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         let radius = GetCylinderRadius(wpn);
 
         for (int i = 1; i <= numCylinders; i++) {
-            let cylOffs = GetRevolverCylinderOffsets(wpn, i, numCylinders);
-            let pos = (posX, posY) + cylOffs * radius;
-
-			if (hd_debug) console.printf('[UZHHX] Cylinder #'..i..' = cos: '..cylOffs.x..', sin: '..cylOffs.y..', pos: ('..pos.x..', '..pos.y..')');
+            let cylOffs = GetRevolverCylinderOffsets(wpn, i, numCylinders) * radius;
 
             DrawRevolverCylinder(
                 sb, wpn,
                 GetCylinderRound(wpn, i)
                     ? GetFullCylinderColor(wpn, i)
                     : GetEmptyCylinderColor(wpn, i),
-                pos.x,
-                pos.y,
+                posX + cylOffs.x < 0 ? floor(cylOffs.x) : ceil(cylOffs.x),
+                posY + cylOffs.y < 0 ? floor(cylOffs.y) : ceil(cylOffs.y),
                 scale,
                 flags
             );
