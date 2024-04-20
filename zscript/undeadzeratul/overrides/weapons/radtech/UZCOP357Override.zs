@@ -38,7 +38,7 @@ class UZCOP357Override : UZRevolverOverride {
             Color(255, 255, 0, 0),
             posX + ((i == 1 || i == 4 ? -11 : -2) * scale),
             posY + ((i < 3 ? -19 : -10) * scale),
-            4, 4,
+            4 * scale, 4 * scale,
             sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_RIGHT
         );
 
