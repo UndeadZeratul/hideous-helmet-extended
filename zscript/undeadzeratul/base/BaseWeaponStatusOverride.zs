@@ -250,7 +250,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         // Depending on the CVAR value, return the appropriate style
         // Possible State Values include:
         // -1 = Empty Casing
-        // 0 = Simple Shell 
+        // 0 = Simple Shell
         // 1 = Fancy Shell
         // 2 = Fancy Slug
         switch (cvar) {
