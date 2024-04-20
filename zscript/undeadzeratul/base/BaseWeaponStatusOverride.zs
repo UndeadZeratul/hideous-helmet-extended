@@ -515,7 +515,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 posY + (offs.y * scale),
                 scale,
                 hudFont,
-                fontColor,
+                Font.CR_RED,
                 fontScale,
                 sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT
             );
@@ -871,7 +871,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
             sb.FormatNumber(value),
             (posX, posY),
             flags,
-            Font.CR_RED,
+            fontColor,
             scale: (fontScale * scale, fontScale * scale)
         );
     }
