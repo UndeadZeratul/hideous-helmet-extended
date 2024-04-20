@@ -200,8 +200,8 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         return false;
     }
 
-    virtual int GetBatteryCapacity(HDWeapon wpn, HDBattery bat) {
-        return bat ? int(bat.maxPerUnit) : 20;
+    virtual int GetBatteryCapacity(HDWeapon wpn, HDMagAmmo mag) {
+        return mag ? int(mag.maxPerUnit) : 20;
     }
 
     virtual int GetSideSaddleRounds(HDWeapon wpn) {
@@ -555,7 +555,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
             DrawBatteryCharge(
                 sb, wpn,
                 GetBatteryCharge(wpn),
-                GetBatteryCapacity(wpn, GetBattery(sb.hpl.FindInventory('HDBattery'))),
+                GetBatteryCapacity(wpn, mag),
                 ShouldDrawMagRoundsPrecise(wpn, GetMagRoundsPrecision(wpn)),
                 Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
                 posX + (offs.x * scale),
@@ -689,11 +689,14 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         }
     }
 
-    virtual void DrawBattery(HCStatusBar sb, HDWeapon wpn, HDBattery bat, WeaponStatusAmmoCounter ammoCounter, int value, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
+    virtual void DrawBattery(HCStatusBar sb, HDWeapon wpn, HDMagAmmo mag, WeaponStatusAmmoCounter ammoCounter, int value, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
         string batIcon;
         
-        if (bat && bat.mags.size() > 0) {
-            if (bat.chargemode) {
+        if (mag && mag.mags.size() > 0) {
+
+            // If "battery" is a child class of HDBattery, render its charge mode
+            let bat = GetBattery(mag);
+            if (bat && bat.chargemode) {
                 if (bat.chargemode == HDBattery.BATT_CHARGEMAX) {
                     sb.DrawImage(
                         'CELPA0',
@@ -711,14 +714,14 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 }
             }
 
-            if (value < 1) {
-                batIcon = ammoCounter.icons[3];
-            } else if (value <= 6) {
-                batIcon = ammoCounter.icons[2];
-            } else if (value <= 13) {
-                batIcon = ammoCounter.icons[1];
-            } else {
+            if (value > ammoCounter.magCapacity * 0.6) {
                 batIcon = ammoCounter.icons[0];
+            } else if (value > ammoCounter.magCapacity * 0.3) {
+                batIcon = ammoCounter.icons[1];
+            } else if (value > 0) {
+                batIcon = ammoCounter.icons[2];
+            } else {
+                batIcon = ammoCounter.icons[3];
             }
         } else {
             batIcon = ammoCounter.icons[3];
@@ -728,12 +731,12 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
             batIcon,
             (posX, posY),
             flags: sb.DI_SCREEN_CENTER_BOTTOM,
-            alpha: bat ? 1.0 : 0.3
+            alpha: mag ? 1.0 : 0.3
         );
 
         sb.DrawString(
             hudFont,
-            sb.FormatNumber(sb.hpl.CountInv(bat ? bat.GetClassName() : ammoCounter.name)),
+            sb.FormatNumber(sb.hpl.CountInv(mag ? mag.GetClassName() : ammoCounter.name)),
             (posX + (ammoCounter.countOffsets.x * scale), posY + (ammoCounter.countOffsets.y * scale)),
             ammoCounter.countFlags,
             fontColor,
