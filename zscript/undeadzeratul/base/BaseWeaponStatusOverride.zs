@@ -781,16 +781,19 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
     }
 
     virtual void DrawAmmo(HCStatusBar sb, HDWeapon wpn, HDAmmo ammo, WeaponStatusAmmoCounter ammoCounter, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
+        let amount = sb.hpl.CountInv(ammo ? ammo.GetClassName() : ammoCounter.name);
+
         sb.DrawImage(
             ammoCounter.icons[0],
             (posX, posY),
             ammoCounter.iconFlags,
+            alpha: amount ? 1.0 : 0.6,
             scale: (ammoCounter.iconScale.x * scale, ammoCounter.iconScale.y * scale)
         );
 
         sb.DrawString(
             hudFont,
-            sb.FormatNumber(sb.hpl.CountInv(ammo ? ammo.GetClassName() : ammoCounter.name)),
+            sb.FormatNumber(amount),
             (posX + (ammoCounter.countOffsets.x * scale), posY + (ammoCounter.countOffsets.y * scale)),
             ammoCounter.countFlags,
             fontColor,
