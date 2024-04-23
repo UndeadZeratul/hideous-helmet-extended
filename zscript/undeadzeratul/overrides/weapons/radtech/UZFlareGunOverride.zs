@@ -35,7 +35,7 @@ class UZFlareGunOverride : BaseWeaponStatusOverride {
     override int GetVanillaShellStyle(HDweapon wpn, int state) {
         let barrel = GetChamberedRounds(wpn);
 
-        else if (barrel & (2|8|32))  return 0;  // Shotgun Shell/Slug
+        if (barrel & (2|8|32))       return 0;  // Shotgun Shell/Slug
         else if (barrel & (4|16|64)) return -1; // Spent Shell
 
         return -2;
