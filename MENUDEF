@@ -89,6 +89,12 @@ OptionValue "ShellStyle" {
 	2,"Fancy"
 }
 
+OptionValue "YesNoAuto" {
+	1,"Yes"
+	0,"No"
+	-1,"Auto"
+}
+
 OptionMenu "HHXOptions" {
 	Title "$HHXOptions"
 	
@@ -3167,6 +3173,7 @@ OptionMenu "HHXWeaponStatus" {
 	Slider "$HHXFontScale", "uz_hhx_weaponStatus_fontScale", .01, 4., .05, 2, "uz_hhx_weaponStatus_enabled"
 	StaticText ""
 	Option "$HHXMagDirection", "uz_hhx_weaponStatus_mag_barDirection", "BarDirection", "uz_hhx_weaponStatus_enabled"
+	Option "$HHXMagPrecise", "uz_hhx_weaponStatus_mag_precise", "YesNoAuto", "uz_hhx_weaponStatus_enabled"
 	Option "$HHXShellStyle", "uz_hhx_weaponStatus_shellStyle", "ShellStyle", "uz_hhx_weaponStatus_enabled"
 	
 	StaticText ""
