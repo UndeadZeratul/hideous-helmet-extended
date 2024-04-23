@@ -118,6 +118,9 @@ class UZInventory : HUDInventory {
             
             float fontScale = _fontScale.GetFloat();
 
+            // Reset SavedColour
+            sb.SavedColour = Font.CR_SAPPHIRE;
+
             if (ivsp) {
                 int ivspi = ivsp.getsbarnum();
                 if (ivspi != -1000000) {
@@ -126,7 +129,7 @@ class UZInventory : HUDInventory {
                         sb.FormatNumber(ivspi),
                         (posX + (17 * scale), posY - (_hudFont.mFont.GetHeight() * scale)),
                         flags|sb.DI_TEXT_ALIGN_RIGHT,
-                        sb.savedcolour,
+                        sb.SavedColour,
                         scale: (fontScale * scale, fontScale * scale)
                     );
                 }
@@ -138,11 +141,14 @@ class UZInventory : HUDInventory {
                         sb.FormatNumber(ivswi),
                         (posX + (17 * scale), posY - (_hudFont.mFont.GetHeight() * scale)),
                         flags|sb.DI_TEXT_ALIGN_RIGHT,
-                        sb.savedcolour,
+                        sb.SavedColour,
                         scale: (fontScale * scale, fontScale * scale)
                     );
                 }
             }
+
+            // Reset SavedColour
+            sb.SavedColour = Font.CR_OLIVE;
 
             int invamt = ivsw
                 ? ivsw.displayamount()
@@ -155,7 +161,7 @@ class UZInventory : HUDInventory {
                 sb.FormatNumber(invamt),
                 (posX + (17 * scale), posY),
                 flags|sb.DI_TEXT_ALIGN_RIGHT,
-                Font.CR_OLIVE,
+                sb.SavedColour,
                 scale: (fontScale * scale, fontScale * scale)
             );
         }
