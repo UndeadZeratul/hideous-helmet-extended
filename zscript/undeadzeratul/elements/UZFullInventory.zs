@@ -141,8 +141,9 @@ class UZFullInventory : HUDElement {
                 int  yoffs  = row * scale;
                 bool isthis = i == thisindex;
                 
-                let ivsh = hdpickup(item);
-                let ivsw = hdweapon(item);
+                let ivsh = HDPickup(item);
+                let ivsw = HDWeapon(item);
+                let ivsb = HDBackpack(item);
             
                 Vector2 coords = (posX - xoffs - (row * xScale), posY + sb.bigitemyofs - yoffs - (col * yScale));
 
@@ -170,10 +171,18 @@ class UZFullInventory : HUDElement {
                     scale:applyscale * (isthis ? 1. : 0.6) * scale
                 );
 
+                let amount = ivsb
+                    ? ivsb.amount
+                    : ivsw
+                        ? ivsw.DisplayAmount()
+                        : ivsh
+                            ? ivsh.DisplayAmount()
+                            : item.amount;
+
                 float fontScale = _fontScale.GetFloat();
                 sb.DrawString(
                     _hudFont,
-                    sb.FormatNumber(sb.hpl.countinv(item.GetClassName())),
+                    sb.FormatNumber(amount),
                     coords + (2, 0),
                     sb.DI_SCREEN_RIGHT_BOTTOM|sb.DI_ITEM_RIGHT_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT,
                     _fontColor.GetInt(),
