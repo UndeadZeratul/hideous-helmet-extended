@@ -38,6 +38,14 @@ class UZ9mmBossRifleOverride : UZBossRifleOverride {
         return String.Format("%.1f", dropAdjust * 0.1);
     }
 
+    override Vector2 GetWeaponZoomOffsets(HDWeapon wpn) {
+        return (-20, -12);
+    }
+
+    override Vector2 GetDropAdjustOffsets(HDWeapon wpn) {
+        return (0, -12);
+    }
+
     override bool ShouldDrawAmmoCount(HDWeapon wpn, int type, WeaponStatusAmmoCounter ammoCounter, Inventory item) {
         switch (ammoCounter.name) {
             case 'HD9mClip':    return ammoCounter.type == type;
