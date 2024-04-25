@@ -110,6 +110,7 @@ version "4.11"
 #include "zscript/undeadzeratul/overrides/weapons/hexadoken/UZ9mmBossRifleOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/hexadoken/UZ12gaBossRifleOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/hexadoken/UZ50omgBossRifleOverride.zs"
+#include "zscript/undeadzeratul/overrides/weapons/hexadoken/UZM1GarandOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/hexadoken/UZScopelessBossRifleOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/hexadoken/UZWorstBossRifleOverride.zs"
 
