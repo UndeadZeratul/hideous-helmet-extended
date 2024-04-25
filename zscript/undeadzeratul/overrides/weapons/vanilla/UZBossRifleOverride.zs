@@ -23,7 +23,7 @@ class UZBossRifleOverride : BaseWeaponStatusOverride {
         AddAmmoCount(
             'SevenMilAmmo',                                   // name
             'TEN7A0',                                         // icon
-            (1.0, 1.0),                                       // iconScale
+            (1.2, 1.2),                                       // iconScale
             (-46, 2),                                         // offsets
             (6, -4),                                          // countOffsets
             sb.DI_SCREEN_CENTER_BOTTOM,                       // iconFlags
@@ -33,7 +33,7 @@ class UZBossRifleOverride : BaseWeaponStatusOverride {
         AddAmmoCount(
             'SevenMilAmmoRecast',                             // name
             'TEN7A0',                                         // icon
-            (1.0, 1.0),                                       // iconScale
+            (1.2, 1.2),                                       // iconScale
             (-46, -8),                                        // offsets
             (6, -4),                                          // countOffsets
             sb.DI_SCREEN_CENTER_BOTTOM,                       // iconFlags
