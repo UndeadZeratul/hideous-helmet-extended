@@ -244,6 +244,18 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         return 0;
     }
 
+    virtual string GetFormattedWeaponZoom(float zoom) {
+        return String.Format("%i", zoom);
+    }
+
+    virtual int GetDropAdjust(HDWeapon wpn) {
+        return 0;
+    }
+
+    virtual string GetFormattedDropAdjust(float dropAdjust) {
+        return String.Format("%i", dropAdjust);
+    }
+
     virtual int GetShellStyle(HDWeapon wpn, int state) {
         let cvar = _shellStyle.GetInt();
 
@@ -330,6 +342,10 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
 
     virtual Vector2 GetWeaponZoomOffsets(HDWeapon wpn) {
         return (-14, -16);
+    }
+
+    virtual Vector2 GetDropAdjustOffsets(HDWeapon wpn) {
+        return (4, -16);
     }
 
     virtual Vector2 GetSideSaddleOffsets(HDWeapon wpn) {
@@ -478,6 +494,10 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         return false;
     }
 
+    virtual bool ShouldDrawDropAdjust(HDWeapon wpn) {
+        return false;
+    }
+
     virtual bool ShouldDrawSideSaddles(HDWeapon wpn) {
         return false;
     }
@@ -615,6 +635,20 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         if (ShouldDrawWeaponZoom(wpn)) {
             let offs = GetWeaponZoomOffsets(wpn);
             DrawWeaponZoom(
+                sb, wpn,
+                posX + (offs.x * scale),
+                posY + (offs.y * scale),
+                scale,
+                hudFont,
+                fontColor,
+                fontScale,
+                sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT
+            );
+        }
+
+        if (ShouldDrawDropAdjust(wpn)) {
+            let offs = GetDropAdjustOffsets(wpn);
+            DrawDropAdjust(
                 sb, wpn,
                 posX + (offs.x * scale),
                 posY + (offs.y * scale),
@@ -955,10 +989,21 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
     virtual void DrawWeaponZoom(HCStatusBar sb, HDWeapon wpn, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale, int flags) {
         sb.DrawString(
             hudFont,
-            sb.FormatNumber(GetWeaponZoom(wpn)),
+            GetFormattedWeaponZoom(GetWeaponZoom(wpn)),
             (posX, posY),
             flags,
             Font.CR_DARKGRAY,
+            scale: (fontScale * scale, fontScale * scale)
+        );
+    }
+
+    virtual void DrawDropAdjust(HCStatusBar sb, HDWeapon wpn, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale, int flags) {
+        sb.DrawString(
+            hudFont,
+            GetFormattedDropAdjust(GetDropAdjust(wpn)),
+            (posX, posY),
+            flags,
+            Font.CR_WHITE,
             scale: (fontScale * scale, fontScale * scale)
         );
     }
