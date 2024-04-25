@@ -3,7 +3,7 @@ class UZ9mmBossRifleOverride : UZBossRifleOverride {
     override void Init(HCStatusbar sb) {
         super.Init(sb);
 
-        weaponName = 'BossRifleButIts4mm';
+        weaponName = 'BossRifleButIts9mm';
 
         magCapacity = 10;
     }
