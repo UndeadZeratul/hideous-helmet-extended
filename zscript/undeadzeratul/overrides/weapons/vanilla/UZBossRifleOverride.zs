@@ -69,6 +69,10 @@ class UZBossRifleOverride : BaseWeaponStatusOverride {
         return (-20, -12);
     }
 
+    override Vector2 GetDropAdjustOffsets(HDWeapon wpn) {
+        return (0, -12);
+    }
+
     override bool ShouldDrawAmmoCounts(HDWeapon wpn) {
         return true;
     }
