@@ -53,6 +53,14 @@ class UZBossRifleOverride : BaseWeaponStatusOverride {
         return wpn.weaponStatus[3];
     }
 
+    override string GetFormattedWeaponZoom(float zoom) {
+        return String.Format("%.1f", zoom * 0.1);
+    }
+
+    override int GetDropAdjust(HDWeapon wpn) {
+        return wpn.weaponStatus[4];
+    }
+
     override Vector2 GetChamberedRoundOffsets(HDWeapon wpn) {
         return (0, -4);
     }
@@ -83,7 +91,11 @@ class UZBossRifleOverride : BaseWeaponStatusOverride {
     }
 
     override bool ShouldDrawWeaponZoom(HDWeapon wpn) {
-        return GetWeaponZoom(wpn);
+        return true;
+    }
+
+    override bool ShouldDrawDropAdjust(HDWeapon wpn) {
+        return true;
     }
 
     override void DrawChamberedRound(HCStatusBar sb, HDWeapon wpn, Color color, int posX, int posY, float scale, int flags) {
@@ -114,26 +126,5 @@ class UZBossRifleOverride : BaseWeaponStatusOverride {
                 scale: (scale, scale)
             );
         }
-    }
-
-    override void DrawWeaponZoom(HCStatusBar sb, HDWeapon wpn, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale, int flags) {
-        sb.DrawString(
-            hudFont,
-            String.Format("%.1f", GetWeaponZoom(wpn) * 0.1),
-            (posX, posY),
-            flags,
-            Font.CR_DARKGRAY,
-            scale: (fontScale * scale, fontScale * scale)
-        );
-        
-        // TODO: Extract DropAdjust
-        sb.DrawString(
-            hudFont,
-            sb.FormatNumber(wpn.weaponStatus[4]),
-            (posX + (20 * scale), posY),
-            flags,
-            Font.CR_WHITE,
-            scale: (fontScale * scale, fontScale * scale)
-        );
     }
 }
