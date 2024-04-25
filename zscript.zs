@@ -105,6 +105,7 @@ version "4.11"
 
 #include "zscript/undeadzeratul/overrides/weapons/fda/UZAltisOverride.zs"
 
+#include "zscript/undeadzeratul/overrides/weapons/hexadoken/UZ4mmBossRifleOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/icarus/UZPD42Override.zs"
 
 #include "zscript/undeadzeratul/overrides/weapons/peppergrinder/UZAurochsOverride.zs"
