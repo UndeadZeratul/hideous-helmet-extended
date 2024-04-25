@@ -11,7 +11,7 @@ class UZBossRifleOverride : BaseWeaponStatusOverride {
     override void AddAmmoCounts(HCStatusBar sb) {
         AddMagCount(
             'HD7mClip',                                       // name
-            50,                                               // capacity
+            10,                                               // capacity
             'RCLPA0', 'RCLPF0', 'RCLPA0', 'RCLPE0',           // icons
             (1.2, 1.2),                                       // iconScale
             (-34, 3),                                         // offsets
