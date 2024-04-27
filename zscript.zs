@@ -115,6 +115,7 @@ version "4.11"
 #include "zscript/undeadzeratul/overrides/weapons/hexadoken/UZWorstBossRifleOverride.zs"
 
 #include "zscript/undeadzeratul/overrides/weapons/icarus/UZBarracudaOverride.zs"
+#include "zscript/undeadzeratul/overrides/weapons/icarus/UZBitchOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/icarus/UZPD42Override.zs"
 
 #include "zscript/undeadzeratul/overrides/weapons/peppergrinder/UZAurochsOverride.zs"
