@@ -352,6 +352,45 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         return (-14, -16);
     }
 
+    virtual int GetAmmoCounterFlags(HCStatusBar sb) {
+        return sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT;
+    }
+
+    virtual int GetFireModeFlags(HCStatusBar sb) {
+        return sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TRANSLATABLE|sb.DI_ITEM_RIGHT;
+    }
+
+    virtual int GetMagazineRoundsFlags(HCStatusBar sb) {
+        return sb.DI_SCREEN_CENTER_BOTTOM;
+    }
+
+    virtual int GetBatteryChargeFlags(HCStatusBar sb) {
+        return sb.DI_SCREEN_CENTER_BOTTOM;
+    }
+
+    virtual int GetRevolverCylindersFlags(HCStatusBar sb) {
+        return sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_RIGHT;
+    }
+
+    virtual int GetChamberedRoundFlags(HCStatusBar sb) {
+        return sb.DI_SCREEN_CENTER_BOTTOM;
+    }
+
+    virtual int GetRangeFinderFlags(HCStatusBar sb) {
+        return sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT;
+    }
+
+    virtual int GetWeaponZoomFlags(HCStatusBar sb) {
+        return sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT;
+    }
+
+    virtual int GetDropAdjustFlags(HCStatusBar sb) {
+        return sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT;
+    }
+
+    virtual int GetSideSaddleFlags(HCStatusBar sb) {
+        return sb.DI_SCREEN_CENTER_BOTTOM;
+    }
 
     /**********************************************
      * Setters for various pieces of Weapon Status
@@ -537,7 +576,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 hudFont,
                 Font.CR_RED,
                 fontScale,
-                sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT
+                GetAmmoCounterFlags(sb)
             );
         }
 
@@ -548,7 +587,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 posX + (offs.x * scale),
                 posY + (offs.y * scale),
                 scale,
-                sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TRANSLATABLE|sb.DI_ITEM_RIGHT
+                GetFireModeFlags(sb)
             );
         }
 
@@ -566,7 +605,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 hudFont,
                 fontColor,
                 fontScale,
-                sb.DI_SCREEN_CENTER_BOTTOM
+                GetMagazineRoundsFlags(sb)
             );
         }
 
@@ -584,7 +623,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 hudFont,
                 fontColor,
                 fontScale,
-                sb.DI_SCREEN_CENTER_BOTTOM
+                GetBatteryChargeFlags(sb)
             );
         }
 
@@ -596,7 +635,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 posX + (offs.x * scale),
                 posY + (offs.y * scale),
                 scale,
-                sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_RIGHT
+                GetRevolverCylindersFlags(sb)
             );
         }
 
@@ -608,7 +647,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 posX + (offs.x * scale),
                 posY + (offs.y * scale),
                 scale,
-                sb.DI_SCREEN_CENTER_BOTTOM
+                GetChamberedRoundFlags(sb)
             );
         }
 
@@ -628,7 +667,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 hudFont,
                 fontColor,
                 fontScale,
-                sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT
+                GetRangeFinderFlags(sb)
             );
         }
 
@@ -642,7 +681,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 hudFont,
                 fontColor,
                 fontScale,
-                sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT
+                GetWeaponZoomFlags(sb)
             );
         }
 
@@ -656,7 +695,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 hudFont,
                 fontColor,
                 fontScale,
-                sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT
+                GetDropAdjustFlags(sb)
             );
         }
 
@@ -671,7 +710,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 hudFont,
                 fontColor,
                 fontScale,
-                sb.DI_SCREEN_CENTER_BOTTOM
+                GetSideSaddleFlags(sb)
             );
         }
     }
