@@ -36,6 +36,10 @@ class UZPD42Override : BaseWeaponStatusOverride {
         );
     }
 
+    override int GetChamberedRounds(HDWeapon wpn) {
+        return wpn.weaponStatus[2];
+    }
+
     override int GetMagRounds(HDWeapon wpn) {
         return wpn.weaponStatus[1];
     }
@@ -77,7 +81,7 @@ class UZPD42Override : BaseWeaponStatusOverride {
     }
 
     override bool ShouldDrawChamberedRound(HDWeapon wpn) {
-        return wpn.weaponStatus[2];
+        return GetChamberedRounds(wpn);
     }
 
     virtual bool ShouldDrawChamberedSlug(HDWeapon wpn) {
