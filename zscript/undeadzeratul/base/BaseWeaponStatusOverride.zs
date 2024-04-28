@@ -240,7 +240,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         return Color(200, 30,  26,  24);
     }
 
-    virtual int GetAmmoCounterFontColor() {
+    virtual int GetAmmoCounterFontColor(HDWeapon wpn, HDMagAmmo mag) {
         return Font.CR_RED;
     }
 
