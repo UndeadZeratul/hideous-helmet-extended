@@ -19,7 +19,7 @@ class UZStenMk2Override : UZSmgOverride {
             wpn.weaponStatus[6],
             55 - 5, // HDSTEN_OVERHEAT - 5
             ShouldDrawMagRoundsPrecise(wpn, GetMagRoundsPrecision(wpn)),
-            Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
+            GetBaseVectorColor(sb),
             posX,
             posY - (8 * scale),
             scale,

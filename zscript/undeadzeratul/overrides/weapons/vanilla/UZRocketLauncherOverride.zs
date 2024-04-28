@@ -91,7 +91,7 @@ class UZRocketLauncherOverride : BaseWeaponStatusOverride {
     }
 
     override void DrawFireMode(HCStatusBar sb, HDWeapon wpn, int posX, int posY, float scale, int flags) {
-        let color = Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b);
+        let color = GetBaseVectorColor(sb);
 
         if (GetChamberedRounds(wpn) > 1) {
             sb.Fill(
