@@ -224,11 +224,23 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         return Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b);
     }
 
+    virtual Color GetChamberedRoundColor(HCStatusBar sb, HDWeapon wpn) {
+        return GetBaseVectorColor(sb);
+    }
+
     virtual Color GetMagazineRoundsColor(HCStatusBar sb, HDWeapon wpn, HDMagAmmo mag) {
         return GetBaseVectorColor(sb);
     }
 
     virtual Color GetBatteryChargeColor(HCStatusBar sb, HDWeapon wpn, HDMagAmmo mag) {
+        return GetBaseVectorColor(sb);
+    }
+
+    virtual Color GetRangeFinderColor(HCStatusBar sb, HDWeapon wpn) {
+        return GetBaseVectorColor(sb);
+    }
+
+    virtual Color GetSideSaddleColor(HCStatusBar sb, HDWeapon wpn) {
         return GetBaseVectorColor(sb);
     }
 
@@ -590,7 +602,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 posY + (offs.y * scale),
                 scale,
                 hudFont,
-                GetAmmoCounterFontColor(),
+                GetAmmoCounterFontColor(wpn, mag),
                 fontScale,
                 GetAmmoCounterFlags(sb)
             );
