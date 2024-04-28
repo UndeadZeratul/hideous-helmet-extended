@@ -87,7 +87,7 @@ class UZSlayerOverride : BaseWeaponStatusOverride {
                 sb, wpn,
                 GetShellStyle(wpn, leftBarrel > 1 ? 0 : -1),
                 false,
-                Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
+                GetChamberedRoundColor(sb, wpn),
                 posX + ((-15 + (4 * double)) * scale), posY,
                 scale,
                 flags
@@ -99,7 +99,7 @@ class UZSlayerOverride : BaseWeaponStatusOverride {
                 sb, wpn,
                 GetShellStyle(wpn, rightBarrel > 1 ? 0 : -1),
                 false,
-                Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
+                GetChamberedRoundColor(sb, wpn),
                 posX - ((2 + (4 * double + double)) * scale), posY,
                 scale,
                 flags

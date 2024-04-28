@@ -220,12 +220,28 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         return 0;
     }
 
+    virtual Color GetBaseVectorColor(HCStatusBar sb) {
+        return Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b);
+    }
+
+    virtual Color GetMagazineRoundsColor(HCStatusBar sb, HDWeapon wpn, HDMagAmmo mag) {
+        return GetBaseVectorColor(sb);
+    }
+
+    virtual Color GetBatteryChargeColor(HCStatusBar sb, HDWeapon wpn, HDMagAmmo mag) {
+        return GetBaseVectorColor(sb);
+    }
+
     virtual Color GetFullCylinderColor(HDWeapon wpn, int i) {
         return Color(255, 240, 230, 40);
     }
 
     virtual Color GetEmptyCylinderColor(HDWeapon wpn, int i) {
         return Color(200, 30,  26,  24);
+    }
+
+    virtual int GetAmmoCounterFontColor() {
+        return Font.CR_RED;
     }
 
     virtual int GetCylinderRound(HDWeapon wpn, int i) {
@@ -574,7 +590,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 posY + (offs.y * scale),
                 scale,
                 hudFont,
-                Font.CR_RED,
+                GetAmmoCounterFontColor(),
                 fontScale,
                 GetAmmoCounterFlags(sb)
             );
@@ -598,7 +614,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 GetMagRounds(wpn),
                 GetMagCapacity(wpn, mag),
                 ShouldDrawMagRoundsPrecise(wpn, GetMagRoundsPrecision(wpn)),
-                Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
+                GetMagazineRoundsColor(sb, wpn, mag),
                 posX + (offs.x * scale),
                 posY + (offs.y * scale),
                 scale,
@@ -616,7 +632,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 GetBatteryCharge(wpn),
                 GetBatteryCapacity(wpn, mag),
                 ShouldDrawMagRoundsPrecise(wpn, GetMagRoundsPrecision(wpn)),
-                Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
+                GetBatteryChargeColor(sb, wpn, mag),
                 posX + (offs.x * scale),
                 posY + (offs.y * scale),
                 scale,
@@ -643,7 +659,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
             let offs = GetChamberedRoundOffsets(wpn);
             DrawChamberedRound(
                 sb, wpn,
-                Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
+                GetChamberedRoundColor(sb, wpn),
                 posX + (offs.x * scale),
                 posY + (offs.y * scale),
                 scale,
@@ -658,7 +674,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 sb, wpn,
                 GetRangeFinderSize(),
                 GetRangeFinderScale(),
-                Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
+                GetRangeFinderColor(sb, wpn),
                 posX + (offs.x * scale),
                 posY + (offs.y * scale),
                 scale,
@@ -703,7 +719,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
             let offs = GetSideSaddleOffsets(wpn);
             DrawSideSaddles(
                 sb, wpn,
-                Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
+                GetSideSaddleColor(sb, wpn),
                 posX + (offs.x * scale),
                 posY + (offs.y * scale),
                 scale,

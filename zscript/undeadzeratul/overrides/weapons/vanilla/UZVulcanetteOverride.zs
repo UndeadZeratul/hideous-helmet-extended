@@ -136,7 +136,7 @@ class UZVulcanetteOverride : BaseWeaponStatusOverride {
         for (int i = 1; i <= 4; i++) {
             if (wpn.weaponStatus[i + 1] >= 0) {
                 sb.Fill(
-                    Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
+                    GetBaseVectorColor(sb),
                     posX - ((3 + (4 * i)) * scale), posY - (8 * scale),
                     3 * scale, 2 * scale,
                     SB.DI_SCREEN_CENTER_BOTTOM

@@ -97,7 +97,7 @@ class UZAltisOverride : BaseWeaponStatusOverride {
                 sb, wpn,
                 GetShellStyle(wpn, !(topBarrel % 2) ? (topBarrel / 2) : -1),
                 true,
-                Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
+                color,
                 posX, posY - ((18 - (3 * double)) * scale),
                 scale,
                 flags
@@ -109,7 +109,7 @@ class UZAltisOverride : BaseWeaponStatusOverride {
                 sb, wpn,
                 GetShellStyle(wpn, !(bottomBarrel % 2) ? (bottomBarrel / 2) : -1),
                 true,
-                Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
+                color,
                 posX, posY - ((7 + (4 * double)) * scale),
                 scale,
                 flags
