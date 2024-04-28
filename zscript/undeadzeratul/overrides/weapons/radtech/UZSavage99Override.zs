@@ -24,7 +24,7 @@ class UZSavage99Override : UZBossRifleOverride {
         return GetMagRounds(wpn);
     }
 
-    override int GetAmmoCounterFontColor() {
+    override int GetAmmoCounterFontColor(HDWeapon wpn, HDMagAmmo mag) {
         return Font.CR_GOLD;
     }
 
