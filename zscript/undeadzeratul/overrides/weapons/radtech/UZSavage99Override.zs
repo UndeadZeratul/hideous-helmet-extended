@@ -24,6 +24,10 @@ class UZSavage99Override : UZBossRifleOverride {
         return GetMagRounds(wpn);
     }
 
+    override int GetAmmoCounterFontColor() {
+        return Font.CR_GOLD;
+    }
+
     override Vector2 GetAmmoCounterOffsets(HDWeapon wpn) {
         return (-28, -6);
     }
@@ -34,9 +38,5 @@ class UZSavage99Override : UZBossRifleOverride {
 
     override bool ShouldDrawAmmoCounter(HDWeapon wpn) {
         return true;
-    }
-
-    override void DrawAmmoCounter(HCStatusBar sb, HDWeapon wpn, int value, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale, int flags) {
-        super.DrawAmmoCounter(sb, wpn, value, posX, posY, scale, hudFont, Font.CR_GOLD, fontScale, flags);
     }
 }
