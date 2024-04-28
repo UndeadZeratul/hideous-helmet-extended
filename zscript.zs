@@ -118,6 +118,7 @@ version "4.11"
 #include "zscript/undeadzeratul/overrides/weapons/icarus/UZBitchOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/icarus/UZFenrisOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/icarus/UZFlamenwerferOverride.zs"
+#include "zscript/undeadzeratul/overrides/weapons/icarus/UZFrontiersmanOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/icarus/UZPD42Override.zs"
 
 #include "zscript/undeadzeratul/overrides/weapons/peppergrinder/UZAurochsOverride.zs"
