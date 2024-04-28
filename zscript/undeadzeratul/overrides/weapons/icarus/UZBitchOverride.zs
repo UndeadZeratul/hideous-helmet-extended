@@ -79,10 +79,12 @@ class UZBitchOverride : BaseWeaponStatusOverride {
 
         if (ShouldDrawChamberedGrenade(wpn)) {
             let offs = GetChamberedGrenadeOffsets(wpn);
-            sb.Fill(
-                Color(255, sb.sbColour.r, sb.sbColour.g, sb.sbColour.b),
-                posX + (offs.x * scale), posY + (offs.y * scale),
-                6 * scale, 3 * scale,
+            DrawChamberedGrenade(
+                sb, wpn,
+                GetChamberedRoundColor(sb, wpn),
+                posX + (offs.x * scale),
+                posY + (offs.y * scale),
+                scale,
                 sb.DI_SCREEN_CENTER_BOTTOM
             );
         }
@@ -100,6 +102,15 @@ class UZBitchOverride : BaseWeaponStatusOverride {
             color,
             posX - scale, posY + scale,
             scale, scale,
+            flags
+        );
+    }
+
+    virtual void DrawChamberedGrenade(HCStatusBar sb, HDWeapon wpn, Color color, int posX, int posY, float scale, int flags) {
+        sb.Fill(
+            color,
+            posX, posY,
+            6 * scale, 3 * scale,
             flags
         );
     }
