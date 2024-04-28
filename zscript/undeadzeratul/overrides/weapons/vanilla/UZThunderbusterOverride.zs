@@ -56,16 +56,8 @@ class UZThunderbusterOverride : BaseWeaponStatusOverride {
         return true;
     }
 
-    override bool ShouldDrawMagRounds(HDWeapon wpn, HDMagAmmo mag) {
-        return false;
-    }
-
     override bool ShouldDrawBatteryCharge(HDWeapon wpn, HDMagAmmo mag) {
         return true;
-    }
-
-    override bool ShouldDrawChamberedRound(HDWeapon wpn) {
-        return GetChamberedRounds(wpn) == 2;
     }
 
     override void DrawWeaponStatus(HCStatusBar sb, HDWeapon wpn, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
