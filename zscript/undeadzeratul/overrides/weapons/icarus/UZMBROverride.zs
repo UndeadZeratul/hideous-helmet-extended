@@ -9,7 +9,6 @@ class UZMBROverride : BaseWeaponStatusOverride {
 
         fireModes[0] = 'STSEMAUT';
         fireModes[1] = 'STFULAUT';
-        fireModes[2] = 'STBURAUT';
     }
 
     override void AddAmmoCounts(HCStatusBar sb) {
