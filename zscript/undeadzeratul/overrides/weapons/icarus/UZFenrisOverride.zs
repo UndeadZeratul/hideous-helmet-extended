@@ -86,10 +86,6 @@ class UZFenrisOverride : BaseWeaponStatusOverride {
         return GetBatteryCharge(wpn) > 0;
     }
 
-    override bool ShouldDrawChamberedRound(HDWeapon wpn) {
-        return GetChamberedRounds(wpn) == 2;
-    }
-
     override void DrawAmmoCounter(HCStatusBar sb, HDWeapon wpn, int value, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale, int flags) {
         sb.DrawString(
             hudFont,
