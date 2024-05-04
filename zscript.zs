@@ -124,6 +124,7 @@ version "4.11"
 #include "zscript/undeadzeratul/overrides/weapons/icarus/UZNCTOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/icarus/UZNyxOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/icarus/UZPD42Override.zs"
+#include "zscript/undeadzeratul/overrides/weapons/icarus/UZSix12Override.zs"
 
 #include "zscript/undeadzeratul/overrides/weapons/peppergrinder/UZAurochsOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/peppergrinder/UZGreelyOverride.zs"
