@@ -12,6 +12,7 @@ class UZArmourOverride : HCItemOverride {
         let cls = item.GetClassName();
         return (!_enabled || _enabled.GetBool()) && (
             cls == "HDArmourWorn"
+            || cls == "HDArmorPlateWorn"
             || cls == "HDCorporateArmourWorn"
             || cls == "HHelmetWorn"
             || cls == "HDHEVArmourWorn"

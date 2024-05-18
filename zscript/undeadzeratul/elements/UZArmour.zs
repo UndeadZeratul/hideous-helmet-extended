@@ -359,6 +359,19 @@ class UZArmour : HUDElement {
             stats.durOffX = 15;
             stats.durOffY = 15;
             stats.flags = sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP;
+        } else if (cls == "HDArmorPlateWorn") {
+            stats.slot = 0;
+            stats.wornlayer = STRIP_ARMOUR + 20; // STRIP_ARMORPLATE
+            stats.fg = "ARMOURP0";
+            stats.bg = "ARMOURP1";
+            stats.durability = arm.durability;
+            stats.fontColor = Font.CR_GRAY;
+            stats.maxDurability = 25; // DUR_ARMORPLATE
+            stats.offX = hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt();
+            stats.offY = hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt();
+            stats.durOffX = 15;
+            stats.durOffY = 15;
+            stats.flags = sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP;
         } else if (cls == "HDCorporateArmourWorn") {
             stats.slot = 0;
             stats.wornlayer = STRIP_ARMOUR;
@@ -404,7 +417,7 @@ class UZArmour : HUDElement {
             stats.fg = "ARMOURL0";
             stats.bg = "ARMOURL1";
             stats.durability = arm.durability;
-            stats.maxDurability = 40;
+            stats.maxDurability = 50; // LEATHERARMOUR
             stats.fontColor = Font.CR_BROWN;
             stats.offX = hasHelmet ? _body_hlm_posX.GetInt() : _body_nhm_posX.GetInt();
             stats.offY = hasHelmet ? _body_hlm_posY.GetInt() : _body_nhm_posY.GetInt();
