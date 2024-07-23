@@ -21,6 +21,7 @@ class UZArmourOverride : HCItemOverride {
             || cls == "WornRadBoots"
             || cls == "WornRadsuit"
             || cls == "WornAntiGravBoots"
+            || cls == "Despicyto"
         );
     }
 

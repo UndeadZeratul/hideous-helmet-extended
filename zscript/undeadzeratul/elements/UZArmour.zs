@@ -39,6 +39,7 @@ class UZHDArmourStats {
 class UZArmour : HUDElement {
 
     private Service _HHFunc;
+    private Service _SpicyAirService;
 
     private transient CVar _hh_durabilitytop;
     private transient CVar _hh_helmetoffsety;
@@ -100,7 +101,8 @@ class UZArmour : HUDElement {
     }
 
     override void Tick(HCStatusbar sb) {
-        if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
+        if (!_HHFunc) _HHFunc                     = ServiceIterator.Find("HHFunc").Next();
+        if (!_SpicyAirService) _SpicyAirService   = ServiceIterator.Find("SpicyAirService").Next();
         
         if (!_hh_durabilitytop) _hh_durabilitytop = CVar.GetCVar("hh_durabilitytop", sb.CPlayer);
         if (!_hh_helmetoffsety) _hh_helmetoffsety = CVar.GetCVar("hh_helmetoffsety", sb.CPlayer);
@@ -322,9 +324,11 @@ class UZArmour : HUDElement {
 
         // Process current inventory items, filtering out all non-worn armors
         for (let item = sb.hpl.inv; item != NULL; item = item.inv) {
-            // Back Out early if it's not a pickup
+            // Back Out early if it's not a pickup or weapon
+            // mostly for "weapons" like Spicy Air's Gas Mask
+            let wpn = HDWeapon(item);
             let hp = HDPickup(item);
-            if (!hp) continue;
+            if (!(hp || wpn)) continue;
 
             let stats = GetArmourStats(sb, item, hasHelmet);
 
@@ -489,6 +493,21 @@ class UZArmour : HUDElement {
             stats.fontColor = Font.CR_SAPPHIRE;
             stats.offX = hasHelmet ? _helmet_hlm_posX.GetInt() : _helmet_nhm_posX.GetInt();
             stats.offY = (hasHelmet ? _helmet_hlm_posY.GetInt() : _helmet_nhm_posY.GetInt()) + (_hh_helmetoffsety ? _hh_helmetoffsety.GetInt() : 0);
+            stats.durOffX = 7;
+            stats.durOffY = 15;
+            stats.flags = sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP;
+        } else if (cls == "Despicyto" && _SpicyAirService.GetIntUI("IsGasMaskWorn", objectArg: item)) {
+            let graphic = "GASMASK".._SpicyAirService.GetStringUI("GetGasMaskSpriteIndex", objectArg: item);
+
+            stats.slot = 1;
+            stats.wornlayer = STRIP_RADSUIT + 1;
+            stats.fg = graphic;
+            stats.bg = graphic;
+            stats.durability = _SpicyAirService.GetIntUI("GetTotalAir", objectArg: item);
+            stats.maxDurability = 100;
+            stats.fontColor = Font.CR_DARKGRAY;
+            stats.offX = hasHelmet ? _helmet_hlm_posX.GetInt() : _helmet_nhm_posX.GetInt();
+            stats.offY = hasHelmet ? _helmet_hlm_posY.GetInt() : _helmet_nhm_posY.GetInt();
             stats.durOffX = 7;
             stats.durOffY = 15;
             stats.flags = sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP;
