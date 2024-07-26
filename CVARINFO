@@ -1089,6 +1089,36 @@ user int    uz_hhx_speedCounter_bg_hlm_posX   = 0;
 user int    uz_hhx_speedCounter_bg_hlm_posY   = 0;
 user float  uz_hhx_speedCounter_bg_hlm_scale  = 1.;
 
+// SPICY AIR COUNTER CONFIGS
+user bool   uz_hhx_spicyAirCounter_enabled       = true;
+user bool   uz_hhx_spicyAirCounter_alwaysVisible = false;
+user int    uz_hhx_spicyAirCounter_style         = 1;
+user string uz_hhx_spicyAirCounter_font          = "NewSmallFont";
+user int    uz_hhx_spicyAirCounter_fontColor     = 15;
+user float  uz_hhx_spicyAirCounter_fontScale     = 1.;
+user int    uz_hhx_spicyAirCounter_barDirection  = 2;
+user int    uz_hhx_spicyAirCounter_maxValue      = 100;
+
+user int    uz_hhx_spicyAirCounter_nhm_hudLevel  = 1;
+user int    uz_hhx_spicyAirCounter_nhm_posX      = -215;
+user int    uz_hhx_spicyAirCounter_nhm_posY      = -200;
+user float  uz_hhx_spicyAirCounter_nhm_scale     = .5;
+
+user bool   uz_hhx_spicyAirCounter_hlm_required  = false;
+user int    uz_hhx_spicyAirCounter_hlm_hudLevel  = 1;
+user int    uz_hhx_spicyAirCounter_hlm_posX      = -215;
+user int    uz_hhx_spicyAirCounter_hlm_posY      = -200;
+user float  uz_hhx_spicyAirCounter_hlm_scale     = .5;
+
+user string uz_hhx_spicyAirCounter_bg_nhm_ref    = "";
+user int    uz_hhx_spicyAirCounter_bg_nhm_posX   = 0;
+user int    uz_hhx_spicyAirCounter_bg_nhm_posY   = 0;
+user float  uz_hhx_spicyAirCounter_bg_nhm_scale  = 1.;
+user string uz_hhx_spicyAirCounter_bg_hlm_ref    = "";
+user int    uz_hhx_spicyAirCounter_bg_hlm_posX   = 0;
+user int    uz_hhx_spicyAirCounter_bg_hlm_posY   = 0;
+user float  uz_hhx_spicyAirCounter_bg_hlm_scale  = 1.;
+
 // SQUAD STATUS CONFIGS
 user bool   uz_hhx_squadStatus_enabled               = true;
 user string uz_hhx_squadStatus_font                  = "NewSmallFont";

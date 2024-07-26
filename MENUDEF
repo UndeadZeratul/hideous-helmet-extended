@@ -163,6 +163,7 @@ OptionMenu "HHXCounters" {
 	SubMenu "$HHXSecondFleshCounter",     "HHXSecondFleshCounter"
 	SubMenu "$HHXSickCounter",            "HHXSickCounter"
 	SubMenu "$HHXSpeedCounter",           "HHXSpeedCounter"
+	SubMenu "$HHXSpicyAirCounter",        "HHXSpicyAirCounter"
 	SubMenu "$HHXStimCounter",            "HHXStimCounter"
 	SubMenu "$HHXStripCounter",           "HHXStripCounter"
 	SubMenu "$HHXStunnedCounter",         "HHXStunnedCounter"
@@ -2139,6 +2140,59 @@ OptionMenu "HHXSpeedCounter" {
 	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetSpeedCounter", "uz_hhx_options_reset_nhm_speedCounter"
 	SafeCommand "$HHXHHResetSpeedCounter", "uz_hhx_options_reset_hlm_speedCounter"
+}
+
+OptionMenu "HHXSpicyAirCounter" {
+	Title "$HHXSpicyAirCounter"
+
+	Option "$HHXEnabled", "uz_hhx_spicyAirCounter_enabled", "OnOff"
+	StaticText ""
+	Option "$HHXAlwaysVisible", "uz_hhx_spicyAirCounter_alwaysVisible", "OnOff", "uz_hhx_spicyAirCounter_enabled"
+	Option "$HHXCounterStyle", "uz_hhx_spicyAirCounter_style", "CounterStyle", "uz_hhx_spicyAirCounter_enabled"
+	TextField "$HHXFont", "uz_hhx_spicyAirCounter_font", "uz_hhx_spicyAirCounter_enabled"
+	Option "$HHXFontColor", "uz_hhx_spicyAirCounter_fontColor", "FontColor", "uz_hhx_spicyAirCounter_enabled"
+	Slider "$HHXFontScale", "uz_hhx_spicyAirCounter_fontScale", .01, 4., .05, 2, "uz_hhx_spicyAirCounter_enabled"
+	StaticText ""
+	Option "$HHXBarDirection", "uz_hhx_spicyAirCounter_barDirection", "BarDirection", "uz_hhx_spicyAirCounter_enabled"
+	StaticText ""
+	Slider "$HHXMaxValue", "uz_hhx_spicyAirCounter_maxValue", 0, 1000, 1, 0, "uz_hhx_spicyAirCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_spicyAirCounter_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_spicyAirCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_spicyAirCounter_nhm_posX", -400, 400, 1, 0, "uz_hhx_spicyAirCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_spicyAirCounter_nhm_posY", -400, 400, 1, 0, "uz_hhx_spicyAirCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_spicyAirCounter_nhm_scale", .01, 4., .05, 2, "uz_hhx_spicyAirCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_spicyAirCounter_bg_nhm_ref", "uz_hhx_spicyAirCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_spicyAirCounter_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_spicyAirCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_spicyAirCounter_bg_nhm_posY", -400, 400, 1, 0, "uz_hhx_spicyAirCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_spicyAirCounter_bg_nhm_scale", .01, 4., .05, 2, "uz_hhx_spicyAirCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_spicyAirCounter_hlm_required", "OnOff", "uz_hhx_spicyAirCounter_enabled"
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_spicyAirCounter_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_spicyAirCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_spicyAirCounter_hlm_posX", -400, 400, 1, 0, "uz_hhx_spicyAirCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_spicyAirCounter_hlm_posY", -400, 400, 1, 0, "uz_hhx_spicyAirCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_spicyAirCounter_hlm_scale", .01, 4., .05, 2, "uz_hhx_spicyAirCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_spicyAirCounter_bg_hlm_ref", "uz_hhx_spicyAirCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_spicyAirCounter_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_spicyAirCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_spicyAirCounter_bg_hlm_posY", -400, 400, 1, 0, "uz_hhx_spicyAirCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_spicyAirCounter_bg_hlm_scale", .01, 4., .05, 2, "uz_hhx_spicyAirCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetSpicyAirCounter", "uz_hhx_options_reset_nhm_spicyAirCounter"
+	SafeCommand "$HHXHHResetSpicyAirCounter", "uz_hhx_options_reset_hlm_spicyAirCounter"
 }
 
 OptionMenu "HHXSquadStatus" {
