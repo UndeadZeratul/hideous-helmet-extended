@@ -2,6 +2,8 @@ class UZAirCounter : BaseCounterHUDElement {
 
     Class<Inventory> invClass;
 
+    Service service;
+
     override void Init(HCStatusbar sb) {
         ZLayer    = 2;
         Namespace = "airCounter";
@@ -12,6 +14,8 @@ class UZAirCounter : BaseCounterHUDElement {
 
         string invClassName = "UaS_Respirator";
         invClass = invClassName;
+        
+        service = ServiceIterator.Find("UaS_RespiratorStatus").next();
     }
 
     override bool ShouldDrawCounter(HCStatusBar sb, float counterValue) {
@@ -35,9 +39,8 @@ class UZAirCounter : BaseCounterHUDElement {
                 : String.Format("%.2f%%", counterValue / maxValue * 100.0)
             : "Infinite";
     }
-    
+
     private bool IsUsingRespirator(PlayerPawn p) {
-        service RespStatus = ServiceIterator.Find("UaS_RespiratorStatus").next();
-        return RespStatus && int(RespStatus.GetIntUI("IsWorn", objectArg:p));
+        return service && int(service.GetIntUI("IsWorn", objectArg: p));
     }
 }
