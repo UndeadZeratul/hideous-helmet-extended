@@ -130,10 +130,14 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         int  hudLevel  = hasHelmet ? _hlm_hudLevel.GetInt() : _nhm_hudLevel.GetInt();
         
         if (
-            (hasHelmet || !_hlm_required.GetBool())
+            (
+                !_HHFunc
+                || hasHelmet
+                || !_hlm_required.GetBool()
+                || hhelmetShowStatus
+            )
             && !HDSpectator(sb.hpl)
             && sb.HUDLevel >= hudLevel
-            && hhelmetShowStatus
         ) {
 
             let hdw = HDWeapon(item);
