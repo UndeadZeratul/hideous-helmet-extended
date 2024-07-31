@@ -207,7 +207,7 @@ class BaseCounterHUDElement : HUDElement abstract {
                         counterIcon,
                         (posX, posY),
                         sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP,
-                        value / maxValue,
+                        value / max(maxValue, 1),
                         scale: (scale, scale)
                     );
                     break;
