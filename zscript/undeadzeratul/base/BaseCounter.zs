@@ -149,6 +149,8 @@ class BaseCounterHUDElement : HUDElement abstract {
         let value    = GetCounterValue(sb);
         let maxValue = GetCounterMaxValue(sb);
 
+        if (hd_debug && !(Level.time % 35)) Console.PrintF("["..Namespace.."] Value: "..value..", Max Value: "..maxValue);
+
         if (hd_debug || _alwaysVisible.GetBool() || ShouldDrawCounter(sb, value)) {
             float fontScale = _fontScale.GetFloat();
             switch (_counterStyle ? _counterStyle.GetInt() : LABEL_WITH_VALUE) {
