@@ -10,12 +10,20 @@ class UZFragCounter : BaseCounterHUDElement {
     }
 
     override float GetCounterValue(HCStatusBar sb) {
-        let value = 0;
+        let value = 0.0;
 
-        // Count all the current Frag Shards
+        // Count all the nearby Frag Shards
         let iter = ThinkerIterator.create("BFGNecroShard");
-        while(iter.next()) value++;
 
-        return value;
+        Actor mo;
+        while(mo = Actor(iter.next())) {
+            if (mo.health) {
+                let dist = max(HDCONST_ONEMETRE, sb.hpl.Distance3D(mo));
+
+                value += 100.0 / (dist * dist);
+            }
+        }
+
+        return value * 1000.0;
     }
 }
