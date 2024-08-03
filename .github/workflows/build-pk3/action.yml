@@ -6,4 +6,4 @@ runs:
   - uses: actions/checkout@v4
   - uses: montudor/action-zip@v1
     with:
-      args: zip -r "hideous-helmet-extended-${{ env.SUFFIX }}.pk3" . -i graphics/* zscript/* CHANGELOG.md CVARINFO KEYCONF LANGUAGE.* LICENSE MENUDEF readme.md TEXTURES.* zscript.zs
+      args: zip -r "hideous-helmet-extended-${{ env.SUFFIX }}.pk3" . -i graphics/* zscript/* CHANGELOG.md CVARINFO KEYCONF LANGUAGE.* LICENSE MAPINFO MENUDEF readme.md TEXTURES.* zscript.zs

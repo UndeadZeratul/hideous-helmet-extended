@@ -4,6 +4,10 @@ version "4.11"
 #include "zscript/undeadzeratul/base/BaseCounter.zs"
 
 
+// Event Handlers
+#include "zscript/undeadzeratul/handlers/HHXHandler.zs"
+
+
 // HUD Elements
 #include "zscript/undeadzeratul/elements/UZAmmoCounters.zs"
 #include "zscript/undeadzeratul/elements/UZArmour.zs"
