@@ -70,6 +70,7 @@ HHXSpicyAirCounter                      = "Spicy Air Counter Options";
 HHXStimCounter                          = "Stim Counter Options";
 HHXStripCounter                         = "Strip Time Counter Options";
 HHXStunnedCounter                       = "Stunned Counter Options";
+HHXTargetShieldCounter                  = "Target Shield Counter Options";
 HHXTissueDamageCounter                  = "Tissue Damage Counter Options";
 
 
@@ -175,6 +176,7 @@ HHXResetSpicyAirCounter                 = "Reset Spicy Air Counter Options";
 HHXResetStimCounter                     = "Reset Stim Counter Options";
 HHXResetStripCounter                    = "Reset Strip Time Counter Options";
 HHXResetStunnedCounter                  = "Reset Stunned Counter Options";
+HHXResetTargetShieldCounter             = "Reset Target Shield Counter Options";
 HHXResetTissueDamageCounter             = "Reset Tissue Damage Counter Options";
 
 // Reset Helmet Options Labels
@@ -236,6 +238,7 @@ HHXHHResetSpicyAirCounter               = "Reset Spicy Air Counter HHelmet Optio
 HHXHHResetStimCounter                   = "Reset Stim Counter HHelmet Options";
 HHXHHResetStripCounter                  = "Reset Strip Time Counter HHelmet Options";
 HHXHHResetStunnedCounter                = "Reset Stunned Counter HHelmet Options";
+HHXHHResetTargetShieldCounter           = "Reset Target Shield Counter HHelmet Options";
 HHXHHResetTissueDamageCounter           = "Reset Tissue Damage Counter HHelmet Options";
 
 // Preset Menu Labels
@@ -305,6 +308,7 @@ HHXSpicyAirCounterLabel                 = "Air Spiciness";
 HHXStimCounterLabel                     = "Stims";
 HHXStripCounterLabel                    = "Strip Time";
 HHXStunnedCounterLabel                  = "Stunned";
+HHXTargetShieldCounterLabel             = "Shields";
 HHXTissueDamageCounterLabel             = "Tissue Damage";
 
 HHXCounterSeparator                     = ": ";
