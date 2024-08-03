@@ -1,9 +1,21 @@
 class HHXLineTraceData {
     int hitType;
 
+    double distance;
+
     Actor hitActor;
     Line hitLine;
     Sector hitSector;
+
+    HHXLineTraceData Update(FLineTraceData newData) {
+        hitType   = newData.hitType;
+        distance  = newData.distance;
+        hitActor  = newData.hitActor;
+        hitLine   = newData.hitLine;
+        hitSector = newData.hitSector;
+
+        return self;
+    }
 }
 
 class HHXHandler : EventHandler {
@@ -30,11 +42,7 @@ class HHXHandler : EventHandler {
                 );
 
                 let hhxData = data[i] ? data[i] : HHXLineTraceData(new('HHXLineTraceData'));
-                hhxData.hitType = traceData.hitType;
-                hhxData.hitActor = traceData.hitActor;
-                hhxData.hitLine = traceData.hitLine;
-                hhxData.hitSector = traceData.hitSector;
-                data[i] = hhxData;
+                data[i] = hhxData.Update(traceData);
             }
         }
     }
