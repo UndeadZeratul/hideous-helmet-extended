@@ -23,11 +23,12 @@ class UZSpicyAirCounter : BaseCounterHUDElement {
     }
 
     override float GetCounterValue(HCStatusBar sb) {
-        return GetCounterMaxValue(sb) - GetBreathHoldTimer(sb);
+        return clamp(GetAirToxicity(sb), 0, GetCounterMaxValue(sb));
     }
 
     override float GetCounterMaxValue(HCStatusBar sb) {
-        return Level.airSupply * sb.hpl.airCapacity;
+        let maxToxicity = GetMaxAirToxicity(sb);
+        return maxToxicity > -1 ? maxToxicity : super.GetCounterMaxValue(sb);
     }
 
     override string FormatValue(HCStatusBar sb, float counterValue, float maxValue) {
@@ -40,9 +41,15 @@ class UZSpicyAirCounter : BaseCounterHUDElement {
         return service && int(service.GetIntUI("IsGasMaskWorn", objectArg: sb.hpl.FindInventory(invClass)));
     }
 
-    private float GetBreathHoldTimer(HCStatusBar sb) {
+    private float GetAirToxicity(HCStatusBar sb) {
         return service
-            ? service.GetIntUI("GetBreathHoldTimer", objectArg: sb.hpl)
+            ? service.GetIntUI("GetAirToxicity", objectArg: sb.hpl)
             : GetCounterMaxValue(sb);
+    }
+
+    private float GetMaxAirToxicity(HCStatusBar sb) {
+        return service
+            ? service.GetIntUI("GetMaxAirToxicity", objectArg: sb.hpl)
+            : -1;
     }
 }
