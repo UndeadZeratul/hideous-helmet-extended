@@ -1,4 +1,4 @@
-class UZSpicyAirCounter : BaseCounterHUDElement {
+class UZPlayerToxicityCounter : BaseCounterHUDElement {
 
     Class<Inventory> invClass;
 
@@ -6,11 +6,11 @@ class UZSpicyAirCounter : BaseCounterHUDElement {
 
     override void Init(HCStatusbar sb) {
         ZLayer    = 2;
-        Namespace = "spicyAirCounter";
+        Namespace = "playerToxicityCounter";
 
-        counterIcon   = "TOXCNTR0";
-        counterIconBG = "TOXCNTR1";
-        counterLabel  = Stringtable.Localize("$HHXSpicyAirCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
+        counterIcon   = "PTXCNTR0";
+        counterIconBG = "PTXCNTR1";
+        counterLabel  = Stringtable.Localize("$HHXPlayerToxicityCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
 
         string invClassName = "Despicyto";
         invClass = invClassName;
@@ -23,11 +23,11 @@ class UZSpicyAirCounter : BaseCounterHUDElement {
     }
 
     override float GetCounterValue(HCStatusBar sb) {
-        return clamp(GetAirToxicity(sb), 0, GetCounterMaxValue(sb));
+        return clamp(GetPlayerToxicity(sb), 0, GetCounterMaxValue(sb));
     }
 
     override float GetCounterMaxValue(HCStatusBar sb) {
-        let maxToxicity = GetMaxAirToxicity(sb);
+        let maxToxicity = GetMaxPlayerToxicity(sb);
         return maxToxicity > -1 ? maxToxicity : super.GetCounterMaxValue(sb);
     }
 
@@ -41,15 +41,15 @@ class UZSpicyAirCounter : BaseCounterHUDElement {
         return service && int(service.GetIntUI("IsGasMaskWorn", objectArg: sb.hpl.FindInventory(invClass)));
     }
 
-    private float GetAirToxicity(HCStatusBar sb) {
+    private float GetPlayerToxicity(HCStatusBar sb) {
         return service
-            ? service.GetIntUI("GetAirToxicity", objectArg: sb.hpl)
+            ? service.GetIntUI("GetPlayerToxicity", objectArg: sb.hpl)
             : GetCounterMaxValue(sb);
     }
 
-    private float GetMaxAirToxicity(HCStatusBar sb) {
+    private float GetMaxPlayerToxicity(HCStatusBar sb) {
         return service
-            ? service.GetIntUI("GetMaxAirToxicity", objectArg: sb.hpl)
+            ? service.GetIntUI("GetMaxPlayerToxicity", objectArg: sb.hpl)
             : -1;
     }
 }

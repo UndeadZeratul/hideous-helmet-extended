@@ -140,6 +140,7 @@ OptionMenu "HHXCounters" {
 	StaticText ""
 	SubMenu "$HHXAggroCounter",           "HHXAggroCounter"
 	SubMenu "$HHXAirCounter",             "HHXAirCounter"
+	SubMenu "$HHXAirToxicityCounter",     "HHXAirToxicityCounter"
 	SubMenu "$HHXAlcoholCounter",         "HHXAlcoholCounter"
 	SubMenu "$HHXBerserkCounter",         "HHXBerserkCounter"
 	SubMenu "$HHXBerserkCooldownCounter", "HHXBerserkCooldownCounter"
@@ -161,10 +162,10 @@ OptionMenu "HHXCounters" {
 	SubMenu "$HHXLevelKillsCounter",      "HHXLevelKillsCounter"
 	SubMenu "$HHXLevelSecretsCounter",    "HHXLevelSecretsCounter"
 	SubMenu "$HHXMercBucksCounter",       "HHXMercBucksCounter"
+	SubMenu "$HHXPlayerToxicityCounter",  "HHXPlayerToxicityCounter"
 	SubMenu "$HHXSecondFleshCounter",     "HHXSecondFleshCounter"
 	SubMenu "$HHXSickCounter",            "HHXSickCounter"
 	SubMenu "$HHXSpeedCounter",           "HHXSpeedCounter"
-	SubMenu "$HHXSpicyAirCounter",        "HHXSpicyAirCounter"
 	SubMenu "$HHXStimCounter",            "HHXStimCounter"
 	SubMenu "$HHXStripCounter",           "HHXStripCounter"
 	SubMenu "$HHXStunnedCounter",         "HHXStunnedCounter"
@@ -336,6 +337,59 @@ OptionMenu "HHXAirCounter" {
 	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetAirCounter", "uz_hhx_options_reset_nhm_airCounter"
 	SafeCommand "$HHXHHResetAirCounter", "uz_hhx_options_reset_hlm_airCounter"
+}
+
+OptionMenu "HHXAirToxicityCounter" {
+	Title "$HHXAirToxicityCounter"
+
+	Option "$HHXEnabled", "uz_hhx_airToxicityCounter_enabled", "OnOff"
+	StaticText ""
+	Option "$HHXAlwaysVisible", "uz_hhx_airToxicityCounter_alwaysVisible", "OnOff", "uz_hhx_airToxicityCounter_enabled"
+	Option "$HHXCounterStyle", "uz_hhx_airToxicityCounter_style", "CounterStyle", "uz_hhx_airToxicityCounter_enabled"
+	TextField "$HHXFont", "uz_hhx_airToxicityCounter_font", "uz_hhx_airToxicityCounter_enabled"
+	Option "$HHXFontColor", "uz_hhx_airToxicityCounter_fontColor", "FontColor", "uz_hhx_airToxicityCounter_enabled"
+	Slider "$HHXFontScale", "uz_hhx_airToxicityCounter_fontScale", .01, 4., .05, 2, "uz_hhx_airToxicityCounter_enabled"
+	StaticText ""
+	Option "$HHXBarDirection", "uz_hhx_airToxicityCounter_barDirection", "BarDirection", "uz_hhx_airToxicityCounter_enabled"
+	StaticText ""
+	Slider "$HHXMaxValue", "uz_hhx_airToxicityCounter_maxValue", 0, 1000, 1, 0, "uz_hhx_airToxicityCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_airToxicityCounter_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_airToxicityCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_airToxicityCounter_nhm_posX", -400, 400, 1, 0, "uz_hhx_airToxicityCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_airToxicityCounter_nhm_posY", -400, 400, 1, 0, "uz_hhx_airToxicityCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_airToxicityCounter_nhm_scale", .01, 4., .05, 2, "uz_hhx_airToxicityCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_airToxicityCounter_bg_nhm_ref", "uz_hhx_airToxicityCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_airToxicityCounter_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_airToxicityCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_airToxicityCounter_bg_nhm_posY", -400, 400, 1, 0, "uz_hhx_airToxicityCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_airToxicityCounter_bg_nhm_scale", .01, 4., .05, 2, "uz_hhx_airToxicityCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_airToxicityCounter_hlm_required", "OnOff", "uz_hhx_airToxicityCounter_enabled"
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_airToxicityCounter_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_airToxicityCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_airToxicityCounter_hlm_posX", -400, 400, 1, 0, "uz_hhx_airToxicityCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_airToxicityCounter_hlm_posY", -400, 400, 1, 0, "uz_hhx_airToxicityCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_airToxicityCounter_hlm_scale", .01, 4., .05, 2, "uz_hhx_airToxicityCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_airToxicityCounter_bg_hlm_ref", "uz_hhx_airToxicityCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_airToxicityCounter_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_airToxicityCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_airToxicityCounter_bg_hlm_posY", -400, 400, 1, 0, "uz_hhx_airToxicityCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_airToxicityCounter_bg_hlm_scale", .01, 4., .05, 2, "uz_hhx_airToxicityCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetAirToxicityCounter", "uz_hhx_options_reset_nhm_airToxicityCounter"
+	SafeCommand "$HHXHHResetAirToxicityCounter", "uz_hhx_options_reset_hlm_airToxicityCounter"
 }
 
 OptionMenu "HHXAmmoCounters" {
@@ -1998,6 +2052,59 @@ OptionMenu "HHXObjectDescription" {
 	SafeCommand "$HHXHHResetMugshot", "uz_hhx_options_reset_hlm_objectDescription"
 }
 
+OptionMenu "HHXPlayerToxicityCounter" {
+	Title "$HHXPlayerToxicityCounter"
+
+	Option "$HHXEnabled", "uz_hhx_playerToxicityCounter_enabled", "OnOff"
+	StaticText ""
+	Option "$HHXAlwaysVisible", "uz_hhx_playerToxicityCounter_alwaysVisible", "OnOff", "uz_hhx_playerToxicityCounter_enabled"
+	Option "$HHXCounterStyle", "uz_hhx_playerToxicityCounter_style", "CounterStyle", "uz_hhx_playerToxicityCounter_enabled"
+	TextField "$HHXFont", "uz_hhx_playerToxicityCounter_font", "uz_hhx_playerToxicityCounter_enabled"
+	Option "$HHXFontColor", "uz_hhx_playerToxicityCounter_fontColor", "FontColor", "uz_hhx_playerToxicityCounter_enabled"
+	Slider "$HHXFontScale", "uz_hhx_playerToxicityCounter_fontScale", .01, 4., .05, 2, "uz_hhx_playerToxicityCounter_enabled"
+	StaticText ""
+	Option "$HHXBarDirection", "uz_hhx_playerToxicityCounter_barDirection", "BarDirection", "uz_hhx_playerToxicityCounter_enabled"
+	StaticText ""
+	Slider "$HHXMaxValue", "uz_hhx_playerToxicityCounter_maxValue", 0, 1000, 1, 0, "uz_hhx_playerToxicityCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_playerToxicityCounter_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_playerToxicityCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_playerToxicityCounter_nhm_posX", -400, 400, 1, 0, "uz_hhx_playerToxicityCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_playerToxicityCounter_nhm_posY", -400, 400, 1, 0, "uz_hhx_playerToxicityCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_playerToxicityCounter_nhm_scale", .01, 4., .05, 2, "uz_hhx_playerToxicityCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_playerToxicityCounter_bg_nhm_ref", "uz_hhx_playerToxicityCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_playerToxicityCounter_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_playerToxicityCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_playerToxicityCounter_bg_nhm_posY", -400, 400, 1, 0, "uz_hhx_playerToxicityCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_playerToxicityCounter_bg_nhm_scale", .01, 4., .05, 2, "uz_hhx_playerToxicityCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_playerToxicityCounter_hlm_required", "OnOff", "uz_hhx_playerToxicityCounter_enabled"
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_playerToxicityCounter_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_playerToxicityCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_playerToxicityCounter_hlm_posX", -400, 400, 1, 0, "uz_hhx_playerToxicityCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_playerToxicityCounter_hlm_posY", -400, 400, 1, 0, "uz_hhx_playerToxicityCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_playerToxicityCounter_hlm_scale", .01, 4., .05, 2, "uz_hhx_playerToxicityCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_playerToxicityCounter_bg_hlm_ref", "uz_hhx_playerToxicityCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_playerToxicityCounter_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_playerToxicityCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_playerToxicityCounter_bg_hlm_posY", -400, 400, 1, 0, "uz_hhx_playerToxicityCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_playerToxicityCounter_bg_hlm_scale", .01, 4., .05, 2, "uz_hhx_playerToxicityCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetPlayerToxicityCounter", "uz_hhx_options_reset_nhm_playerToxicityCounter"
+	SafeCommand "$HHXHHResetPlayerToxicityCounter", "uz_hhx_options_reset_hlm_playerToxicityCounter"
+}
+
 OptionMenu "HHXBackground" {
 	Title "$HHXBackground"
 
@@ -2195,59 +2302,6 @@ OptionMenu "HHXSpeedCounter" {
 	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetSpeedCounter", "uz_hhx_options_reset_nhm_speedCounter"
 	SafeCommand "$HHXHHResetSpeedCounter", "uz_hhx_options_reset_hlm_speedCounter"
-}
-
-OptionMenu "HHXSpicyAirCounter" {
-	Title "$HHXSpicyAirCounter"
-
-	Option "$HHXEnabled", "uz_hhx_spicyAirCounter_enabled", "OnOff"
-	StaticText ""
-	Option "$HHXAlwaysVisible", "uz_hhx_spicyAirCounter_alwaysVisible", "OnOff", "uz_hhx_spicyAirCounter_enabled"
-	Option "$HHXCounterStyle", "uz_hhx_spicyAirCounter_style", "CounterStyle", "uz_hhx_spicyAirCounter_enabled"
-	TextField "$HHXFont", "uz_hhx_spicyAirCounter_font", "uz_hhx_spicyAirCounter_enabled"
-	Option "$HHXFontColor", "uz_hhx_spicyAirCounter_fontColor", "FontColor", "uz_hhx_spicyAirCounter_enabled"
-	Slider "$HHXFontScale", "uz_hhx_spicyAirCounter_fontScale", .01, 4., .05, 2, "uz_hhx_spicyAirCounter_enabled"
-	StaticText ""
-	Option "$HHXBarDirection", "uz_hhx_spicyAirCounter_barDirection", "BarDirection", "uz_hhx_spicyAirCounter_enabled"
-	StaticText ""
-	Slider "$HHXMaxValue", "uz_hhx_spicyAirCounter_maxValue", 0, 1000, 1, 0, "uz_hhx_spicyAirCounter_enabled"
-	
-	StaticText ""
-	StaticText ""
-	StaticText "$HHXNHM", 1
-	StaticText ""
-	Slider "$HHXHUDLevel", "uz_hhx_spicyAirCounter_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_spicyAirCounter_enabled"
-	Slider "$HHXPosX", "uz_hhx_spicyAirCounter_nhm_posX", -400, 400, 1, 0, "uz_hhx_spicyAirCounter_enabled"
-	Slider "$HHXPosY", "uz_hhx_spicyAirCounter_nhm_posY", -400, 400, 1, 0, "uz_hhx_spicyAirCounter_enabled"
-	Slider "$HHXScale", "uz_hhx_spicyAirCounter_nhm_scale", .01, 4., .05, 2, "uz_hhx_spicyAirCounter_enabled"
-	StaticText ""
-	TextField "$HHXBgRef", "uz_hhx_spicyAirCounter_bg_nhm_ref", "uz_hhx_spicyAirCounter_enabled"
-	Slider "$HHXPosX", "uz_hhx_spicyAirCounter_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_spicyAirCounter_enabled"
-	Slider "$HHXPosY", "uz_hhx_spicyAirCounter_bg_nhm_posY", -400, 400, 1, 0, "uz_hhx_spicyAirCounter_enabled"
-	Slider "$HHXScale", "uz_hhx_spicyAirCounter_bg_nhm_scale", .01, 4., .05, 2, "uz_hhx_spicyAirCounter_enabled"
-	
-	StaticText ""
-	StaticText ""
-	StaticText "$HHXHLM", 1
-	StaticText "$HHXHHelmetRequired"
-	StaticText ""
-	Option "$HHXHelmetRequired", "uz_hhx_spicyAirCounter_hlm_required", "OnOff", "uz_hhx_spicyAirCounter_enabled"
-	StaticText ""
-	Slider "$HHXHUDLevel", "uz_hhx_spicyAirCounter_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_spicyAirCounter_enabled"
-	Slider "$HHXPosX", "uz_hhx_spicyAirCounter_hlm_posX", -400, 400, 1, 0, "uz_hhx_spicyAirCounter_enabled"
-	Slider "$HHXPosY", "uz_hhx_spicyAirCounter_hlm_posY", -400, 400, 1, 0, "uz_hhx_spicyAirCounter_enabled"
-	Slider "$HHXScale", "uz_hhx_spicyAirCounter_hlm_scale", .01, 4., .05, 2, "uz_hhx_spicyAirCounter_enabled"
-	StaticText ""
-	TextField "$HHXBgRef", "uz_hhx_spicyAirCounter_bg_hlm_ref", "uz_hhx_spicyAirCounter_enabled"
-	Slider "$HHXPosX", "uz_hhx_spicyAirCounter_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_spicyAirCounter_enabled"
-	Slider "$HHXPosY", "uz_hhx_spicyAirCounter_bg_hlm_posY", -400, 400, 1, 0, "uz_hhx_spicyAirCounter_enabled"
-	Slider "$HHXScale", "uz_hhx_spicyAirCounter_bg_hlm_scale", .01, 4., .05, 2, "uz_hhx_spicyAirCounter_enabled"
-	
-	StaticText ""
-	StaticText ""
-	StaticText "$HHXDangerZone", "Red"
-	SafeCommand "$HHXResetSpicyAirCounter", "uz_hhx_options_reset_nhm_spicyAirCounter"
-	SafeCommand "$HHXHHResetSpicyAirCounter", "uz_hhx_options_reset_hlm_spicyAirCounter"
 }
 
 OptionMenu "HHXSquadStatus" {
