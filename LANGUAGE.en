@@ -9,6 +9,9 @@ HHXHLMPresets                           = "Helmet Presets";
 HHXAdvanced                             = "Advanced Options";
 HHXCounters                             = "Stat Counter Options";
 
+// Option Menu Static Text
+HHXEKGFontText                          = "Used when in Debug or Arcade/No-Bleed mode";
+
 // HUD Element Options Menu Titles
 HHXAmmoCounters                         = "Ammo Counters Options";
 HHXArmour                               = "Armour Options";

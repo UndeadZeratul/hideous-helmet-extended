@@ -1038,12 +1038,11 @@ OptionMenu "HHXEKG" {
 	Title "$HHXEKG"
 
 	Option "$HHXEnabled", "uz_hhx_ekg_enabled", "OnOff"
-
-	/* Only for Debug anyways, not necessary to have option inputs for these */
-	/* StaticText ""
+	StaticText ""
+	StaticText "$HHXEKGFontText"
 	TextField "$HHXFont", "uz_hhx_ekg_font", "uz_hhx_ekg_enabled"
-	Slider "$HHXFontScale", "uz_hhx_ekg_fontScale", .01, 4., .05, 2, "uz_hhx_ekg_enabled" */
-	
+	Slider "$HHXFontScale", "uz_hhx_ekg_fontScale", .01, 4., .05, 2, "uz_hhx_ekg_enabled"
+
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXNHM", 1

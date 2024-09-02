@@ -100,7 +100,7 @@ class UZEKG : HUDEKG {
         Vector2 debugScale = (fontScale * scale, fontScale * scale);
 
         if (AutomapActive) {
-            if(hd_debug){
+            if(hd_debug || hd_nobleed) {
                 sb.drawstring(
                     _hudFont,
                     sb.FormatNumber(sb.hpl.health),
@@ -128,11 +128,11 @@ class UZEKG : HUDEKG {
                 scale: (scale * bgScale, scale * bgScale)
             );
 
-            if(hd_debug) {
+            if(hd_debug || hd_nobleed) {
                 sb.drawstring(
                     _hudFont,
                     sb.FormatNumber(sb.hpl.health),
-                    (posX, posY - _hudFont.mFont.GetHeight() * fontScale * scale),
+                    (posX, posY - (_hudFont.mFont.GetHeight() / 2) * fontScale * scale),
                     sb.DI_TEXT_ALIGN_CENTER|sb.DI_SCREEN_CENTER_BOTTOM,
                     debugTran,
                     scale: debugScale
