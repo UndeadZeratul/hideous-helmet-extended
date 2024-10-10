@@ -8,6 +8,8 @@ enum HHX_COUNTER_STYLE {
 
 class BaseCounterHUDElement : HUDElement abstract {
 
+    mixin UZBetterDrawBar;
+
     protected string counterIcon;
     protected string counterIconBG;
     protected string counterLabel;
@@ -193,13 +195,14 @@ class BaseCounterHUDElement : HUDElement abstract {
                     );
                     break;
                 case DURABILITY_BAR:
-                    sb.DrawBar(
+                    BetterDrawBar(
+                        sb,
                         counterIcon, counterIconBG,
-                        value, maxValue,
+                        clamp(value / max(maxValue, 1.0), 0.0, 1.0),
                         (posX, posY),
-                        -1,
+                        sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP,
                         _barDirection.GetInt(),
-                        sb.DI_SCREEN_CENTER_BOTTOM|SB.DI_ITEM_TOP
+                        (scale, scale)
                     );
                     break;
                 case FADING_ICON:
@@ -207,7 +210,7 @@ class BaseCounterHUDElement : HUDElement abstract {
                         counterIcon,
                         (posX, posY),
                         sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP,
-                        value / max(maxValue, 1),
+                        clamp(value / max(maxValue, 1.0), 0.0, 1.0),
                         scale: (scale, scale)
                     );
                     break;

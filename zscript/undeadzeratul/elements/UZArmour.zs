@@ -38,6 +38,8 @@ class UZHDArmourStats {
 
 class UZArmour : HUDElement {
 
+    mixin UZBetterDrawBar;
+
     private Service _HHFunc;
     private Service _SpicyAirService;
 
@@ -218,7 +220,8 @@ class UZArmour : HUDElement {
                         arm.maxDurability,
                         sb.DI_TOPLEFT,
                         4 + arm.offX - offsets.x,
-                        86 + arm.offY - offsets.y
+                        86 + arm.offY - offsets.y,
+                        scale
                     );
                 } else if (CheckCommonStuff(sb, state, ticFrac)) {
                     DrawArmour(
@@ -229,7 +232,8 @@ class UZArmour : HUDElement {
                         arm.maxDurability,
                         arm.flags,
                         posX + arm.offX - offsets.x,
-                        posY + arm.offY - offsets.y
+                        posY + arm.offY - offsets.y,
+                        scale
                     );
                 }
             } else {
@@ -296,14 +300,15 @@ class UZArmour : HUDElement {
         }
     }
     
-    void DrawArmour(HCStatusBar sb, string fg, string bg, int durability, int maxDurability, int flags, int posX, int posY) {
-        sb.DrawBar(
+    void DrawArmour(HCStatusBar sb, string fg, string bg, int durability, int maxDurability, int flags, int posX, int posY, double scale) {
+        BetterDrawBar(
+            sb,
             fg, bg,
-            durability, maxDurability,
+            clamp(durability / max(maxDurability, 1.0), 0.0, 1.0),
             (posX, posY),
-            -1,
-            sb.SHADER_VERT,
-            flags
+            flags,
+            2,
+            (scale, scale)
         );
     }
 
