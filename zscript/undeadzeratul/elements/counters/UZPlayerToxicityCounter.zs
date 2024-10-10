@@ -19,7 +19,7 @@ class UZPlayerToxicityCounter : BaseCounterHUDElement {
     }
 
     override bool ShouldDrawCounter(HCStatusBar sb, float counterValue) {
-        return !IsGasMaskWorn(sb);
+        return !IsGasMaskWorn(sb) && counterValue > 0;
     }
 
     override float GetCounterValue(HCStatusBar sb) {
