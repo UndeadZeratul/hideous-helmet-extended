@@ -19,6 +19,8 @@ class WeaponStatusAmmoCounter {
 
 class BaseWeaponStatusOverride : HCItemOverride abstract {
 
+    mixin UZBetterDrawBar;
+
     protected name weaponName;
     protected name magName;
 
@@ -866,15 +868,16 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 scale: (ammoCounter.iconScale.x * scale, ammoCounter.iconScale.y * scale)
             );
         } else if (ShouldDrawPartialMagazine(value, maxValue)) {
-            sb.DrawBar(
+            BetterDrawBar(
+                sb,
                 ammoCounter.icons[2],
                 ammoCounter.icons[3],
-                value,
-                maxValue,
+                clamp(value / max(maxValue, 1.0), 0.0, 1.0),
                 (posX, posY),
-                -1,
+                ammoCounter.iconFlags,
                 _mag_barDirection.GetInt(),
-                ammoCounter.iconFlags
+                // TODO: Figure out a better way to account for assets using old DrawBar logic by pre-scaling themselves
+                scale: (scale, scale) // (ammoCounter.iconScale.x * scale, ammoCounter.iconScale.y * scale)
             );
         }
 
