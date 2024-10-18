@@ -970,6 +970,36 @@ user int    uz_hhx_levelSecretsCounter_bg_hlm_posX   = 0;
 user int    uz_hhx_levelSecretsCounter_bg_hlm_posY   = 0;
 user float  uz_hhx_levelSecretsCounter_bg_hlm_scale  = 1.;
 
+// LIVES/FRAGS COUNTER CONFIGS
+user bool   uz_hhx_livesCounter_enabled       = true;
+user bool   uz_hhx_livesCounter_alwaysVisible = false;
+user int    uz_hhx_livesCounter_style         = 0;
+user string uz_hhx_livesCounter_font          = "HUDFont_Doom";
+user int    uz_hhx_livesCounter_fontColor     = 6;
+user float  uz_hhx_livesCounter_fontScale     = 1.1;
+user int    uz_hhx_livesCounter_barDirection  = 2;
+user int    uz_hhx_livesCounter_maxValue      = 100;
+
+user int    uz_hhx_livesCounter_nhm_hudLevel  = 1;
+user int    uz_hhx_livesCounter_nhm_posX      = 65;
+user int    uz_hhx_livesCounter_nhm_posY      = -20;
+user float  uz_hhx_livesCounter_nhm_scale     = 1.;
+
+user bool   uz_hhx_livesCounter_hlm_required  = false;
+user int    uz_hhx_livesCounter_hlm_hudLevel  = 1;
+user int    uz_hhx_livesCounter_hlm_posX      = 65;
+user int    uz_hhx_livesCounter_hlm_posY      = -20;
+user float  uz_hhx_livesCounter_hlm_scale     = 1.;
+
+user string uz_hhx_livesCounter_bg_nhm_ref    = "";
+user int    uz_hhx_livesCounter_bg_nhm_posX   = 0;
+user int    uz_hhx_livesCounter_bg_nhm_posY   = 0;
+user float  uz_hhx_livesCounter_bg_nhm_scale  = 1.;
+user string uz_hhx_livesCounter_bg_hlm_ref    = "";
+user int    uz_hhx_livesCounter_bg_hlm_posX   = 0;
+user int    uz_hhx_livesCounter_bg_hlm_posY   = 0;
+user float  uz_hhx_livesCounter_bg_hlm_scale  = 1.;
+
 // MERCENARY BUCKS COUNTER CONFIGS
 user bool   uz_hhx_mercBucksCounter_enabled       = true;
 user bool   uz_hhx_mercBucksCounter_alwaysVisible = false;
