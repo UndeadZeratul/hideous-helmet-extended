@@ -68,6 +68,7 @@ version "4.11"
 #include "zscript/undeadzeratul/elements/counters/UZStimCounter.zs"
 #include "zscript/undeadzeratul/elements/counters/UZStripCounter.zs"
 #include "zscript/undeadzeratul/elements/counters/UZStunnedCounter.zs"
+#include "zscript/undeadzeratul/elements/counters/UZTargetHeatCounter.zs"
 #include "zscript/undeadzeratul/elements/counters/UZTargetShieldCounter.zs"
 #include "zscript/undeadzeratul/elements/counters/UZTissueDamageCounter.zs"
 

@@ -75,6 +75,7 @@ HHXSpeedCounter                         = "Speed Counter Options";
 HHXStimCounter                          = "Stim Counter Options";
 HHXStripCounter                         = "Strip Time Counter Options";
 HHXStunnedCounter                       = "Stunned Counter Options";
+HHXTargetHeatCounter                    = "Target Heat Counter Options";
 HHXTargetShieldCounter                  = "Target Shield Counter Options";
 HHXTissueDamageCounter                  = "Tissue Damage Counter Options";
 
@@ -183,6 +184,7 @@ HHXResetSpeedCounter                    = "Reset Speed Counter Options";
 HHXResetStimCounter                     = "Reset Stim Counter Options";
 HHXResetStripCounter                    = "Reset Strip Time Counter Options";
 HHXResetStunnedCounter                  = "Reset Stunned Counter Options";
+HHXResetTargetHeatCounter               = "Reset Target Heat Counter Options";
 HHXResetTargetShieldCounter             = "Reset Target Shield Counter Options";
 HHXResetTissueDamageCounter             = "Reset Tissue Damage Counter Options";
 
@@ -247,6 +249,7 @@ HHXHHResetSpeedCounter                  = "Reset Speed Counter HHelmet Options";
 HHXHHResetStimCounter                   = "Reset Stim Counter HHelmet Options";
 HHXHHResetStripCounter                  = "Reset Strip Time Counter HHelmet Options";
 HHXHHResetStunnedCounter                = "Reset Stunned Counter HHelmet Options";
+HHXHHResetTargetHeatCounter             = "Reset Target Heat Counter HHelmet Options";
 HHXHHResetTargetShieldCounter           = "Reset Target Shield Counter HHelmet Options";
 HHXHHResetTissueDamageCounter           = "Reset Tissue Damage Counter HHelmet Options";
 
@@ -319,6 +322,7 @@ HHXSpeedCounterLabel                    = "Speed";
 HHXStimCounterLabel                     = "Stims";
 HHXStripCounterLabel                    = "Strip Time";
 HHXStunnedCounterLabel                  = "Stunned";
+HHXTargetHeatCounterLabel               = "Heat";
 HHXTargetShieldCounterLabel             = "Shields";
 HHXTissueDamageCounterLabel             = "Tissue Damage";
 
