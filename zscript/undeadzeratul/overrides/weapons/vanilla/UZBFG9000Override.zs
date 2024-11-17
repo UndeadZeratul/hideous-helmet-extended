@@ -102,11 +102,11 @@ class UZBFG9KOverride : BaseWeaponStatusOverride {
             super.DrawMagazineRounds(sb, wpn, value, maxValue, precise, color, posX, posY, scale, hudFont, fontColor, fontScale, flags);
         } else {
             sb.DrawString(
-                sb.mAmountFont,
+                GetEmptyBatteryFont(sb, wpn, hudFont),
                 "00000",
                 (posX, posY - scale),
                 sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TRANSLATABLE|sb.DI_TEXT_ALIGN_RIGHT,
-                Font.CR_DARKGRAY,
+                GetEmptyBatteryFontColor(wpn),
                 scale: (scale, scale)
             );
         }

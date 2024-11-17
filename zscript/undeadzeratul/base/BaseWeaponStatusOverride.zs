@@ -258,8 +258,32 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         return Color(200, 30,  26,  24);
     }
 
+    virtual HUDFont GetEmptyBatteryFont(HCStatusBar sb, HDWeapon wpn, HUDFont hudFont) {
+        return sb.mAmountFont;
+    }
+
+    virtual HUDFont GetWeaponZoomFont(HCStatusBar sb, HDWeapon wpn, HUDFont hudFont) {
+        return hudFont;
+    }
+
+    virtual HUDFont GetDropAdjustFont(HCStatusBar sb, HDWeapon wpn, HUDFont hudFont) {
+        return hudFont;
+    }
+
     virtual int GetAmmoCounterFontColor(HDWeapon wpn, HDMagAmmo mag) {
         return Font.CR_RED;
+    }
+
+    virtual int GetEmptyBatteryFontColor(HDWeapon wpn) {
+        return Font.CR_DARKGRAY;
+    }
+
+    virtual int GetWeaponZoomFontColor(HDWeapon wpn) {
+        return Font.CR_DARKGRAY;
+    }
+
+    virtual int GetDropAdjustFontColor(HDWeapon wpn) {
+        return Font.CR_WHITE;
     }
 
     virtual int GetCylinderRound(HDWeapon wpn, int i) {
@@ -317,7 +341,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
     }
 
     virtual int GetFancyShellStyle(HDWeapon wpn, int state) {
-        return state > -1 ? max(1, min(2, state)) : -1;
+        return state > -1 ? clamp(state, 1, 2) : -1;
     }
 
     virtual Vector2 GetRangeFinderSize() {
@@ -384,6 +408,14 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
 
     virtual Vector2 GetSideSaddleOffsets(HDWeapon wpn) {
         return (-14, -16);
+    }
+
+    virtual Vector2 GetWeaponZoomFontScale(HCStatusBar sb, HDWeapon wpn, HUDFont hudFont, float fontScale) {
+        return (fontScale, fontScale);
+    }
+
+    virtual Vector2 GetDropAdjustFontScale(HCStatusBar sb, HDWeapon wpn, HUDFont hudFont, float fontScale) {
+        return (fontScale, fontScale);
     }
 
     virtual int GetAmmoCounterFlags(HCStatusBar sb) {
@@ -963,11 +995,11 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
             DrawMagazineRounds(sb, wpn, value, maxValue, precise, color, posX, posY, scale, hudFont, fontColor, fontScale, flags);
         } else {
             sb.DrawString(
-                sb.mAmountFont,
+                GetEmptyBatteryFont(sb, wpn, hudFont),
                 "00000",
                 (posX, posY - scale),
                 sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TRANSLATABLE|sb.DI_TEXT_ALIGN_RIGHT,
-                Font.CR_DARKGRAY,
+                GetEmptyBatteryFontColor(wpn),
                 scale: (scale, scale)
             );
         }
@@ -1062,23 +1094,23 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
 
     virtual void DrawWeaponZoom(HCStatusBar sb, HDWeapon wpn, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale, int flags) {
         sb.DrawString(
-            hudFont,
+            GetWeaponZoomFont(sb, wpn, hudFont),
             GetFormattedWeaponZoom(GetWeaponZoom(wpn)),
             (posX, posY),
             flags,
-            Font.CR_DARKGRAY,
-            scale: (fontScale * scale, fontScale * scale)
+            GetWeaponZoomFontColor(wpn),
+            scale: GetWeaponZoomFontScale(sb, wpn, GetWeaponZoomFont(sb, wpn, hudFont), fontScale) * scale
         );
     }
 
     virtual void DrawDropAdjust(HCStatusBar sb, HDWeapon wpn, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale, int flags) {
         sb.DrawString(
-            hudFont,
+            GetDropAdjustFont(sb, wpn, hudFont),
             GetFormattedDropAdjust(GetDropAdjust(wpn)),
             (posX, posY),
             flags,
-            Font.CR_WHITE,
-            scale: (fontScale * scale, fontScale * scale)
+            GetDropAdjustFontColor(wpn),
+            scale: GetDropAdjustFontScale(sb, wpn, GetWeaponZoomFont(sb, wpn, hudFont), fontScale) * scale
         );
     }
 
