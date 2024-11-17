@@ -1,24 +1,23 @@
-class UZZM66Override : BaseWeaponStatusOverride {
+class UZTROGOverride : BaseWeaponStatusOverride {
     
     override void Init(HCStatusbar sb) {
         super.Init(sb);
 
-        weaponName = 'ZM66AssaultRifle';
+        weaponName = 'HDTROGRifle';
 
-        magName = 'HD4mMag';
-        magCapacity = 50;
+        magName = 'HDTrogmag';
+        magCapacity = 30;
 
         fireModes[0] = 'STSEMAUT';
         fireModes[1] = 'STFULAUT';
-        fireModes[2] = 'STBURAUT';
     }
 
     override void AddAmmoCounts(HCStatusBar sb) {
         AddMagCount(
-            'HD4mMag',                                        // name
-            50,                                               // capacity
-            'ZMAGA0', 'ZMAGC0', 'ZMAGNORM', 'ZMAGGREY',       // icons
-            (2.0, 2.0),                                       // iconScale
+            'HDTrogmag',                                      // name
+            30,                                               // capacity
+            'TMAGA0', 'TMAGC0', 'TMAGNORM', 'TMAGGREY',       // icons
+            (1.0, 1.0),                                       // iconScale
             (-30, 3),                                         // offsets
             (3, -5),                                          // countOffsets
             sb.DI_SCREEN_CENTER_BOTTOM,                       // iconFlags
@@ -44,29 +43,8 @@ class UZZM66Override : BaseWeaponStatusOverride {
         return wpn.weaponStatus[1];
     }
 
-    override int GetMagAmount(int amount) {
-        // Coerce the magazine value into the size of the 4mm Mag
-        return clamp(amount % 100, 0, magCapacity);
-    }
-
-    override int GetMagCapacity(HDWeapon wpn, HDMagAmmo mag) {
-        return magCapacity;
-    }
-
-    override int GetAmmoCounter(HDWeapon wpn, HDMagAmmo mag) {
-        int magAmt = GetMagAmount(GetMagRounds(wpn));
-
-        // If the magazine that's inserted is dirty, randomize the counter value.
-        // Otherwise draw the amount in the mag as well as the chambered round, if any.
-        return magAmt > 100 ? random[shitgun](10,99) : magAmt + GetChamberedRounds(wpn);
-    }
-
     override int GetFireMode(HDWeapon wpn) {
         return wpn.weaponStatus[2];
-    }
-
-    override int GetWeaponZoom(HDWeapon wpn) {
-        return wpn.weaponStatus[3];
     }
 
     override Vector2 GetChamberedRoundOffsets(HDWeapon wpn) {
@@ -83,26 +61,18 @@ class UZZM66Override : BaseWeaponStatusOverride {
 
     override bool ShouldDrawAmmoCount(HDWeapon wpn, int type, WeaponStatusAmmoCounter ammoCounter, Inventory item) {
         switch (ammoCounter.name) {
-            case 'HD4mMag':       return ammoCounter.type == type;
-            case 'HDRocketAmmo':  return ammoCounter.type == type && !(wpn.weaponStatus[0] & 16);
+            case 'HDTrogmag':     return ammoCounter.type == type;
+            case 'HDRocketAmmo':  return ammoCounter.type == type;
             default:              return false;
         }
     }
 
-    override bool ShouldDrawFullMagazine(int value, int maxValue) {
-        return value > magCapacity;
-    }
-
     override bool ShouldDrawFireMode(HDWeapon wpn) {
-        return !(wpn.weaponStatus[0] & 32);
+        return true;
     }
 
     override bool ShouldDrawMagRounds(HDWeapon wpn, HDMagAmmo mag) {
         return GetMagRounds(wpn) > 0;
-    }
-
-    override bool ShouldDrawAmmoCounter(HDWeapon wpn) {
-        return true;
     }
 
     override bool ShouldDrawChamberedRound(HDWeapon wpn) {
@@ -110,15 +80,7 @@ class UZZM66Override : BaseWeaponStatusOverride {
     }
 
     virtual bool ShouldDrawChamberedGrenade(HDWeapon wpn) {
-        return wpn.weaponStatus[0] & 8;
-    }
-
-    override bool ShouldDrawRangeFinder(HDWeapon wpn) {
-        return wpn.weaponStatus[0] & 64;
-    }
-
-    override bool ShouldDrawWeaponZoom(HDWeapon wpn) {
-        return !ShouldDrawRangeFinder(wpn) && GetWeaponZoom(wpn);
+        return wpn.weaponStatus[0] & 2;
     }
 
     override void DrawWeaponStatus(HCStatusBar sb, HDWeapon wpn, int posX, int posY, float scale, HUDFont hudFont, int fontColor, float fontScale) {
