@@ -129,8 +129,12 @@ version "4.11"
 #include "zscript/undeadzeratul/overrides/weapons/icarus/UZUSPOverride.zs"
 
 #include "zscript/undeadzeratul/overrides/weapons/peppergrinder/UZAurochsOverride.zs"
+#include "zscript/undeadzeratul/overrides/weapons/peppergrinder/UZBPXOverride.zs"
+#include "zscript/undeadzeratul/overrides/weapons/peppergrinder/UZDMROverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/peppergrinder/UZGreelyOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/peppergrinder/UZOtis5Override.zs"
+#include "zscript/undeadzeratul/overrides/weapons/peppergrinder/UZSawedSlayerOverride.zs"
+#include "zscript/undeadzeratul/overrides/weapons/peppergrinder/UZTROGOverride.zs"
 
 #include "zscript/undeadzeratul/overrides/weapons/radtech/UZ10mmPistolOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/radtech/UZCombatShotgunOverride.zs"

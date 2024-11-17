@@ -1,9 +1,9 @@
-class UZSlayerOverride : BaseWeaponStatusOverride {
+class UZSawedSlayerOverride : BaseWeaponStatusOverride {
     
     override void Init(HCStatusbar sb) {
         super.Init(sb);
 
-        weaponName = 'Slayer';
+        weaponName = 'SawedSlayer';
 
         fireModes[0] = 'STBURAUT';
     }
@@ -28,12 +28,8 @@ class UZSlayerOverride : BaseWeaponStatusOverride {
         return wpn.weaponStatus[2];
     }
 
-    override int GetSideSaddleRounds(HDWeapon wpn) {
-        return wpn.weaponStatus[3];
-    }
-
-    override int GetSideSaddleCapacity(HDWeapon wpn) {
-        return 12;
+    override int GetMagCapacity(HDWeapon wpn, HDMagAmmo mag) {
+        return wpn.weaponStatus[5];
     }
 
     override Vector2 GetFireModeOffsets(HDWeapon wpn) {
@@ -42,10 +38,6 @@ class UZSlayerOverride : BaseWeaponStatusOverride {
 
     override Vector2 GetChamberedRoundOffsets(HDWeapon wpn) {
         return (0, -3);
-    }
-
-    override Vector2 GetSideSaddleOffsets(HDWeapon wpn) {
-        return (5, 1);
     }
 
     override bool ShouldDrawAmmoCounts(HDWeapon wpn) {
@@ -65,7 +57,7 @@ class UZSlayerOverride : BaseWeaponStatusOverride {
     }
 
     override bool ShouldDrawSideSaddles(HDWeapon wpn) {
-        return GetSideSaddleRounds(wpn) > 0;
+        return false;
     }
 
     override void DrawFireMode(HCStatusBar sb, HDWeapon wpn, int posX, int posY, float scale, int flags) {
