@@ -42,6 +42,13 @@ OptionValue "BarDirection" {
 	3,"Vertical (Reverse)"
 }
 
+OptionValue "DistanceUnit" {
+	0,"Metres"
+	1,"Kilometres"
+	2,"Feet"
+	3,"Miles"
+}
+
 OptionValue "EnergyUnit" {
 	0,"Food Calories"
 	1,"Kilocalories"
@@ -170,6 +177,7 @@ OptionMenu "HHXCounters" {
 	SubMenu "$HHXStimCounter",            "HHXStimCounter"
 	SubMenu "$HHXStripCounter",           "HHXStripCounter"
 	SubMenu "$HHXStunnedCounter",         "HHXStunnedCounter"
+	SubMenu "$HHXTargetDistanceCounter",  "HHXTargetDistanceCounter"
 	SubMenu "$HHXTargetHeatCounter",      "HHXTargetHeatCounter"
 	SubMenu "$HHXTargetShieldCounter",    "HHXTargetShieldCounter"
 	SubMenu "$HHXTissueDamageCounter",    "HHXTissueDamageCounter"
@@ -2689,6 +2697,61 @@ OptionMenu "HHXStunnedCounter" {
 	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetStunnedCounter", "uz_hhx_options_reset_nhm_stunnedCounter"
 	SafeCommand "$HHXHHResetStunnedCounter", "uz_hhx_options_reset_hlm_stunnedCounter"
+}
+
+OptionMenu "HHXTargetDistanceCounter" {
+	Title "$HHXTargetDistanceCounter"
+
+	Option "$HHXEnabled", "uz_hhx_targetDistanceCounter_enabled", "OnOff"
+	StaticText ""
+	Option "$HHXAlwaysVisible", "uz_hhx_targetDistanceCounter_alwaysVisible", "OnOff", "uz_hhx_targetDistanceCounter_enabled"
+	Option "$HHXCounterStyle", "uz_hhx_targetDistanceCounter_style", "CounterStyle", "uz_hhx_targetDistanceCounter_enabled"
+	TextField "$HHXFont", "uz_hhx_targetDistanceCounter_font", "uz_hhx_targetDistanceCounter_enabled"
+	Option "$HHXFontColor", "uz_hhx_targetDistanceCounter_fontColor", "FontColor", "uz_hhx_targetDistanceCounter_enabled"
+	Slider "$HHXFontScale", "uz_hhx_targetDistanceCounter_fontScale", .01, 4., .05, 2, "uz_hhx_targetDistanceCounter_enabled"
+	StaticText ""
+	Option "$HHXBarDirection", "uz_hhx_targetDistanceCounter_barDirection", "BarDirection", "uz_hhx_targetDistanceCounter_enabled"
+	StaticText ""
+	Slider "$HHXMaxValue", "uz_hhx_targetDistanceCounter_maxValue", 0, 1000, 1, 0, "uz_hhx_targetDistanceCounter_enabled"
+	StaticText ""
+	Option "$HHXUnits", "uz_hhx_targetDistanceCounter_units", "DistanceUnit", "uz_hhx_targetDistanceCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_targetDistanceCounter_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_targetDistanceCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_targetDistanceCounter_nhm_posX", -400, 400, 1, 0, "uz_hhx_targetDistanceCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_targetDistanceCounter_nhm_posY", -400, 400, 1, 0, "uz_hhx_targetDistanceCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_targetDistanceCounter_nhm_scale", .01, 4., .05, 2, "uz_hhx_targetDistanceCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_targetDistanceCounter_bg_nhm_ref", "uz_hhx_targetDistanceCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_targetDistanceCounter_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_targetDistanceCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_targetDistanceCounter_bg_nhm_posY", -400, 400, 1, 0, "uz_hhx_targetDistanceCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_targetDistanceCounter_bg_nhm_scale", .01, 4., .05, 2, "uz_hhx_targetDistanceCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_targetDistanceCounter_hlm_required", "OnOff", "uz_hhx_targetDistanceCounter_enabled"
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_targetDistanceCounter_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_targetDistanceCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_targetDistanceCounter_hlm_posX", -400, 400, 1, 0, "uz_hhx_targetDistanceCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_targetDistanceCounter_hlm_posY", -400, 400, 1, 0, "uz_hhx_targetDistanceCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_targetDistanceCounter_hlm_scale", .01, 4., .05, 2, "uz_hhx_targetDistanceCounter_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_targetDistanceCounter_bg_hlm_ref", "uz_hhx_targetDistanceCounter_enabled"
+	Slider "$HHXPosX", "uz_hhx_targetDistanceCounter_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_targetDistanceCounter_enabled"
+	Slider "$HHXPosY", "uz_hhx_targetDistanceCounter_bg_hlm_posY", -400, 400, 1, 0, "uz_hhx_targetDistanceCounter_enabled"
+	Slider "$HHXScale", "uz_hhx_targetDistanceCounter_bg_hlm_scale", .01, 4., .05, 2, "uz_hhx_targetDistanceCounter_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResettargetDistanceCounter", "uz_hhx_options_reset_nhm_targetDistanceCounter"
+	SafeCommand "$HHXHHResettargetDistanceCounter", "uz_hhx_options_reset_hlm_targetDistanceCounter"
 }
 
 OptionMenu "HHXTargetHeatCounter" {
