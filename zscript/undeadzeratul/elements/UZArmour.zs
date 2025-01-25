@@ -224,7 +224,7 @@ class UZArmour : HUDElement {
         for (int i = 0; i < _arms.Size(); i++) {
             let arm = _arms[i];
 
-            // Get any Texture Offsets defined for the sprite in case 't helps alig' it
+            // Get any Texture Offsets defined for the sprite in case it helps align it
             Vector2 offsets = TexMan.GetScaledOffset(TexMan.CheckForTexture(arm.fg));
 
             if (arm.maxDurability > 0) {
