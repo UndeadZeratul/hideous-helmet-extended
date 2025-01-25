@@ -151,50 +151,52 @@ user int    uz_hhx_ammoCounters_bg_hlm_posY    = 0;
 user float  uz_hhx_ammoCounters_bg_hlm_scale   = 1.;
 
 // ARMOUR CONFIGS
-user bool   uz_hhx_armour_enabled         = true;
-user string uz_hhx_armour_font            = "NewSmallFont";
-user float  uz_hhx_armour_fontScale       = .5;
+user bool   uz_hhx_armour_enabled                 = true;
+user string uz_hhx_armour_font                    = "NewSmallFont";
+user float  uz_hhx_armour_fontScale               = .5;
 
-user int    uz_hhx_armour_nhm_hudLevel    = 1;
-user int    uz_hhx_armour_nhm_posX        = -115;
-user int    uz_hhx_armour_nhm_posY        = -23;
-user float  uz_hhx_armour_nhm_scale       = 1.;
+user int    uz_hhx_armour_nhm_hudLevel            = 1;
+user int    uz_hhx_armour_nhm_posX                = -115;
+user int    uz_hhx_armour_nhm_posY                = -23;
+user float  uz_hhx_armour_nhm_scale               = 1.;
 
-user bool   uz_hhx_armour_hlm_required    = false;
-user int    uz_hhx_armour_hlm_hudLevel    = 1;
-user int    uz_hhx_armour_hlm_posX        = -115;
-user int    uz_hhx_armour_hlm_posY        = -23;
-user float  uz_hhx_armour_hlm_scale       = 1.;
+user bool   uz_hhx_armour_hlm_required            = false;
+user int    uz_hhx_armour_hlm_hudLevel            = 1;
+user int    uz_hhx_armour_hlm_posX                = -115;
+user int    uz_hhx_armour_hlm_posY                = -23;
+user float  uz_hhx_armour_hlm_scale               = 1.;
 
-user string uz_hhx_armour_bg_nhm_ref      = "";
-user int    uz_hhx_armour_bg_nhm_posX     = 0;
-user int    uz_hhx_armour_bg_nhm_posY     = 0;
-user float  uz_hhx_armour_bg_nhm_scale    = 1.;
-user string uz_hhx_armour_bg_hlm_ref      = "";
-user int    uz_hhx_armour_bg_hlm_posX     = 0;
-user int    uz_hhx_armour_bg_hlm_posY     = 0;
-user float  uz_hhx_armour_bg_hlm_scale    = 1.;
+user string uz_hhx_armour_bg_nhm_ref              = "";
+user int    uz_hhx_armour_bg_nhm_posX             = 0;
+user int    uz_hhx_armour_bg_nhm_posY             = 0;
+user float  uz_hhx_armour_bg_nhm_scale            = 1.;
+user string uz_hhx_armour_bg_hlm_ref              = "";
+user int    uz_hhx_armour_bg_hlm_posX             = 0;
+user int    uz_hhx_armour_bg_hlm_posY             = 0;
+user float  uz_hhx_armour_bg_hlm_scale            = 1.;
 
-user int   uz_hhx_armour_helmet_nhm_posX  = 0;
-user int   uz_hhx_armour_helmet_nhm_posY  = -8;
-user float uz_hhx_armour_helmet_nhm_scale = 1.;
-user int   uz_hhx_armour_helmet_hlm_posX  = 0;
-user int   uz_hhx_armour_helmet_hlm_posY  = -8;
-user float uz_hhx_armour_helmet_hlm_scale = 1.;
+user bool   uz_hhx_armour_durability_hlm_required = false;
 
-user int   uz_hhx_armour_body_nhm_posX    = 0;
-user int   uz_hhx_armour_body_nhm_posY    = 0;
-user float uz_hhx_armour_body_nhm_scale   = 1.;
-user int   uz_hhx_armour_body_hlm_posX    = 0;
-user int   uz_hhx_armour_body_hlm_posY    = 0;
-user float uz_hhx_armour_body_hlm_scale   = 1.;
+user int    uz_hhx_armour_helmet_nhm_posX         = 0;
+user int    uz_hhx_armour_helmet_nhm_posY         = -8;
+user float  uz_hhx_armour_helmet_nhm_scale        = 1.;
+user int    uz_hhx_armour_helmet_hlm_posX         = 0;
+user int    uz_hhx_armour_helmet_hlm_posY         = -8;
+user float  uz_hhx_armour_helmet_hlm_scale        = 1.;
 
-user int   uz_hhx_armour_boots_nhm_posX   = 0;
-user int   uz_hhx_armour_boots_nhm_posY   = 7;
-user float uz_hhx_armour_boots_nhm_scale  = 1.;
-user int   uz_hhx_armour_boots_hlm_posX   = 0;
-user int   uz_hhx_armour_boots_hlm_posY   = 7;
-user float uz_hhx_armour_boots_hlm_scale  = 1.;
+user int    uz_hhx_armour_body_nhm_posX           = 0;
+user int    uz_hhx_armour_body_nhm_posY           = 0;
+user float  uz_hhx_armour_body_nhm_scale          = 1.;
+user int    uz_hhx_armour_body_hlm_posX           = 0;
+user int    uz_hhx_armour_body_hlm_posY           = 0;
+user float  uz_hhx_armour_body_hlm_scale          = 1.;
+
+user int    uz_hhx_armour_boots_nhm_posX          = 0;
+user int    uz_hhx_armour_boots_nhm_posY          = 7;
+user float  uz_hhx_armour_boots_nhm_scale         = 1.;
+user int    uz_hhx_armour_boots_hlm_posX          = 0;
+user int    uz_hhx_armour_boots_hlm_posY          = 7;
+user float  uz_hhx_armour_boots_hlm_scale         = 1.;
 
 // HUD BACKGROUND CONFIGS
 user bool   uz_hhx_background_enabled      = true;

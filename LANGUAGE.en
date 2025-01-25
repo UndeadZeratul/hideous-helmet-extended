@@ -90,6 +90,7 @@ HHXHLMOptionalAll                       = "Don't require Helmet for all HUD Elem
 // HUD Element Display Requirements
 HHXEnabled                              = "Enabled";
 HHXHelmetRequired                       = "Requires Helmet";
+HHXDurabilityHelmetRequired             = "Durability Requires Helmet";
 HHXHUDLevel                             = "Requires HUD Level";
 
 // Sprite References
