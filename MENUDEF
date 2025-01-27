@@ -2158,8 +2158,8 @@ OptionMenu "HHXObjectDescription" {
 	StaticText ""
 	StaticText ""
 	StaticText "$HHXDangerZone", "Red"
-	SafeCommand "$HHXResetMugshot", "uz_hhx_options_reset_nhm_objectDescription"
-	SafeCommand "$HHXHHResetMugshot", "uz_hhx_options_reset_hlm_objectDescription"
+	SafeCommand "$HHXResetObjectDescription", "uz_hhx_options_reset_nhm_objectDescription"
+	SafeCommand "$HHXHHResetObjectDescription", "uz_hhx_options_reset_hlm_objectDescription"
 }
 
 OptionMenu "HHXPlayerToxicityCounter" {
