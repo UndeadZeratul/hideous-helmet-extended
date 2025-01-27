@@ -18,6 +18,7 @@ version "4.11"
 #include "zscript/undeadzeratul/elements/UZEKG.zs"
 #include "zscript/undeadzeratul/elements/UZEncumbrance.zs"
 #include "zscript/undeadzeratul/elements/UZFullInventory.zs"
+#include "zscript/undeadzeratul/elements/UZGyroStabilizerStatus.zs"
 #include "zscript/undeadzeratul/elements/UZHeartbeat.zs"
 #include "zscript/undeadzeratul/elements/UZInventory.zs"
 #include "zscript/undeadzeratul/elements/UZItemAdditions.zs"
@@ -77,6 +78,7 @@ version "4.11"
 // Item Overrides
 #include "zscript/undeadzeratul/overrides/items/UZArmourOverride.zs"
 #include "zscript/undeadzeratul/overrides/items/UZBloodBagOverride.zs"
+#include "zscript/undeadzeratul/overrides/items/UZGyroStabilizerOverride.zs"
 
 
 // Overlay Overrides

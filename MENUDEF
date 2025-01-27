@@ -121,6 +121,7 @@ OptionMenu "HHXAdvanced" {
 	SubMenu "$HHXCounters", "HHXCounters"
 
 	StaticText ""
+	SubMenu "$HHXGyroStabilizerStatus", "HHXGyroStabilizer"
 	SubMenu "$HHXRadsuitOverride", "HHXRadsuitOverride"
 	SubMenu "$HHXRespiratorOverlay", "HHXRespiratorOverlay"
 
@@ -1406,6 +1407,52 @@ OptionMenu "HHXFullInventory" {
 	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetFullInventory", "uz_hhx_options_reset_nhm_fullInventory"
 	SafeCommand "$HHXHHResetFullInventory", "uz_hhx_options_reset_hlm_fullInventory"
+}
+
+OptionMenu "HHXGyroStabilizer" {
+	Title "$HHXGyroStabilizerStatus"
+
+	Option "$HHXEnabled", "uz_hhx_gyroStabilizer_enabled", "OnOff"
+	TextField "$HHXFont", "uz_hhx_gyroStabilizer_font", "uz_hhx_gyroStabilizer_enabled"
+	Option "$HHXFontColor", "uz_hhx_gyroStabilizer_fontColor", "FontColor", "uz_hhx_gyroStabilizer_enabled"
+	Slider "$HHXFontScale", "uz_hhx_gyroStabilizer_fontScale", .01, 4., .05, 2, "uz_hhx_gyroStabilizer_enabled"
+
+	StaticText ""
+	StaticText ""	
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_gyroStabilizer_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_gyroStabilizer_enabled"
+	Slider "$HHXPosX", "uz_hhx_gyroStabilizer_nhm_posX", -400, 400, 1, 0, "uz_hhx_gyroStabilizer_enabled"
+	Slider "$HHXPosY", "uz_hhx_gyroStabilizer_nhm_posY", -400, 400, 1, 0, "uz_hhx_gyroStabilizer_enabled"
+	Slider "$HHXScale", "uz_hhx_gyroStabilizer_nhm_scale", .01, 4., .05, 2, "uz_hhx_gyroStabilizer_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_gyroStabilizer_bg_nhm_ref", "uz_hhx_gyroStabilizer_enabled"
+	Slider "$HHXPosX", "uz_hhx_gyroStabilizer_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_gyroStabilizer_enabled"
+	Slider "$HHXPosY", "uz_hhx_gyroStabilizer_bg_nhm_posY", -400, 400, 1, 0, "uz_hhx_gyroStabilizer_enabled"
+	Slider "$HHXScale", "uz_hhx_gyroStabilizer_bg_nhm_scale", .01, 4., .05, 2, "uz_hhx_gyroStabilizer_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_gyroStabilizer_hlm_required", "OnOff", "uz_hhx_gyroStabilizer_enabled"
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_gyroStabilizer_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_gyroStabilizer_enabled"
+	Slider "$HHXPosX", "uz_hhx_gyroStabilizer_hlm_posX", -400, 400, 1, 0, "uz_hhx_gyroStabilizer_enabled"
+	Slider "$HHXPosY", "uz_hhx_gyroStabilizer_hlm_posY", -400, 400, 1, 0, "uz_hhx_gyroStabilizer_enabled"
+	Slider "$HHXScale", "uz_hhx_gyroStabilizer_hlm_scale", .01, 4., .05, 2, "uz_hhx_gyroStabilizer_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_gyroStabilizer_bg_hlm_ref", "uz_hhx_gyroStabilizer_enabled"
+	Slider "$HHXPosX", "uz_hhx_gyroStabilizer_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_gyroStabilizer_enabled"
+	Slider "$HHXPosY", "uz_hhx_gyroStabilizer_bg_hlm_posY", -400, 400, 1, 0, "uz_hhx_gyroStabilizer_enabled"
+	Slider "$HHXScale", "uz_hhx_gyroStabilizer_bg_hlm_scale", .01, 4., .05, 2, "uz_hhx_gyroStabilizer_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetGyroStabilizerStatus", "uz_hhx_options_reset_nhm_gyroStabilizer"
+	SafeCommand "$HHXHHResetGyroStabilizerStatus", "uz_hhx_options_reset_hlm_gyroStabilizer"
 }
 
 OptionMenu "HHXHeartbeat" {
