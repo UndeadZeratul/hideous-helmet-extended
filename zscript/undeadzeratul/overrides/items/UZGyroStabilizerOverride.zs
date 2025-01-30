@@ -1,6 +1,7 @@
 class UZGyroStabilizerOverride : HCItemOverride {
 
-    private Service _HHFunc;
+    private transient Service _HHFunc;
+    private transient Service _GyroService;
 
     private transient CVar _enabled;
     private transient CVar _font;
@@ -81,6 +82,7 @@ class UZGyroStabilizerOverride : HCItemOverride {
 
         if (
             !_enabled.GetBool()
+            || !_GyroService
             || (!hasHelmet && _hlm_required.GetBool())
             || HDSpectator(sb.hpl)
             || !(sb.HUDLevel >= hudLevel)

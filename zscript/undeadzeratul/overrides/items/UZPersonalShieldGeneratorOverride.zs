@@ -88,6 +88,7 @@ class UZPersonalShieldGeneratorOverride : HCItemOverride {
 
         if (
             !_enabled.GetBool()
+            || !_PSGService
             || (!hasHelmet && _hlm_required.GetBool())
             || HDSpectator(sb.hpl)
             || !(sb.HUDLevel >= hudLevel)
