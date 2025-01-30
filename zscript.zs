@@ -75,6 +75,7 @@ version "4.11"
 
 
 // Item Overrides
+#include "zscript/undeadzeratul/overrides/items/UZPersonalShieldGeneratorOverride.zs"
 #include "zscript/undeadzeratul/overrides/items/UZArmourOverride.zs"
 #include "zscript/undeadzeratul/overrides/items/UZBloodBagOverride.zs"
 #include "zscript/undeadzeratul/overrides/items/UZGyroStabilizerOverride.zs"

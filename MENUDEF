@@ -122,6 +122,9 @@ OptionMenu "HHXAdvanced" {
 
 	StaticText ""
 	SubMenu "$HHXGyroStabilizerStatus", "HHXGyroStabilizer"
+	SubMenu "$HHXPersonalShieldGeneratorStatus", "HHXPersonalShieldGenerator"
+
+	StaticText ""
 	SubMenu "$HHXRadsuitOverride", "HHXRadsuitOverride"
 	SubMenu "$HHXRespiratorOverlay", "HHXRespiratorOverlay"
 
@@ -2160,6 +2163,52 @@ OptionMenu "HHXObjectDescription" {
 	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResetObjectDescription", "uz_hhx_options_reset_nhm_objectDescription"
 	SafeCommand "$HHXHHResetObjectDescription", "uz_hhx_options_reset_hlm_objectDescription"
+}
+
+OptionMenu "HHXPersonalShieldGenerator" {
+	Title "$HHXPersonalShieldGeneratorStatus"
+
+	Option "$HHXEnabled", "uz_hhx_personalShieldGenerator_enabled", "OnOff"
+	TextField "$HHXFont", "uz_hhx_personalShieldGenerator_font", "uz_hhx_personalShieldGenerator_enabled"
+	Option "$HHXFontColor", "uz_hhx_personalShieldGenerator_fontColor", "FontColor", "uz_hhx_personalShieldGenerator_enabled"
+	Slider "$HHXFontScale", "uz_hhx_personalShieldGenerator_fontScale", .01, 4., .05, 2, "uz_hhx_personalShieldGenerator_enabled"
+
+	StaticText ""
+	StaticText ""	
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_personalShieldGenerator_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_personalShieldGenerator_enabled"
+	Slider "$HHXPosX", "uz_hhx_personalShieldGenerator_nhm_posX", -400, 400, 1, 0, "uz_hhx_personalShieldGenerator_enabled"
+	Slider "$HHXPosY", "uz_hhx_personalShieldGenerator_nhm_posY", -400, 400, 1, 0, "uz_hhx_personalShieldGenerator_enabled"
+	Slider "$HHXScale", "uz_hhx_personalShieldGenerator_nhm_scale", .01, 4., .05, 2, "uz_hhx_personalShieldGenerator_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_personalShieldGenerator_bg_nhm_ref", "uz_hhx_personalShieldGenerator_enabled"
+	Slider "$HHXPosX", "uz_hhx_personalShieldGenerator_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_personalShieldGenerator_enabled"
+	Slider "$HHXPosY", "uz_hhx_personalShieldGenerator_bg_nhm_posY", -400, 400, 1, 0, "uz_hhx_personalShieldGenerator_enabled"
+	Slider "$HHXScale", "uz_hhx_personalShieldGenerator_bg_nhm_scale", .01, 4., .05, 2, "uz_hhx_personalShieldGenerator_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_personalShieldGenerator_hlm_required", "OnOff", "uz_hhx_personalShieldGenerator_enabled"
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_personalShieldGenerator_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_personalShieldGenerator_enabled"
+	Slider "$HHXPosX", "uz_hhx_personalShieldGenerator_hlm_posX", -400, 400, 1, 0, "uz_hhx_personalShieldGenerator_enabled"
+	Slider "$HHXPosY", "uz_hhx_personalShieldGenerator_hlm_posY", -400, 400, 1, 0, "uz_hhx_personalShieldGenerator_enabled"
+	Slider "$HHXScale", "uz_hhx_personalShieldGenerator_hlm_scale", .01, 4., .05, 2, "uz_hhx_personalShieldGenerator_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_personalShieldGenerator_bg_hlm_ref", "uz_hhx_personalShieldGenerator_enabled"
+	Slider "$HHXPosX", "uz_hhx_personalShieldGenerator_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_personalShieldGenerator_enabled"
+	Slider "$HHXPosY", "uz_hhx_personalShieldGenerator_bg_hlm_posY", -400, 400, 1, 0, "uz_hhx_personalShieldGenerator_enabled"
+	Slider "$HHXScale", "uz_hhx_personalShieldGenerator_bg_hlm_scale", .01, 4., .05, 2, "uz_hhx_personalShieldGenerator_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResetPersonalShieldGeneratorStatus", "uz_hhx_options_reset_nhm_personalShieldGenerator"
+	SafeCommand "$HHXHHResetPersonalShieldGeneratorStatus", "uz_hhx_options_reset_hlm_personalShieldGenerator"
 }
 
 OptionMenu "HHXPlayerToxicityCounter" {

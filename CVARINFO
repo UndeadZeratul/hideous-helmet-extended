@@ -1107,6 +1107,32 @@ user int    uz_hhx_objectDescription_bg_hlm_posX  = 0;
 user int    uz_hhx_objectDescription_bg_hlm_posY  = 0;
 user float  uz_hhx_objectDescription_bg_hlm_scale = 1.;
 
+// PERSONAL SHIELD GENERATOR STATUS CONFIGS
+user bool   uz_hhx_personalShieldGenerator_enabled      = true;
+user string uz_hhx_personalShieldGenerator_font         = "NewSmallFont";
+user int    uz_hhx_personalShieldGenerator_fontColor    = 18;
+user float  uz_hhx_personalShieldGenerator_fontScale    = .5;
+
+user int    uz_hhx_personalShieldGenerator_nhm_hudLevel = 1;
+user int    uz_hhx_personalShieldGenerator_nhm_posX     = 100;
+user int    uz_hhx_personalShieldGenerator_nhm_posY     = -3;
+user float  uz_hhx_personalShieldGenerator_nhm_scale    = 1.;
+
+user bool   uz_hhx_personalShieldGenerator_hlm_required = false;
+user int    uz_hhx_personalShieldGenerator_hlm_hudLevel = 1;
+user int    uz_hhx_personalShieldGenerator_hlm_posX     = 100;
+user int    uz_hhx_personalShieldGenerator_hlm_posY     = -3;
+user float  uz_hhx_personalShieldGenerator_hlm_scale    = 1.;
+
+user string uz_hhx_personalShieldGenerator_bg_nhm_ref   = "";
+user int    uz_hhx_personalShieldGenerator_bg_nhm_posX  = 0;
+user int    uz_hhx_personalShieldGenerator_bg_nhm_posY  = 0;
+user float  uz_hhx_personalShieldGenerator_bg_nhm_scale = 1.;
+user string uz_hhx_personalShieldGenerator_bg_hlm_ref   = "";
+user int    uz_hhx_personalShieldGenerator_bg_hlm_posX  = 0;
+user int    uz_hhx_personalShieldGenerator_bg_hlm_posY  = 0;
+user float  uz_hhx_personalShieldGenerator_bg_hlm_scale = 1.;
+
 // SPICY AIR COUNTER CONFIGS
 user bool   uz_hhx_playerToxicityCounter_enabled       = true;
 user bool   uz_hhx_playerToxicityCounter_alwaysVisible = false;
