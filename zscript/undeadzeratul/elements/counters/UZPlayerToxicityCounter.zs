@@ -1,8 +1,8 @@
 class UZPlayerToxicityCounter : BaseCounterHUDElement {
 
-    Class<Inventory> invClass;
+    private transient Class<Inventory> _invClass;
 
-    Service service;
+    private transient Service _service;
 
     override void Init(HCStatusbar sb) {
         ZLayer    = 2;
@@ -13,43 +13,47 @@ class UZPlayerToxicityCounter : BaseCounterHUDElement {
         counterLabel  = Stringtable.Localize("$HHXPlayerToxicityCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
 
         string invClassName = "Despicyto";
-        invClass = invClassName;
+        _invClass = invClassName;
+    }
+    
+    override void Tick(HCStatusbar sb) {
+        super.Tick(sb);
 
-        service = ServiceIterator.Find("SpicyAirService").next();
+        if (!_service) _service = ServiceIterator.Find("SpicyAirService").next();
     }
 
-    override bool ShouldDrawCounter(HCStatusBar sb, float counterValue) {
+    override bool ShouldDrawCounter(HCStatusbar sb, float counterValue) {
         return !IsGasMaskWorn(sb) && counterValue > 0;
     }
 
-    override float GetCounterValue(HCStatusBar sb) {
+    override float GetCounterValue(HCStatusbar sb) {
         return clamp(GetPlayerToxicity(sb), 0, GetCounterMaxValue(sb));
     }
 
-    override float GetCounterMaxValue(HCStatusBar sb) {
+    override float GetCounterMaxValue(HCStatusbar sb) {
         let maxToxicity = GetMaxPlayerToxicity(sb);
         return maxToxicity > -1 ? maxToxicity : super.GetCounterMaxValue(sb);
     }
 
-    override string FormatValue(HCStatusBar sb, float counterValue, float maxValue) {
+    override string FormatValue(HCStatusbar sb, float counterValue, float maxValue) {
         return (Level.airSupply <= 0 && sb.hpl.airCapacity <= 0) || IsGasMaskWorn(sb)
                 ? "0.00%"
                 : String.Format("%.2f%%", clamp(counterValue / maxValue * 100.0, 0.0, 100.0));
     }
 
-    private bool IsGasMaskWorn(HCStatusBar sb) {
-        return service && int(service.GetIntUI("IsGasMaskWorn", objectArg: sb.hpl.FindInventory(invClass)));
+    private bool IsGasMaskWorn(HCStatusbar sb) {
+        return _service && int(_service.GetIntUI("IsGasMaskWorn", objectArg: sb.hpl.FindInventory(_invClass)));
     }
 
-    private float GetPlayerToxicity(HCStatusBar sb) {
-        return service
-            ? service.GetIntUI("GetPlayerToxicity", objectArg: sb.hpl)
+    private float GetPlayerToxicity(HCStatusbar sb) {
+        return _service
+            ? _service.GetIntUI("GetPlayerToxicity", objectArg: sb.hpl)
             : GetCounterMaxValue(sb);
     }
 
-    private float GetMaxPlayerToxicity(HCStatusBar sb) {
-        return service
-            ? service.GetIntUI("GetMaxPlayerToxicity", objectArg: sb.hpl)
+    private float GetMaxPlayerToxicity(HCStatusbar sb) {
+        return _service
+            ? _service.GetIntUI("GetMaxPlayerToxicity", objectArg: sb.hpl)
             : -1;
     }
 }

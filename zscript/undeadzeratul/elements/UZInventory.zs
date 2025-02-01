@@ -1,21 +1,21 @@
 class UZInventory : HUDInventory {
 
-    private Service _HHFunc;
+    private transient Service _HHFunc;
 
     private transient CVar _enabled;
+
     private transient CVar _font;
     private transient CVar _fontScale;
     
-    private transient CVar _nhm_hudLevel;
-    private transient CVar _nhm_posX;
-    private transient CVar _nhm_posY;
-    private transient CVar _nhm_scale;
-
     private transient CVar _hlm_required;
     private transient CVar _hlm_hudLevel;
     private transient CVar _hlm_posX;
     private transient CVar _hlm_posY;
     private transient CVar _hlm_scale;
+    private transient CVar _nhm_hudLevel;
+    private transient CVar _nhm_posX;
+    private transient CVar _nhm_posY;
+    private transient CVar _nhm_scale;
 
     private transient CVar _nhm_bgRef;
     private transient CVar _nhm_bgPosX;
@@ -29,10 +29,15 @@ class UZInventory : HUDInventory {
     private transient string _prevFont;
     private transient HUDFont _hudFont;
 
-    override void Tick(HCStatusbar sb) {
-        if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
+    override void Init(HCStatusbar sb) {
+        super.Init(sb);
 
+        _HHFunc = ServiceIterator.Find("HHFunc").Next();
+    }
+
+    override void Tick(HCStatusbar sb) {
         if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_inventory_enabled", sb.CPlayer);
+
         if (!_font) _font                 = CVar.GetCVar("uz_hhx_inventory_font", sb.CPlayer);
         if (!_fontScale) _fontScale       = CVar.GetCVar("uz_hhx_inventory_fontScale", sb.CPlayer);
 
@@ -103,7 +108,7 @@ class UZInventory : HUDInventory {
         }
     }
 
-    private void DrawInvSel(HCStatusBar sb, int posX, int posY, int flags, float scale) {
+    private void DrawInvSel(HCStatusbar sb, int posX, int posY, int flags, float scale) {
         if (sb.hpl.InvSel) {
             inventory ivs = sb.hpl.invsel;
             let ivsp = HDPickup(ivs);
@@ -167,7 +172,7 @@ class UZInventory : HUDInventory {
         }
     }
 
-    private void DrawSurroundingInv(HCStatusBar sb, int posX, int posY, int flags, float scale) {
+    private void DrawSurroundingInv(HCStatusbar sb, int posX, int posY, int flags, float scale) {
         int i = 0;
         int thisindex = -1;
 

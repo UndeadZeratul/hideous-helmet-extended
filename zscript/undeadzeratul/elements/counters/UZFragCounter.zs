@@ -9,7 +9,7 @@ class UZFragCounter : BaseCounterHUDElement {
         counterLabel  = Stringtable.Localize("$HHXFragCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
     }
 
-    override float GetCounterValue(HCStatusBar sb) {
+    override float GetCounterValue(HCStatusbar sb) {
         let value = 0.0;
 
         // Count all the nearby Frag Shards

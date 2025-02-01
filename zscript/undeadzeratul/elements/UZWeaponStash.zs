@@ -1,8 +1,9 @@
 class UZWeaponStash : HUDWeaponStash {
 
-    private Service _HHFunc;
+    private transient Service _HHFunc;
 
     private transient CVar _enabled;
+
     private transient CVar _font;
     private transient CVar _fontColor;
     private transient CVar _fontScale;
@@ -36,10 +37,15 @@ class UZWeaponStash : HUDWeaponStash {
     private transient string _prevFont;
     private transient HUDFont _hudFont;
 
-    override void Tick(HCStatusbar sb) {
-        if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
+    override void Init(HCStatusbar sb) {
+        super.Init(sb);
 
+        _HHFunc = ServiceIterator.Find("HHFunc").Next();
+    }
+
+    override void Tick(HCStatusbar sb) {
         if (!_enabled) _enabled               = CVar.GetCVar("uz_hhx_weaponStash_enabled", sb.CPlayer);
+
         if (!_font) _font                     = CVar.GetCVar("uz_hhx_weaponStash_font", sb.CPlayer);
         if (!_fontColor) _fontColor           = CVar.GetCVar("uz_hhx_weaponStash_fontColor", sb.CPlayer);
         if (!_fontScale) _fontScale           = CVar.GetCVar("uz_hhx_weaponStash_fontScale", sb.CPlayer);

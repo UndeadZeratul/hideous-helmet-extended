@@ -9,11 +9,11 @@ class UZStimCounter : BaseCounterHUDElement {
         counterLabel  = Stringtable.Localize("$HHXStimCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
     }
 
-    override float GetCounterValue(HCStatusBar sb) {
+    override float GetCounterValue(HCStatusbar sb) {
         return sb.hpl.CountInv('HDStim') / 4;
     }
 
-    override string FormatValue(HCStatusBar sb, float counterValue, float maxValue) {
+    override string FormatValue(HCStatusbar sb, float counterValue, float maxValue) {
         return String.Format("%i%%", counterValue);
     }
 }

@@ -11,13 +11,13 @@ class UZHurtFloorCounter : BaseCounterHUDElement {
         counterLabel  = Stringtable.Localize("$HHXHurtFloorCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
     }
 
-    override void Tick(HCStatusBar sb) {
+    override void Tick(HCStatusbar sb) {
         super.Tick(sb);
 
         if (!_handler) _handler = HHXHandler(EventHandler.Find('HHXHandler'));
     }
 
-    override float GetCounterValue(HCStatusBar sb) {
+    override float GetCounterValue(HCStatusbar sb) {
         if (_handler) {
             let data = _handler.data[sb.hpl.PlayerNumber()];
 

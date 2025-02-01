@@ -9,7 +9,7 @@ class UZCurseCounter : BaseCounterHUDElement {
         counterLabel  = Stringtable.Localize("$HHXCurseCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
     }
 
-    override float GetCounterValue(HCStatusBar sb) {
+    override float GetCounterValue(HCStatusbar sb) {
         let value = 0;
 
         // Count all the active curses

@@ -1,7 +1,7 @@
 class UZPersonalShieldGeneratorOverride : HCItemOverride {
 
     private transient Service _HHFunc;
-    private transient Service _PSGService;
+    private transient Service _service;
 
     private transient CVar _enabled;
     private transient CVar _font;
@@ -31,11 +31,19 @@ class UZPersonalShieldGeneratorOverride : HCItemOverride {
     private transient string _prevFont;
     private transient HUDFont _hudFont;
 
+
+    private Class<Inventory> _invClass;
     private transient HDWeapon _sGen;
 
     override void Init(HCStatusbar sb) {
         Priority     = 1;
         OverrideType = HCOVERRIDETYPE_ITEM;
+
+        _HHFunc  = ServiceIterator.Find("HHFunc").Next();
+        _service = ServiceIterator.Find("HDPersonalShieldGeneratorService").Next();
+
+        string invClassName = "HDPersonalShieldGenerator";
+        _invClass = invClassName;
     }
 
     override bool CheckItem(Inventory item) {
@@ -43,10 +51,8 @@ class UZPersonalShieldGeneratorOverride : HCItemOverride {
     }
 
     override void Tick(HCStatusbar sb) {
-        if (!_HHFunc) _HHFunc             = ServiceIterator.Find("HHFunc").Next();
-        if (!_PSGService) _PSGService     = ServiceIterator.Find("HDPersonalShieldGeneratorService").Next();
-
         if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_personalShieldGenerator_enabled", sb.CPlayer);
+
         if (!_font) _font                 = CVar.GetCVar("uz_hhx_personalShieldGenerator_font", sb.CPlayer);
         if (!_fontColor) _fontColor       = CVar.GetCVar("uz_hhx_personalShieldGenerator_fontColor", sb.CPlayer);
         if (!_fontScale) _fontScale       = CVar.GetCVar("uz_hhx_personalShieldGenerator_fontScale", sb.CPlayer);
@@ -70,7 +76,7 @@ class UZPersonalShieldGeneratorOverride : HCItemOverride {
         if (!_hlm_bgPosY) _hlm_bgPosY     = CVar.GetCVar("uz_hhx_personalShieldGenerator_bg_hlm_posY", sb.CPlayer);
         if (!_hlm_bgScale) _hlm_bgScale   = CVar.GetCVar("uz_hhx_personalShieldGenerator_bg_hlm_scale", sb.CPlayer);
 
-        if (!_sGen) _sGen                 = HDWeapon(sb.hpl.FindInventory("HDPersonalShieldGenerator"));
+        if (!_sGen) _sGen                 = HDWeapon(sb.hpl.FindInventory(_invClass));
 
         string newFont = _font.GetString();
         if (_prevFont != newFont) {
@@ -88,7 +94,7 @@ class UZPersonalShieldGeneratorOverride : HCItemOverride {
 
         if (
             !_enabled.GetBool()
-            || !_PSGService
+            || !_Service
             || (!hasHelmet && _hlm_required.GetBool())
             || HDSpectator(sb.hpl)
             || !(sb.HUDLevel >= hudLevel)
@@ -178,11 +184,11 @@ class UZPersonalShieldGeneratorOverride : HCItemOverride {
     }
 
     private bool IsShieldEnabled(PlayerPawn p) {
-        return _PSGService && _PSGService.GetIntUI("GeneratorEnabled", objectArg: p);
+        return _Service && _Service.GetIntUI("GeneratorEnabled", objectArg: p);
     }
 
     private int GetShieldFluxCap(PlayerPawn p) {
-        return _PSGService ? _PSGService.GetIntUI("GeneratorFluxCap", objectArg: p) : -1;
+        return _Service ? _Service.GetIntUI("GeneratorFluxCap", objectArg: p) : -1;
     }
 
 

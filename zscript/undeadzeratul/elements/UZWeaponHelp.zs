@@ -1,8 +1,9 @@
 class UZWeaponHelp : HUDElement {
 
-    private Service _HHFunc;
+    private transient Service _HHFunc;
 
     private transient CVar _enabled;
+
     private transient CVar _font;
     private transient CVar _fontScale;
 
@@ -32,12 +33,13 @@ class UZWeaponHelp : HUDElement {
     override void Init(HCStatusbar sb) {
         ZLayer = 0;
         Namespace = "weaponhelp";
+
+        _HHFunc = ServiceIterator.Find("HHFunc").Next();
     }
 
     override void Tick(HCStatusbar sb) {
-        if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
-
         if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_weaponHelp_enabled", sb.CPlayer);
+
         if (!_font) _font                 = CVar.GetCVar("uz_hhx_weaponHelp_font", sb.CPlayer);
         if (!_fontScale) _fontScale       = CVar.GetCVar("uz_hhx_weaponHelp_fontScale", sb.CPlayer);
 

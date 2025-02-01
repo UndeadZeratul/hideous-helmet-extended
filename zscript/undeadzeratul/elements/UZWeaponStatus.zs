@@ -1,7 +1,7 @@
 // UNUSED UNTIL PROPERLY EXTENDABLE
 class UZWeaponStatus : HUDWeaponStatus {
 
-    private Service _HHFunc;
+    private transient Service _HHFunc;
 
     private transient CVar _enabled;
     private transient CVar _hlm_required;
@@ -24,10 +24,15 @@ class UZWeaponStatus : HUDWeaponStatus {
     private transient CVar _hlm_bgPosY;
     private transient CVar _hlm_bgScale;
 
-    override void Tick(HCStatusbar sb) {
-        if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
+    override void Init(HCStatusbar sb) {
+        super.Init(sb);
 
+        _HHFunc = ServiceIterator.Find("HHFunc").Next();
+    }
+
+    override void Tick(HCStatusbar sb) {
         if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_keys_enabled", sb.CPlayer);
+
         if (!_hlm_required) _hlm_required = CVar.GetCVar("uz_hhx_weaponStatus_hlm_required", sb.CPlayer);
         if (!_hlm_hudLevel) _hlm_hudLevel = CVar.GetCVar("uz_hhx_weaponStatus_hlm_hudLevel", sb.CPlayer);
         if (!_hlm_posX) _hlm_posX         = CVar.GetCVar("uz_hhx_weaponStatus_hlm_posX", sb.CPlayer);

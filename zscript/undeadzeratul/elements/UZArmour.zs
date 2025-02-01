@@ -57,20 +57,16 @@ class UZArmour : HUDElement {
 
     mixin UZBetterDrawBar;
 
-    private Service _HHFunc;
-    private Service _SpicyAirService;
+    private transient Service _HHFunc;
+    private transient Service _SpicyAirService;
 
     private transient CVar _hh_durabilitytop;
     private transient CVar _hh_helmetoffsety;
 
     private transient CVar _enabled;
+
     private transient CVar _font;
     private transient CVar _fontScale;
-
-    private transient CVar _nhm_hudLevel;
-    private transient CVar _nhm_posX;
-    private transient CVar _nhm_posY;
-    private transient CVar _nhm_scale;
 
     private transient CVar _hlm_required;
     private transient CVar _dura_hlm_required;
@@ -78,6 +74,10 @@ class UZArmour : HUDElement {
     private transient CVar _hlm_posX;
     private transient CVar _hlm_posY;
     private transient CVar _hlm_scale;
+    private transient CVar _nhm_hudLevel;
+    private transient CVar _nhm_posX;
+    private transient CVar _nhm_posY;
+    private transient CVar _nhm_scale;
     
     private transient CVar _helmet_hlm_posX;
     private transient CVar _helmet_hlm_posY;
@@ -118,17 +118,18 @@ class UZArmour : HUDElement {
     override void Init(HCStatusbar sb) {
         ZLayer    = 0;
         Namespace = "armour";
+
+        _HHFunc          = ServiceIterator.Find("HHFunc").Next();
+        _SpicyAirService = ServiceIterator.Find("SpicyAirService").Next();
     }
 
     override void Tick(HCStatusbar sb) {
-        if (!_HHFunc) _HHFunc                       = ServiceIterator.Find("HHFunc").Next();
-        if (!_SpicyAirService) _SpicyAirService     = ServiceIterator.Find("SpicyAirService").Next();
-        
         if (!_hh_durabilitytop) _hh_durabilitytop   = CVar.GetCVar("hh_durabilitytop", sb.CPlayer);
         if (!_hh_helmetoffsety) _hh_helmetoffsety   = CVar.GetCVar("hh_helmetoffsety", sb.CPlayer);
 
         // Global CVARs
         if (!_enabled) _enabled                     = CVar.GetCVar("uz_hhx_armour_enabled", sb.CPlayer);
+
         if (!_font) _font                           = CVar.GetCVar("uz_hhx_armour_font", sb.CPlayer);
         if (!_fontScale) _fontScale                 = CVar.GetCVar("uz_hhx_armour_fontScale", sb.CPlayer);
 
@@ -320,7 +321,7 @@ class UZArmour : HUDElement {
         }
     }
     
-    void DrawArmour(HCStatusBar sb, string fg, string bg, int durability, int maxDurability, int flags, int posX, int posY, double scale) {
+    void DrawArmour(HCStatusbar sb, string fg, string bg, int durability, int maxDurability, int flags, int posX, int posY, double scale) {
         BetterDrawBar(
             sb,
             fg, bg,
@@ -332,7 +333,7 @@ class UZArmour : HUDElement {
         );
     }
 
-    void drawDurability(HCStatusBar sb, int durability, int flags, int fontColor, int posX, int posY, float scale) {
+    void drawDurability(HCStatusbar sb, int durability, int flags, int fontColor, int posX, int posY, float scale) {
         sb.DrawString(
             _hudFont,
             sb.FormatNumber(durability),
@@ -583,7 +584,7 @@ class UZArmour : HUDElement {
         return null;
     }
     
-    // Quick Sort taken from HCStatusBar
+    // Quick Sort taken from HCStatusbar
     private void SortArmours(int minIndex, int maxIndex) {
         if (minIndex >= maxIndex) return;
 

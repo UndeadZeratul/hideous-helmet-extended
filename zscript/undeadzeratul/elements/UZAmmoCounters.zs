@@ -1,8 +1,9 @@
 class UZAmmoCounters : HUDAmmoCounters {
 
-    private Service _HHFunc;
+    private transient Service _HHFunc;
 
     private transient CVar _enabled;
+
     private transient CVar _font;
     private transient CVar _fontColor;
     private transient CVar _fontScale;
@@ -36,10 +37,15 @@ class UZAmmoCounters : HUDAmmoCounters {
     private transient string _prevFont;
     private transient HUDFont _hudFont;
 
-    override void Tick(HCStatusbar sb) {
-        if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
+    override void Init(HCStatusbar sb) {
+        super.Init(sb);
 
+        _HHFunc = ServiceIterator.Find("HHFunc").Next();
+    }
+
+    override void Tick(HCStatusbar sb) {
         if (!_enabled) _enabled               = CVar.GetCVar("uz_hhx_ammoCounters_enabled", sb.CPlayer);
+
         if (!_font) _font                     = CVar.GetCVar("uz_hhx_ammoCounters_font", sb.CPlayer);
         if (!_fontColor) _fontColor           = CVar.GetCVar("uz_hhx_ammoCounters_fontColor", sb.CPlayer);
         if (!_fontScale) _fontScale           = CVar.GetCVar("uz_hhx_ammoCounters_fontScale", sb.CPlayer);

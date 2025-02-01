@@ -1,22 +1,22 @@
 class UZObjectDescription : HUDElement {
 
-    private Service _HHFunc;
+    private transient Service _HHFunc;
 
     private transient CVar _enabled;
+
     private transient CVar _font;
     private transient CVar _fontColor;
     private transient CVar _fontScale;
-
-    private transient CVar _nhm_hudLevel;
-    private transient CVar _nhm_posX;
-    private transient CVar _nhm_posY;
-    private transient CVar _nhm_scale;
-
+    
     private transient CVar _hlm_required;
     private transient CVar _hlm_hudLevel;
     private transient CVar _hlm_posX;
     private transient CVar _hlm_posY;
     private transient CVar _hlm_scale;
+    private transient CVar _nhm_hudLevel;
+    private transient CVar _nhm_posX;
+    private transient CVar _nhm_posY;
+    private transient CVar _nhm_scale;
 
     private transient CVar _nhm_bgRef;
     private transient CVar _nhm_bgPosX;
@@ -33,12 +33,13 @@ class UZObjectDescription : HUDElement {
     override void Init(HCStatusbar sb) {
         ZLayer = 0;
         Namespace = "objectdescription";
+
+        _HHFunc = ServiceIterator.Find("HHFunc").Next();
     }
 
     override void Tick(HCStatusbar sb) {
-        if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
-
         if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_objectDescription_enabled", sb.CPlayer);
+
         if (!_font) _font                 = CVar.GetCVar("uz_hhx_objectDescription_font", sb.CPlayer);
         if (!_fontColor) _fontColor       = CVar.GetCVar("uz_hhx_objectDescription_fontColor", sb.CPlayer);
         if (!_fontScale) _fontScale       = CVar.GetCVar("uz_hhx_objectDescription_fontScale", sb.CPlayer);

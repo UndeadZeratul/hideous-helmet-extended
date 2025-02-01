@@ -1,10 +1,10 @@
 class UZMugshot : HUDMugshot {
 
-    private Service _HHFunc;
+    private transient Service _HHFunc;
 
     private transient CVar _enabled;
+
     private transient CVar _hlm_required;
-    
     private transient CVar _hlm_hudLevel;
     private transient CVar _hlm_posX;
     private transient CVar _hlm_posY;
@@ -23,10 +23,15 @@ class UZMugshot : HUDMugshot {
     private transient CVar _hlm_bgPosY;
     private transient CVar _hlm_bgScale;
 
+    override void Init(HCStatusbar sb) {
+        super.Init(sb);
+
+        _HHFunc = ServiceIterator.Find("HHFunc").Next();
+    }
+
     override void Tick(HCStatusbar sb) {
-        if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
-        
         if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_mugshot_enabled", sb.CPlayer);
+
         if (!_hlm_required) _hlm_required = CVar.GetCVar("uz_hhx_mugshot_hlm_required", sb.CPlayer);
         if (!_hlm_hudLevel) _hlm_hudLevel = CVar.GetCVar("uz_hhx_mugshot_hlm_hudLevel", sb.CPlayer);
         if (!_hlm_posX) _hlm_posX         = CVar.GetCVar("uz_hhx_mugshot_hlm_posX", sb.CPlayer);

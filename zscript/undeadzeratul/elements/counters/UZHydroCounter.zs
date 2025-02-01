@@ -2,6 +2,8 @@ const HDCONST_MLTOLITRE = 0.001;
 
 class UZHydroCounter : BaseCounterHUDElement {
 
+    private transient Service _service;
+
     private transient CVar _units;
 
     override void Init(HCStatusbar sb) {
@@ -12,19 +14,20 @@ class UZHydroCounter : BaseCounterHUDElement {
         counterIconBG = "HYDCNTR1";
         counterLabel  = Stringtable.Localize("$HHXHydroCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
     }
-
+    
     override void Tick(HCStatusbar sb) {
         super.Tick(sb);
+
+        if (!_service) _service = ServiceIterator.Find("UaS_HungerStatus").next();
 
         if (!_units) _units = CVar.GetCVar("uz_hhx_"..Namespace.."_units", sb.CPlayer);
     }
 
-    override float GetCounterValue(HCStatusBar sb) {
-        service HungerStatus = ServiceIterator.Find("UaS_HungerStatus").next();
-        return HungerStatus ? HungerStatus.GetIntUI("Hydro", objectArg:sb.hpl) : -1;
+    override float GetCounterValue(HCStatusbar sb) {
+        return _service ? _service.GetIntUI("Hydro", objectArg:sb.hpl) : -1;
     }
 
-    override string FormatValue(HCStatusBar sb, float counterValue, float maxValue) {
+    override string FormatValue(HCStatusbar sb, float counterValue, float maxValue) {
 
         float  amt = 0.;
         string units;

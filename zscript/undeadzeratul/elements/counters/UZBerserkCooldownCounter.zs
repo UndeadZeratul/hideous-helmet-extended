@@ -9,15 +9,15 @@ class UZBerserkCooldownCounter : BaseCounterHUDElement {
         counterLabel  = Stringtable.Localize("$HHXBerserkCooldownCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
     }
 
-    override bool ShouldDrawCounter(HCStatusBar sb, float counterValue) {
+    override bool ShouldDrawCounter(HCStatusbar sb, float counterValue) {
         return counterValue > 0 && counterValue <= 10500;
     }
 
-    override float GetCounterValue(HCStatusBar sb) {
+    override float GetCounterValue(HCStatusbar sb) {
         return sb.hpl.CountInv('HDZerk') / 105;
     }
 
-    override string FormatValue(HCStatusBar sb, float counterValue, float maxValue) {
+    override string FormatValue(HCStatusbar sb, float counterValue, float maxValue) {
         return String.Format("%i%%", counterValue);
     }
 }

@@ -17,11 +17,11 @@ class UZStripCounter : BaseCounterHUDElement {
         if (!_units) _units = CVar.GetCVar("uz_hhx_"..Namespace.."_units", sb.CPlayer);
     }
 
-    override float GetCounterValue(HCStatusBar sb) {
+    override float GetCounterValue(HCStatusbar sb) {
         return sb.hpl.striptime;
     }
 
-    override string FormatValue(HCStatusBar sb, float counterValue, float maxValue) {
+    override string FormatValue(HCStatusbar sb, float counterValue, float maxValue) {
         return _units.GetInt()
             ? String.Format("%.2f %s", counterValue / 35., StringTable.Localize("$HHXSeconds"))
             : String.Format("%i %s",   counterValue,       StringTable.Localize("$HHXTics"));

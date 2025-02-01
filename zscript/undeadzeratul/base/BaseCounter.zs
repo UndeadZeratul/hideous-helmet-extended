@@ -14,7 +14,7 @@ class BaseCounterHUDElement : HUDElement abstract {
     protected string counterIconBG;
     protected string counterLabel;
 
-    private Service _HHFunc;
+    private transient Service _HHFunc;
 
     private transient CVar _enabled;
 
@@ -49,12 +49,12 @@ class BaseCounterHUDElement : HUDElement abstract {
     private transient string _prevFont;
     private transient HUDFont _hudFont;
 
-    override void Init(HCStatusBar sb) {
+    override void Init(HCStatusbar sb) {
         counterIcon   = "";
         counterLabel  = "";
         counterIconBG = "";
     }
-
+    
     override void Tick(HCStatusbar sb) {
         if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
 
@@ -131,19 +131,19 @@ class BaseCounterHUDElement : HUDElement abstract {
         }
     }
 
-    virtual bool ShouldDrawCounter(HCStatusBar sb, float counterValue) {
+    virtual bool ShouldDrawCounter(HCStatusbar sb, float counterValue) {
         return counterValue > 0;
     }
 
-    virtual float GetCounterValue(HCStatusBar sb){
+    virtual float GetCounterValue(HCStatusbar sb){
         return 0;
     }
 
-    virtual float GetCounterMaxValue(HCStatusBar sb){
+    virtual float GetCounterMaxValue(HCStatusbar sb){
         return _maxValue ? _maxValue.GetInt() : 0;
     }
 
-    virtual string FormatValue(HCStatusBar sb, float counterValue, float maxValue) {
+    virtual string FormatValue(HCStatusbar sb, float counterValue, float maxValue) {
         return sb.FormatNumber(counterValue);
     }
 

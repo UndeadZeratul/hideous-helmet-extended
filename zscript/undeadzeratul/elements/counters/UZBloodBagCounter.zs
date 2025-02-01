@@ -9,17 +9,17 @@ class UZBloodBagCounter : BaseCounterHUDElement {
         counterLabel  = Stringtable.Localize("$HHXBloodBagCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
     }
 
-    override bool ShouldDrawCounter(HCStatusBar sb, float counterValue) {
+    override bool ShouldDrawCounter(HCStatusbar sb, float counterValue) {
         return sb.hpl.FindInventory("BloodBagWorn");
     }
 
-    override float GetCounterValue(HCStatusBar sb) {
+    override float GetCounterValue(HCStatusbar sb) {
         let bloodBag = BloodBagWorn(sb.hpl.FindInventory("BloodBagWorn"));
 
         return bloodBag ? (bloodBag.bloodLeft * 100 / 256) : 0;
     }
 
-    override string FormatValue(HCStatusBar sb, float counterValue, float maxValue) {
+    override string FormatValue(HCStatusbar sb, float counterValue, float maxValue) {
         return String.Format("%i%%", counterValue);
     }
 }

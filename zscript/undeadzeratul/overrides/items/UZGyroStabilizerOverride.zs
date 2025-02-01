@@ -1,7 +1,7 @@
 class UZGyroStabilizerOverride : HCItemOverride {
 
     private transient Service _HHFunc;
-    private transient Service _GyroService;
+    private transient Service _service;
 
     private transient CVar _enabled;
     private transient CVar _font;
@@ -34,17 +34,19 @@ class UZGyroStabilizerOverride : HCItemOverride {
     override void Init(HCStatusbar sb) {
         Priority     = 1;
         OverrideType = HCOVERRIDETYPE_ITEM;
-    }
 
+    }
+    
     override bool CheckItem(Inventory item) {
         return (!_enabled || _enabled.GetBool()) && item.GetClassName() == "UaS_GyroStabilizer";
     }
-
+    
     override void Tick(HCStatusbar sb) {
         if (!_HHFunc) _HHFunc             = ServiceIterator.Find("HHFunc").Next();
-        if(!_GyroService) _GyroService    = ServiceIterator.Find("UaS_GyroStabilizerStatus").Next();
+        if (!_Service) _service           = ServiceIterator.Find("UaS_GyroStabilizerStatus").Next();
 
         if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_gyroStabilizer_enabled", sb.CPlayer);
+
         if (!_font) _font                 = CVar.GetCVar("uz_hhx_gyroStabilizer_font", sb.CPlayer);
         if (!_fontColor) _fontColor       = CVar.GetCVar("uz_hhx_gyroStabilizer_fontColor", sb.CPlayer);
         if (!_fontScale) _fontScale       = CVar.GetCVar("uz_hhx_gyroStabilizer_fontScale", sb.CPlayer);
@@ -82,7 +84,7 @@ class UZGyroStabilizerOverride : HCItemOverride {
 
         if (
             !_enabled.GetBool()
-            || !_GyroService
+            || !_service
             || (!hasHelmet && _hlm_required.GetBool())
             || HDSpectator(sb.hpl)
             || !(sb.HUDLevel >= hudLevel)
@@ -125,10 +127,10 @@ class UZGyroStabilizerOverride : HCItemOverride {
     }
 
     private string GetStabilizerStatusText(PlayerPawn p) {
-        return _GyroService ? _GyroService.GetStringUI("StatusText", objectArg:p) : "";
+        return _service ? _service.GetStringUI("StatusText", objectArg:p) : "";
     }
 
     private int GetStabilizerStatusTimeout(PlayerPawn p) {
-        return _GyroService ? _GyroService.GetIntUI("StatusTimeout", objectArg:p) : -1;
+        return _service ? _service.GetIntUI("StatusTimeout", objectArg:p) : -1;
     }
 }

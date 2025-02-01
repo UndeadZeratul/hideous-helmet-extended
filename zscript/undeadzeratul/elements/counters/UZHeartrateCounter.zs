@@ -9,11 +9,11 @@ class UZHeartrateCounter : BaseCounterHUDElement {
         counterLabel  = Stringtable.Localize("$HHXHeartrateCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
     }
 
-    override float GetCounterValue(HCStatusBar sb) {
+    override float GetCounterValue(HCStatusbar sb) {
         return sb.hpl.beatMax > 0 ? (2100 / sb.hpl.beatMax) : 0;
     }
 
-    override string FormatValue(HCStatusBar sb, float counterValue, float maxValue) {
+    override string FormatValue(HCStatusbar sb, float counterValue, float maxValue) {
         return String.Format("%i BPM", counterValue);
     }
 }

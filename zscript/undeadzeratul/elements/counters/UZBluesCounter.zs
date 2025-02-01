@@ -9,7 +9,7 @@ class UZBluesCounter : BaseCounterHUDElement {
         counterLabel  = Stringtable.Localize("$HHXBluesCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
     }
 
-    override float GetCounterValue(HCStatusBar sb) {
+    override float GetCounterValue(HCStatusbar sb) {
         return sb.hpl.CountInv('HealingMagic');
     }
 }

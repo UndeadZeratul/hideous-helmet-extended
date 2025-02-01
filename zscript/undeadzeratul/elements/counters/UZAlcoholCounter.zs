@@ -18,11 +18,11 @@ class UZAlcoholCounter : BaseCounterHUDElement {
         offworldClass = (Class<Inventory>) (offworldClassName);
     }
 
-    override bool ShouldDrawCounter(HCStatusBar sb, float counterValue) {
+    override bool ShouldDrawCounter(HCStatusbar sb, float counterValue) {
         return counterValue >= 300;
     }
 
-    override float GetCounterValue(HCStatusBar sb) {
+    override float GetCounterValue(HCStatusbar sb) {
         int uasCount = 0;
         int offworldCount = 0;
 
@@ -32,11 +32,11 @@ class UZAlcoholCounter : BaseCounterHUDElement {
         return max(uasCount, offworldCount);
     }
 
-    override float GetCounterMaxValue(HCStatusBar sb) {
+    override float GetCounterMaxValue(HCStatusbar sb) {
         return 2500;
     }
 
-    override string FormatValue(HCStatusBar sb, float counterValue, float maxValue) {
+    override string FormatValue(HCStatusbar sb, float counterValue, float maxValue) {
         return String.Format("%.2f%% BAC", counterValue / maxValue / 10);
     }
 }

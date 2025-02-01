@@ -16,7 +16,7 @@ class UZTargetDistanceCounter : BaseCounterHUDElement {
         counterLabel  = Stringtable.Localize("$HHXTargetDistanceCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
     }
 
-    override void Tick(HCStatusBar sb) {
+    override void Tick(HCStatusbar sb) {
         super.Tick(sb);
 
         if (!_handler) _handler = HHXHandler(EventHandler.Find('HHXHandler'));
@@ -24,7 +24,7 @@ class UZTargetDistanceCounter : BaseCounterHUDElement {
         if (!_units) _units = CVar.GetCVar("uz_hhx_"..Namespace.."_units", sb.CPlayer);
     }
 
-    override float GetCounterValue(HCStatusBar sb) {
+    override float GetCounterValue(HCStatusbar sb) {
         if (_handler) {
             let data = _handler.data[sb.hpl.PlayerNumber()];
 
@@ -34,7 +34,7 @@ class UZTargetDistanceCounter : BaseCounterHUDElement {
         return 0;
     }
 
-    override string FormatValue(HCStatusBar sb, float counterValue, float maxValue) {
+    override string FormatValue(HCStatusbar sb, float counterValue, float maxValue) {
 
         float  dist = 0.;
         string units;

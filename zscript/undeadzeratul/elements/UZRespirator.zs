@@ -1,29 +1,36 @@
 class UZRespirator : HUDElement {
 
-    Class<Inventory> invClass;
+    private transient Class<Inventory> _invClass;
+
+    private transient Service _service;
+
+    private transient CVar _enabled;
 
     private transient CVar _ref;
-    private transient CVar _enabled;
 
     override void Init(HCStatusbar sb) {
         ZLayer = -1;
         Namespace = "respirator";
 
         string invClassName = "UaS_Respirator";
-        invClass = invClassName;
+        _invClass = invClassName;
     }
 
     override void Tick(HCStatusbar sb) {
-        if (!_ref) _ref         = CVar.GetCVar("uz_hhx_respirator_ref", sb.CPlayer);
+        if (!_service) _service = ServiceIterator.Find("UaS_RespiratorStatus").next();
+
         if (!_enabled) _enabled = CVar.GetCVar("uz_hhx_respirator_enabled", sb.CPlayer);
+
+        if (!_ref) _ref         = CVar.GetCVar("uz_hhx_respirator_ref", sb.CPlayer);
     }
 
     override void DrawHUDStuff(HCStatusbar sb, int state, double ticFrac) {
 
         // Only render if we're wearing a Respirator
+        // TODO: Add check against Automap
         if (
             !_enabled.GetBool()
-            || !sb.hpl.CountInv(invClass)
+            || !sb.hpl.CountInv(_invClass)
             || !IsUsingRespirator(sb.hpl)
         ) return;
 
@@ -38,7 +45,6 @@ class UZRespirator : HUDElement {
     }
     
     private bool IsUsingRespirator(PlayerPawn p) {
-        service RespStatus = ServiceIterator.Find("UaS_RespiratorStatus").next();
-        return RespStatus && int(RespStatus.GetIntUI("IsWorn", objectArg:p));
+        return _service && int(_service.GetIntUI("IsWorn", objectArg:p));
     }
 }

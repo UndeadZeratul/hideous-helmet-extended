@@ -1,6 +1,6 @@
 class UZWoundCounter : HUDElement {
 
-    private Service _HHFunc;
+    private transient Service _HHFunc;
 
     private transient CVar _enabled;
     private transient CVar _font;
@@ -40,11 +40,11 @@ class UZWoundCounter : HUDElement {
     override void Init(HCStatusbar sb) {
         ZLayer    = 2;
         Namespace = "woundcounter";
+
+        _HHFunc = ServiceIterator.Find("HHFunc").Next();
     }
 
     override void Tick(HCStatusbar sb) {
-        if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
-
         if (!_hh_showbleed) _hh_showbleed                         = CVar.GetCVar("hh_showbleed", sb.CPlayer);
         if (!_hh_showbleedwhenbleeding) _hh_showbleedwhenbleeding = CVar.GetCVar("hh_showbleedwhenbleeding", sb.CPlayer);
         if (!_hh_woundcounter) _hh_woundcounter                   = CVar.GetCVar("hh_woundcounter", sb.CPlayer);
@@ -52,6 +52,7 @@ class UZWoundCounter : HUDElement {
         if (!_hh_wc_usedynamiccol) _hh_wc_usedynamiccol           = CVar.GetCVar("hh_wc_usedynamiccol", sb.CPlayer);
             
         if (!_enabled) _enabled                                   = CVar.GetCVar("uz_hhx_woundCounter_enabled", sb.CPlayer);
+
         if (!_font) _font                                         = CVar.GetCVar("uz_hhx_woundCounter_font", sb.CPlayer);
         if (!_fontScale) _fontScale                               = CVar.GetCVar("uz_hhx_woundCounter_fontScale", sb.CPlayer);
 
@@ -81,8 +82,7 @@ class UZWoundCounter : HUDElement {
             _prevFont = newFont;
         }
 
-        if (!sb.hpl)
-            return;
+        if (!sb.hpl) return;
 
         int openWounds = 0;
         int patchedWounds = 0;
@@ -152,22 +152,20 @@ class UZWoundCounter : HUDElement {
                 scale: (scale * bgScale, scale * bgScale)
             );
 
-            Vector2 coords = (posX, posY);
             int of = 0;
             HDBleedingWound biggestWound = HDBleedingWound.FindBiggest(sb.hpl);
 
             if (biggestWound) {
                 sb.DrawImage(
                     "BLUDC0",
-                    (coords.x, coords.y + scale),
+                    (posx, posy + scale),
                     sb.DI_SCREEN_CENTER_BOTTOM | sb.DI_ITEM_LEFT_TOP,
                     0.6,
                     scale: (0.5 * scale, 0.5 * scale)
                 );
-                of = Clamp(int(biggestWound.Depth * 0.2), 1, 3) * scale;
 
-                if (sb.hpl.Flip)
-                    of = -of;
+                of = Clamp(int(biggestWound.Depth * 0.2), 1, 3) * scale;
+                if (sb.hpl.Flip) of = -of;
             }
 
             Color fillColour = (sb.hpl.Health > 70 || !(_hh_wc_usedynamiccol && _hh_wc_usedynamiccol.GetBool()))
@@ -178,16 +176,16 @@ class UZWoundCounter : HUDElement {
 
             sb.Fill(
                 fillColour,
-                coords.x + (2 * scale),
-                coords.y + (of * scale),
+                posx + (2 * scale),
+                posy + (of * scale),
                 2 * scale,
                 6 * scale,
                 sb.DI_SCREEN_CENTER_BOTTOM
             );
             sb.Fill(
                 fillColour,
-                coords.x,
-                coords.y + ((of + 2) * scale),
+                posx,
+                posy + ((of + 2) * scale),
                 6 * scale,
                 2 * scale,
                 sb.DI_SCREEN_CENTER_BOTTOM
@@ -198,7 +196,7 @@ class UZWoundCounter : HUDElement {
                 sb.DrawString(
                     _hudFont,
                     _woundCounter,
-                    (coords.x + (4 * scale), coords.y + scale),
+                    (posx + (4 * scale), posy + scale),
                     sb.DI_SCREEN_CENTER_BOTTOM | sb.DI_TEXT_ALIGN_LEFT,
                     scale: (fontScale * scale, fontScale * scale)
                 );

@@ -9,11 +9,11 @@ class UZBloodPressureCounter : BaseCounterHUDElement {
         counterLabel  = Stringtable.Localize("$HHXBloodPressureCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
     }
 
-    override float GetCounterValue(HCStatusBar sb) {
+    override float GetCounterValue(HCStatusbar sb) {
         return sb.hpl.bloodPressure;
     }
 
-    override string FormatValue(HCStatusBar sb, float counterValue, float maxValue) {
+    override string FormatValue(HCStatusbar sb, float counterValue, float maxValue) {
         return String.Format("%i/%i", (120 + (counterValue / 5.)), (80 + (counterValue / 10.)));
     }
 }

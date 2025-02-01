@@ -9,11 +9,11 @@ class UZTissueDamageCounter : BaseCounterHUDElement {
         counterLabel  = Stringtable.Localize("$HHXTissueDamageCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
     }
 
-    override float GetCounterValue(HCStatusBar sb) {
+    override float GetCounterValue(HCStatusbar sb) {
         return sb.hpl.oldWoundCount;
     }
 
-    override string FormatValue(HCStatusBar sb, float counterValue, float maxValue) {
+    override string FormatValue(HCStatusbar sb, float counterValue, float maxValue) {
         return String.Format("%.0f", counterValue);
     }
 }

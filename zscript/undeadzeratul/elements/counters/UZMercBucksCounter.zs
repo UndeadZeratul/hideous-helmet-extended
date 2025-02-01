@@ -1,6 +1,6 @@
 class UZMercBucksCounter : BaseCounterHUDElement {
 
-    Class<Inventory> invClass;
+    private transient Class<Inventory> _invClass;
 
     override void Init(HCStatusbar sb) {
         ZLayer    = 2;
@@ -11,14 +11,14 @@ class UZMercBucksCounter : BaseCounterHUDElement {
         counterLabel  = Stringtable.Localize("$HHXMercBucksCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
 
         string invClassName = "MercenaryBucks";
-        invClass = invClassName;
+        _invClass = invClassName;
     }
 
-    override float GetCounterValue(HCStatusBar sb) {
-        return invClass ? sb.hpl.countInv(invClass) : 0;
+    override float GetCounterValue(HCStatusbar sb) {
+        return _invClass ? sb.hpl.countInv(_invClass) : 0;
     }
 
-    override string FormatValue(HCStatusBar sb, float counterValue, float maxValue) {
+    override string FormatValue(HCStatusbar sb, float counterValue, float maxValue) {
         return String.Format("$%i", counterValue);
     }
 }

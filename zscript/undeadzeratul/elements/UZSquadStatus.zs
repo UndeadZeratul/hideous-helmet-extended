@@ -1,17 +1,11 @@
 class UZSquadStatus : HUDElement {
 
-    private Service _HHFunc;
+    private transient Service _HHFunc;
 
     private transient CVar _enabled;
+
     private transient CVar _font;
     private transient CVar _fontScale;
-
-    private transient CVar _nhm_hudLevel;
-    private transient CVar _nhm_posX;
-    private transient CVar _nhm_posY;
-    private transient CVar _nhm_scale;
-    private transient CVar _nhm_scaleX;
-    private transient CVar _nhm_scaleY;
 
     private transient CVar _hlm_required;
     private transient CVar _hlm_hudLevel;
@@ -20,6 +14,12 @@ class UZSquadStatus : HUDElement {
     private transient CVar _hlm_scale;
     private transient CVar _hlm_scaleX;
     private transient CVar _hlm_scaleY;
+    private transient CVar _nhm_hudLevel;
+    private transient CVar _nhm_posX;
+    private transient CVar _nhm_posY;
+    private transient CVar _nhm_scale;
+    private transient CVar _nhm_scaleX;
+    private transient CVar _nhm_scaleY;
 
     private transient CVar _nhm_bgRef;
     private transient CVar _nhm_bgPosX;
@@ -80,12 +80,13 @@ class UZSquadStatus : HUDElement {
     override void Init(HCStatusbar sb) {
         ZLayer    = 2;
         Namespace = "squadStatus";
+
+        _HHFunc = ServiceIterator.Find("HHFunc").Next();
     }
 
     override void Tick(HCStatusbar sb) {
-        if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
-
         if (!_enabled) _enabled                             = CVar.GetCVar("uz_hhx_squadStatus_enabled", sb.CPlayer);
+
         if (!_font) _font                                   = CVar.GetCVar("uz_hhx_squadStatus_font", sb.CPlayer);
         if (!_fontScale) _fontScale                         = CVar.GetCVar("uz_hhx_squadStatus_fontScale", sb.CPlayer);
 

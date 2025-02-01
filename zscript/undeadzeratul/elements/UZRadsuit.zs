@@ -1,7 +1,8 @@
 class UZRadsuit : HUDElement {
 
-    private transient CVar _ref;
     private transient CVar _enabled;
+
+    private transient CVar _ref;
 
     override void Init(HCStatusbar sb) {
         ZLayer = -2;
@@ -9,8 +10,9 @@ class UZRadsuit : HUDElement {
     }
 
     override void Tick(HCStatusbar sb) {
-        if (!_ref) _ref         = CVar.GetCVar("uz_hhx_radsuit_ref", sb.CPlayer);
         if (!_enabled) _enabled = CVar.GetCVar("uz_hhx_radsuit_enabled", sb.CPlayer);
+
+        if (!_ref) _ref         = CVar.GetCVar("uz_hhx_radsuit_ref", sb.CPlayer);
     }
 
     override void DrawHUDStuff(HCStatusbar sb, int state, double ticFrac) {

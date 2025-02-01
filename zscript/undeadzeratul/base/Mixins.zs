@@ -1,5 +1,5 @@
 mixin class UZBetterDrawBar {
-    void BetterDrawBar(HCStatusBar sb, name fgName, name bgName, double ratio, Vector2 pos, int flags = 0, int direction = 0, Vector2 scale = (1.0, 1.0), double alpha = 1.0) {
+    void BetterDrawBar(HCStatusbar sb, name fgName, name bgName, double ratio, Vector2 pos, int flags = 0, int direction = 0, Vector2 scale = (1.0, 1.0), double alpha = 1.0) {
 
         // Get registered textures for both foreground and background assets
         TextureID fgTex = TexMan.CheckForTexture(fgName, TexMan.TYPE_MISCPATCH);

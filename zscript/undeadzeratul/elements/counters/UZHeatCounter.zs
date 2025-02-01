@@ -9,7 +9,7 @@ class UZHeatCounter : BaseCounterHUDElement {
         counterLabel  = Stringtable.Localize("$HHXHeatCounterLabel")..Stringtable.Localize("$HHXCounterSeparator");
     }
 
-    override float GetCounterValue(HCStatusBar sb) {
+    override float GetCounterValue(HCStatusbar sb) {
         let heat = Heat(sb.hpl.FindInventory("Heat"));
 
         return heat ? heat.realAmount : 0;

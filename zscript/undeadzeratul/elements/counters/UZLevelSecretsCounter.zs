@@ -17,20 +17,20 @@ class UZLevelSecretsCounter : BaseCounterHUDElement {
         if (!_units) _units = CVar.GetCVar("uz_hhx_"..Namespace.."_units", sb.CPlayer);
     }
 
-    override bool ShouldDrawCounter(HCStatusBar sb, float counterValue) {
+    override bool ShouldDrawCounter(HCStatusbar sb, float counterValue) {
         let maxValue = GetCounterMaxValue(sb);
         return maxValue > 0 && maxValue - counterValue;
     }
 
-    override float GetCounterValue(HCStatusBar sb) {
+    override float GetCounterValue(HCStatusbar sb) {
         return Level.found_secrets;
     }
 
-    override float GetCounterMaxValue(HCStatusBar sb) {
+    override float GetCounterMaxValue(HCStatusbar sb) {
         return Level.total_secrets;
     }
 
-    override string FormatValue(HCStatusBar sb, float counterValue, float maxValue) {
+    override string FormatValue(HCStatusbar sb, float counterValue, float maxValue) {
 
 
         switch (_units.GetInt()) {
