@@ -30,7 +30,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
 
     protected string fireModes[7];
 
-    private Service _HHFunc;
+    private transient Service _HHFunc;
 
     private transient CVar _hh_hidefiremode;
 
@@ -71,6 +71,8 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         Priority     = 1;
         OverrideType = HCOVERRIDETYPE_WEAPON;
 
+        _HHFunc = ServiceIterator.Find("HHFunc").Next();
+
         AddAmmoCounts(sb);
     }
 
@@ -79,8 +81,6 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
     }
 
     virtual void InitCvars(HCStatusBar sb) {
-        if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
-
         if (!_hh_hidefiremode) _hh_hidefiremode   = CVar.GetCVar("hh_hidefiremode", sb.CPlayer);
 
         if (!_mag_barDirection) _mag_barDirection = CVar.GetCVar("uz_hhx_weaponStatus_mag_barDirection", sb.CPlayer);
@@ -88,6 +88,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
         if (!_shellStyle) _shellStyle             = CVar.GetCVar("uz_hhx_weaponStatus_shellStyle", sb.CPlayer);
 
         if (!_enabled) _enabled                   = CVar.GetCVar("uz_hhx_weaponStatus_enabled", sb.CPlayer);
+
         if (!_font) _font                         = CVar.GetCVar("uz_hhx_weaponStatus_font", sb.CPlayer);
         if (!_fontColor) _fontColor               = CVar.GetCVar("uz_hhx_weaponStatus_fontColor", sb.CPlayer);
         if (!_fontScale) _fontScale               = CVar.GetCVar("uz_hhx_weaponStatus_fontScale", sb.CPlayer);
