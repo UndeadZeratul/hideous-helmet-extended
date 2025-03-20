@@ -181,7 +181,7 @@ class UZInventory : HUDInventory {
 
         for (let item = sb.hpl.inv; item != NULL; item = item.inv) {
 
-            if (!item || (!item.binvbar&& item != sb.hpl.invsel)) continue;
+            if (!item || (!item.binvbar && item != sb.hpl.invsel)) continue;
             
             items.push(item);
             
