@@ -19,7 +19,7 @@ class UZHurtFloorCounter : BaseCounterHUDElement {
 
     override float GetCounterValue(HCStatusbar sb) {
         if (_handler) {
-            let data = _handler.data[sb.hpl.PlayerNumber()];
+            let data = _handler.lineTraceData[sb.hpl.PlayerNumber()];
 
             if (data && data.hitType == TRACE_HitFloor && data.hitSector.damageamount > 0) {
                 return data.hitSector.damageamount;

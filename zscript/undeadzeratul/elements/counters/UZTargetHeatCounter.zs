@@ -19,7 +19,7 @@ class UZTargetHeatCounter : BaseCounterHUDElement {
 
     override float GetCounterValue(HCStatusbar sb) {
         if (_handler) {
-            let data = _handler.data[sb.hpl.PlayerNumber()];
+            let data = _handler.lineTraceData[sb.hpl.PlayerNumber()];
 
             if (data && data.hitActor && HDMobBase(data.hitActor)) {
                 let heat = Heat(data.hitActor.findinventory('Heat'));
