@@ -103,9 +103,17 @@ class UZEncumbrance : HUDEncumbrance {
 
                 // Encumbrance Bulk Value
                 float fontScale = _fontScale.GetFloat();
+
+                // TODO: cast to int?  tie to CVAR?
+                let formattedValue = sb.FormatNumber(sb.hpl.enc);
+
+                // TODO: Allow Easter Egg to be disabled via CVARs
+                formattedValue.replace("69", "nice");
+                formattedValue.replace("6.9", "ni.ce");
+
                 sb.drawstring(
                     _hudFont,
-                    sb.FormatNumber(int(sb.hpl.enc)),
+                    formattedValue,
                     (posX + (4 * fontScale * scale), posY - ((_hudFont.mFont.GetHeight() >> 1) * fontScale * scale)),
                     sb.DI_TEXT_ALIGN_LEFT|sb.DI_SCREEN_LEFT_BOTTOM,
                     sb.hpl.overloaded < 0.8

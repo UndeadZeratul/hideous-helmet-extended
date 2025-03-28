@@ -334,9 +334,15 @@ class UZArmour : HUDElement {
     }
 
     void drawDurability(HCStatusbar sb, int durability, int flags, int fontColor, int posX, int posY, float scale) {
+        let formattedValue = sb.FormatNumber(durability);
+
+        // TODO: Allow Easter Egg to be disabled via CVARs
+        formattedValue.replace("69", "nice");
+        formattedValue.replace("6.9", "ni.ce");
+
         sb.DrawString(
             _hudFont,
-            sb.FormatNumber(durability),
+            formattedValue,
             (posX, posY - 4),
             flags,
             fontColor,

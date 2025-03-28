@@ -155,11 +155,17 @@ class BaseCounterHUDElement : HUDElement abstract {
 
         if (hd_debug || _alwaysVisible.GetBool() || ShouldDrawCounter(sb, value)) {
             float fontScale = _fontScale.GetFloat();
+            let formattedValue = FormatValue(sb, value, maxValue);
+
+            // TODO: Allow Easter Egg to be disabled via CVARs
+            formattedValue.replace("69", "nice");
+            formattedValue.replace("6.9", "ni.ce");
+
             switch (_counterStyle ? _counterStyle.GetInt() : LABEL_WITH_VALUE) {
                 case VALUE_ONLY:
                     sb.DrawString(
                         _hudFont,
-                        FormatValue(sb, value, maxValue),
+                        formattedValue,
                         (posX + (8 * scale), posY + scale),
                         sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_LEFT,
                         _fontColor.GetInt(),
@@ -169,7 +175,7 @@ class BaseCounterHUDElement : HUDElement abstract {
                 case LABEL_WITH_VALUE:
                     sb.DrawString(
                         _hudFont,
-                        counterLabel..FormatValue(sb, value, maxValue),
+                        counterLabel..formattedValue,
                         (posX + (8 * scale), posY + scale),
                         sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_LEFT,
                         _fontColor.GetInt(),
@@ -187,7 +193,7 @@ class BaseCounterHUDElement : HUDElement abstract {
 
                     sb.DrawString(
                         _hudFont,
-                        FormatValue(sb, value, maxValue),
+                        formattedValue,
                         (posX + (8 * scale), posY + scale),
                         sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_LEFT,
                         _fontColor.GetInt(),

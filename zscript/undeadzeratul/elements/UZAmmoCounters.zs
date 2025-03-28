@@ -145,9 +145,15 @@ class UZAmmoCounters : HUDAmmoCounters {
                 );
 
                 float fontScale = _fontScale.GetFloat();
+                let formattedValue = sb.FormatNumber(count);
+
+                // TODO: Allow Easter Egg to be disabled via CVARs
+                formattedValue.replace("69", "nice");
+                formattedValue.replace("6.9", "ni.ce");
+
                 sb.DrawString(
                     _hudFont,
-                    sb.FormatNumber(count),
+                    formattedValue,
                     (coords.x + 2, coords.y),
                     sb.DI_SCREEN_RIGHT_BOTTOM|sb.DI_ITEM_RIGHT_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT,
                     _fontColor.GetInt(),

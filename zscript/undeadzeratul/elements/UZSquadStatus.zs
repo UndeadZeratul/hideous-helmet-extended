@@ -307,9 +307,17 @@ class UZSquadStatus : HUDElement {
 
             // Encumbrance Bulk Value
             float fontScale = _fontScale.GetFloat();
+
+            // TODO: cast to int?  tie to CVAR?
+            let formattedValue = sb.FormatNumber(plr.enc);
+
+            // TODO: Allow Easter Egg to be disabled via CVARs
+            formattedValue.replace("69", "nice");
+            formattedValue.replace("6.9", "ni.ce");
+
             sb.drawstring(
                 _hudFont,
-                sb.FormatNumber(int(plr.enc)),
+                formattedValue,
                 (posX + (4 * fontScale * scale), posY - ((_hudFont.mFont.GetHeight() >> 1) * fontScale * scale)),
                 flags,
                 plr.overloaded < 0.8

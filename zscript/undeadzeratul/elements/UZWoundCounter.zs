@@ -104,15 +104,33 @@ class UZWoundCounter : HUDElement {
 
         _WoundCounter = "";
         if (openWounds > 0) {
-            _WoundCounter = string.Format("\c[Red]%s \c-", sb.FormatNumber(openWounds, 3));
+            let formattedValue = sb.FormatNumber(openWounds, 3);
+
+            // TODO: Allow Easter Egg to be disabled via CVARs
+            formattedValue.replace("69", "nice");
+            formattedValue.replace("6.9", "ni.ce");
+
+            _WoundCounter = string.Format("\c[Red]%s \c-", formattedValue);
         }
 
         if (patchedWounds > 0 && !(_hh_onlyshowopenwounds && _hh_onlyshowopenwounds.GetBool())) {
-            _WoundCounter = string.Format("%s\c[Fire]%s \c-", _WoundCounter, sb.FormatNumber(patchedWounds, 3));
+            let formattedValue = sb.FormatNumber(patchedWounds, 3);
+
+            // TODO: Allow Easter Egg to be disabled via CVARs
+            formattedValue.replace("69", "nice");
+            formattedValue.replace("6.9", "ni.ce");
+
+            _WoundCounter = string.Format("%s\c[Fire]%s \c-", _WoundCounter, formattedValue);
         }
 
         if (sealedWounds > 0 && !(_hh_onlyshowopenwounds && _hh_onlyshowopenwounds.GetBool())) {
-            _WoundCounter = string.Format("%s\c[Gray]%s \c-", _WoundCounter, sb.FormatNumber(sealedWounds, 3));
+            let formattedValue = sb.FormatNumber(sealedWounds, 3);
+
+            // TODO: Allow Easter Egg to be disabled via CVARs
+            formattedValue.replace("69", "nice");
+            formattedValue.replace("6.9", "ni.ce");
+
+            _WoundCounter = string.Format("%s\c[Gray]%s \c-", _WoundCounter, formattedValue);
         }
 
         if (openWounds == 0 && patchedWounds == 0 && sealedWounds == 0) {

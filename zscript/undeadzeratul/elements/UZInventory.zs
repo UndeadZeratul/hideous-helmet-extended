@@ -129,9 +129,15 @@ class UZInventory : HUDInventory {
             if (ivsp) {
                 int ivspi = ivsp.getsbarnum();
                 if (ivspi != -1000000) {
+                    let formattedValue = sb.FormatNumber(ivspi);
+    
+                    // TODO: Allow Easter Egg to be disabled via CVARs
+                    formattedValue.replace("69", "nice");
+                    formattedValue.replace("6.9", "ni.ce");
+
                     sb.DrawString(
                         _hudFont,
-                        sb.FormatNumber(ivspi),
+                        formattedValue,
                         (posX + (17 * scale), posY - (_hudFont.mFont.GetHeight() * scale)),
                         flags|sb.DI_TEXT_ALIGN_RIGHT,
                         sb.SavedColour,
@@ -141,9 +147,15 @@ class UZInventory : HUDInventory {
             } else if (ivsw) {
                 int ivswi = ivsw.getsbarnum();
                 if (ivswi != -1000000) {
+                    let formattedValue = sb.FormatNumber(ivswi);
+    
+                    // TODO: Allow Easter Egg to be disabled via CVARs
+                    formattedValue.replace("69", "nice");
+                    formattedValue.replace("6.9", "ni.ce");
+
                     sb.DrawString(
                         _hudFont,
-                        sb.FormatNumber(ivswi),
+                        formattedValue,
                         (posX + (17 * scale), posY - (_hudFont.mFont.GetHeight() * scale)),
                         flags|sb.DI_TEXT_ALIGN_RIGHT,
                         sb.SavedColour,
@@ -161,9 +173,15 @@ class UZInventory : HUDInventory {
                     ? ivsp.displayamount()
                     : ivs.amount;
 
+            let formattedValue = sb.FormatNumber(invamt);
+
+            // TODO: Allow Easter Egg to be disabled via CVARs
+            formattedValue.replace("69", "nice");
+            formattedValue.replace("6.9", "ni.ce");
+
             sb.DrawString(
                 _hudFont,
-                sb.FormatNumber(invamt),
+                formattedValue,
                 (posX + (17 * scale), posY),
                 flags|sb.DI_TEXT_ALIGN_RIGHT,
                 sb.SavedColour,

@@ -100,11 +100,18 @@ class UZEKG : HUDEKG {
               );
         Vector2 debugScale = (fontScale * scale, fontScale * scale);
 
+        let formattedValue = sb.FormatNumber(sb.hpl.health);
+
+        // TODO: Allow Easter Egg to be disabled via CVARs
+        formattedValue.replace("69", "nice");
+        formattedValue.replace("6.9", "ni.ce");
+
         if (AutomapActive) {
             if(hd_debug || hd_nobleed) {
+
                 sb.drawstring(
                     _hudFont,
-                    sb.FormatNumber(sb.hpl.health),
+                    formattedValue,
                     (34, -24),
                     sb.DI_BOTTOMLEFT|sb.DI_TEXT_ALIGN_CENTER,
                     debugTran,
@@ -132,7 +139,7 @@ class UZEKG : HUDEKG {
             if(hd_debug || hd_nobleed) {
                 sb.drawstring(
                     _hudFont,
-                    sb.FormatNumber(sb.hpl.health),
+                    formattedValue,
                     (posX, posY - (_hudFont.mFont.GetHeight() / 2) * fontScale * scale),
                     sb.DI_TEXT_ALIGN_CENTER|sb.DI_SCREEN_CENTER_BOTTOM,
                     debugTran,
