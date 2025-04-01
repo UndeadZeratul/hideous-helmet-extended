@@ -16,6 +16,8 @@ class BaseCounterHUDElement : HUDElement abstract {
 
     private transient Service _HHFunc;
 
+    private transient CVar _easterEggs;
+
     private transient CVar _enabled;
 
     private transient CVar _alwaysVisible;
@@ -57,6 +59,8 @@ class BaseCounterHUDElement : HUDElement abstract {
     
     override void Tick(HCStatusbar sb) {
         if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
+
+        if (!_easterEggs) _easterEggs       = CVar.GetCVar("uz_hhx_eastereggs_enabled", sb.CPlayer);
 
         if (!_enabled) _enabled             = CVar.GetCVar("uz_hhx_"..Namespace.."_enabled", sb.CPlayer);
 
@@ -157,9 +161,14 @@ class BaseCounterHUDElement : HUDElement abstract {
             float fontScale = _fontScale.GetFloat();
             let formattedValue = FormatValue(sb, value, maxValue);
 
-            // TODO: Allow Easter Egg to be disabled via CVARs
-            formattedValue.replace("69", "nice");
-            formattedValue.replace("6.9", "ni.ce");
+            // If Easter Eggs are enabled or it's April 1st, nice.
+            if (
+                (_easterEggs && _easterEggs.GetBool())
+                || SystemTime.Format("%m-%d", SystemTime.Now()) == "04-01"
+            ) {
+                formattedValue.replace("69", "nice");
+                formattedValue.replace("6.9", "ni.ce");
+            }
 
             switch (_counterStyle ? _counterStyle.GetInt() : LABEL_WITH_VALUE) {
                 case VALUE_ONLY:

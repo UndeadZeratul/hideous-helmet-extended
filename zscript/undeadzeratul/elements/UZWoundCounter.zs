@@ -2,6 +2,8 @@ class UZWoundCounter : HUDElement {
 
     private transient Service _HHFunc;
 
+    private transient CVar _easterEggs;
+
     private transient CVar _enabled;
     private transient CVar _font;
     private transient CVar _fontScale;
@@ -51,6 +53,8 @@ class UZWoundCounter : HUDElement {
         if (!_hh_onlyshowopenwounds) _hh_onlyshowopenwounds       = CVar.GetCVar("hh_onlyshowopenwounds", sb.CPlayer);
         if (!_hh_wc_usedynamiccol) _hh_wc_usedynamiccol           = CVar.GetCVar("hh_wc_usedynamiccol", sb.CPlayer);
             
+        if (!_easterEggs) _easterEggs                             = CVar.GetCVar("uz_hhx_eastereggs_enabled", sb.CPlayer);
+
         if (!_enabled) _enabled                                   = CVar.GetCVar("uz_hhx_woundCounter_enabled", sb.CPlayer);
 
         if (!_font) _font                                         = CVar.GetCVar("uz_hhx_woundCounter_font", sb.CPlayer);
@@ -106,9 +110,14 @@ class UZWoundCounter : HUDElement {
         if (openWounds > 0) {
             let formattedValue = sb.FormatNumber(openWounds, 3);
 
-            // TODO: Allow Easter Egg to be disabled via CVARs
-            formattedValue.replace("69", "nice");
-            formattedValue.replace("6.9", "ni.ce");
+            // If Easter Eggs are enabled or it's April 1st, nice.
+            if (
+                (_easterEggs && _easterEggs.GetBool())
+                || SystemTime.Format("%m-%d", SystemTime.Now()) == "04-01"
+            ) {
+                formattedValue.replace("69", "nice");
+                formattedValue.replace("6.9", "ni.ce");
+            }
 
             _WoundCounter = string.Format("\c[Red]%s \c-", formattedValue);
         }
@@ -116,9 +125,14 @@ class UZWoundCounter : HUDElement {
         if (patchedWounds > 0 && !(_hh_onlyshowopenwounds && _hh_onlyshowopenwounds.GetBool())) {
             let formattedValue = sb.FormatNumber(patchedWounds, 3);
 
-            // TODO: Allow Easter Egg to be disabled via CVARs
-            formattedValue.replace("69", "nice");
-            formattedValue.replace("6.9", "ni.ce");
+            // If Easter Eggs are enabled or it's April 1st, nice.
+            if (
+                (_easterEggs && _easterEggs.GetBool())
+                || SystemTime.Format("%m-%d", SystemTime.Now()) == "04-01"
+            ) {
+                formattedValue.replace("69", "nice");
+                formattedValue.replace("6.9", "ni.ce");
+            }
 
             _WoundCounter = string.Format("%s\c[Fire]%s \c-", _WoundCounter, formattedValue);
         }
@@ -126,9 +140,14 @@ class UZWoundCounter : HUDElement {
         if (sealedWounds > 0 && !(_hh_onlyshowopenwounds && _hh_onlyshowopenwounds.GetBool())) {
             let formattedValue = sb.FormatNumber(sealedWounds, 3);
 
-            // TODO: Allow Easter Egg to be disabled via CVARs
-            formattedValue.replace("69", "nice");
-            formattedValue.replace("6.9", "ni.ce");
+            // If Easter Eggs are enabled or it's April 1st, nice.
+            if (
+                (_easterEggs && _easterEggs.GetBool())
+                || SystemTime.Format("%m-%d", SystemTime.Now()) == "04-01"
+            ) {
+                formattedValue.replace("69", "nice");
+                formattedValue.replace("6.9", "ni.ce");
+            }
 
             _WoundCounter = string.Format("%s\c[Gray]%s \c-", _WoundCounter, formattedValue);
         }

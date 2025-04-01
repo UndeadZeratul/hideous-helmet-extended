@@ -1676,3 +1676,6 @@ user float  uz_hhx_woundCounter_bg_hlm_scale = 1.;
 
 // DISABLED
 server bool uz_hhx_disabled = false;
+
+// EASTER EGGS
+user bool uz_hhx_eastereggs_enabled = false;

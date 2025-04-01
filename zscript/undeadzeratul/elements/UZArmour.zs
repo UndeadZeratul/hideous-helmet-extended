@@ -63,6 +63,8 @@ class UZArmour : HUDElement {
     private transient CVar _hh_durabilitytop;
     private transient CVar _hh_helmetoffsety;
 
+    private transient CVar _easterEggs;
+
     private transient CVar _enabled;
 
     private transient CVar _font;
@@ -128,6 +130,8 @@ class UZArmour : HUDElement {
         if (!_hh_helmetoffsety) _hh_helmetoffsety   = CVar.GetCVar("hh_helmetoffsety", sb.CPlayer);
 
         // Global CVARs
+        if (!_easterEggs) _easterEggs               = CVar.GetCVar("uz_hhx_eastereggs_enabled", sb.CPlayer);
+
         if (!_enabled) _enabled                     = CVar.GetCVar("uz_hhx_armour_enabled", sb.CPlayer);
 
         if (!_font) _font                           = CVar.GetCVar("uz_hhx_armour_font", sb.CPlayer);
@@ -336,9 +340,14 @@ class UZArmour : HUDElement {
     void drawDurability(HCStatusbar sb, int durability, int flags, int fontColor, int posX, int posY, float scale) {
         let formattedValue = sb.FormatNumber(durability);
 
-        // TODO: Allow Easter Egg to be disabled via CVARs
-        formattedValue.replace("69", "nice");
-        formattedValue.replace("6.9", "ni.ce");
+        // If Easter Eggs are enabled or it's April 1st, nice.
+        if (
+            (_easterEggs && _easterEggs.GetBool())
+            || SystemTime.Format("%m-%d", SystemTime.Now()) == "04-01"
+        ) {
+            formattedValue.replace("69", "nice");
+            formattedValue.replace("6.9", "ni.ce");
+        }
 
         sb.DrawString(
             _hudFont,

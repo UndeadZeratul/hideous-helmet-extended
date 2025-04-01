@@ -2,6 +2,8 @@ class UZEKG : HUDEKG {
 
     private transient Service _HHFunc;
 
+    private transient CVar _easterEggs;
+
     private transient CVar _enabled;
 
     private transient CVar _font;
@@ -41,6 +43,8 @@ class UZEKG : HUDEKG {
     }
 
     override void Tick(HCStatusbar sb) {
+        if (!_easterEggs) _easterEggs     = CVar.GetCVar("uz_hhx_eastereggs_enabled", sb.CPlayer);
+
         if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_ekg_enabled", sb.CPlayer);
 
         if (!_font) _font                 = CVar.GetCVar("uz_hhx_ekg_font", sb.CPlayer);
@@ -102,9 +106,14 @@ class UZEKG : HUDEKG {
 
         let formattedValue = sb.FormatNumber(sb.hpl.health);
 
-        // TODO: Allow Easter Egg to be disabled via CVARs
-        formattedValue.replace("69", "nice");
-        formattedValue.replace("6.9", "ni.ce");
+        // If Easter Eggs are enabled or it's April 1st, nice.
+        if (
+            (_easterEggs && _easterEggs.GetBool())
+            || SystemTime.Format("%m-%d", SystemTime.Now()) == "04-01"
+        ) {
+            formattedValue.replace("69", "nice");
+            formattedValue.replace("6.9", "ni.ce");
+        }
 
         if (AutomapActive) {
             if(hd_debug || hd_nobleed) {

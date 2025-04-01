@@ -2,6 +2,8 @@ class UZAmmoCounters : HUDAmmoCounters {
 
     private transient Service _HHFunc;
 
+    private transient CVar _easterEggs;
+
     private transient CVar _enabled;
 
     private transient CVar _font;
@@ -44,6 +46,8 @@ class UZAmmoCounters : HUDAmmoCounters {
     }
 
     override void Tick(HCStatusbar sb) {
+        if (!_easterEggs) _easterEggs         = CVar.GetCVar("uz_hhx_eastereggs_enabled", sb.CPlayer);
+
         if (!_enabled) _enabled               = CVar.GetCVar("uz_hhx_ammoCounters_enabled", sb.CPlayer);
 
         if (!_font) _font                     = CVar.GetCVar("uz_hhx_ammoCounters_font", sb.CPlayer);
@@ -147,9 +151,14 @@ class UZAmmoCounters : HUDAmmoCounters {
                 float fontScale = _fontScale.GetFloat();
                 let formattedValue = sb.FormatNumber(count);
 
-                // TODO: Allow Easter Egg to be disabled via CVARs
-                formattedValue.replace("69", "nice");
-                formattedValue.replace("6.9", "ni.ce");
+                // If Easter Eggs are enabled or it's April 1st, nice.
+                if (
+                    (_easterEggs && _easterEggs.GetBool())
+                    || SystemTime.Format("%m-%d", SystemTime.Now()) == "04-01"
+                ) {
+                    formattedValue.replace("69", "nice");
+                    formattedValue.replace("6.9", "ni.ce");
+                }
 
                 sb.DrawString(
                     _hudFont,

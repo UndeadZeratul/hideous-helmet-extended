@@ -99,10 +99,17 @@ class HHXHandler : EventHandler {
     override void RenderOverlay(RenderEvent e) {
 
         let data = toastyData[ConsolePlayer];
+        let enabled = CVar.GetCVar('uz_hhx_eastereggs_enabled', PLAYERS[ConsolePlayer]);
 
         if (
-            !data
-            || data.deathTic <= 0
+            !(
+                data
+                && data.deathTic > 0
+                && (
+                    (enabled && enabled.GetBool())
+                    || SystemTime.Format("%m-%d", SystemTime.Now()) == "04-01"
+                )
+            )
         ) return;
         
         let minTics       = TICRATE;
