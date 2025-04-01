@@ -427,8 +427,8 @@ class UZArmour : HUDElement {
                 return UZHDArmourStats.Create(
                     0,
                     STRIP_ARMOUR,
-                    "ARMOURP0",
-                    "ARMOURP1",
+                    "ARMOURC0",
+                    "ARMOURC1",
                     arm.durability,
                     40, // HDCONST_CORPORATEARMOUR
                     Font.CR_DARKGRAY,
