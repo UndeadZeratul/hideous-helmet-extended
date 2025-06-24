@@ -116,7 +116,7 @@ class UZEKG : HUDEKG {
         }
 
         if (AutomapActive) {
-            if(hd_debug || hd_nobleed) {
+            if(hhx_debug || hd_nobleed) {
 
                 sb.drawstring(
                     _hudFont,
@@ -145,7 +145,7 @@ class UZEKG : HUDEKG {
                 scale: (scale * bgScale, scale * bgScale)
             );
 
-            if(hd_debug || hd_nobleed) {
+            if(hhx_debug || hd_nobleed) {
                 sb.drawstring(
                     _hudFont,
                     formattedValue,

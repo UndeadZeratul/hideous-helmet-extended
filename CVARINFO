@@ -1,3 +1,5 @@
+server noarchive int hhx_debug = 0;
+
 // ALCOHOL COUNTER CONFIGS
 user bool   uz_hhx_alcoholCounter_enabled       = true;
 user bool   uz_hhx_alcoholCounter_alwaysVisible = false;
