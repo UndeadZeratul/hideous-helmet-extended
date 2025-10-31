@@ -39,12 +39,12 @@ mixin class UZBetterDrawBar {
 
         // Set Clip Rect and draw Background Image
         sb.SetClipRect(bgPos.x, bgPos.y, bgSize.x * scale.x, bgSize.y * scale.y, flags);
-        sb.DrawImage(bgName, pos, flags, scale: scale);
+        sb.DrawImage(bgName, pos, flags, scale: scale, translation: int(flags&sb.DI_TRANSLATABLE ? sb.hpl.translation : 0));
         sb.ClearClipRect();
 
         // Set Clip Rect and draw Foreground Image
         sb.SetClipRect(fgPos.x, fgPos.y, fgSize.x * scale.x, fgSize.y * scale.y, flags);
-        sb.DrawImage(fgName, pos, flags, scale: scale);
+        sb.DrawImage(fgName, pos, flags, scale: scale, translation: int(flags&sb.DI_TRANSLATABLE ? sb.hpl.translation : 0));
         sb.ClearClipRect();
     }
 

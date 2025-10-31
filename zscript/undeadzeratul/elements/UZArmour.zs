@@ -414,7 +414,7 @@ class UZArmour : HUDElement {
                     bodyOffs,
                     bodyDurOffs,
                     bodyScale,
-                    sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP
+                    sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP|sb.DI_TRANSLATABLE
                 );
             }
             case 'HDArmorPlateWorn': {
