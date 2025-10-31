@@ -174,17 +174,17 @@ class UZEKG : HUDEKG {
 
         if (sb.hpl.health <= 0) for (int i = 0; i < length; i++) _healthBars[i] = 1;
 
+        let ekgColor = sb.hpl.health > 70
+            ? color(alf,     sbcolour.r, sbcolour.g, sbcolour.b)
+            : sb.hpl.health > 33
+                ? color(alf, 240,        210,        10)
+                : color(alf, 220,        0,          0);
+
         for (int i = 0; i < _healthBars.Size(); i++) {
             int alf = (i&1) ? 128 : 255;
 
             sb.fill(
-                (
-                    sb.hpl.health > 70
-                        ? color(alf,     sbcolour.r, sbcolour.g, sbcolour.b)
-                        : sb.hpl.health > 33
-                            ? color(alf, 240,        210,        10)
-                            : color(alf, 220,        0,          0)
-                ),
+                ekgColor,
                 posX + (i * scale) - (length >> 2),
                 (posY - (_healthBars[i] * 0.3 * scale)),
                 0.8 * scale,
