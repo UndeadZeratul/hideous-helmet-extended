@@ -23,7 +23,7 @@ class UZPlayerToxicityCounter : BaseCounterHUDElement {
     }
 
     override bool ShouldDrawCounter(HCStatusbar sb, float counterValue) {
-        return !IsGasMaskWorn(sb) && counterValue > 0;
+        return counterValue > 0;
     }
 
     override float GetCounterValue(HCStatusbar sb) {
@@ -36,13 +36,9 @@ class UZPlayerToxicityCounter : BaseCounterHUDElement {
     }
 
     override string FormatValue(HCStatusbar sb, float counterValue, float maxValue) {
-        return (Level.airSupply <= 0 && sb.hpl.airCapacity <= 0) || IsGasMaskWorn(sb)
+        return (Level.airSupply <= 0 && sb.hpl.airCapacity <= 0)
                 ? "0.00%"
                 : String.Format("%.2f%%", clamp(counterValue / maxValue * 100.0, 0.0, 100.0));
-    }
-
-    private bool IsGasMaskWorn(HCStatusbar sb) {
-        return _service && int(_service.GetIntUI("IsGasMaskWorn", objectArg: sb.hpl.FindInventory(_invClass)));
     }
 
     private float GetPlayerToxicity(HCStatusbar sb) {
