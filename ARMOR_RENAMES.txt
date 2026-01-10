@@ -15,6 +15,7 @@ ARMOURU1
 RADSUTA0
 
 // shield core
+// note doesn't override the helmet sprite. allows you to place in alternate parts of the hud.
 SHIELDA0	// seems to be entierly unused
 SHIELDB0	// starts at b for some reason as the lowest power shield core
 SHIELDC0	// middle charge
@@ -32,14 +33,6 @@ ARMOURC1
 ARMOURH0
 ARMOURH1
 
-// leather jacket
-ARMOURL0
-ARMOURL1
-
-// B&M armor plates
-ARMOURP0
-ARMOURP1
-
 // Sneaking Suit
 ARMOURS0
 ARMOURS1
@@ -48,14 +41,23 @@ ARMOURS1
 HELMETA0
 HELMETA1
 
+// spicy air gas mask
+GASMASKA
+GASMASKB
+GASMASKC
+GASMASKD
+
+// leather jacket
+ARMOURL0
+ARMOURL1
+
+// B&M armor plates
+ARMOURP0
+ARMOURP1
+
 // radsuit boots
 RADBUTA0
 
 // anti gravity boots
 AGRVA0
 
-// spicy air gas mask
-GASMASKA
-GASMASKB
-GASMASKC
-GASMASKD
