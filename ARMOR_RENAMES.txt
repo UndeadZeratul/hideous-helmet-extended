@@ -1,0 +1,63 @@
+// hhx armor redirect cheat sheet
+// vannilla first
+
+// note if you want armors to line up 1 to 1 with no seams you must have the same dimensions for all of your armors/shieldcore sprites
+
+// green/garrison armor
+ARMOURG0
+ARMOURG1
+
+// blue/combat armor
+ARMOURU0
+ARMOURU1
+
+// radsuit
+RADSUTA0
+
+// shield core
+// note doesn't override the helmet sprite. allows you to place in alternate parts of the hud.
+SHIELDA0	// seems to be entierly unused
+SHIELDB0	// starts at b for some reason as the lowest power shield core
+SHIELDC0	// middle charge
+SHIELDD0	// full charge
+
+
+
+// modded armors
+
+// Corprate armor
+ARMOURC0
+ARMOURC1
+
+// HEV armor
+ARMOURH0
+ARMOURH1
+
+// Sneaking Suit
+ARMOURS0
+ARMOURS1
+
+// helmet
+HELMETA0
+HELMETA1
+
+// spicy air gas mask
+GASMASKA
+GASMASKB
+GASMASKC
+GASMASKD
+
+// leather jacket
+ARMOURL0
+ARMOURL1
+
+// B&M armor plates
+ARMOURP0
+ARMOURP1
+
+// radsuit boots
+RADBUTA0
+
+// anti gravity boots
+AGRVA0
+
