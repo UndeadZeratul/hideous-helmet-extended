@@ -111,6 +111,7 @@ OptionMenu "HHXAdvanced" {
 	SubMenu "$HHXMugshot",           "HHXMugshot"
 	SubMenu "$HHXObjectDescription", "HHXObjectDescription"
 	SubMenu "$HHXSquadStatus",       "HHXSquadStatus"
+	SubMenu "$HHXTargetLocked",      "HHXTargetLocked"
 	SubMenu "$HHXWeaponHelp",        "HHXWeaponHelp"
 	SubMenu "$HHXWeaponSprite",      "HHXWeaponSprite"
 	SubMenu "$HHXWeaponStash",       "HHXWeaponStash"
@@ -2902,6 +2903,52 @@ OptionMenu "HHXTargetHeatCounter" {
 	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResettargetHeatCounter", "uz_hhx_options_reset_nhm_targetHeatCounter"
 	SafeCommand "$HHXHHResettargetHeatCounter", "uz_hhx_options_reset_hlm_targetHeatCounter"
+}
+
+OptionMenu "HHXTargetLocked" {
+	Title "$HHXTargetLocked"
+
+	Option "$HHXEnabled", "uz_hhx_targetLocked_enabled", "OnOff"
+	StaticText ""
+	TextField "$HHXFont", "uz_hhx_targetLocked_font", "uz_hhx_targetLocked_enabled"
+	Slider "$HHXFontScale", "uz_hhx_targetLocked_fontScale", .01, 4., .05, 2, "uz_hhx_targetLocked_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_targetLocked_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_targetLocked_enabled"
+	Slider "$HHXPosX", "uz_hhx_targetLocked_nhm_posX", -400, 400, 1, 0, "uz_hhx_targetLocked_enabled"
+	Slider "$HHXPosY", "uz_hhx_targetLocked_nhm_posY", -400, 400, 1, 0, "uz_hhx_targetLocked_enabled"
+	Slider "$HHXScale", "uz_hhx_targetLocked_nhm_scale", .01, 4., .05, 2, "uz_hhx_targetLocked_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_targetLocked_bg_nhm_ref", "uz_hhx_targetLocked_enabled"
+	Slider "$HHXPosX", "uz_hhx_targetLocked_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_targetLocked_enabled"
+	Slider "$HHXPosY", "uz_hhx_targetLocked_bg_nhm_posY", -400, 400, 1, 0, "uz_hhx_targetLocked_enabled"
+	Slider "$HHXScale", "uz_hhx_targetLocked_bg_nhm_scale", .01, 4., .05, 2, "uz_hhx_targetLocked_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_targetLocked_hlm_required", "OnOff", "uz_hhx_targetLocked_enabled"
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_targetLocked_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_targetLocked_enabled"
+	Slider "$HHXPosX", "uz_hhx_targetLocked_hlm_posX", -400, 400, 1, 0, "uz_hhx_targetLocked_enabled"
+	Slider "$HHXPosY", "uz_hhx_targetLocked_hlm_posY", -400, 400, 1, 0, "uz_hhx_targetLocked_enabled"
+	Slider "$HHXScale", "uz_hhx_targetLocked_hlm_scale", .01, 4., .05, 2, "uz_hhx_targetLocked_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_targetLocked_bg_hlm_ref", "uz_hhx_targetLocked_enabled"
+	Slider "$HHXPosX", "uz_hhx_targetLocked_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_targetLocked_enabled"
+	Slider "$HHXPosY", "uz_hhx_targetLocked_bg_hlm_posY", -400, 400, 1, 0, "uz_hhx_targetLocked_enabled"
+	Slider "$HHXScale", "uz_hhx_targetLocked_bg_hlm_scale", .01, 4., .05, 2, "uz_hhx_targetLocked_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResettargetLocked", "uz_hhx_options_reset_nhm_targetLocked"
+	SafeCommand "$HHXHHResettargetLocked", "uz_hhx_options_reset_hlm_targetLocked"
 }
 
 OptionMenu "HHXTargetShieldCounter" {
