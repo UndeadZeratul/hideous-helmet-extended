@@ -110,6 +110,7 @@ class UZCompass : HUDCompass {
                     _hudFont,
                     "E",
                     (posX + (compangle2 * 32 * scale / sb.cplayer.fov), posY + wephelpheight),
+                    sb.DI_SCREEN_LEFT_TOP|sb.DI_TEXT_ALIGN_CENTER,
                     translation: Font.CR_GOLD,
                     scale: (fontScale * scale, fontScale * scale)
                 );
@@ -121,6 +122,7 @@ class UZCompass : HUDCompass {
                     _hudFont,
                     "S",
                     (posX + (compangle2 * 32 * scale / sb.cplayer.fov), posY + wephelpheight),
+                    sb.DI_SCREEN_LEFT_TOP|sb.DI_TEXT_ALIGN_CENTER,
                     translation: Font.CR_BLACK,
                     scale: (fontScale * scale, fontScale * scale)
                 );
@@ -132,6 +134,7 @@ class UZCompass : HUDCompass {
                     _hudFont,
                     "W",
                     (posX + (compangle2 * 32 * scale / sb.cplayer.fov), posY + wephelpheight),
+                    sb.DI_SCREEN_LEFT_TOP|sb.DI_TEXT_ALIGN_CENTER,
                     translation: Font.CR_RED,
                     scale: (fontScale * scale, fontScale * scale)
                 );
@@ -143,6 +146,7 @@ class UZCompass : HUDCompass {
                     _hudFont,
                     "N",
                     (posX + (compangle2 * 32 * scale / sb.cplayer.fov), posY + wephelpheight),
+                    sb.DI_SCREEN_LEFT_TOP|sb.DI_TEXT_ALIGN_CENTER,
                     translation: Font.CR_WHITE,
                     scale: (fontScale * scale, fontScale * scale)
                 );
@@ -153,6 +157,7 @@ class UZCompass : HUDCompass {
                 _hudFont,
                 "^",
                 (posX, posY + wephelpheight),
+                sb.DI_SCREEN_LEFT_TOP|sb.DI_TEXT_ALIGN_CENTER,
                 translation: Font.CR_OLIVE,
                 scale: (fontScale * scale, fontScale * scale)
             );

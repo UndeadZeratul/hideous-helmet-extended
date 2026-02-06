@@ -7,6 +7,8 @@ class UZPosition : HUDPosition {
     private transient CVar _font;
     private transient CVar _fontScale;
 
+    private transient CVar _units;
+
     private transient CVar _hlm_required;
     private transient CVar _hlm_hudLevel;
     private transient CVar _hlm_posX;
@@ -40,6 +42,8 @@ class UZPosition : HUDPosition {
 
         if (!_font) _font                 = CVar.GetCVar("uz_hhx_compass_font", sb.CPlayer);
         if (!_fontScale) _fontScale       = CVar.GetCVar("uz_hhx_compass_fontScale", sb.CPlayer);
+
+        if (!_units) _units               = CVar.GetCVar("uz_hhx_compass_units", sb.CPlayer);
 
         if (!_hlm_required) _hlm_required = CVar.GetCVar("uz_hhx_compass_hlm_required", sb.CPlayer);
         if (!_hlm_hudLevel) _hlm_hudLevel = CVar.GetCVar("uz_hhx_compass_hlm_hudLevel", sb.CPlayer);
@@ -99,14 +103,45 @@ class UZPosition : HUDPosition {
             );
             
             float fontScale = _fontScale.GetFloat();
-            string postxt = string.format("%i,%i,%i", sb.hpl.pos.x, sb.hpl.pos.y, sb.hpl.pos.z);
+            string postxt = FormatValue(sb, sb.hpl.pos);
             sb.DrawString(
                 _hudFont,
                 postxt,
-                (posX - (_hudFont.mFont.StringWidth(postxt) >> 1), posY + (_hudFont.mFont.GetHeight() * 6 * fontScale * scale) + 6),
+                (posX, posY + (_hudFont.mFont.GetHeight() * 6 * fontScale * scale) + 6),
+                sb.DI_SCREEN_LEFT_TOP|sb.DI_TEXT_ALIGN_CENTER,
                 translation: Font.CR_OLIVE,
                 scale: (fontScale * scale, fontScale * scale)
             );
         }
+    }
+
+    private string FormatValue(HCStatusbar sb, Vector3 value) {
+
+        Vector3 pos;
+        string units;
+        switch (_units.GetInt()) {
+            case 0:
+            pos  = value / HDCONST_ONEMETRE * 1.0;
+            units = "m";
+            break;
+            case 1:
+            pos  = value / HDCONST_ONEMETRE / 1000.;
+            units = "km";
+            break;
+            case 2:
+            pos  = value / HDCONST_ONEMETRE * HDCONST_METRETOFEET;
+            units = "ft";
+            break;
+            case 3:
+            pos  = value / HDCONST_ONEMETRE * HDCONST_METRETOFEET * HDCONST_FEETTOMILE;
+            units = "mi";
+            break;
+            default:
+            pos  = value;
+            units = "mu";
+            break;
+        }
+
+        return String.Format("%.2f, %.2f, %.2f %s", pos.x, pos.y, pos.z, units);
     }
 }

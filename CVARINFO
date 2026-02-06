@@ -430,6 +430,7 @@ user float  uz_hhx_burnCounter_bg_hlm_scale  = 1.;
 user bool   uz_hhx_compass_enabled      = true;
 user string uz_hhx_compass_font         = "NewSmallFont";
 user float  uz_hhx_compass_fontScale    = .5;
+user int    uz_hhx_compass_units        = 0;
 
 user int    uz_hhx_compass_nhm_hudLevel = 2;
 user int    uz_hhx_compass_nhm_posX     = 600;

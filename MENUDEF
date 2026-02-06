@@ -958,6 +958,8 @@ OptionMenu "HHXCompass" {
 	StaticText ""
 	TextField "$HHXFont", "uz_hhx_compass_font", "uz_hhx_compass_enabled"
 	Slider "$HHXFontScale", "uz_hhx_compass_fontScale", .01, 4., .05, 2, "uz_hhx_compass_enabled"
+	StaticText ""
+	Option "$HHXUnits", "uz_hhx_compass_units", "DistanceUnit", "uz_hhx_compass_enabled"
 	
 	StaticText ""
 	StaticText ""
