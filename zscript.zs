@@ -84,4 +84,5 @@ version "4.11"
 
 
 // Overlay Overrides
+#include "zscript/undeadzeratul/overrides/overlays/UZBerserkOverride.zs"
 #include "zscript/undeadzeratul/overrides/overlays/UZRadsuitOverride.zs"
