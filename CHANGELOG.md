@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.9.0] - 2026-02-19
+
 ### Added
 
 -   Added UaS Hunger Module Counters (#76).
@@ -246,7 +248,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -   Initial Release.
 
-[Unreleased]: https://github.com/UndeadZeratul/hideous-helmet-extended/compare/v0.8.5...HEAD
+[Unreleased]: https://github.com/UndeadZeratul/hideous-helmet-extended/compare/v0.9.0...HEAD
+
+[v0.9.0]: https://github.com/UndeadZeratul/hideous-helmet-extended/compare/v0.8.5...v0.9.0
 
 [v0.8.5]: https://github.com/UndeadZeratul/hideous-helmet-extended/compare/v0.8.4...v0.8.5
 
