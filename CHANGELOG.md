@@ -7,6 +7,46 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+-   Added UaS Hunger Module Counters (#76).
+-   Add support for Potetobloke's Ceramic Plates addon.
+-   Add support for Spicy Air:
+    -   Gas Masks show up in Armor HUD Element.
+    -   Added Air Spiciness & Player Spiciness Counters.
+-   Add LineTrace Tracking Handler for various "Target" information reporting:
+    -   Hurtfloor Damage Counter.
+    -   Locked Door Indicator.
+    -   Range Finder Status Counter.
+    -   Target Heat Counter.
+    -   Target Shields Counter.
+-   Implement a better DrawBar() method replacement to handle scaling & player translation.
+-   Add Lives/Frags Stat Counter.
+-   Replace Gyro Stabilizer Status HUD Element with Item Override.
+-   Add AceCorp Personal Shield Generator Status Override.
+-   Add first set of Easter Eggs!
+    -   These will be enabled when either it is April 1st, or the CVAR `uz_hhx_eastereggs_enabled` is true.
+    -   The first Easter Egg occurs when the player dies from being burned badly enough.
+    -   The second Easter Egg occurs when any displayed numerical value hits a nice value.
+-   Add new HHX-specific debug CVAR, `hhx_debug`.
+-   Add Berserk Overlay Override.
+
+### Changed
+
+-   Added U.S. Fluid Ounces to Blood Loss & Hydro Counters.
+-   Fixed Container Items' sbarnum Font Color not being updated properly.
+-   Fixed Injectors & "Weapons" only showing 1 copy in FullInventory HUD Element (#79).
+-   Updated Build Scripts.
+-   Add checks to prevent Stat Counters from dividing by 0.
+-   Refined Frage Counter to account for distance from each shard.
+-   Update EKG to support Arcade/NoBleed Mode, fix vertical alignment on numeric value.
+-   Enhance Armor HUD Element:
+    -   Durability requiring a helmet is now optional.
+    -   Utilize newly added DrawBar() replacement.
+    -   General code cleanup & formatting.
+    -   Fixed Corporate Armor Icons.
+-   Enhance Compass/Position HUD Element to leverage various distance units.
+
 ## [v0.8.5] - 2024-02-11
 
 ### Changed
