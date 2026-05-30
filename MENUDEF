@@ -111,6 +111,7 @@ OptionMenu "HHXAdvanced" {
 	SubMenu "$HHXMugshot",           "HHXMugshot"
 	SubMenu "$HHXObjectDescription", "HHXObjectDescription"
 	SubMenu "$HHXSquadStatus",       "HHXSquadStatus"
+	SubMenu "$HHXTargetFriendly",    "HHXTargetFriendly"
 	SubMenu "$HHXTargetLocked",      "HHXTargetLocked"
 	SubMenu "$HHXWeaponHelp",        "HHXWeaponHelp"
 	SubMenu "$HHXWeaponSprite",      "HHXWeaponSprite"
@@ -2905,6 +2906,52 @@ OptionMenu "HHXTargetHeatCounter" {
 	StaticText "$HHXDangerZone", "Red"
 	SafeCommand "$HHXResettargetHeatCounter", "uz_hhx_options_reset_nhm_targetHeatCounter"
 	SafeCommand "$HHXHHResettargetHeatCounter", "uz_hhx_options_reset_hlm_targetHeatCounter"
+}
+
+OptionMenu "HHXTargetFriendly" {
+	Title "$HHXTargetFriendly"
+
+	Option "$HHXEnabled", "uz_hhx_targetFriendly_enabled", "OnOff"
+	StaticText ""
+	TextField "$HHXFont", "uz_hhx_targetFriendly_font", "uz_hhx_targetFriendly_enabled"
+	Slider "$HHXFontScale", "uz_hhx_targetFriendly_fontScale", .01, 4., .05, 2, "uz_hhx_targetFriendly_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXNHM", 1
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_targetFriendly_nhm_hudLevel", 0, 2, 1, 0, "uz_hhx_targetFriendly_enabled"
+	Slider "$HHXPosX", "uz_hhx_targetFriendly_nhm_posX", -400, 400, 1, 0, "uz_hhx_targetFriendly_enabled"
+	Slider "$HHXPosY", "uz_hhx_targetFriendly_nhm_posY", -400, 400, 1, 0, "uz_hhx_targetFriendly_enabled"
+	Slider "$HHXScale", "uz_hhx_targetFriendly_nhm_scale", .01, 4., .05, 2, "uz_hhx_targetFriendly_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_targetFriendly_bg_nhm_ref", "uz_hhx_targetFriendly_enabled"
+	Slider "$HHXPosX", "uz_hhx_targetFriendly_bg_nhm_posX", -400, 400, 1, 0, "uz_hhx_targetFriendly_enabled"
+	Slider "$HHXPosY", "uz_hhx_targetFriendly_bg_nhm_posY", -400, 400, 1, 0, "uz_hhx_targetFriendly_enabled"
+	Slider "$HHXScale", "uz_hhx_targetFriendly_bg_nhm_scale", .01, 4., .05, 2, "uz_hhx_targetFriendly_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXHLM", 1
+	StaticText "$HHXHHelmetRequired"
+	StaticText ""
+	Option "$HHXHelmetRequired", "uz_hhx_targetFriendly_hlm_required", "OnOff", "uz_hhx_targetFriendly_enabled"
+	StaticText ""
+	Slider "$HHXHUDLevel", "uz_hhx_targetFriendly_hlm_hudLevel", 0, 2, 1, 0, "uz_hhx_targetFriendly_enabled"
+	Slider "$HHXPosX", "uz_hhx_targetFriendly_hlm_posX", -400, 400, 1, 0, "uz_hhx_targetFriendly_enabled"
+	Slider "$HHXPosY", "uz_hhx_targetFriendly_hlm_posY", -400, 400, 1, 0, "uz_hhx_targetFriendly_enabled"
+	Slider "$HHXScale", "uz_hhx_targetFriendly_hlm_scale", .01, 4., .05, 2, "uz_hhx_targetFriendly_enabled"
+	StaticText ""
+	TextField "$HHXBgRef", "uz_hhx_targetFriendly_bg_hlm_ref", "uz_hhx_targetFriendly_enabled"
+	Slider "$HHXPosX", "uz_hhx_targetFriendly_bg_hlm_posX", -400, 400, 1, 0, "uz_hhx_targetFriendly_enabled"
+	Slider "$HHXPosY", "uz_hhx_targetFriendly_bg_hlm_posY", -400, 400, 1, 0, "uz_hhx_targetFriendly_enabled"
+	Slider "$HHXScale", "uz_hhx_targetFriendly_bg_hlm_scale", .01, 4., .05, 2, "uz_hhx_targetFriendly_enabled"
+	
+	StaticText ""
+	StaticText ""
+	StaticText "$HHXDangerZone", "Red"
+	SafeCommand "$HHXResettargetFriendly", "uz_hhx_options_reset_nhm_targetFriendly"
+	SafeCommand "$HHXHHResettargetFriendly", "uz_hhx_options_reset_hlm_targetFriendly"
 }
 
 OptionMenu "HHXTargetLocked" {
