@@ -135,11 +135,6 @@ class UZFullInventory : HUDElement {
                     thisindex = i;
                 }
 
-                textureid icon;
-                vector2   applyscale;
-                
-                [icon,applyscale] = sb.geticon(item, 0);
-                
                 int  row    = (i / wrap) * 20;
                 int  col    = (i % wrap) * 20;
                 int  xoffs  = col * scale;
@@ -148,9 +143,26 @@ class UZFullInventory : HUDElement {
                 
                 let ivsh = HDPickup(item);
                 let ivsw = HDWeapon(item);
-                let ivsb = HDBackpack(item);
+                let ivsb = HDStorageItem(item);
             
-                Vector2 coords = (posX - xoffs - (row * xScale), posY + sb.bigitemyofs - yoffs - (col * yScale));
+                Vector2   coords = (posX - xoffs - (row * xScale), posY + sb.bigitemyofs - yoffs - (col * yScale));
+                TextureId icon;
+                Vector2   applyscale;
+                
+                if (ivsw) {
+                    string iconStr;
+                    double iconScale;
+                    [iconStr, iconScale] = ivsw.getPickupSprite();
+
+                    if (iconStr != "") {
+                        icon = TexMan.checkForTexture(iconStr);
+                        applyScale = (iconScale, iconScale);
+                    } else {
+                        [icon, applyScale] = sb.GetIcon(item, 0);
+                    }
+                } else {
+                    [icon, applyScale] = sb.GetIcon(item, 0);
+                }
 
                 // sb.DrawImage(
                 //     icon,
@@ -164,16 +176,16 @@ class UZFullInventory : HUDElement {
                 //     scale:applyscale * (isthis ? 1. : 0.6) * scale
                 // );
                 
-                sb.drawtexture(
+                sb.DrawTexture(
                     icon,
                     coords,
                     sb.DI_SCREEN_RIGHT_BOTTOM|sb.DI_ITEM_RIGHT_BOTTOM
                     |((
-                        (ivsh && ivsh.bdroptranslation)
-                        ||(ivsw && ivsw.bdroptranslation)
+                        (ivsh && ivsh.bDROPTRANSLATION)
+                        ||(ivsw && ivsw.bDROPTRANSLATION)
                     ) ? sb.DI_TRANSLATABLE : 0),
-                    alpha:isthis ? 1. : 0.6,
-                    scale:applyscale * (isthis ? 1. : 0.6) * scale
+                    alpha: isthis ? 1.0 : 0.6,
+                    scale: applyscale * (isthis ? 1. : 0.6) * scale
                 );
 
                 let amount = ivsb

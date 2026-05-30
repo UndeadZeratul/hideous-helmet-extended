@@ -114,15 +114,36 @@ class UZInventory : HUDInventory {
 
     private void DrawInvSel(HCStatusbar sb, int posX, int posY, int flags, float scale) {
         if (sb.hpl.InvSel) {
-            inventory ivs = sb.hpl.invsel;
+            Inventory ivs = sb.hpl.invsel;
+
+            if (!ivs) return;
+
             let ivsp = HDPickup(ivs);
             let ivsw = HDWeapon(ivs);
+            
+            TextureId icon;
+            Vector2 applyScale;
+
+            if (ivsw) {
+                string iconStr;
+                double iconScale;
+                [iconStr, iconScale] = ivsw.getPickupSprite();
+
+                if (iconStr != "") {
+                    icon = TexMan.checkForTexture(iconStr);
+                    applyScale = (iconScale, iconScale);
+                } else {
+                    [icon, applyScale] = sb.GetIcon(ivs, 0);
+                }
+            } else {
+                [icon, applyScale] = sb.GetIcon(ivs, 0);
+            }
 
             sb.DrawInventoryIcon(
                 ivs,
                 (posX, posY),
                 flags|sb.DI_ITEM_CENTER|(((ivsp && ivsp.bdroptranslation)||(ivsw && ivsw.bdroptranslation)) ? sb.DI_TRANSLATABLE : 0),
-                scale: (scale, scale)
+                scale: applyScale * scale
             );
             
             float fontScale = _fontScale.GetFloat();
@@ -234,7 +255,7 @@ class UZInventory : HUDInventory {
         int previndex = thisindex ? thisindex - 1 : lastindex;
         int nextindex = thisindex == lastindex ? 0 : thisindex + 1;
 
-        inventory drawitems[2];
+        Inventory drawitems[2];
 
         if (items.size() > 2) drawitems[0] = items[previndex];
         drawitems[1] = items[nextindex];
@@ -243,20 +264,34 @@ class UZInventory : HUDInventory {
             let thisitem = drawitems[i];
 
             if (!thisitem) continue;
-            
-            textureid icon;
-            vector2 applyscale;
-            [icon, applyscale] = sb.GetIcon(thisitem, 0);
 
             let ivsp = HDPickup(thisitem);
             let ivsw = HDWeapon(thisitem);
 
+            TextureId icon;
+            Vector2 applyScale;
+
+            if (ivsw) {
+                string iconStr;
+                double iconScale;
+                [iconStr, iconScale] = ivsw.getPickupSprite();
+
+                if (iconStr != "") {
+                    icon = TexMan.checkForTexture(iconStr);
+                    applyScale = (iconScale, iconScale);
+                } else {
+                    [icon, applyScale] = sb.GetIcon(thisitem, 0);
+                }
+            } else {
+                [icon, applyScale] = sb.GetIcon(thisitem, 0);
+            }
+            
             sb.DrawTexture(
                 icon,
                 (posX + ((!i ? -10 : 10) * scale), posY - (17 * scale)),
                 flags|sb.DI_ITEM_CENTER_BOTTOM|(((ivsp && ivsp.bdroptranslation) || (ivsw && ivsw.bdroptranslation)) ? sb.DI_TRANSLATABLE : 0),
                 alpha: 0.6,
-                scale: applyscale * 0.6 * scale
+                scale: applyScale * scale * 0.6
             );
         }
     }
