@@ -10,7 +10,7 @@ class UZ9mmBossRifleOverride : UZBossRifleOverride {
 
     override void AddAmmoCounts(HCStatusBar sb) {
         string nineClip = "HD9mClip";
-        if ((class<HDPickup>)(nineClip)) {
+        if (HDCore.CheckClassExists(nineClip)) {
             AddMagCount(
                 'HD9mClip',                                       // name
                 50,                                               // capacity
