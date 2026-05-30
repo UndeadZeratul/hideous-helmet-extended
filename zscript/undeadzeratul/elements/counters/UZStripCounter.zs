@@ -23,7 +23,7 @@ class UZStripCounter : BaseCounterHUDElement {
 
     override string FormatValue(HCStatusbar sb, float counterValue, float maxValue) {
         return _units.GetInt()
-            ? String.Format("%.2f %s", counterValue / 35., StringTable.Localize("$HHXSeconds"))
-            : String.Format("%i %s",   counterValue,       StringTable.Localize("$HHXTics"));
+            ? String.Format("%.2f %s", counterValue / TICRATE, StringTable.Localize("$HHXSeconds"))
+            : String.Format("%i %s",   counterValue,           StringTable.Localize("$HHXTics"));
     }
 }
