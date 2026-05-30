@@ -42,7 +42,7 @@ class UZSpeedCounter : BaseCounterHUDElement {
             break;
             default:
             vel   = counterValue;
-            units = "mu/s";
+            units = "mu/t";
             break;
         }
 
