@@ -1,9 +1,9 @@
-class UZHexaScopelesBossRifleOverride : UZBossRifleOverride {
+class UZScopelesBossRifleOverride : UZBossRifleOverride {
     
     override void Init(HCStatusbar sb) {
         super.Init(sb);
 
-        weaponName = 'HexaNoScopeBoss';
+        weaponName = 'NoScopeBoss';
     }
 
     override bool ShouldDrawWeaponZoom(HDWeapon wpn) {

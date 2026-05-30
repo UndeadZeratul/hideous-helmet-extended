@@ -117,6 +117,11 @@ version "4.11"
 #include "zscript/undeadzeratul/overrides/weapons/vanilla/UZVulcanetteOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/vanilla/UZZM66Override.zs"
 
+#include "zscript/undeadzeratul/overrides/weapons/a1337spy/UZAurochsOverride.zs"
+#include "zscript/undeadzeratul/overrides/weapons/a1337spy/UZBPXOverride.zs"
+#include "zscript/undeadzeratul/overrides/weapons/a1337spy/UZDMROverride.zs"
+#include "zscript/undeadzeratul/overrides/weapons/a1337spy/UZScopelessBossRifleOverride.zs"
+
 #include "zscript/undeadzeratul/overrides/weapons/fda/UZAltisOverride.zs"
 
 #include "zscript/undeadzeratul/overrides/weapons/hexadoken/UZ4mmBossRifleOverride.zs"
@@ -142,9 +147,6 @@ version "4.11"
 #include "zscript/undeadzeratul/overrides/weapons/icarus/UZUMPOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/icarus/UZUSPOverride.zs"
 
-#include "zscript/undeadzeratul/overrides/weapons/peppergrinder/UZAurochsOverride.zs"
-#include "zscript/undeadzeratul/overrides/weapons/peppergrinder/UZBPXOverride.zs"
-#include "zscript/undeadzeratul/overrides/weapons/peppergrinder/UZDMROverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/peppergrinder/UZGreelyOverride.zs"
 #include "zscript/undeadzeratul/overrides/weapons/peppergrinder/UZOtis5Override.zs"
 #include "zscript/undeadzeratul/overrides/weapons/peppergrinder/UZSawedSlayerOverride.zs"
