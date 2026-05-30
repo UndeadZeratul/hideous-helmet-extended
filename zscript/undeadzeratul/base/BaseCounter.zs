@@ -8,8 +8,6 @@ enum HHX_COUNTER_STYLE {
 
 class BaseCounterHUDElement : HUDElement abstract {
 
-    mixin UZBetterDrawBar;
-
     protected string counterIcon;
     protected string counterIconBG;
     protected string counterLabel;
@@ -155,7 +153,7 @@ class BaseCounterHUDElement : HUDElement abstract {
         let value    = GetCounterValue(sb);
         let maxValue = GetCounterMaxValue(sb);
 
-        if (hhx_debug && !(Level.time % TICRATE)) Console.PrintF("["..Namespace.."] Value: "..value..", Max Value: "..maxValue);
+        if (hhx_debug && !(Level.time % TICRATE)) HDCore.Log('HHX', LOGGING_DEBUG, "["..Namespace.."] Value: "..value..", Max Value: "..maxValue);
 
         if (hhx_debug || _alwaysVisible.GetBool() || ShouldDrawCounter(sb, value)) {
             float fontScale = _fontScale.GetFloat();
@@ -210,7 +208,7 @@ class BaseCounterHUDElement : HUDElement abstract {
                     );
                     break;
                 case DURABILITY_BAR:
-                    BetterDrawBar(
+                    HDCore.DrawBar(
                         sb,
                         counterIcon, counterIconBG,
                         clamp(value / max(maxValue, 1.0), 0.0, 1.0),

@@ -55,8 +55,6 @@ class UZHDArmourStats {
 
 class UZArmour : HUDElement {
 
-    mixin UZBetterDrawBar;
-
     private transient Service _HHFunc;
     private transient Service _SpicyAirService;
 
@@ -326,13 +324,13 @@ class UZArmour : HUDElement {
     }
     
     void DrawArmour(HCStatusbar sb, string fg, string bg, int durability, int maxDurability, int flags, int posX, int posY, double scale) {
-        BetterDrawBar(
+        HDCore.DrawBar(
             sb,
             fg, bg,
-            clamp(durability / max(maxDurability, 1.0), 0.0, 1.0),
+            maxDurability > 0 ? clamp(1.0 * durability / maxDurability, 0.0, 1.0) : 1.0,
             (posX, posY),
             flags,
-            2,
+            DRAWBAR_SN,
             (scale, scale)
         );
     }
