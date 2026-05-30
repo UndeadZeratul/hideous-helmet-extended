@@ -172,54 +172,30 @@ class UZArmour : HUDElement {
         for (int i = 0; i < _arms.Size(); i++) {
             let arm = _arms[i];
 
-            // Get any Texture Offsets defined for the sprite in case it helps align it
-            Vector2 offsets = TexMan.GetScaledOffset(TexMan.CheckForTexture(arm.fg));
-
-            if (arm.maxDurability > 0) {
-
-                // If the equipment has a valid durability, render using the durability bar
-                if (AutomapActive) {
-                    DrawArmour(
-                        sb,
-                        arm.fg,
-                        arm.bg,
-                        arm.durability,
-                        arm.maxDurability,
-                        sb.DI_TOPLEFT,
-                        4 + ((arm.offsets.x - offsets.x) * scale * arm.scale),
-                        86 + ((arm.offsets.y - offsets.y) * scale * arm.scale),
-                        scale * arm.scale
-                    );
-                } else if (CheckCommonStuff(sb, state, ticFrac)) {
-                    DrawArmour(
-                        sb,
-                        arm.fg,
-                        arm.bg,
-                        arm.durability,
-                        arm.maxDurability,
-                        arm.flags,
-                        posX + ((arm.offsets.x - offsets.x) * scale * arm.scale),
-                        posY + ((arm.offsets.y - offsets.y) * scale * arm.scale),
-                        scale * arm.scale
-                    );
-                }
-            } else {
-
-                // Otherwise, simply draw the item sprite
-                if (AutomapActive) {
-                    sb.DrawImage(
-                        arm.fg,
-                        (11 + arm.offsets.x - offsets.x, 137 + arm.offsets.y - offsets.y),
-                        sb.DI_TOPLEFT
-                    );
-                } else {
-                    sb.DrawImage(
-                        arm.fg,
-                        (posX + ((arm.offsets.x - offsets.x) * scale * arm.scale), posY + ((arm.offsets.y - offsets.y) * scale * arm.scale)),
-                        arm.flags,
-                        scale: (scale * arm.scale, scale * arm.scale)
-                    );
-                }
+            if (AutomapActive) {
+                DrawArmour(
+                    sb,
+                    arm.fg,
+                    arm.bg,
+                    arm.durability,
+                    arm.maxDurability,
+                    sb.DI_TOPLEFT,
+                    4 + (arm.offsets.x * scale * arm.scale),
+                    86 + (arm.offsets.y * scale * arm.scale),
+                    scale * arm.scale
+                );
+            } else if (CheckCommonStuff(sb, state, ticFrac)) {
+                DrawArmour(
+                    sb,
+                    arm.fg,
+                    arm.bg,
+                    arm.durability,
+                    arm.maxDurability,
+                    arm.flags,
+                    posX + (arm.offsets.x * scale * arm.scale),
+                    posY + (arm.offsets.y * scale * arm.scale),
+                    scale * arm.scale
+                );
             }
             
             slotIcons[arm.slot]++;
@@ -254,7 +230,7 @@ class UZArmour : HUDElement {
                         DrawDurability(
                             sb,
                             arm.durability,
-                            sb.DI_SCREEN_CENTER_BOTTOM | sb.DI_TEXT_ALIGN_RIGHT,
+                            sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_CENTER|sb.DI_TEXT_ALIGN_RIGHT,
                             arm.fontColor,
                             posX + ((arm.offsets.x + arm.durOffsets.x - _hudFont.mFont.StringWidth(slotDurabilities[arm.slot])) * scale * fontScale * arm.scale),
                             posY + ((arm.offsets.y + arm.durOffsets.y + (arm.slot == 1 ? (_hh_durabilitytop && _hh_durabilitytop.GetBool() ? -10 : -3) : 0)) * scale * fontScale * arm.scale),
@@ -333,121 +309,144 @@ class UZArmour : HUDElement {
         let bootOffs = hasHelmet ? (_boots_hlm_posX.GetInt(), _boots_hlm_posY.GetInt()) : (_boots_nhm_posX.GetInt(), _boots_nhm_posY.GetInt());
 
         let helmDurOffs = ( 7, 15);
-        let bodyDurOffs = (15, 15);
+        let bodyDurOffs = (20, 34);
         let bootDurOffs = (-7, 15);
 
         let helmScale = hasHelmet ? _helmet_hlm_scale.GetFloat() : _helmet_nhm_scale.GetFloat();
         let bodyScale = hasHelmet ? _body_hlm_scale.GetFloat() : _body_nhm_scale.GetFloat();
         let bootScale = hasHelmet ? _boots_hlm_scale.GetFloat() : _boots_nhm_scale.GetFloat();
 
+        let helmFlags = sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP|sb.DI_ITEM_HCENTER;
+        let bodyFlags = sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP|sb.DI_ITEM_HCENTER;
+        let bootFlags = sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_RIGHT_TOP;
+
         // For grabbing the current durability
         let arm = HDArmourWorn(item);
 
         // Process only known worn armors
         switch (item.GetClassName()) {
-            case 'HDArmourWorn': {
+            case 'GarrisonArmourWorn': {
                 return UZHDArmourStats.Create(
                     0,
-                    STRIP_ARMOUR,
-                    arm.mega ? "ARMOURU0" : "ARMOURG0",
-                    arm.mega ? "ARMOURU1" : "ARMOURG1",
+                    arm.wornlayer,
+                    arm.armoursprite,
+                    arm.armourback,
                     arm.durability,
-                    arm.mega ? HDCONST_BATTLEARMOUR : HDCONST_GARRISONARMOUR,
-                    arm.mega ? Font.CR_ICE : Font.CR_OLIVE,
+                    arm.default.durability,
+                    Font.CR_OLIVE,
                     bodyOffs,
                     bodyDurOffs,
                     bodyScale,
-                    sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP|sb.DI_TRANSLATABLE
+                    bodyFlags|sb.DI_TRANSLATABLE
+                );
+            }
+            case 'BattleArmourWorn': {
+                return UZHDArmourStats.Create(
+                    0,
+                    arm.wornlayer,
+                    arm.armoursprite,
+                    arm.armourback,
+                    arm.durability,
+                    arm.default.durability,
+                    Font.CR_ICE,
+                    bodyOffs,
+                    bodyDurOffs,
+                    bodyScale,
+                    bodyFlags|sb.DI_TRANSLATABLE
                 );
             }
             case 'HDArmorPlateWorn': {
+                let qual = 1.0 * arm.durability / arm.default.durability;
+                let fg = qual < 0.3 ? "APL0C0" : qual < 0.6 ? "APL0B0" : "APL0A0";
+                let bg = qual < 0.3 ? "APL1C0" : qual < 0.6 ? "APL1B0" : "APL1A0";
+
                 return UZHDArmourStats.Create(
                     0,
-                    STRIP_ARMOUR + 20, // STRIP_ARMORPLATE
-                    "ARMOURP0",
-                    "ARMOURP1",
+                    arm.wornlayer, // STRIP_ARMORPLATE
+                    fg,
+                    fg,
                     arm.durability,
-                    25, // DUR_ARMORPLATE
+                    arm.default.durability, // DUR_ARMORPLATE
                     Font.CR_GRAY,
-                    bodyOffs,
-                    bodyDurOffs,
+                    bodyOffs + (0, 5),      // Arbitrary, might need to have a better way to define this...
+                    bodyDurOffs + (0, -5),  // Counterbalance the sprite offset
                     bodyScale,
-                    sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP
+                    bodyFlags
                 );
             }
             case 'HDCorporateArmourWorn': {
                 return UZHDArmourStats.Create(
                     0,
-                    STRIP_ARMOUR,
-                    "ARMOURC0",
-                    "ARMOURC1",
+                    arm.wornlayer,
+                    arm.armoursprite,
+                    arm.armourback,
                     arm.durability,
-                    40, // HDCONST_CORPORATEARMOUR
+                    arm.default.durability, // HDCONST_CORPORATEARMOUR
                     Font.CR_DARKGRAY,
                     bodyOffs,
                     bodyDurOffs,
                     bodyScale,
-                    sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP
+                    bodyFlags
                 );
             }
             case 'HHelmetWorn': {
                 return UZHDArmourStats.Create(
                     1,
                     1500, // HHelmet normally 0, overriding for rendering priority
-                    "HELMETA0",
-                    "HELMETA1",
+                    arm.armoursprite,
+                    arm.armourback,
                     arm.durability,
-                    72, // HHCONST_HUDHELMET
+                    arm.default.durability, // HHCONST_HUDHELMET
                     Font.CR_TAN,
                     helmOffs,
                     helmDurOffs,
                     helmScale,
-                    sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP
+                    helmFlags
                 );
             }
             case 'HDHEVArmourWorn': {
                 return UZHDArmourStats.Create(
                     0,
-                    STRIP_ARMOUR,
-                    "ARMOURH0",
-                    "ARMOURH1",
+                    arm.wornlayer,
+                    arm.armoursprite,
+                    arm.armourback,
                     arm.durability,
-                    107, // HDCONST_HEVARMOUR
+                    arm.default.durability, // HDCONST_HEVARMOUR
                     Font.CR_ORANGE,
                     bodyOffs,
                     bodyDurOffs,
                     bodyScale,
-                    sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP
+                    bodyFlags
                 );
             }
             case 'HDLeatherArmourWorn': {
                 return UZHDArmourStats.Create(
                     0,
-                    1200, // STRIP_JACKET
-                    "ARMOURL0",
-                    "ARMOURL1",
+                    arm.wornlayer, // STRIP_JACKET
+                    arm.armoursprite,
+                    arm.armourback,
                     arm.durability,
-                    40, // LEATHERARMOUR
+                    arm.default.durability, // LEATHERARMOUR
                     Font.CR_BROWN,
                     bodyOffs,
                     bodyDurOffs,
                     bodyScale,
-                    sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP
+                    bodyFlags
                 );
             }
             case 'WAN_SneakingSuitWorn': {
                 return UZHDArmourStats.Create(
                     0,
-                    STRIP_ARMOUR,
-                    "ARMOURS0",
-                    "ARMOURS1",
+                    arm.wornlayer,
+                    arm.armoursprite,
+                    arm.armourback,
                     arm.durability,
-                    144, // HDCONST_SNEAKINGSUIT
+                    arm.default.durability, // HDCONST_SNEAKINGSUIT
                     Font.CR_DARKGRAY,
                     bodyOffs,
                     bodyDurOffs,
                     bodyScale,
-                    sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP
+                    bodyFlags
                 );
             }
             case 'WornRadBoots': {
@@ -462,7 +461,7 @@ class UZArmour : HUDElement {
                     bootOffs,
                     bootDurOffs,
                     bootScale,
-                    sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_RIGHT_TOP
+                    bootFlags
                 );
             }
             case 'WornRadsuit': {
@@ -477,7 +476,7 @@ class UZArmour : HUDElement {
                     bodyOffs,
                     bodyDurOffs,
                     bodyScale,
-                    sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP
+                    bodyFlags
                 );
             }
             case 'WornAntiGravBoots': {
@@ -492,12 +491,12 @@ class UZArmour : HUDElement {
                     bootOffs,
                     bootDurOffs,
                     bootScale,
-                    sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_RIGHT_TOP
+                    bootFlags
                 );
             }
             case 'HDMagicShield': {
-                let shields = sb.hpl.countinv("HDMagicShield");
-                let graphic = shields < 341 ? "SHIELDB0" : shields < 682 ? "SHIELDC0" : "SHIELDD0";
+                double shields = sb.hpl.countinv("HDMagicShield") / 1024;
+                let graphic = shields < 0.333 ? "SHIELDB0" : shields < 0.667 ? "SHIELDC0" : "SHIELDD0";
 
                 return UZHDArmourStats.Create(
                     1,
@@ -510,7 +509,7 @@ class UZArmour : HUDElement {
                     helmOffs,
                     helmDurOffs,
                     helmScale,
-                    sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP
+                    helmFlags
                 );
             }
             case 'Despicyto': {
@@ -529,13 +528,36 @@ class UZArmour : HUDElement {
                         helmOffs,
                         helmDurOffs,
                         helmScale,
-                        sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP
+                        helmFlags
                     );
                 }
 
                 break;
             }
             default:
+
+                if (arm) {
+                    let slot    = arm.coverage&HDArmourWorn.ARMOUR_TORSO ? 0           : arm.coverage&(HDArmourWorn.ARMOUR_FACE|HDArmourWorn.ARMOUR_HEAD) ? 1           : 2;
+                    let offs    = arm.coverage&HDArmourWorn.ARMOUR_TORSO ? bodyOffs    : arm.coverage&(HDArmourWorn.ARMOUR_FACE|HDArmourWorn.ARMOUR_HEAD) ? helmOffs    : bootOffs;
+                    let durOffs = arm.coverage&HDArmourWorn.ARMOUR_TORSO ? bodyDurOffs : arm.coverage&(HDArmourWorn.ARMOUR_FACE|HDArmourWorn.ARMOUR_HEAD) ? helmDurOffs : bootDurOffs;
+                    let scale   = arm.coverage&HDArmourWorn.ARMOUR_TORSO ? bodyScale   : arm.coverage&(HDArmourWorn.ARMOUR_FACE|HDArmourWorn.ARMOUR_HEAD) ? helmScale   : bootScale;
+                    let flags   = arm.coverage&HDArmourWorn.ARMOUR_TORSO ? bodyFlags   : arm.coverage&(HDArmourWorn.ARMOUR_FACE|HDArmourWorn.ARMOUR_HEAD) ? helmFlags   : bootFlags;
+
+                    return UZHDArmourStats.Create(
+                        slot,
+                        arm.wornlayer,
+                        arm.armoursprite,
+                        arm.armourback,
+                        arm.durability,
+                        arm.default.durability,
+                        Font.CR_DARKGRAY,
+                        offs,
+                        durOffs,
+                        scale,
+                        flags
+                    );
+                }
+
                 break;
         }
 
