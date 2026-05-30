@@ -44,6 +44,7 @@ class UZBerserkOverride : HCItemOverride {
         forEach(overlay : overlays) if (Level.time - overlay.time < overlay.lifetime) newOverlays.push(overlay);
 
         if (!crandom[hhxrand](0, newOverlays.size() * 35)) {
+            HDCore.log('HHX.UZBerserkOverlay', LOGGING_TRACE, "Creating new Overlay...");
             let overlay = UZBerserkOverlay.create(
                 Level.time,
                 crandom[hhxrand](35, 105),
@@ -53,6 +54,8 @@ class UZBerserkOverride : HCItemOverride {
             );
 
             if (overlay) {
+                HDCore.log('HHX.UZBerserkOverlay', LOGGING_DEBUG, "New Overlay: time="..overlay.time..", graphic='"..overlay.graphic.."', pos="..overlay.pos..", scale="..overlay.scale);
+
                 newOverlays.push(overlay);
             }
         }
