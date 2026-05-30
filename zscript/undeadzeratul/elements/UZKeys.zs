@@ -34,30 +34,30 @@ class UZKeys : HUDKeys {
     }
 
     override void Tick(HCStatusbar sb) {
-        if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_keys_enabled", sb.CPlayer);
+        if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_"..Namespace.."_enabled", sb.CPlayer);
 
-        if (!_hlm_required) _hlm_required = CVar.GetCVar("uz_hhx_keys_hlm_required", sb.CPlayer);
-        if (!_hlm_hudLevel) _hlm_hudLevel = CVar.GetCVar("uz_hhx_keys_hlm_hudLevel", sb.CPlayer);
-        if (!_hlm_posX) _hlm_posX         = CVar.GetCVar("uz_hhx_keys_hlm_posX", sb.CPlayer);
-        if (!_hlm_posY) _hlm_posY         = CVar.GetCVar("uz_hhx_keys_hlm_posY", sb.CPlayer);
-        if (!_hlm_scale) _hlm_scale       = CVar.GetCVar("uz_hhx_keys_hlm_scale", sb.CPlayer);
-        if (!_hlm_xScale) _hlm_xScale     = CVar.GetCVar("uz_hhx_keys_hlm_xScale", sb.CPlayer);
-        if (!_hlm_yScale) _hlm_yScale     = CVar.GetCVar("uz_hhx_keys_hlm_yScale", sb.CPlayer);
-        if (!_nhm_hudLevel) _nhm_hudLevel = CVar.GetCVar("uz_hhx_keys_nhm_hudLevel", sb.CPlayer);
-        if (!_nhm_posX) _nhm_posX         = CVar.GetCVar("uz_hhx_keys_nhm_posX", sb.CPlayer);
-        if (!_nhm_posY) _nhm_posY         = CVar.GetCVar("uz_hhx_keys_nhm_posY", sb.CPlayer);
-        if (!_nhm_scale) _nhm_scale       = CVar.GetCVar("uz_hhx_keys_nhm_scale", sb.CPlayer);
-        if (!_nhm_xScale) _nhm_xScale     = CVar.GetCVar("uz_hhx_keys_nhm_xScale", sb.CPlayer);
-        if (!_nhm_yScale) _nhm_yScale     = CVar.GetCVar("uz_hhx_keys_nhm_yScale", sb.CPlayer);
+        if (!_hlm_required) _hlm_required = CVar.GetCVar("uz_hhx_"..Namespace.."_hlm_required", sb.CPlayer);
+        if (!_hlm_hudLevel) _hlm_hudLevel = CVar.GetCVar("uz_hhx_"..Namespace.."_hlm_hudLevel", sb.CPlayer);
+        if (!_hlm_posX) _hlm_posX         = CVar.GetCVar("uz_hhx_"..Namespace.."_hlm_posX", sb.CPlayer);
+        if (!_hlm_posY) _hlm_posY         = CVar.GetCVar("uz_hhx_"..Namespace.."_hlm_posY", sb.CPlayer);
+        if (!_hlm_scale) _hlm_scale       = CVar.GetCVar("uz_hhx_"..Namespace.."_hlm_scale", sb.CPlayer);
+        if (!_hlm_xScale) _hlm_xScale     = CVar.GetCVar("uz_hhx_"..Namespace.."_hlm_xScale", sb.CPlayer);
+        if (!_hlm_yScale) _hlm_yScale     = CVar.GetCVar("uz_hhx_"..Namespace.."_hlm_yScale", sb.CPlayer);
+        if (!_nhm_hudLevel) _nhm_hudLevel = CVar.GetCVar("uz_hhx_"..Namespace.."_nhm_hudLevel", sb.CPlayer);
+        if (!_nhm_posX) _nhm_posX         = CVar.GetCVar("uz_hhx_"..Namespace.."_nhm_posX", sb.CPlayer);
+        if (!_nhm_posY) _nhm_posY         = CVar.GetCVar("uz_hhx_"..Namespace.."_nhm_posY", sb.CPlayer);
+        if (!_nhm_scale) _nhm_scale       = CVar.GetCVar("uz_hhx_"..Namespace.."_nhm_scale", sb.CPlayer);
+        if (!_nhm_xScale) _nhm_xScale     = CVar.GetCVar("uz_hhx_"..Namespace.."_nhm_xScale", sb.CPlayer);
+        if (!_nhm_yScale) _nhm_yScale     = CVar.GetCVar("uz_hhx_"..Namespace.."_nhm_yScale", sb.CPlayer);
 
-        if (!_nhm_bgRef) _nhm_bgRef       = CVar.GetCVar("uz_hhx_keys_bg_nhm_ref", sb.CPlayer);
-        if (!_nhm_bgPosX) _nhm_bgPosX     = CVar.GetCVar("uz_hhx_keys_bg_nhm_posX", sb.CPlayer);
-        if (!_nhm_bgPosY) _nhm_bgPosY     = CVar.GetCVar("uz_hhx_keys_bg_nhm_posY", sb.CPlayer);
-        if (!_nhm_bgScale) _nhm_bgScale   = CVar.GetCVar("uz_hhx_keys_bg_nhm_scale", sb.CPlayer);
-        if (!_hlm_bgRef) _hlm_bgRef       = CVar.GetCVar("uz_hhx_keys_bg_hlm_ref", sb.CPlayer);
-        if (!_hlm_bgPosX) _hlm_bgPosX     = CVar.GetCVar("uz_hhx_keys_bg_hlm_posX", sb.CPlayer);
-        if (!_hlm_bgPosY) _hlm_bgPosY     = CVar.GetCVar("uz_hhx_keys_bg_hlm_posY", sb.CPlayer);
-        if (!_hlm_bgScale) _hlm_bgScale   = CVar.GetCVar("uz_hhx_keys_bg_hlm_scale", sb.CPlayer);
+        if (!_nhm_bgRef) _nhm_bgRef       = CVar.GetCVar("uz_hhx_"..Namespace.."_bg_nhm_ref", sb.CPlayer);
+        if (!_nhm_bgPosX) _nhm_bgPosX     = CVar.GetCVar("uz_hhx_"..Namespace.."_bg_nhm_posX", sb.CPlayer);
+        if (!_nhm_bgPosY) _nhm_bgPosY     = CVar.GetCVar("uz_hhx_"..Namespace.."_bg_nhm_posY", sb.CPlayer);
+        if (!_nhm_bgScale) _nhm_bgScale   = CVar.GetCVar("uz_hhx_"..Namespace.."_bg_nhm_scale", sb.CPlayer);
+        if (!_hlm_bgRef) _hlm_bgRef       = CVar.GetCVar("uz_hhx_"..Namespace.."_bg_hlm_ref", sb.CPlayer);
+        if (!_hlm_bgPosX) _hlm_bgPosX     = CVar.GetCVar("uz_hhx_"..Namespace.."_bg_hlm_posX", sb.CPlayer);
+        if (!_hlm_bgPosY) _hlm_bgPosY     = CVar.GetCVar("uz_hhx_"..Namespace.."_bg_hlm_posY", sb.CPlayer);
+        if (!_hlm_bgScale) _hlm_bgScale   = CVar.GetCVar("uz_hhx_"..Namespace.."_bg_hlm_scale", sb.CPlayer);
     }
 
     override void DrawHUDStuff(HCStatusbar sb, int state, double ticFrac) {

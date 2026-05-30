@@ -10,9 +10,9 @@ class UZRadsuit : HUDElement {
     }
 
     override void Tick(HCStatusbar sb) {
-        if (!_enabled) _enabled = CVar.GetCVar("uz_hhx_radsuit_enabled", sb.CPlayer);
+        if (!_enabled) _enabled = CVar.GetCVar("uz_hhx_"..Namespace.."_enabled", sb.CPlayer);
 
-        if (!_ref) _ref         = CVar.GetCVar("uz_hhx_radsuit_ref", sb.CPlayer);
+        if (!_ref) _ref         = CVar.GetCVar("uz_hhx_"..Namespace.."_ref", sb.CPlayer);
     }
 
     override void DrawHUDStuff(HCStatusbar sb, int state, double ticFrac) {

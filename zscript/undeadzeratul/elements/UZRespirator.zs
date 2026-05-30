@@ -19,9 +19,9 @@ class UZRespirator : HUDElement {
     override void Tick(HCStatusbar sb) {
         if (!_service) _service = ServiceIterator.Find("UaS_RespiratorStatus").next();
 
-        if (!_enabled) _enabled = CVar.GetCVar("uz_hhx_respirator_enabled", sb.CPlayer);
+        if (!_enabled) _enabled = CVar.GetCVar("uz_hhx_"..Namespace.."_enabled", sb.CPlayer);
 
-        if (!_ref) _ref         = CVar.GetCVar("uz_hhx_respirator_ref", sb.CPlayer);
+        if (!_ref) _ref         = CVar.GetCVar("uz_hhx_"..Namespace.."_ref", sb.CPlayer);
     }
 
     override void DrawHUDStuff(HCStatusbar sb, int state, double ticFrac) {
