@@ -57,7 +57,7 @@ class UZPD42Override : BaseWeaponStatusOverride {
     }
 
     virtual Vector2 GetChamberedSlugOffsets(HDWeapon wpn) {
-        return (-2, -9);
+        return (0, -6);
     }
 
     override bool ShouldDrawAmmoCounts(HDWeapon wpn) {
@@ -108,7 +108,7 @@ class UZPD42Override : BaseWeaponStatusOverride {
         DrawHorzVectorShell(
             sb, wpn,
             GetShellStyle(wpn, !(GetChamberedSlug(wpn) % 2) ? 2 : -1),
-            false,
+            true,
             color,
             posX, posY,
             scale,

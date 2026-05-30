@@ -55,7 +55,7 @@ class UZHunterOverride : BaseWeaponStatusOverride {
     }
 
     override Vector2 GetChamberedRoundOffsets(HDWeapon wpn) {
-        return (-2, -8);
+        return (0, -5);
     }
 
     override Vector2 GetSideSaddleOffsets(HDWeapon wpn) {
@@ -90,7 +90,7 @@ class UZHunterOverride : BaseWeaponStatusOverride {
         DrawHorzVectorShell(
             sb, wpn,
             GetShellStyle(wpn, GetChamberedRounds(wpn) > 1 ? 0 : -1),
-            false,
+            true,
             color,
             posX, posY,
             scale,

@@ -41,7 +41,7 @@ class UZSlayerOverride : BaseWeaponStatusOverride {
     }
 
     override Vector2 GetChamberedRoundOffsets(HDWeapon wpn) {
-        return (0, -3);
+        return (0, -1);
     }
 
     override Vector2 GetSideSaddleOffsets(HDWeapon wpn) {
@@ -82,7 +82,7 @@ class UZSlayerOverride : BaseWeaponStatusOverride {
             DrawVertVectorShell(
                 sb, wpn,
                 GetShellStyle(wpn, leftBarrel > 1 ? 0 : -1),
-                false,
+                true,
                 GetChamberedRoundColor(sb, wpn),
                 posX + ((-15 + (4 * double)) * scale), posY,
                 scale,
@@ -94,7 +94,7 @@ class UZSlayerOverride : BaseWeaponStatusOverride {
             DrawVertVectorShell(
                 sb, wpn,
                 GetShellStyle(wpn, rightBarrel > 1 ? 0 : -1),
-                false,
+                true,
                 GetChamberedRoundColor(sb, wpn),
                 posX - ((2 + (4 * double + double)) * scale), posY,
                 scale,

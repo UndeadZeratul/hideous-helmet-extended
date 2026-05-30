@@ -37,7 +37,7 @@ class UZSawedSlayerOverride : BaseWeaponStatusOverride {
     }
 
     override Vector2 GetChamberedRoundOffsets(HDWeapon wpn) {
-        return (0, -3);
+        return (0, -1);
     }
 
     override bool ShouldDrawAmmoCounts(HDWeapon wpn) {
