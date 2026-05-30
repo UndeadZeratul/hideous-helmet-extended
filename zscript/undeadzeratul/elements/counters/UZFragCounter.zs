@@ -18,9 +18,7 @@ class UZFragCounter : BaseCounterHUDElement {
         Actor mo;
         while(mo = Actor(iter.next())) {
             if (mo.health) {
-                let dist = max(HDCONST_ONEMETRE, sb.hpl.Distance3D(mo));
-
-                value += 100.0 / (dist * dist);
+                value += 100.0 / max(HDCONST_ONEMETRE ** 2, sb.hpl.Distance3DSquared(mo));
             }
         }
 
