@@ -1127,190 +1127,44 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
     }
 
     virtual void DrawHorzVectorShell(HCStatusBar sb, HDWeapon wpn, int style, bool flipped, Color color, int posX, int posY, float scale, int flags) {
-
-        // Empty Casing
-        sb.Fill(
-            color,
-            posX - (9 * scale * flipped), posY,
-            2 * scale, 3 * scale,
-            flags
-        );
-
         switch (style) {
             case 0:
-
-                // Vanilla-style Shell
-                sb.Fill(
-                    color,
-                    posX - (6 * scale), posY,
-                    5 * scale, 3 * scale,
-                    flags
-                );
+                HDCore.DrawSimpleShell(sb, color, (posX, posY), flipped ? DRAWPREFAB_EW : DRAWPREFAB_WE, scale, flags);
                 break;
             case 1:
-
-                // Peppergrinder-style Shell
-                sb.Fill(
-                    color,
-                    posX - (6 * scale), posY,
-                    scale, scale,
-                    flags
-                );
-                sb.Fill(
-                    color,
-                    posX - (4 * scale), posY,
-                    scale, scale,
-                    flags
-                );
-                sb.Fill(
-                    color,
-                    posX - (2 * scale), posY,
-                    scale, scale,
-                    flags
-                );
-                
-                sb.Fill(
-                    color,
-                    posX - (5 * scale), posY + scale,
-                    scale, scale,
-                    flags
-                );
-                sb.Fill(
-                    color,
-                    posX - (3 * scale), posY + scale,
-                    scale, scale,
-                    flags
-                );
-                
-                sb.Fill(
-                    color,
-                    posX - (6 * scale), posY + (2 * scale),
-                    scale, scale,
-                    flags
-                );
-                sb.Fill(
-                    color,
-                    posX - (4 * scale), posY + (2 * scale),
-                    scale, scale,
-                    flags
-                );
-                sb.Fill(
-                    color,
-                    posX - (2 * scale), posY + (2 * scale),
-                    scale, scale,
-                    flags
-                );
+                HDCore.DrawFancyShell(sb, color, (posX, posY), flipped ? DRAWPREFAB_EW : DRAWPREFAB_WE, scale, flags);
                 break;
             case 2:
-
-                // Peppergrinder-style Slug
-                sb.Fill(
-                    color,
-                    posX - ((5 + flipped) * scale), posY,
-                    4 * scale, 3 * scale,
-                    flags
-                );
-                sb.Fill(
-                    color,
-                    posX - ((6 - (4 * flipped)) * scale), posY + (1 * scale),
-                    scale, scale,
-                    flags
-                );
+                HDCore.DrawFancySlug(sb, color, (posX, posY), flipped ? DRAWPREFAB_EW : DRAWPREFAB_WE, scale, flags);
+                break;
+            default:
+                HDCore.DrawSpentShell(sb, color, (posX, posY), flipped ? DRAWPREFAB_EW : DRAWPREFAB_WE, scale, flags);
                 break;
         }
     }
 
     virtual void DrawVertVectorShell(HCStatusBar sb, HDWeapon wpn, int style, bool flipped, Color color, int posX, int posY, float scale, int flags) {
-
-        // Empty Casing
-        sb.Fill(
-            color,
-            posX, posY - (9 * scale * flipped),
-            3 * scale, 2 * scale,
-            flags
-        );
-
         switch (style) {
             case 0:
-
-                // Vanilla-style Shell
-                sb.Fill(
-                    color,
-                    posX, posY - (6 * scale),
-                    3 * scale, 5 * scale,
-                    flags
-                );
+                HDCore.DrawSimpleShell(sb, color, (posX, posY), flipped ? DRAWPREFAB_NS : DRAWPREFAB_SN, scale, flags);
                 break;
             case 1:
-
-                // Peppergrinder-style Shell
-                sb.Fill(
-                    color,
-                    posX, posY - (6 * scale),
-                    scale, scale,
-                    flags
-                );
-                sb.Fill(
-                    color,
-                    posX, posY - (4 * scale),
-                    scale, scale,
-                    flags
-                );
-                sb.Fill(
-                    color,
-                    posX, posY - (2 * scale),
-                    scale, scale,
-                    flags
-                );
-                
-                sb.Fill(
-                    color,
-                    posX + scale, posY - (5 * scale),
-                    scale, scale,
-                    flags
-                );
-                sb.Fill(
-                    color,
-                    posX + scale, posY - (3 * scale),
-                    scale, scale,
-                    flags
-                );
-                
-                sb.Fill(
-                    color,
-                    posX + (2 * scale), posY - (6 * scale),
-                    scale, scale,
-                    flags
-                );
-                sb.Fill(
-                    color,
-                    posX + (2 * scale), posY - (4 * scale),
-                    scale, scale,
-                    flags
-                );
-                sb.Fill(
-                    color,
-                    posX + (2 * scale), posY - (2 * scale),
-                    scale, scale,
-                    flags
-                );
+                HDCore.DrawFancyShell(sb, color, (posX, posY), flipped ? DRAWPREFAB_NS : DRAWPREFAB_SN, scale, flags);
                 break;
             case 2:
-
-                // Peppergrinder-style Slug
-                sb.Fill(
-                    color,
-                    posX, posY - ((5 + flipped) * scale),
-                    3 * scale, 4 * scale,
-                    flags
-                );
-                sb.Fill(
-                    color,
-                    posX + (1 * scale), posY - ((6 - (4 * flipped)) * scale),
-                    scale, scale,
-                    flags
-                );
+                HDCore.DrawFancySlug(sb, color, (posX, posY), flipped ? DRAWPREFAB_NS : DRAWPREFAB_SN, scale, flags);
+                break;
+            default:
+                HDCore.DrawSpentShell(sb, color, (posX, posY), flipped ? DRAWPREFAB_NS : DRAWPREFAB_SN, scale, flags);
                 break;
         }
+    }
+
+    virtual void DrawHorzVectorRocquette(HCStatusBar sb, HDWeapon wpn, bool flipped, Color color, int posX, int posY, float scale, int flags) {
+        HDCore.DrawRocquette(sb, color, (posX, posY), flipped ? DRAWPREFAB_EW : DRAWPREFAB_WE, scale, flags);
+    }
+
+    virtual void DrawVertVectorRocquette(HCStatusBar sb, HDWeapon wpn, bool flipped, Color color, int posX, int posY, float scale, int flags) {
+        HDCore.DrawRocquette(sb, color, (posX, posY), flipped ? DRAWPREFAB_NS : DRAWPREFAB_SN, scale, flags);
     }
 }
