@@ -1,6 +1,6 @@
 class UZTargetLocked : HUDElement {
 
-    private HHXHandler _handler;
+    private HDCoreLineTraceHandler _handler;
 
     private transient Service _HHFunc;
 
@@ -35,7 +35,7 @@ class UZTargetLocked : HUDElement {
 
     override void Init(HCStatusbar sb) {
         ZLayer    = 2;
-        Namespace = "TargetLockedCounter";
+        Namespace = "TargetLocked";
 
         _HHFunc = ServiceIterator.Find("HHFunc").Next();
     }
@@ -43,7 +43,7 @@ class UZTargetLocked : HUDElement {
     override void Tick(HCStatusbar sb) {
         if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_targetLocked_enabled", sb.CPlayer);
 
-        if (!_handler) _handler           = HHXHandler(EventHandler.Find('HHXHandler'));
+        if (!_handler) _handler           = HDCoreLineTraceHandler(EventHandler.Find('HDCoreLineTraceHandler'));
 
         if (!_font) _font                 = CVar.GetCVar("uz_hhx_targetLocked_font", sb.CPlayer);
         if (!_fontScale) _fontScale       = CVar.GetCVar("uz_hhx_targetLocked_fontScale", sb.CPlayer);
@@ -87,7 +87,7 @@ class UZTargetLocked : HUDElement {
     }
 
     private int GetLockedStatus(HCStatusbar sb) {
-        let data = _handler.lineTraceData[sb.hpl.PlayerNumber()];
+        let data = _handler.data[sb.hpl.PlayerNumber()];
 
         if (
             data

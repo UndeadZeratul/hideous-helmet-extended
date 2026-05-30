@@ -1,6 +1,6 @@
 class UZTargetHeatCounter : BaseCounterHUDElement {
 
-    private HHXHandler _handler;
+    private HDCoreLineTraceHandler _handler;
 
     override void Init(HCStatusbar sb) {
         ZLayer    = 2;
@@ -14,12 +14,12 @@ class UZTargetHeatCounter : BaseCounterHUDElement {
     override void Tick(HCStatusbar sb) {
         super.Tick(sb);
 
-        if (!_handler) _handler = HHXHandler(EventHandler.Find('HHXHandler'));
+        if (!_handler) _handler = HDCoreLineTraceHandler(EventHandler.Find('HDCoreLineTraceHandler'));
     }
 
     override float GetCounterValue(HCStatusbar sb) {
         if (_handler) {
-            let data = _handler.lineTraceData[sb.hpl.PlayerNumber()];
+            let data = _handler.data[sb.hpl.PlayerNumber()];
 
             if (data && data.hitActor && HDMobBase(data.hitActor)) {
                 let heat = Heat(data.hitActor.findinventory('Heat'));

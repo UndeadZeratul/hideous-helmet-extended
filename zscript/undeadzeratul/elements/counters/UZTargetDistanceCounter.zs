@@ -3,7 +3,7 @@ const HDCONST_FEETTOMILE=0.0001893939;
 
 class UZTargetDistanceCounter : BaseCounterHUDElement {
 
-    private HHXHandler _handler;
+    private HDCoreLineTraceHandler _handler;
 
     private transient CVar _units;
 
@@ -19,14 +19,14 @@ class UZTargetDistanceCounter : BaseCounterHUDElement {
     override void Tick(HCStatusbar sb) {
         super.Tick(sb);
 
-        if (!_handler) _handler = HHXHandler(EventHandler.Find('HHXHandler'));
+        if (!_handler) _handler = HDCoreLineTraceHandler(EventHandler.Find('HDCoreLineTraceHandler'));
 
         if (!_units) _units = CVar.GetCVar("uz_hhx_"..Namespace.."_units", sb.CPlayer);
     }
 
     override float GetCounterValue(HCStatusbar sb) {
         if (_handler) {
-            let data = _handler.lineTraceData[sb.hpl.PlayerNumber()];
+            let data = _handler.data[sb.hpl.PlayerNumber()];
 
             if (data) return data.distance;
         }

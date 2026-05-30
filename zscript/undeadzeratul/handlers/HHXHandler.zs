@@ -1,23 +1,3 @@
-class HHXLineTraceData {
-    int hitType;
-
-    double distance;
-
-    Actor hitActor;
-    Line hitLine;
-    Sector hitSector;
-
-    HHXLineTraceData Update(FLineTraceData newData) {
-        hitType   = newData.hitType;
-        distance  = newData.distance;
-        hitActor  = newData.hitActor;
-        hitLine   = newData.hitLine;
-        hitSector = newData.hitSector;
-
-        return self;
-    }
-}
-
 class HHXToastyData {
     int deathTic;
     
@@ -34,16 +14,10 @@ class HHXToastyData {
 }
 
 class HHXHandler : EventHandler {
-    Array<HHXLineTraceData> lineTraceData;
     Array<HHXToastyData> toastyData;
 
     override void OnRegister() {
-        lineTraceData.Reserve(MAXPLAYERS);
         toastyData.Reserve(MAXPLAYERS);
-    }
-
-    override void WorldTick() {
-        for (int i = 0; i < MAXPLAYERS; i++) HandleLineTraceData(i);
     }
 
     override void WorldThingDamaged(WorldEvent e) {
@@ -145,26 +119,6 @@ class HHXHandler : EventHandler {
                 (-xOff, 0.0),
                 StatusBar.DI_SCREEN_RIGHT_BOTTOM|StatusBar.DI_ITEM_LEFT_BOTTOM
             );
-        }
-    }
-
-    protected void HandleLineTraceData(int i) {
-        FLineTraceData traceData;
-
-        let plr = HDPlayerPawn(players[i].mo);
-
-        if (plr) {
-            plr.LineTrace(
-                plr.angle,
-                1024 * HDCONST_ONEMETRE,
-                plr.pitch,
-                flags: TRF_NOSKY,
-                offsetz: plr.height * HDCONST_EYEHEIGHT,
-                data: traceData
-            );
-
-            let data = lineTraceData[i] ? lineTraceData[i] : HHXLineTraceData(new('HHXLineTraceData'));
-            lineTraceData[i] = data.Update(traceData);
         }
     }
 
