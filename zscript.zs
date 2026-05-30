@@ -3,6 +3,11 @@ version "4.11"
 // Base Classes
 #include "zscript/undeadzeratul/base/BaseCounter.zs"
 
+// Configuration Classes
+
+// Data Classes
+#include "zscript/undeadzeratul/data/ArmourStats.zs"
+#include "zscript/undeadzeratul/data/ToastyData.zs"
 
 // Event Handlers
 #include "zscript/undeadzeratul/handlers/HHXHandler.zs"
