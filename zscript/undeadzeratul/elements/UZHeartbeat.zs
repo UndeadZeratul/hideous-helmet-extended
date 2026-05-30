@@ -66,7 +66,7 @@ class UZHeartbeat : HUDHeartbeat {
 
         if (sb.hpl && sb.hpl.beatmax) {
         
-            float cpb   = sb.hpl.beatcount * 1. / sb.hpl.beatmax;
+            float cpb   = 1.0 * sb.hpl.beatcount / sb.hpl.beatmax;
             float ysc   = -(3 + sb.hpl.bloodpressure * 0.05);
             color hbCol = color(int(cpb * 255), sb.sbcolour.r, sb.sbcolour.g, sb.sbcolour.b);
             
