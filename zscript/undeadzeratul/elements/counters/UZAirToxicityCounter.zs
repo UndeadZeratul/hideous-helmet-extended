@@ -26,7 +26,7 @@ class UZAirToxicityCounter : BaseCounterHUDElement {
     }
 
     override string FormatValue(HCStatusbar sb, float counterValue, float maxValue) {
-        return String.Format("%.2f%%", clamp(counterValue, 0.0, maxValue) / maxValue * 100.0);
+        return String.Format("%.2f%%", clamp(counterValue, 0.0, maxValue) / max(1.0, maxValue) * 100.0);
     }
 
     private float GetAirToxicity(HCStatusbar sb) {
