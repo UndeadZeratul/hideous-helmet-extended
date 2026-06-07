@@ -19,8 +19,6 @@ class WeaponStatusAmmoCounter {
 
 class BaseWeaponStatusOverride : HCItemOverride abstract {
 
-    mixin UZBetterDrawBar;
-
     protected name weaponName;
     protected name magName;
 
@@ -901,7 +899,7 @@ class BaseWeaponStatusOverride : HCItemOverride abstract {
                 scale: (ammoCounter.iconScale.x * scale, ammoCounter.iconScale.y * scale)
             );
         } else if (ShouldDrawPartialMagazine(value, maxValue)) {
-            BetterDrawBar(
+            HDCore.drawBar(
                 sb,
                 ammoCounter.icons[2],
                 ammoCounter.icons[3],
