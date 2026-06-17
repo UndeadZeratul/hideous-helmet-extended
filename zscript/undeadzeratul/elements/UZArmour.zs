@@ -495,8 +495,9 @@ class UZArmour : HUDElement {
                 );
             }
             case 'HDMagicShield': {
-                double shields = sb.hpl.countinv("HDMagicShield") / 1024;
-                let graphic = shields < 0.333 ? "SHIELDB0" : shields < 0.667 ? "SHIELDC0" : "SHIELDD0";
+                let shields = sb.hpl.countinv("HDMagicShield");
+                double qual = shields / 1024.0;
+                let graphic = qual < 0.333 ? "SHIELDB0" : qual < 0.667 ? "SHIELDC0" : "SHIELDD0";
 
                 return UZHDArmourStats.Create(
                     1,
