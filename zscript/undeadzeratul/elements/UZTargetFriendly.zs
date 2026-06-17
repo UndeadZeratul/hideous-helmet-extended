@@ -83,7 +83,8 @@ class UZTargetFriendly : HUDElement {
         return data
             && data.hitType == TRACE_HitActor
             && data.hitActor
-            && data.hitActor.bFRIENDLY;
+            && data.hitActor.bFRIENDLY
+            && !HDMath.isDead(data.hitActor);
     }
 
     override void DrawHUDStuff(HCStatusbar sb, int state, double ticFrac) {
