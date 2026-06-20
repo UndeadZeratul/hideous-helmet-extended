@@ -146,7 +146,7 @@ class UZWoundCounter : HUDElement {
                 sb.DrawImage(
                     "BLUDC0",
                     (posx, posy + scale),
-                    sb.DI_SCREEN_CENTER_BOTTOM | sb.DI_ITEM_LEFT_TOP,
+                    sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_LEFT_TOP,
                     0.6,
                     scale: (0.5 * scale, 0.5 * scale)
                 );
@@ -179,13 +179,14 @@ class UZWoundCounter : HUDElement {
             );
 
             if (!_hh_woundcounter || _hh_woundcounter.GetBool()) {
+                let fontScale = _fontScale.GetFloat();
                 HHX.DrawString(
                     sb,
                     _hudFont,
                     _woundCounter,
-                    (posX + (8 * scale), posY + scale),
+                    (posX + (8 * scale), posY + ((4 - (_hudFont.mFont.getHeight() * fontScale * 0.5)) * scale)),
                     sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_LEFT,
-                    scale: _fontScale.GetFloat() * scale
+                    scale: fontScale * scale
                 );
             }
         }
@@ -193,7 +194,7 @@ class UZWoundCounter : HUDElement {
 
     private string buildWoundCounter(HCStatusbar sb, int openWounds, int patchedWounds, int sealedWounds) {
 
-        string text = "\c[Gray]0\c-";
+        string text = "\c[Gray]  0\c-";
 
         if (openWounds > 0) text = "\c[Red]"..sb.FormatNumber(openWounds, 3);
 
