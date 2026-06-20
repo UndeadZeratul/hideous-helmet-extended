@@ -2,8 +2,6 @@ class UZWoundCounter : HUDElement {
 
     private transient Service _HHFunc;
 
-    private transient CVar _easterEggs;
-
     private transient CVar _enabled;
     private transient CVar _font;
     private transient CVar _fontScale;
@@ -53,8 +51,6 @@ class UZWoundCounter : HUDElement {
         if (!_hh_onlyshowopenwounds) _hh_onlyshowopenwounds       = CVar.GetCVar("hh_onlyshowopenwounds", sb.CPlayer);
         if (!_hh_wc_usedynamiccol) _hh_wc_usedynamiccol           = CVar.GetCVar("hh_wc_usedynamiccol", sb.CPlayer);
             
-        if (!_easterEggs) _easterEggs                             = CVar.GetCVar("uz_hhx_eastereggs_enabled", sb.CPlayer);
-
         if (!_enabled) _enabled                                   = CVar.GetCVar("uz_hhx_"..Namespace.."_enabled", sb.CPlayer);
 
         if (!_font) _font                                         = CVar.GetCVar("uz_hhx_"..Namespace.."_font", sb.CPlayer);
@@ -91,70 +87,24 @@ class UZWoundCounter : HUDElement {
         int openWounds = 0;
         int patchedWounds = 0;
         int sealedWounds = 0;
-        let ti = ThinkerIterator.Create("HDBleedingWound", Thinker.STAT_DEFAULT);
+
+        let it = ThinkerIterator.Create("HDBleedingWound", Thinker.STAT_DEFAULT);
         HDBleedingWound wound;
-        while (wound = HDBleedingWound(ti.Next())) {
-            if (wound.Bleeder != sb.hpl)
-                continue;
+        while (wound = HDBleedingWound(it.Next())) {
+
+            // If bleeder doesn't belong to HDPlayerPawn, skip.
+            if (wound.Bleeder != sb.hpl) continue;
 
             if (wound.Depth == 0 && wound.Patched == 0) {
-                ++sealedWounds;
+                sealedWounds++;
             } else if (wound.Depth == 0) {
-                ++patchedWounds;
+                patchedWounds++;
             } else {
-                ++openWounds;
+                openWounds++;
             }
         }
 
-        _WoundCounter = "";
-        if (openWounds > 0) {
-            let formattedValue = sb.FormatNumber(openWounds, 3);
-
-            // If Easter Eggs are enabled or it's April 1st, nice.
-            if (
-                (_easterEggs && _easterEggs.GetBool())
-                || SystemTime.Format("%m-%d", SystemTime.Now()) == "04-01"
-            ) {
-                formattedValue.replace("69", "nice");
-                formattedValue.replace("6.9", "ni.ce");
-            }
-
-            _WoundCounter = string.Format("\c[Red]%s \c-", formattedValue);
-        }
-
-        if (patchedWounds > 0 && !(_hh_onlyshowopenwounds && _hh_onlyshowopenwounds.GetBool())) {
-            let formattedValue = sb.FormatNumber(patchedWounds, 3);
-
-            // If Easter Eggs are enabled or it's April 1st, nice.
-            if (
-                (_easterEggs && _easterEggs.GetBool())
-                || SystemTime.Format("%m-%d", SystemTime.Now()) == "04-01"
-            ) {
-                formattedValue.replace("69", "nice");
-                formattedValue.replace("6.9", "ni.ce");
-            }
-
-            _WoundCounter = string.Format("%s\c[Fire]%s \c-", _WoundCounter, formattedValue);
-        }
-
-        if (sealedWounds > 0 && !(_hh_onlyshowopenwounds && _hh_onlyshowopenwounds.GetBool())) {
-            let formattedValue = sb.FormatNumber(sealedWounds, 3);
-
-            // If Easter Eggs are enabled or it's April 1st, nice.
-            if (
-                (_easterEggs && _easterEggs.GetBool())
-                || SystemTime.Format("%m-%d", SystemTime.Now()) == "04-01"
-            ) {
-                formattedValue.replace("69", "nice");
-                formattedValue.replace("6.9", "ni.ce");
-            }
-
-            _WoundCounter = string.Format("%s\c[Gray]%s \c-", _WoundCounter, formattedValue);
-        }
-
-        if (openWounds == 0 && patchedWounds == 0 && sealedWounds == 0) {
-            _WoundCounter = "\c[Gray]  0\c-";
-        }
+        _WoundCounter = buildWoundCounter(sb, openWounds, patchedWounds, sealedWounds);
     }
 
     override void DrawHUDStuff(HCStatusbar sb, int state, double ticFrac) {
@@ -190,7 +140,7 @@ class UZWoundCounter : HUDElement {
             );
 
             int of = 0;
-            HDBleedingWound biggestWound = HDBleedingWound.FindBiggest(sb.hpl);
+            let biggestWound = HDBleedingWound.FindBiggest(sb.hpl);
 
             if (biggestWound) {
                 sb.DrawImage(
@@ -229,15 +179,29 @@ class UZWoundCounter : HUDElement {
             );
 
             if (!_hh_woundcounter || _hh_woundcounter.GetBool()) {
-                float fontScale = _fontScale.GetFloat();
-                sb.DrawString(
+                HHX.DrawString(
+                    sb,
                     _hudFont,
                     _woundCounter,
-                    (posx + (4 * scale), posy + scale),
-                    sb.DI_SCREEN_CENTER_BOTTOM | sb.DI_TEXT_ALIGN_LEFT,
-                    scale: (fontScale * scale, fontScale * scale)
+                    (posX + (8 * scale), posY + scale),
+                    sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_LEFT,
+                    scale: _fontScale.GetFloat() * scale
                 );
             }
         }
+    }
+
+    private string buildWoundCounter(HCStatusbar sb, int openWounds, int patchedWounds, int sealedWounds) {
+
+        string text = "\c[Gray]0\c-";
+
+        if (openWounds > 0) text = "\c[Red]"..sb.FormatNumber(openWounds, 3);
+
+        if (!(_hh_onlyshowopenwounds && _hh_onlyshowopenwounds.GetBool())) {
+            if (patchedWounds > 0) text = text.." \c[Fire]"..sb.FormatNumber(patchedWounds, 3);
+            if (sealedWounds > 0) text = text.." \c[Gray]"..sb.FormatNumber(sealedWounds, 3);
+        }
+
+        return text.."\c-";
     }
 }

@@ -2,8 +2,6 @@ class UZAmmoCounters : HUDAmmoCounters {
 
     private transient Service _HHFunc;
 
-    private transient CVar _easterEggs;
-
     private transient CVar _enabled;
 
     private transient CVar _font;
@@ -46,7 +44,6 @@ class UZAmmoCounters : HUDAmmoCounters {
     }
 
     override void Tick(HCStatusbar sb) {
-        if (!_easterEggs) _easterEggs         = CVar.GetCVar("uz_hhx_eastereggs_enabled", sb.CPlayer);
 
         if (!_enabled) _enabled               = CVar.GetCVar("uz_hhx_"..Namespace.."_enabled", sb.CPlayer);
 
@@ -127,17 +124,17 @@ class UZAmmoCounters : HUDAmmoCounters {
         }
     }
     
-    void DrawAmmoCounters(HCStatusbar sb, int posX, int posY, int wrapLength = 0, float scale = 1., float xScale = 1., float yScale = 1.) {
+    void DrawAmmoCounters(HCStatusbar sb, int posX, int posY, int wrapLength = 0, float scale = 1.0, float xScale = 1.0, float yScale = 1.0) {
     
         int   wrap = wrapLength > 0 ? wrapLength : sb.SBAR_MAXAMMOCOLS;
         actor cp   = sb.cplayer.mo;
         int   ii   = 0;
         
-        for(int i = 0; i < sb.ammosprites.size(); i++){
+        for (int i = 0; i < sb.ammosprites.size(); i++) {
             let count = cp.countinv(sb.ammotypes[i]);
-            if(count) {
-                int row   = (ii / wrap) * (sb.SBAR_AMMOROW + 2);
-                int col   = (ii % wrap) * (sb.SBAR_AMMOROW + 2);
+            if (count) {
+                int row = (ii / wrap) * (sb.SBAR_AMMOROW + 2);
+                int col = (ii % wrap) * (sb.SBAR_AMMOROW + 2);
             
                 Vector2 coords = (posX - (col * scale) - (row * xScale), posY - (row * scale) - (col * yScale));
 
@@ -148,25 +145,14 @@ class UZAmmoCounters : HUDAmmoCounters {
                     scale: (sb.ammoscales[i] * scale, sb.ammoscales[i] * scale)
                 );
 
-                float fontScale = _fontScale.GetFloat();
-                let formattedValue = sb.FormatNumber(count);
-
-                // If Easter Eggs are enabled or it's April 1st, nice.
-                if (
-                    (_easterEggs && _easterEggs.GetBool())
-                    || SystemTime.Format("%m-%d", SystemTime.Now()) == "04-01"
-                ) {
-                    formattedValue.replace("69", "nice");
-                    formattedValue.replace("6.9", "ni.ce");
-                }
-
-                sb.DrawString(
+                HHX.drawString(
+                    sb,
                     _hudFont,
-                    formattedValue,
+                    sb.FormatNumber(count),
                     (coords.x + 2, coords.y),
                     sb.DI_SCREEN_RIGHT_BOTTOM|sb.DI_ITEM_RIGHT_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT,
-                    _fontColor.GetInt(),
-                    scale: (fontScale * scale, fontScale * scale)
+                    _fontColor.getInt(),
+                    _fontScale.GetFloat() * scale
                 );
 
                 ii++;

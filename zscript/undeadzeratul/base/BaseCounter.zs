@@ -14,8 +14,6 @@ class BaseCounterHUDElement : HUDElement abstract {
 
     private transient Service _HHFunc;
 
-    private transient CVar _easterEggs;
-
     private transient CVar _enabled;
 
     private transient CVar _alwaysVisible;
@@ -57,8 +55,6 @@ class BaseCounterHUDElement : HUDElement abstract {
     
     override void Tick(HCStatusbar sb) {
         if (!_HHFunc) _HHFunc = ServiceIterator.Find("HHFunc").Next();
-
-        if (!_easterEggs) _easterEggs       = CVar.GetCVar("uz_hhx_eastereggs_enabled", sb.CPlayer);
 
         if (!_enabled) _enabled             = CVar.GetCVar("uz_hhx_"..Namespace.."_enabled", sb.CPlayer);
 
@@ -153,44 +149,37 @@ class BaseCounterHUDElement : HUDElement abstract {
         let value    = GetCounterValue(sb);
         let maxValue = GetCounterMaxValue(sb);
 
-        if (hhx_debug && !(Level.time % TICRATE)) HDCore.Log('HHX', LOGGING_DEBUG, "["..Namespace.."] Value: "..value..", Max Value: "..maxValue);
+        if (hhx_debug && !(Level.time % TICRATE)) HDCore.Log('HHX', LOGGING_TRACE, "["..Namespace.."] Value: "..value..", Max Value: "..maxValue);
 
         if (hhx_debug || _alwaysVisible.GetBool() || ShouldDrawCounter(sb, value)) {
             float fontScale = _fontScale.GetFloat();
             let formattedValue = FormatValue(sb, value, maxValue);
 
-            // If Easter Eggs are enabled or it's April 1st, nice.
-            if (
-                (_easterEggs && _easterEggs.GetBool())
-                || SystemTime.Format("%m-%d", SystemTime.Now()) == "04-01"
-            ) {
-                formattedValue.replace("69", "nice");
-                formattedValue.replace("6.9", "ni.ce");
-            }
-
             switch (_counterStyle ? _counterStyle.GetInt() : LABEL_WITH_VALUE) {
                 case VALUE_ONLY:
-                    sb.DrawString(
+                    HHX.drawString(
+                        sb,
                         _hudFont,
                         formattedValue,
                         (posX + (8 * scale), posY + scale),
                         sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_LEFT,
-                        _fontColor.GetInt(),
-                        scale: (fontScale * scale, fontScale * scale)
+                        _fontColor.getInt(),
+                        fontScale * scale
                     );
                     break;
                 case LABEL_WITH_VALUE:
-                    sb.DrawString(
+                    HHX.drawString(
+                        sb,
                         _hudFont,
                         counterLabel..formattedValue,
                         (posX + (8 * scale), posY + scale),
                         sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_LEFT,
-                        _fontColor.GetInt(),
-                        scale: (fontScale * scale, fontScale * scale)
+                        _fontColor.getInt(),
+                        fontScale * scale
                     );
                     break;
                 case ICON_WITH_VALUE:
-                    sb.DrawImage(
+                    sb.drawImage(
                         counterIcon,
                         (posX, posY),
                         sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP,
@@ -198,17 +187,18 @@ class BaseCounterHUDElement : HUDElement abstract {
                         scale: (scale, scale)
                     );
 
-                    sb.DrawString(
+                    HHX.drawString(
+                        sb,
                         _hudFont,
                         formattedValue,
                         (posX + (8 * scale), posY + scale),
                         sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_TEXT_ALIGN_LEFT,
-                        _fontColor.GetInt(),
-                        scale: (fontScale * scale, fontScale * scale)
+                        _fontColor.getInt(),
+                        fontScale * scale
                     );
                     break;
                 case DURABILITY_BAR:
-                    HDCore.DrawBar(
+                    HDCore.drawBar(
                         sb,
                         counterIcon, counterIconBG,
                         clamp(value / max(maxValue, 1.0), 0.0, 1.0),
@@ -219,7 +209,7 @@ class BaseCounterHUDElement : HUDElement abstract {
                     );
                     break;
                 case FADING_ICON:
-                    sb.DrawImage(
+                    sb.drawImage(
                         counterIcon,
                         (posX, posY),
                         sb.DI_SCREEN_CENTER_BOTTOM|sb.DI_ITEM_TOP,

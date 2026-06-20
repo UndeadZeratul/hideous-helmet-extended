@@ -7,6 +7,8 @@ class UZCompass : HUDCompass {
     private transient CVar _font;
     private transient CVar _fontScale;
 
+    private transient CVar _units;
+
     private transient CVar _hlm_required;
     private transient CVar _hlm_hudLevel;
     private transient CVar _hlm_posX;
@@ -16,7 +18,7 @@ class UZCompass : HUDCompass {
     private transient CVar _nhm_posX;
     private transient CVar _nhm_posY;
     private transient CVar _nhm_scale;
-    
+
     private transient CVar _nhm_bgRef;
     private transient CVar _nhm_bgPosX;
     private transient CVar _nhm_bgPosY;
@@ -40,6 +42,8 @@ class UZCompass : HUDCompass {
 
         if (!_font) _font                 = CVar.GetCVar("uz_hhx_"..Namespace.."_font", sb.CPlayer);
         if (!_fontScale) _fontScale       = CVar.GetCVar("uz_hhx_"..Namespace.."_fontScale", sb.CPlayer);
+
+        if (!_units) _units               = CVar.GetCVar("uz_hhx_compass_units", sb.CPlayer);
 
         if (!_hlm_required) _hlm_required = CVar.GetCVar("uz_hhx_"..Namespace.."_hlm_required", sb.CPlayer);
         if (!_hlm_hudLevel) _hlm_hudLevel = CVar.GetCVar("uz_hhx_"..Namespace.."_hlm_hudLevel", sb.CPlayer);
@@ -79,7 +83,7 @@ class UZCompass : HUDCompass {
         ) return;
 
         if (CheckCommonStuff(sb, state, ticFrac)) {
-        
+
             int   posX  = hasHelmet ? _hlm_posX.GetInt()    : _nhm_posX.GetInt();
             int   posY  = hasHelmet ? _hlm_posY.GetInt()    : _nhm_posY.GetInt();
             float scale = hasHelmet ? _hlm_scale.GetFloat() : _nhm_scale.GetFloat();
@@ -97,70 +101,117 @@ class UZCompass : HUDCompass {
                 sb.DI_TOPLEFT,
                 scale: (scale * bgScale, scale * bgScale)
             );
-        
-            int wephelpheight = _hudFont.mFont.GetHeight() * 5 * fontScale * scale;
-            
-            int     STB_COMPRAD = 12;
-            vector2 compos      = (-STB_COMPRAD,STB_COMPRAD) * 2;
-            double  compangle   = sb.hpl.angle % 360;
-            
-            double  compangle2 = sb.hpl.deltaangle(0, compangle);
-            if(abs(compangle2) < 120) {
-                sb.DrawString(
-                    _hudFont,
-                    "E",
-                    (posX + (compangle2 * 32 * scale / sb.cplayer.fov), posY + wephelpheight),
-                    sb.DI_SCREEN_LEFT_TOP|sb.DI_TEXT_ALIGN_CENTER,
-                    translation: Font.CR_GOLD,
-                    scale: (fontScale * scale, fontScale * scale)
-                );
-            }
-            
-            compangle2 = sb.hpl.deltaangle(-90, compangle);
-            if(abs(compangle2) < 120) {
-                sb.DrawString(
-                    _hudFont,
-                    "S",
-                    (posX + (compangle2 * 32 * scale / sb.cplayer.fov), posY + wephelpheight),
-                    sb.DI_SCREEN_LEFT_TOP|sb.DI_TEXT_ALIGN_CENTER,
-                    translation: Font.CR_BLACK,
-                    scale: (fontScale * scale, fontScale * scale)
-                );
-            }
-            
-            compangle2 = sb.hpl.deltaangle(180, compangle);
-            if(abs(compangle2) < 120) {
-                sb.DrawString(
-                    _hudFont,
-                    "W",
-                    (posX + (compangle2 * 32 * scale / sb.cplayer.fov), posY + wephelpheight),
-                    sb.DI_SCREEN_LEFT_TOP|sb.DI_TEXT_ALIGN_CENTER,
-                    translation: Font.CR_RED,
-                    scale: (fontScale * scale, fontScale * scale)
-                );
-            }
-            
-            compangle2 = sb.hpl.deltaangle(90, compangle);
-            if(abs(compangle2) < 120) {
-                sb.DrawString(
-                    _hudFont,
-                    "N",
-                    (posX + (compangle2 * 32 * scale / sb.cplayer.fov), posY + wephelpheight),
-                    sb.DI_SCREEN_LEFT_TOP|sb.DI_TEXT_ALIGN_CENTER,
-                    translation: Font.CR_WHITE,
-                    scale: (fontScale * scale, fontScale * scale)
-                );
-            }
-            
-            wephelpheight += _hudFont.mFont.GetHeight() * fontScale * scale;
-            sb.DrawString(
+
+            double angle = sb.hpl.angle % 360;
+
+            // TODO: Configure different color sets?
+            //   - IRL Compass   N/S/E/W => Red/White/White/White
+            //   - Vanilla HDest N/S/E/W => White/Black/Gold/Red
+            drawCardinalDirection(
+                sb,
+                "$EAST",
+                sb.hpl.deltaangle(0, angle),
+                (posX, posY),
+                sb.DI_SCREEN_LEFT_TOP|sb.DI_TEXT_ALIGN_CENTER,
+                Font.CR_GOLD,
+                fontScale * scale
+            );
+
+            drawCardinalDirection(
+                sb,
+                "$SOUTH",
+                sb.hpl.deltaangle(-90, angle),
+                (posX, posY),
+                sb.DI_SCREEN_LEFT_TOP|sb.DI_TEXT_ALIGN_CENTER,
+                Font.CR_BLACK,
+                fontScale * scale
+            );
+
+            drawCardinalDirection(
+                sb,
+                "$WEST",
+                sb.hpl.deltaangle(180, angle),
+                (posX, posY),
+                sb.DI_SCREEN_LEFT_TOP|sb.DI_TEXT_ALIGN_CENTER,
+                Font.CR_RED,
+                fontScale * scale
+            );
+
+            drawCardinalDirection(
+                sb,
+                "$NORTH",
+                sb.hpl.deltaangle(90, angle),
+                (posX, posY),
+                sb.DI_SCREEN_LEFT_TOP|sb.DI_TEXT_ALIGN_CENTER,
+                Font.CR_WHITE,
+                fontScale * scale
+            );
+
+            HHX.DrawString(
+                sb,
                 _hudFont,
                 "^",
-                (posX, posY + wephelpheight),
+                (posX, posY + (_hudFont.mFont.GetHeight() * fontScale * scale)),
                 sb.DI_SCREEN_LEFT_TOP|sb.DI_TEXT_ALIGN_CENTER,
-                translation: Font.CR_OLIVE,
-                scale: (fontScale * scale, fontScale * scale)
+                Font.CR_OLIVE,
+                fontScale * scale
+            );
+            
+            HHX.DrawString(
+                sb,
+                _hudFont,
+                FormatPositionValue(sb, sb.hpl.pos),
+                (posX, posY + (_hudFont.mFont.GetHeight() * 2 * fontScale * scale)),
+                sb.DI_SCREEN_LEFT_TOP|sb.DI_TEXT_ALIGN_CENTER,
+                Font.CR_OLIVE,
+                fontScale * scale
             );
         }
+    }
+
+    private void DrawCardinalDirection(HCStatusbar sb, string text, double angle, Vector2 pos, int flags, int fontColor, double scale) {
+
+        // TODO: extract max angle into config/CVAR
+        if(abs(angle) < 120) {
+            HHX.DrawString(
+                sb,
+                _hudFont,
+                StringTable.localize(text),
+                (pos.x + (angle * 32 * scale / sb.cplayer.fov), pos.y),
+                sb.DI_SCREEN_LEFT_TOP|sb.DI_TEXT_ALIGN_CENTER,
+                fontColor,
+                scale
+            );
+        }
+    }
+
+    private string FormatPositionValue(HCStatusbar sb, Vector3 value) {
+
+        Vector3 pos;
+        string units;
+        switch (_units.GetInt()) {
+            case 0:
+                pos  = value / HDCONST_ONEMETRE * 1.0;
+                units = "m";
+                break;
+            case 1:
+                pos  = value / HDCONST_ONEMETRE / 1000.;
+                units = "km";
+                break;
+            case 2:
+                pos  = value / HDCONST_ONEMETRE * HDCONST_METRETOFEET;
+                units = "ft";
+                break;
+            case 3:
+                pos  = value / HDCONST_ONEMETRE * HDCONST_METRETOFEET * HDCONST_FEETTOMILE;
+                units = "mi";
+                break;
+            default:
+                pos  = value;
+                units = "mu";
+                break;
+        }
+
+        return String.Format("%.2f, %.2f, %.2f %s", pos.x, pos.y, pos.z, units);
     }
 }

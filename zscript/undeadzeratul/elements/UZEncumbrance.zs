@@ -2,8 +2,6 @@ class UZEncumbrance : HUDEncumbrance {
 
     private transient Service _HHFunc;
 
-    private transient CVar _easterEggs;
-
     private transient CVar _enabled;
 
     private transient CVar _font;
@@ -38,7 +36,6 @@ class UZEncumbrance : HUDEncumbrance {
     }
 
     override void Tick(HCStatusbar sb) {
-        if (!_easterEggs) _easterEggs     = CVar.GetCVar("uz_hhx_eastereggs_enabled", sb.CPlayer);
 
         if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_"..Namespace.."_enabled", sb.CPlayer);
 
@@ -105,24 +102,14 @@ class UZEncumbrance : HUDEncumbrance {
             if(sb.hpl.enc) {
                 double pocketenc = sb.hpl.pocketenc;
 
-                // Encumbrance Bulk Value
                 float fontScale = _fontScale.GetFloat();
 
+                // Encumbrance Bulk Value
                 // TODO: cast to int?  tie to CVAR?
-                let formattedValue = sb.FormatNumber(sb.hpl.enc);
-
-                // If Easter Eggs are enabled or it's April 1st, nice.
-                if (
-                    (_easterEggs && _easterEggs.GetBool())
-                    || SystemTime.Format("%m-%d", SystemTime.Now()) == "04-01"
-                ) {
-                    formattedValue.replace("69", "nice");
-                    formattedValue.replace("6.9", "ni.ce");
-                }
-
-                sb.drawstring(
+                HHX.drawString(
+                    sb,
                     _hudFont,
-                    formattedValue,
+                    sb.FormatNumber(sb.hpl.enc),
                     (posX + (4 * fontScale * scale), posY - ((_hudFont.mFont.GetHeight() >> 1) * fontScale * scale)),
                     sb.DI_TEXT_ALIGN_LEFT|sb.DI_SCREEN_LEFT_BOTTOM,
                     sb.hpl.overloaded < 0.8
@@ -130,7 +117,7 @@ class UZEncumbrance : HUDEncumbrance {
                         : sb.hpl.overloaded > 1.6
                             ? Font.CR_RED
                             : Font.CR_GOLD,
-                    scale: (fontScale * scale, fontScale * scale)
+                    fontScale * scale
                 );
 
                 // Encumbrance Bar Border

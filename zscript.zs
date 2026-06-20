@@ -3,6 +3,13 @@ version "4.11"
 // Base Classes
 #include "zscript/undeadzeratul/base/BaseCounter.zs"
 
+// Helper Classes
+
+#include "zscript/undeadzeratul/HHX/HHX.zs"
+#include "zscript/undeadzeratul/HHX/helpers/DrawInventoryHelpers.zs"
+#include "zscript/undeadzeratul/HHX/helpers/DrawStringHelpers.zs"
+
+
 // Configuration Classes
 
 // Data Classes

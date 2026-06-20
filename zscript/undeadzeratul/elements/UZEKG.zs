@@ -2,8 +2,6 @@ class UZEKG : HUDEKG {
 
     private transient Service _HHFunc;
 
-    private transient CVar _easterEggs;
-
     private transient CVar _enabled;
 
     private transient CVar _font;
@@ -43,7 +41,6 @@ class UZEKG : HUDEKG {
     }
 
     override void Tick(HCStatusbar sb) {
-        if (!_easterEggs) _easterEggs     = CVar.GetCVar("uz_hhx_eastereggs_enabled", sb.CPlayer);
 
         if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_"..Namespace.."_enabled", sb.CPlayer);
 
@@ -102,29 +99,17 @@ class UZEKG : HUDEKG {
                 ? Font.CR_GOLD
                 : Font.CR_RED
               );
-        Vector2 debugScale = (fontScale * scale, fontScale * scale);
-
-        let formattedValue = sb.FormatNumber(sb.hpl.health);
-
-        // If Easter Eggs are enabled or it's April 1st, nice.
-        if (
-            (_easterEggs && _easterEggs.GetBool())
-            || SystemTime.Format("%m-%d", SystemTime.Now()) == "04-01"
-        ) {
-            formattedValue.replace("69", "nice");
-            formattedValue.replace("6.9", "ni.ce");
-        }
 
         if (AutomapActive) {
             if(hhx_debug || hd_nobleed) {
-
-                sb.drawstring(
+                HHX.drawString(
+                    sb,
                     _hudFont,
-                    formattedValue,
+                    sb.FormatNumber(sb.hpl.health),
                     (34, -24),
                     sb.DI_BOTTOMLEFT|sb.DI_TEXT_ALIGN_CENTER,
                     debugTran,
-                    scale: debugScale
+                    fontScale * scale
                 );
             } else {
                 DrawEKG(sb, state, ticFrac, 40, -24, sb.DI_BOTTOMLEFT, 1., length);
@@ -146,13 +131,14 @@ class UZEKG : HUDEKG {
             );
 
             if(hhx_debug || hd_nobleed) {
-                sb.drawstring(
+                HHX.drawString(
+                    sb,
                     _hudFont,
-                    formattedValue,
+                    sb.FormatNumber(sb.hpl.health),
                     (posX, posY - (_hudFont.mFont.GetHeight() / 2) * fontScale * scale),
                     sb.DI_TEXT_ALIGN_CENTER|sb.DI_SCREEN_CENTER_BOTTOM,
                     debugTran,
-                    scale: debugScale
+                    fontScale * scale
                 );
             } else {
                 DrawEKG(sb, state, ticFrac, posX, posY, sb.DI_SCREEN_CENTER_BOTTOM, scale, length);

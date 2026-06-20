@@ -2,8 +2,6 @@ class UZInventory : HUDInventory {
 
     private transient Service _HHFunc;
 
-    private transient CVar _easterEggs;
-
     private transient CVar _enabled;
 
     private transient CVar _font;
@@ -38,7 +36,6 @@ class UZInventory : HUDInventory {
     }
 
     override void Tick(HCStatusbar sb) {
-        if (!_easterEggs) _easterEggs     = CVar.GetCVar("uz_hhx_eastereggs_enabled", sb.CPlayer);
 
         if (!_enabled) _enabled           = CVar.GetCVar("uz_hhx_inventory_enabled", sb.CPlayer);
 
@@ -151,52 +148,22 @@ class UZInventory : HUDInventory {
             // Reset SavedColour
             sb.SavedColour = Font.CR_SAPPHIRE;
 
-            if (ivsp) {
-                int ivspi = ivsp.getsbarnum();
-                if (ivspi != -1000000) {
-                    let formattedValue = sb.FormatNumber(ivspi);
+            let ivsbn = ivsw
+                ? ivsw.GetSBarNum()
+                : ivsp
+                    ? ivsp.GetSBarNum()
+                    : -1000000;
 
-                    // If Easter Eggs are enabled or it's April 1st, nice.
-                    if (
-                        (_easterEggs && _easterEggs.GetBool())
-                        || SystemTime.Format("%m-%d", SystemTime.Now()) == "04-01"
-                    ) {
-                        formattedValue.replace("69", "nice");
-                        formattedValue.replace("6.9", "ni.ce");
-                    }
-
-                    sb.DrawString(
-                        _hudFont,
-                        formattedValue,
-                        (posX + (17 * scale), posY - (_hudFont.mFont.GetHeight() * scale)),
-                        flags|sb.DI_TEXT_ALIGN_RIGHT,
-                        sb.SavedColour,
-                        scale: (fontScale * scale, fontScale * scale)
-                    );
-                }
-            } else if (ivsw) {
-                int ivswi = ivsw.getsbarnum();
-                if (ivswi != -1000000) {
-                    let formattedValue = sb.FormatNumber(ivswi);
-
-                    // If Easter Eggs are enabled or it's April 1st, nice.
-                    if (
-                        (_easterEggs && _easterEggs.GetBool())
-                        || SystemTime.Format("%m-%d", SystemTime.Now()) == "04-01"
-                    ) {
-                        formattedValue.replace("69", "nice");
-                        formattedValue.replace("6.9", "ni.ce");
-                    }
-
-                    sb.DrawString(
-                        _hudFont,
-                        formattedValue,
-                        (posX + (17 * scale), posY - (_hudFont.mFont.GetHeight() * scale)),
-                        flags|sb.DI_TEXT_ALIGN_RIGHT,
-                        sb.SavedColour,
-                        scale: (fontScale * scale, fontScale * scale)
-                    );
-                }
+            if (ivsbn != -1000000) {
+                HHX.DrawString(
+                    sb,
+                    _hudFont,
+                    sb.FormatNumber(ivsbn),
+                    (posX + (17 * scale), posY - (_hudFont.mFont.GetHeight() * fontScale * scale)),
+                    flags|sb.DI_TEXT_ALIGN_RIGHT,
+                    sb.SavedColour,
+                    fontScale * scale
+                );
             }
 
             // Reset SavedColour
@@ -208,24 +175,14 @@ class UZInventory : HUDInventory {
                     ? ivsp.displayamount()
                     : ivs.amount;
 
-            let formattedValue = sb.FormatNumber(invamt);
-
-            // If Easter Eggs are enabled or it's April 1st, nice.
-            if (
-                (_easterEggs && _easterEggs.GetBool())
-                || SystemTime.Format("%m-%d", SystemTime.Now()) == "04-01"
-            ) {
-                formattedValue.replace("69", "nice");
-                formattedValue.replace("6.9", "ni.ce");
-            }
-
-            sb.DrawString(
+            HHX.DrawString(
+                sb,
                 _hudFont,
-                formattedValue,
+                sb.FormatNumber(invamt),
                 (posX + (17 * scale), posY),
                 flags|sb.DI_TEXT_ALIGN_RIGHT,
                 sb.SavedColour,
-                scale: (fontScale * scale, fontScale * scale)
+                fontScale * scale
             );
         }
     }
@@ -289,7 +246,7 @@ class UZInventory : HUDInventory {
             sb.DrawTexture(
                 icon,
                 (posX + ((!i ? -10 : 10) * scale), posY - (17 * scale)),
-                flags|sb.DI_ITEM_CENTER_BOTTOM|(((ivsp && ivsp.bdroptranslation) || (ivsw && ivsw.bdroptranslation)) ? sb.DI_TRANSLATABLE : 0),
+                flags|sb.DI_ITEM_CENTER_BOTTOM|(((ivsp && ivsp.bDROPTRANSLATION) || (ivsw && ivsw.bDROPTRANSLATION)) ? sb.DI_TRANSLATABLE : 0),
                 alpha: 0.6,
                 scale: applyScale * scale * 0.6
             );

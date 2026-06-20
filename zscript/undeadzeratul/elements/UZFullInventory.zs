@@ -2,14 +2,12 @@ class UZFullInventory : HUDElement {
 
     private transient Service _HHFunc;
 
-    private transient CVar _easterEggs;
-
     private transient CVar _enabled;
 
     private transient CVar _font;
     private transient CVar _fontColor;
     private transient CVar _fontScale;
-    
+
     private transient CVar _hlm_required;
     private transient CVar _hlm_hudLevel;
     private transient CVar _hlm_posX;
@@ -25,7 +23,7 @@ class UZFullInventory : HUDElement {
     private transient CVar _nhm_xScale;
     private transient CVar _nhm_yScale;
     private transient CVar _nhm_wrapLength;
-    
+
     private transient CVar _nhm_bgRef;
     private transient CVar _nhm_bgPosX;
     private transient CVar _nhm_bgPosY;
@@ -37,8 +35,7 @@ class UZFullInventory : HUDElement {
 
     private transient string _prevFont;
     private transient HUDFont _hudFont;
-    
-    
+
     override void Init(HCStatusbar sb) {
         ZLayer = 0;
         Namespace = "fullInventory";
@@ -47,7 +44,6 @@ class UZFullInventory : HUDElement {
     }
 
     override void Tick(HCStatusbar sb) {
-        if (!_easterEggs) _easterEggs         = CVar.GetCVar("uz_hhx_eastereggs_enabled", sb.CPlayer);
 
         if (!_enabled) _enabled               = CVar.GetCVar("uz_hhx_"..Namespace.."_enabled", sb.CPlayer);
 
@@ -103,7 +99,7 @@ class UZFullInventory : HUDElement {
         if (CheckCommonStuff(sb, state, ticFrac)) {
             int i = 0;
             int thisindex = -1;
-        
+
             int   posX       = hasHelmet ? _hlm_posX.GetInt()       : _nhm_posX.GetInt();
             int   posY       = hasHelmet ? _hlm_posY.GetInt()       : _nhm_posY.GetInt();
             float scale      = hasHelmet ? _hlm_scale.GetFloat()    : _nhm_scale.GetFloat();
@@ -125,12 +121,12 @@ class UZFullInventory : HUDElement {
                 sb.DI_SCREEN_RIGHT_BOTTOM|sb.DI_ITEM_CENTER_BOTTOM,
                 scale: (scale * bgScale, scale * bgScale)
             );
-            
+
             for (let item = sb.hpl.inv; item != NULL; item = item.inv) {
                 if (!item || (!item.binvbar && item != sb.hpl.invsel)) {
                     continue;
                 }
-                
+
                 if (item == sb.cplayer.mo.invsel) {
                     thisindex = i;
                 }
@@ -140,15 +136,15 @@ class UZFullInventory : HUDElement {
                 int  xoffs  = col * scale;
                 int  yoffs  = row * scale;
                 bool isthis = i == thisindex;
-                
+
                 let ivsh = HDPickup(item);
                 let ivsw = HDWeapon(item);
                 let ivsb = HDStorageItem(item);
-            
+
                 Vector2   coords = (posX - xoffs - (row * xScale), posY + sb.bigitemyofs - yoffs - (col * yScale));
                 TextureId icon;
                 Vector2   applyscale;
-                
+
                 if (ivsw) {
                     string iconStr;
                     double iconScale;
@@ -164,18 +160,6 @@ class UZFullInventory : HUDElement {
                     [icon, applyScale] = sb.GetIcon(item, 0);
                 }
 
-                // sb.DrawImage(
-                //     icon,
-                //     coords + (0, sb.bigitemyofs),
-                //     sb.DI_SCREEN_RIGHT_BOTTOM|sb.DI_ITEM_RIGHT_BOTTOM
-                //     |((
-                //         (ivsh && ivsh.bdroptranslation)
-                //         ||(ivsw && ivsw.bdroptranslation)
-                //     ) ? sb.DI_TRANSLATABLE : 0),
-                //     alpha:isthis ? 1. : 0.6,
-                //     scale:applyscale * (isthis ? 1. : 0.6) * scale
-                // );
-                
                 sb.DrawTexture(
                     icon,
                     coords,
@@ -196,25 +180,14 @@ class UZFullInventory : HUDElement {
                             ? ivsh.DisplayAmount()
                             : item.amount;
 
-                float fontScale = _fontScale.GetFloat();
-                let formattedValue = sb.FormatNumber(amount);
-
-                // If Easter Eggs are enabled or it's April 1st, nice.
-                if (
-                    (_easterEggs && _easterEggs.GetBool())
-                    || SystemTime.Format("%m-%d", SystemTime.Now()) == "04-01"
-                ) {
-                    formattedValue.replace("69", "nice");
-                    formattedValue.replace("6.9", "ni.ce");
-                }
-
-                sb.DrawString(
+                HHX.DrawString(
+                    sb,
                     _hudFont,
-                    formattedValue,
+                    sb.FormatNumber(amount),
                     coords + (2, 0),
                     sb.DI_SCREEN_RIGHT_BOTTOM|sb.DI_ITEM_RIGHT_BOTTOM|sb.DI_TEXT_ALIGN_RIGHT,
                     _fontColor.GetInt(),
-                    scale: (fontScale * scale, fontScale * scale)
+                    _fontScale.GetFloat() * scale
                 );
 
                 i++;
